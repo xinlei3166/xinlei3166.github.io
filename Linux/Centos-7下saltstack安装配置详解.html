@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Centos-7下saltstack安装配置详解 | 君惜の博客</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    
+    <meta name="description" content="">
+    <link rel="preload" href="/assets/css/0.styles.ff30c3b6.css" as="style"><link rel="preload" href="/assets/js/app.4c0f163f.js" as="script"><link rel="preload" href="/assets/js/3.5c161e77.js" as="script"><link rel="preload" href="/assets/js/1.b50dabeb.js" as="script"><link rel="preload" href="/assets/js/21.83dfac32.js" as="script"><link rel="prefetch" href="/assets/js/10.7fffa9c4.js"><link rel="prefetch" href="/assets/js/11.a894a0a3.js"><link rel="prefetch" href="/assets/js/12.7c1460cd.js"><link rel="prefetch" href="/assets/js/13.dd983835.js"><link rel="prefetch" href="/assets/js/14.1487eb9d.js"><link rel="prefetch" href="/assets/js/15.4756daf1.js"><link rel="prefetch" href="/assets/js/16.a530f05a.js"><link rel="prefetch" href="/assets/js/17.29f6aa52.js"><link rel="prefetch" href="/assets/js/18.e4a9724e.js"><link rel="prefetch" href="/assets/js/19.5ed05463.js"><link rel="prefetch" href="/assets/js/20.0cce4e1a.js"><link rel="prefetch" href="/assets/js/22.ad29d758.js"><link rel="prefetch" href="/assets/js/23.18313ffe.js"><link rel="prefetch" href="/assets/js/24.665841c7.js"><link rel="prefetch" href="/assets/js/25.5e232809.js"><link rel="prefetch" href="/assets/js/26.af71fdca.js"><link rel="prefetch" href="/assets/js/27.8a2d98c2.js"><link rel="prefetch" href="/assets/js/28.1306b459.js"><link rel="prefetch" href="/assets/js/29.29630159.js"><link rel="prefetch" href="/assets/js/30.b89be015.js"><link rel="prefetch" href="/assets/js/31.6295dd91.js"><link rel="prefetch" href="/assets/js/32.b7becd12.js"><link rel="prefetch" href="/assets/js/33.8faf9a10.js"><link rel="prefetch" href="/assets/js/34.cd57f657.js"><link rel="prefetch" href="/assets/js/35.7e2b5a6f.js"><link rel="prefetch" href="/assets/js/36.d71a14b1.js"><link rel="prefetch" href="/assets/js/37.959b4726.js"><link rel="prefetch" href="/assets/js/38.f931a68f.js"><link rel="prefetch" href="/assets/js/39.c3ea2b40.js"><link rel="prefetch" href="/assets/js/4.c1ea1bf1.js"><link rel="prefetch" href="/assets/js/40.4982c905.js"><link rel="prefetch" href="/assets/js/41.203d520e.js"><link rel="prefetch" href="/assets/js/42.7e5a0064.js"><link rel="prefetch" href="/assets/js/43.6b7dcc89.js"><link rel="prefetch" href="/assets/js/44.ace44d85.js"><link rel="prefetch" href="/assets/js/45.e7334ca4.js"><link rel="prefetch" href="/assets/js/46.2f73e550.js"><link rel="prefetch" href="/assets/js/47.bb851a3c.js"><link rel="prefetch" href="/assets/js/48.9ead4a3a.js"><link rel="prefetch" href="/assets/js/49.f6d187a3.js"><link rel="prefetch" href="/assets/js/5.4f3c9bb5.js"><link rel="prefetch" href="/assets/js/50.44513019.js"><link rel="prefetch" href="/assets/js/51.f92332ae.js"><link rel="prefetch" href="/assets/js/52.1a90855d.js"><link rel="prefetch" href="/assets/js/53.a6063052.js"><link rel="prefetch" href="/assets/js/54.5e4dc526.js"><link rel="prefetch" href="/assets/js/55.b4cf2cca.js"><link rel="prefetch" href="/assets/js/56.5afab6b8.js"><link rel="prefetch" href="/assets/js/57.13db934e.js"><link rel="prefetch" href="/assets/js/58.45393b85.js"><link rel="prefetch" href="/assets/js/59.312d0c74.js"><link rel="prefetch" href="/assets/js/6.0583317e.js"><link rel="prefetch" href="/assets/js/60.868da390.js"><link rel="prefetch" href="/assets/js/61.06d72270.js"><link rel="prefetch" href="/assets/js/62.95d65aff.js"><link rel="prefetch" href="/assets/js/63.36ccfb18.js"><link rel="prefetch" href="/assets/js/64.02290762.js"><link rel="prefetch" href="/assets/js/65.eac6abdc.js"><link rel="prefetch" href="/assets/js/66.5c7a3796.js"><link rel="prefetch" href="/assets/js/67.6d2a84e7.js"><link rel="prefetch" href="/assets/js/68.12b35d40.js"><link rel="prefetch" href="/assets/js/69.da3256da.js"><link rel="prefetch" href="/assets/js/7.60184b24.js"><link rel="prefetch" href="/assets/js/70.76e73b0c.js"><link rel="prefetch" href="/assets/js/71.99afbb77.js"><link rel="prefetch" href="/assets/js/72.19feaec4.js"><link rel="prefetch" href="/assets/js/73.ba5ee2ed.js"><link rel="prefetch" href="/assets/js/74.cef516f6.js"><link rel="prefetch" href="/assets/js/75.90f4a703.js"><link rel="prefetch" href="/assets/js/76.885ff289.js"><link rel="prefetch" href="/assets/js/77.823d6f1d.js"><link rel="prefetch" href="/assets/js/78.2c2736ff.js"><link rel="prefetch" href="/assets/js/79.cbfa5ae7.js"><link rel="prefetch" href="/assets/js/8.ccce47cf.js"><link rel="prefetch" href="/assets/js/80.431573aa.js"><link rel="prefetch" href="/assets/js/9.9160a89c.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.ff30c3b6.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-19557b78><div data-v-19557b78><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-19557b78 data-v-19557b78><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-64685f0e data-v-19557b78 data-v-19557b78><h3 class="title" style="display:none;" data-v-64685f0e data-v-64685f0e>君惜の博客</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-64685f0e data-v-64685f0e><input type="password" value="" data-v-64685f0e> <span data-v-64685f0e>Konck! Knock!</span> <button data-v-64685f0e>OK</button></label> <div class="footer" style="display:none;" data-v-64685f0e data-v-64685f0e><span data-v-64685f0e><i class="iconfont reco-theme" data-v-64685f0e></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-64685f0e>vuePress-theme-reco</a></span> <span data-v-64685f0e><i class="iconfont reco-copyright" data-v-64685f0e></i> <a data-v-64685f0e><span data-v-64685f0e>君惜</span>
+            
+          <!---->
+          2020
+        </a></span></div></div> <div class="hide" data-v-19557b78><header class="navbar" data-v-19557b78><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">君惜の博客</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/Docker/" class="nav-link"><i class="iconfont undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Git/" class="nav-link"><i class="iconfont undefined"></i>
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JavaScript/" class="nav-link"><i class="iconfont undefined"></i>
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Linux/" class="nav-link"><i class="iconfont undefined"></i>
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Mysql/" class="nav-link"><i class="iconfont undefined"></i>
+  Mysql
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Node.js/" class="nav-link"><i class="iconfont undefined"></i>
+  Node.js
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Python/" class="nav-link"><i class="iconfont undefined"></i>
+  Python
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Redis/" class="nav-link"><i class="iconfont undefined"></i>
+  Redis
+</a></li><li class="dropdown-item"><!----> <a href="/categories/并发测试/" class="nav-link"><i class="iconfont undefined"></i>
+  并发测试
+</a></li><li class="dropdown-item"><!----> <a href="/categories/随笔/" class="nav-link"><i class="iconfont undefined"></i>
+  随笔
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div> <a href="https://github.com/xinlei3166" target="_blank" rel="noopener noreferrer" class="repo-link"><i class="iconfont reco-github"></i>
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask" data-v-19557b78></div> <aside class="sidebar" data-v-19557b78><div class="personal-info-wrapper" data-v-b038cec6><img src="/img/avatar.jpg" alt="author-avatar" class="personal-img" data-v-b038cec6> <h3 class="name" data-v-b038cec6>
+    君惜
+  </h3> <div class="num" data-v-b038cec6><div data-v-b038cec6><h3 data-v-b038cec6>68</h3> <h6 data-v-b038cec6>Article</h6></div> <div data-v-b038cec6><h3 data-v-b038cec6>76</h3> <h6 data-v-b038cec6>Tag</h6></div></div> <hr data-v-b038cec6></div> <nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/Docker/" class="nav-link"><i class="iconfont undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Git/" class="nav-link"><i class="iconfont undefined"></i>
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JavaScript/" class="nav-link"><i class="iconfont undefined"></i>
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Linux/" class="nav-link"><i class="iconfont undefined"></i>
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Mysql/" class="nav-link"><i class="iconfont undefined"></i>
+  Mysql
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Node.js/" class="nav-link"><i class="iconfont undefined"></i>
+  Node.js
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Python/" class="nav-link"><i class="iconfont undefined"></i>
+  Python
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Redis/" class="nav-link"><i class="iconfont undefined"></i>
+  Redis
+</a></li><li class="dropdown-item"><!----> <a href="/categories/并发测试/" class="nav-link"><i class="iconfont undefined"></i>
+  并发测试
+</a></li><li class="dropdown-item"><!----> <a href="/categories/随笔/" class="nav-link"><i class="iconfont undefined"></i>
+  随笔
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div> <a href="https://github.com/xinlei3166" target="_blank" rel="noopener noreferrer" class="repo-link"><i class="iconfont reco-github"></i>
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Centos-7下saltstack安装配置详解</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Linux/Centos-7%E4%B8%8Bsaltstack%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3.html#_1、grains" class="sidebar-link">1、grains</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Linux/Centos-7%E4%B8%8Bsaltstack%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3.html#_1-客户端配置" class="sidebar-link">1.客户端配置</a></li><li class="sidebar-sub-header"><a href="/Linux/Centos-7%E4%B8%8Bsaltstack%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3.html#_2-服务端写python脚本" class="sidebar-link">2.服务端写Python脚本</a></li></ul></li><li><a href="/Linux/Centos-7%E4%B8%8Bsaltstack%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3.html#_2、pillar" class="sidebar-link">2、pillar</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Linux/Centos-7%E4%B8%8Bsaltstack%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3.html#_1、文件管理" class="sidebar-link">1、文件管理</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Linux/Centos-7%E4%B8%8Bsaltstack%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3.html#_2、目录管理" class="sidebar-link">2、目录管理</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Linux/Centos-7%E4%B8%8Bsaltstack%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3.html#_1、远程执行命令" class="sidebar-link">1、远程执行命令</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Linux/Centos-7%E4%B8%8Bsaltstack%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3.html#_2、远程执行脚本" class="sidebar-link">2、远程执行脚本</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Linux/Centos-7%E4%B8%8Bsaltstack%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3.html#_1、建立-cron" class="sidebar-link">1、建立 cron</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Linux/Centos-7%E4%B8%8Bsaltstack%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3.html#_2、删除-cron" class="sidebar-link">2、删除 cron</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Linux/Centos-7%E4%B8%8Bsaltstack%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3.html#_1、拷贝文件到客户端" class="sidebar-link">1、拷贝文件到客户端</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Linux/Centos-7%E4%B8%8Bsaltstack%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3.html#_2、拷贝目录到客户端" class="sidebar-link">2、拷贝目录到客户端</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Linux/Centos-7%E4%B8%8Bsaltstack%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3.html#_3、显示存活的客户端" class="sidebar-link">3、显示存活的客户端</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Linux/Centos-7%E4%B8%8Bsaltstack%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3.html#_4、命令下执行服务端的脚本" class="sidebar-link">4、命令下执行服务端的脚本</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-64685f0e data-v-19557b78><h3 class="title" style="display:none;" data-v-64685f0e data-v-64685f0e>Centos-7下saltstack安装配置详解</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-64685f0e data-v-64685f0e><input type="password" value="" data-v-64685f0e> <span data-v-64685f0e>Konck! Knock!</span> <button data-v-64685f0e>OK</button></label> <div class="footer" style="display:none;" data-v-64685f0e data-v-64685f0e><span data-v-64685f0e><i class="iconfont reco-theme" data-v-64685f0e></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-64685f0e>vuePress-theme-reco</a></span> <span data-v-64685f0e><i class="iconfont reco-copyright" data-v-64685f0e></i> <a data-v-64685f0e><span data-v-64685f0e>君惜</span>
+            
+          <!---->
+          2020
+        </a></span></div></div> <div data-v-19557b78><main class="page"><div class="page-title" style="display:none;"><h1>Centos-7下saltstack安装配置详解</h1> <hr> <div data-v-cd8d63d2><i class="iconfont reco-account" data-v-cd8d63d2><span data-v-cd8d63d2>君惜</span></i> <!----> <!----> <i class="iconfont reco-tag tags" data-v-cd8d63d2><span class="tag-item" data-v-cd8d63d2>
+      Centos
+    </span><span class="tag-item" data-v-cd8d63d2>
+      Linux
+    </span><span class="tag-item" data-v-cd8d63d2>
+      自动化运维
+    </span><span class="tag-item" data-v-cd8d63d2>
+      Saltstack
+    </span></i></div></div> <div class="theme-reco-content content__default" style="display:none;"><h1 id="简述"><a href="#简述" class="header-anchor">#</a> 简述</h1> <blockquote><p><strong>saltstack</strong></p></blockquote> <ul><li><p>saltstack是一个新的基础平台管理工具，只需要花费数分钟即可运行起来，可以支撑管理上万台服务器的规模，数秒钟即可完成数据传递。</p></li> <li><p>saltstack是使用python语言开发的，同时也支持restAPI方便二次开发以及和它平台集成，同时官方也发布了一个Web管理界面halite。</p></li></ul> <blockquote><p><strong>优点：</strong></p></blockquote> <ul><li>首先，他速度快，基于消息队列+线程，跑完多台设备，都是毫秒级别的</li> <li>其次，非常灵活，源码是python，方便理解和自定义模块（python 语言相对于其他的perl、ruby等还是很好理解的）</li> <li>命令简单，功能强大</li></ul> <blockquote><p><strong>saltstack运行方式</strong></p></blockquote> <ul><li>Local</li> <li>Master/Minion</li> <li>Salt SSH</li></ul> <p>本文使用Master/Minion运行方式。</p> <blockquote><p><strong>saltstack三大功能</strong></p></blockquote> <ul><li>远程执行</li> <li>配置管理</li> <li>云管理</li></ul> <blockquote><p><strong>saltstack数据系统</strong></p> <ul><li>Grains  （静态数据）</li> <li>pillar   （动态数据）</li></ul></blockquote> <blockquote><p><strong>saltstack配置管理</strong></p></blockquote> <ul><li>SLS（YAML、Jinja）</li> <li>Highstate</li> <li>States Module</li></ul> <h1 id="实现环境"><a href="#实现环境" class="header-anchor">#</a> 实现环境</h1> <p>准备三台机器，这三台机器都关闭 selinux，清空防火墙规则。</p> <blockquote><ul><li>saltstack  ==&gt;  172.16.0.19     （服务端）</li> <li>client1  ==&gt;  172.16.0.20           （客户端）</li> <li>client2  ==&gt;  172.16.0.21           （客户端）</li></ul></blockquote> <p>查看版本和内核</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# cat /etc/redhat-release
+CentOS Linux release 7.3.1611 (Core) 
+[root@saltstack ~]# uname -rm
+3.10.0-514.6.1.el7.x86_64 x86_64
+</code></pre></div><p>分别设置 hostname，设置完毕xshell注销重新连接一下</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# hostnamectl set-hostname saltstack
+[root@client1 ~]# hostnamectl set-hostname client1
+[root@client2 ~]# hostnamectl set-hostname client2
+</code></pre></div><p>编辑 hosts 文件
+每台都设置，若机器太多，可以通过搭建 DNS，则不用在每台机器上设置这个</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# vi /etc/hosts
+添加下面内容
+172.16.0.19 saltstack
+172.16.0.20 client1
+172.16.0.21 client2
+</code></pre></div><h1 id="开始安装"><a href="#开始安装" class="header-anchor">#</a> 开始安装</h1> <p>分别为三台机器添加阿里云epel源</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# mv /etc/yum.repos.d/epel.repo /etc/yum.repos.d/epel.repo.backup
+[root@saltstack ~]# mv /etc/yum.repos.d/epel-testing.repo /etc/yum.repos.d/epel-testing.repo.backup
+[root@saltstack ~]# wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo
+</code></pre></div><p>服务端安装</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# yum -y install salt-master salt-minion
+</code></pre></div><p>客户端安装</p> <div class="language- extra-class"><pre class="language-text"><code>[root@client1 ~]# yum -y install salt-minion
+</code></pre></div><p>客户端安装</p> <div class="language- extra-class"><pre class="language-text"><code>[root@client2 ~]# yum -y install salt-minion
+</code></pre></div><h1 id="配置master"><a href="#配置master" class="header-anchor">#</a> 配置master</h1> <p>服务端和客户端都要配置</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# vi /etc/salt/minion +16
+以下两种方式都可以，选择其中一种即可
+# master改为服务端的主机名
+master: saltstack    
+# master改为服务端的IP
+master: 172.16.0.19 
+</code></pre></div><p>分别修改三台机器minion文件中的的id为自己的主机名</p> <div class="language- extra-class"><pre class="language-text"><code>[root@client1 ~]# vi /etc/salt/minion +78
+id: client1
+[root@client2 ~]# vi /etc/salt/minion +78
+id: client2
+</code></pre></div><p>启动saltstack服务
+服务端</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# systemctl enable salt-master
+[root@saltstack ~]# systemctl enable salt-minion
+[root@saltstack ~]# systemctl start salt-master
+[root@saltstack ~]# systemctl start salt-minion
+</code></pre></div><p>客户端</p> <div class="language- extra-class"><pre class="language-text"><code>[root@client1 ~]# systemctl enable salt-minion
+[root@client1 ~]# systemctl start salt-minion
+</code></pre></div><h1 id="配置认证"><a href="#配置认证" class="header-anchor">#</a> 配置认证</h1> <p>服务端操作</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# salt-key -a client1
+The following keys are going to be accepted:
+Unaccepted Keys:
+client1
+Proceed? [n/Y] y     
+Key for minion client1 accepted.
+
+[root@saltstack ~]# salt-key -a client2
+The following keys are going to be accepted:
+Unaccepted Keys:
+client2
+Proceed? [n/Y] y
+Key for minion client2 accepted.
+[root@saltstack ~]# salt-key -a saltstack
+The following keys are going to be accepted:
+Unaccepted Keys:
+saltstack
+Proceed? [n/Y] y
+Key for minion saltstack accepted.
+
+[root@saltstack ~]# salt-key 
+Accepted Keys:
+client1
+client2
+saltstack
+Denied Keys:
+Unaccepted Keys:
+Rejected Keys:
+</code></pre></div><p>说明：-a ：accept ，-A：accept-all，-d：delete，-D：delete-all。可以使用 salt-key 命令查看到已经签名的客户端。此时我们在客户端的 /etc/salt/pki/minion 目录下面会多出一个minion_master.pub 文件。</p> <p>测试验证
+示例1： salt '*' test.ping                  //检测通讯是否正常，也可以指定其中一个 'client1'</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# salt '*' test.ping
+saltstack:
+    True
+client2:
+    True
+client1:
+    True
+[root@saltstack ~]# salt 'client1' test.ping
+client1:
+    True
+</code></pre></div><p>示例2:  salt '*' cmd.run   'df -h'        //远程执行命令</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# salt '*' cmd.run 'df -hT'
+client2:
+    Filesystem     Type      Size  Used Avail Use% Mounted on
+    /dev/sda2      xfs        17G   13G  4.2G  76% /
+    devtmpfs       devtmpfs   97M     0   97M   0% /dev
+    tmpfs          tmpfs     111M   12K  111M   1% /dev/shm
+    tmpfs          tmpfs     111M  8.8M  102M   8% /run
+    tmpfs          tmpfs     111M     0  111M   0% /sys/fs/cgroup
+    /dev/sda1      xfs       297M  202M   96M  68% /boot
+    tmpfs          tmpfs      23M     0   23M   0% /run/user/0
+saltstack:
+    Filesystem     Type      Size  Used Avail Use% Mounted on
+    /dev/sda2      xfs        17G  6.8G   11G  40% /
+    devtmpfs       devtmpfs  475M     0  475M   0% /dev
+    tmpfs          tmpfs     489M   16K  489M   1% /dev/shm
+    tmpfs          tmpfs     489M   14M  476M   3% /run
+    tmpfs          tmpfs     489M     0  489M   0% /sys/fs/cgroup
+    /dev/sda1      xfs       297M  202M   96M  68% /boot
+    tmpfs          tmpfs      98M     0   98M   0% /run/user/0
+    tmpfs          tmpfs      98M     0   98M   0% /run/user/994
+client1:
+    Filesystem     Type      Size  Used Avail Use% Mounted on
+    /dev/sda2      xfs        17G   13G  4.1G  77% /
+    devtmpfs       devtmpfs   97M     0   97M   0% /dev
+    tmpfs          tmpfs     111M   12K  111M   1% /dev/shm
+    tmpfs          tmpfs     111M   13M   98M  12% /run
+    tmpfs          tmpfs     111M     0  111M   0% /sys/fs/cgroup
+    /dev/sda1      xfs       297M  202M   96M  68% /boot
+    tmpfs          tmpfs      23M     0   23M   0% /run/user/0
+</code></pre></div><p>说明： 这里的 * 必须是在 master 上已经被接受过的客户端，可以通过 salt-key 查到，通常是我们已经设定的 id 值。关于这部分内容，它支持通配、列表以及正则。 比如两台客户端 client1、client2， 那我们可以写成  salt 'client*'    salt 'client[2]'  salt -L 'client1,client2'   salt -E 'client(1|2)' 等形式，使用列表，即多个机器用逗号分隔，而且需要加-L，使用正则必须要带-E选项。 它还支持 grains 和 pillar，分别加 -G 和 -I 选项。</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# salt -E 'client(1|2)' cmd.run 'ls'
+client1:
+    anaconda-ks.cfg
+    initial-setup-ks.cfg
+    one-click-install-lnmp.sh
+client2:
+    anaconda-ks.cfg
+    initial-setup-ks.cfg
+    one-click-install-lnmp.sh
+[root@saltstack ~]# salt -L 'client1,client2' cmd.run 'ls'
+client1:
+    anaconda-ks.cfg
+    initial-setup-ks.cfg
+    one-click-install-lnmp.sh
+client2:
+    anaconda-ks.cfg
+    initial-setup-ks.cfg
+    one-click-install-lnmp.sh
+[root@saltstack ~]# salt 'client[2]' cmd.run 'ls'
+client2:
+    anaconda-ks.cfg
+    initial-setup-ks.cfg
+    one-click-install-lnmp.sh
+[root@saltstack ~]# salt 'client*' cmd.run 'ls'
+client2:
+    anaconda-ks.cfg
+    initial-setup-ks.cfg
+    one-click-install-lnmp.sh
+client1:
+    anaconda-ks.cfg
+    initial-setup-ks.cfg
+    one-click-install-lnmp.sh
+</code></pre></div><h1 id="grains-和-pillar"><a href="#grains-和-pillar" class="header-anchor">#</a> grains 和 pillar</h1> <h2 id="_1、grains"><a href="#_1、grains" class="header-anchor">#</a> <strong>1、grains</strong></h2> <p>grains 是在 minion（客户端）启动时收集到的一些信息，比如操作系统类型、网卡ip等。
+使用命令：</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# salt 'client1' grains.ls      // 列出所有的 grains 项目名字
+[root@saltstack ~]# salt 'client1' grains.items    // 列出所有的 grains 项目名以及值
+</code></pre></div><p>grains的信息并不是动态的，并不会时时变更，它只是在 minion 启动时收集到的。grains 也可以做配置管理</p> <p>自定义 grains的方法有两种（客户端自定义配置和服务端写脚本定义）：</p> <h3 id="_1-客户端配置"><a href="#_1-客户端配置" class="header-anchor">#</a> 1.客户端配置</h3> <p>缺点：每台都得去配置，机器多了配置起来不方便</p> <div class="language- extra-class"><pre class="language-text"><code>[root@client1 ~]# vi /etc/salt/grains     // 添加如下，注意冒号后有空格
+role: nginx
+env: test
+myname: primum est
+</code></pre></div><p>或者</p> <div class="language- extra-class"><pre class="language-text"><code>[root@client2 ~]# vi /etc/salt/minion +12
+去掉这行内容的注释
+default_include: minion.d/*.conf
+
+[root@client2 ~]# cd /etc/salt/minion.d/
+[root@client2 minion.d]# vi custom_grains.conf            // 添加下面内容
+grains:
+  role:  
+    nginx
+  env:  
+    test
+  myname:  
+    primum est
+</code></pre></div><p>重启minion服务</p> <div class="language- extra-class"><pre class="language-text"><code>[root@client1 ~]# systemctl restart salt-minion
+[root@client2 ~]# systemctl restart salt-minion
+</code></pre></div><p>服务端获取 grains</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# salt 'client*' grains.item role env myname        // 列出多个
+client1:
+    ----------
+    env:
+        test
+    myname:
+        primum est
+    role:
+        nginx
+client2:
+    ----------
+    env:
+        test
+    myname:
+        primum est
+    role:
+        nginx
+
+[root@saltstack ~]# salt 'client*' grains.get myname        // 列出单个
+client1:
+    primum est
+client2:
+    primum est
+
+[root@saltstack ~]# salt 'client*' grains.item myname
+client2:
+    ----------
+    myname:
+        primum est
+client1:
+    ----------
+    myname:
+        primum est
+</code></pre></div><p>grains 在远程执行命令时很方便。我们可以按照 grains 的一些指标来操作。比如把所有的 web 服务器的 grains 的 role 设置为 nginx，那这样我们就可以批量对 nginx 的服务器进行操作了：</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# salt -G role:nginx cmd.run 'hostname'
+client2:
+    client2
+client1:
+    client1
+[root@saltstack ~]# salt -G os:CentOs cmd.run 'hostname'
+client2:
+    client2
+client1:
+    client1
+</code></pre></div><h3 id="_2-服务端写python脚本"><a href="#_2-服务端写python脚本" class="header-anchor">#</a> 2.服务端写Python脚本</h3> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# mkdir /srv/salt/_grains
+[root@saltstack ~]# cd /srv/salt/_grains/
+[root@saltstack _grains]# vi mytest.py        // 添加下面内容
+#!/usr/bin/env python
+# _*_ coding:utf-8 _*_
+
+import os
+
+def my_test():
+    grains = {}
+    grains['say'] = 'hello world'
+    return grains
+
+def my_test1():
+    grains = {}
+    with os.popen('free -m') as f:
+        grains['mem_usage'] = f.read()
+    return grains
+</code></pre></div><p>同步到客户端</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack _grains]# salt 'client*' saltutil.sync_all
+</code></pre></div><p><img src="http://upload-images.jianshu.io/upload_images/4262139-db39356cf193fc95.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p> <p>客户端验证脚本是否同步过去</p> <div class="language- extra-class"><pre class="language-text"><code>[root@client1 ~]# ll /var/cache/salt/minion/extmods/grains/
+总用量 8
+-rw------- 1 root root 266 4月  27 11:13 mytest.py
+-rw------- 1 root root 613 4月  27 11:13 mytest.pyc
+</code></pre></div><p>服务端刷新模块</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack _grains]# salt 'client*' sys.reload_modules 
+client1:
+    True
+client2:
+    True
+</code></pre></div><p>服务端查看客户端自定义的两个监控项</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack _grains]# salt 'client*' grains.item say
+client1:
+    ----------
+    say:
+        hello world
+client2:
+    ----------
+    say:
+        hello world
+[root@saltstack _grains]# salt 'client*' grains.item mem_usage
+client2:
+    ----------
+    mem_usage:
+                      total        used        free      shared  buff/cache   available
+        Mem:            220         103          31           4          85          78
+        Swap:          2046         176        1870
+client1:
+    ----------
+    mem_usage:
+                      total        used        free      shared  buff/cache   available
+        Mem:            220         106          30           2          83          76
+        Swap:          2046         178        1868
+</code></pre></div><p>可以看到服务端写自定义监控项的脚本，可以一键同步到所有客户端上，快捷方便。</p> <h2 id="_2、pillar"><a href="#_2、pillar" class="header-anchor">#</a> <strong>2、pillar</strong></h2> <p>pillar 和 grains 不一样，是在 master 上定义的，并且是针对 minion 定义的一些信息。像一些比较重要的数据（密码）可以存在 pillar 里，还可以定义变量等。
+首先我们查看master端pillars组件是否在开启状态
+查看/etc/salt/master  pillar_ops: True 就代表pillars在开启状态，否则我们手动修改。
+新的版本默认已经开启，继续下面内容。</p> <p>查看指定minion的 pillar 值：</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# salt 'client1' pillar.items
+client1:
+    ----------
+</code></pre></div><p>服务端自定义配置 pillar</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# vi /etc/salt/master +529    // 找到如下内容，去掉#号
+pillar_roots:
+  base:
+    - /srv/pillar
+[root@saltstack ~]#  mkdir /srv/pillar
+[root@saltstack ~]# vi /srv/pillar/test.sls    // 自定义配置文件，内容如下
+conf: /etc/mum.conf
+myname: primum est
+[root@saltstack ~]# vi /srv/pillar/top.sls    // 总入口文件，内容如下
+base:
+  'client1':
+    - test
+</code></pre></div><p>重启master</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# systemctl restart salt-master
+</code></pre></div><p>注意：当更改完 pillar 配置文件后，我们可以通过刷新 pillar 配置来获取新的 pillar 状态：</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# salt '*' saltutil.refresh_pillar
+client1:
+    True
+saltstack:
+    True
+client2:
+    True
+</code></pre></div><p>验证：</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# salt 'client1' pillar.items
+client1:
+    ----------
+    conf:
+        /etc/mum.conf
+    myname:
+        primum est
+
+[root@saltstack ~]# salt 'client1' pillar.item myname
+client1:
+    ----------
+    myname:
+        primum est
+
+[root@saltstack ~]# salt 'client1' pillar.item conf
+client1:
+    ----------
+    conf:
+        /etc/mum.conf
+</code></pre></div><p>pillar 同样可以用来作为 salt 的匹配对象。比如：</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# salt -I 'conf:/etc/mum.conf' test.ping
+client1:
+    True
+[root@saltstack ~]# salt -I 'conf:/etc/mum.conf' cmd.run 'w'
+client1:
+     17:19:45 up  7:45,  1 user,  load average: 0.05, 0.03, 0.05
+    USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+    root     pts/1    172.16.0.1       11:14   25.00s  0.68s  0.68s -bash
+</code></pre></div><p>另外一种定义pillar的方式，也适用于state
+首先编辑/srv/pillar/目录下的top.sls 文件</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# vi /srv/pillar/top.sls           // 内容如下
+base:
+  'client1':
+    - test
+    - apache
+</code></pre></div><blockquote><p>第一行代表这是我们的入口文件
+第二行代表我们要匹配的用户，‘client1’代表client1客户端，“*”代表所有用户
+第三丶四行代表匹配到的用户可以看到的数据的配置文件的名字</p></blockquote> <p>这里我们可以直接写一个名字叫做apache的文件进行配置,也可以写一个包含init.sls的目录进行配置。这里采用包含init.sls文件的目录的形式的配置方法。</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token punctuation">[</span>root@saltstack ~<span class="token punctuation">]</span><span class="token comment"># cd /srv/pillar/</span>
+<span class="token punctuation">[</span>root@saltstack pillar<span class="token punctuation">]</span><span class="token comment"># mkdir apache</span>
+<span class="token punctuation">[</span>root@saltstack pillar<span class="token punctuation">]</span><span class="token comment"># cd apache/</span>
+<span class="token punctuation">[</span>root@saltstack apache<span class="token punctuation">]</span><span class="token comment"># vim init.sls              // 添加如下内容</span>
+system-type:
+  <span class="token punctuation">{</span>% <span class="token keyword">if</span> grains.os <span class="token operator">==</span> <span class="token string">'CentOS'</span> %<span class="token punctuation">}</span>
+    name: Centos-Linux
+  <span class="token punctuation">{</span>% <span class="token keyword">else</span> %<span class="token punctuation">}</span>
+    name: unknown
+  <span class="token punctuation">{</span>% endif %<span class="token punctuation">}</span>
+
+apache-name:
+  <span class="token punctuation">{</span>% <span class="token keyword">if</span> grains.os_family <span class="token operator">==</span> <span class="token string">'RedHat'</span> %<span class="token punctuation">}</span>
+    apache: httpd
+  <span class="token punctuation">{</span>% <span class="token keyword">elif</span> grains.os_family <span class="token operator">==</span> <span class="token string">'Arch'</span> %<span class="token punctuation">}</span>
+    apache: apache
+  <span class="token punctuation">{</span>% <span class="token keyword">elif</span> grains.os_family <span class="token operator">==</span> <span class="token string">'Debian'</span> %<span class="token punctuation">}</span>
+    apache: apache2
+  <span class="token punctuation">{</span>% endif %<span class="token punctuation">}</span>
+</code></pre></div><blockquote><p>类似于django的模板语言（我们可以采用python脚本定义grains的数据，但是pillar没有。我们可以在pillar的sls脚本当中调用grains的变量，pillar和grains具有同样的功能可以被其他组件调用。）</p></blockquote> <p>服务端查看自定义的pillar信息</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack apache]# salt 'client1' pillar.item apache-name
+client1:
+    ----------
+    apache-name:
+        ----------
+        apache:
+            httpd
+[root@saltstack apache]# salt 'client1' pillar.item system-type
+client1:
+    ----------
+    system-type:
+        ----------
+        name:
+            Centos-Linux
+</code></pre></div><h1 id="配置管理安装apache"><a href="#配置管理安装apache" class="header-anchor">#</a> 配置管理安装Apache</h1> <p>下面进行的演示是远程通过 yum 方式安装 Apache。步骤如下：
+修改配置文件</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# vi /etc/salt/master +406    // 打开如下内容的注释
+file_roots:
+  base:
+    - /srv/salt/
+</code></pre></div><p>注意：环境： base、dev(开发环境）、test（测试环境）、prod（生产环境）。</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# mkdir /srv/salt
+[root@saltstack ~]# vi /srv/salt/top.sls        
+base:
+  'client1':
+    - apache
+</code></pre></div><p>注意：若换成 '*'，则表示在所有的客户端执行 apache 模块。</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# vi /srv/salt/apache.sls            
+apache-service:
+  pkg.installed:
+    - names:                // 如果只有一个服务，那么就可以写成 –name: httpd 不用再换一行
+      - httpd
+      - httpd-devel
+  service.running:
+    - name: httpd
+    - enable: True
+</code></pre></div><p>注意：apache-service 是自定义的 id 名。pkg.installed 为包安装函数，下面是要安装的包的名字。service.running 也是一个函数，来保证指定的服务启动，enable 表示开机启动。</p> <p>重启服务</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# systemctl restart salt-master
+</code></pre></div><p>执行命令</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# salt 'client1' state.highstate          // 执行时间比较长，因为要安装httpd
+</code></pre></div><p><img src="http://upload-images.jianshu.io/upload_images/4262139-200c135fab288287.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="">
+如上图所示，说明 Apache 远程安装已成功。</p> <h1 id="文件目录管理"><a href="#文件目录管理" class="header-anchor">#</a> 文件目录管理</h1> <h2 id="_1、文件管理"><a href="#_1、文件管理" class="header-anchor">#</a> 1、文件管理</h2> <p>服务端配置
+编辑/srv/salt/目录下的top.sls 文件</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# vi /srv/salt/top.sls     // 修改为如下
+base:
+  'client1':
+    - filetest
+</code></pre></div><p>新建 filetest.sls 文件</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# vi /srv/salt/filetest.sls        
+file-test:
+  file.managed:
+    - name: /tmp/filetest.txt
+    - source: salt://test/123/1.txt
+    - user: root
+    - group: root
+    - mode: 644
+</code></pre></div><p>注意：第一行的 file-test 为自定的名字，表示该配置段的名字，可以在别的配置段中引用它；source指定文件从哪里拷贝，这里的 test 目录相当于是 /srv/salt/test 目录；name指定远程客户端要生成的文件。</p> <p>新建所要测试的源文件</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# mkdir -p /srv/salt/test/123
+[root@saltstack ~]# vim /srv/salt/test/123/1.txt
+saltstack ....
+this is a test ....
+</code></pre></div><p>执行命令：</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# salt 'client1' state.highstate
+</code></pre></div><p><img src="http://upload-images.jianshu.io/upload_images/4262139-04ef7a78598d8277.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p> <p>客户端验证</p> <div class="language- extra-class"><pre class="language-text"><code>[root@client1 ~]# ll /tmp/filetest.txt 
+-rw-r--r-- 1 root root 34 4月  26 10:58 /tmp/filetest.txt
+[root@client1 ~]# cat /tmp/filetest.txt 
+saltstack ....
+this is a test ...
+</code></pre></div><h2 id="_2、目录管理"><a href="#_2、目录管理" class="header-anchor">#</a> 2、目录管理</h2> <p>服务端配置
+接着编辑/srv/salt/目录下的top.sls 文件</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# vi /srv/salt/top.sls     // 修改为如下
+base:
+  'client1':
+    - filedir
+</code></pre></div><p>新建 filedir.sls 文件</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# vi /srv/salt/filedir.sls
+file-dir:
+  file.recurse:
+    - name: /tmp/testdir
+    - source: salt://test1/234
+    - user: root
+    - file_mode: 644
+    - dir_mode: 755
+    - mkdir: True
+    - clean: True
+</code></pre></div><p>注意：clean: True 源删除文件或目录，目标也会跟着删除，否则不会删除。可以默认设置为 False。</p> <p>新建所要测试的源目录</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# mkdir -p /srv/salt/test1/234/
+[root@saltstack ~]# vi /srv/salt/test1/234/2.txt
+filedir..........test
+and add delete select alter
+</code></pre></div><p>执行命令：</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# salt 'client1' state.highstate
+</code></pre></div><p><img src="http://upload-images.jianshu.io/upload_images/4262139-b928cbc819d14e0d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p> <p>客户端验证</p> <div class="language- extra-class"><pre class="language-text"><code>[root@client1 ~]# ll /tmp/testdir/
+总用量 4
+-rw-r--r-- 1 root root 50 4月  26 11:11 2.txt
+</code></pre></div><p>测试增删功能</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# mkdir /srv/salt/test1/234/mydir
+[root@saltstack ~]# touch /srv/salt/test1/234/mydir/111.txt
+[root@saltstack ~]# touch /srv/salt/test1/234/testdir.add
+[root@saltstack ~]# rm -rf /srv/salt/test1/234/2.txt 
+</code></pre></div><p>执行命令：</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# salt 'client1' state.highstate
+</code></pre></div><p><img src="http://upload-images.jianshu.io/upload_images/4262139-25b0d58566f85288.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p> <p>客户端验证</p> <div class="language- extra-class"><pre class="language-text"><code>[root@client1 ~]# tree /tmp/testdir/
+/tmp/testdir/
+|-- mydir
+|   `-- 111.txt
+`-- testdir.add
+
+1 directory, 2 files
+</code></pre></div><p>注意：由上图可知，成功在客户端 /tmp/testdir/ 目录下创建了 mydir 目录以及 testdir.add 文件，并删除 2.txt 文件。这里值得注意的是要成功创建 mydir 目录，前提是 mydir 目录下要有文件，如这里的111.txt 文件，如若没有，客户端是不会创建 mydir 目录的。</p> <h1 id="远程执行"><a href="#远程执行" class="header-anchor">#</a> 远程执行</h1> <p>前面提到远程执行命令 test.ping，cmd.run，点前面的是模块，点后面的是函数；这样总归是不太规范化，下面详细介绍怎么远程执行命令和脚本。</p> <h2 id="_1、远程执行命令"><a href="#_1、远程执行命令" class="header-anchor">#</a> 1、远程执行命令</h2> <p>服务端配置
+接着编辑/srv/salt/目录下的top.sls 文件</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# vi /srv/salt/top.sls     // 修改为如下
+base:
+  'client1':
+    - cmdtest
+</code></pre></div><p>新建 cmdtest.sls 文件</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# vi /srv/salt/cmdtest.sls
+cmd-test:
+  cmd.run:
+    - onlyif: test -f /tmp/filetest.txt
+    - names:
+      - touch /tmp/cmdtest.txt
+      - mkdir /tmp/cmdtest
+    - user: root
+</code></pre></div><p>注意：条件 onlyif 表示若 /tmp/filetest.txt 文件存在，则执行后面的命令；可以使用 unless，两者正好相反。</p> <p>执行命令：</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# salt 'client1' state.highstate
+</code></pre></div><p><img src="http://upload-images.jianshu.io/upload_images/4262139-7c91d81f24011ba0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p> <p>客户端验证</p> <div class="language- extra-class"><pre class="language-text"><code>[root@client1 ~]# ll /tmp/
+总用量 156
+drwxr-xr-x  2 root  root      6 4月  26 11:45 cmdtest
+-rw-r--r--  1 root  root      0 4月  26 11:45 cmdtest.txt
+-rw-r--r--  1 root  root     34 4月  26 10:58 filetest.txt
+drwxr-xr-x  3 root  root     38 4月  26 11:14 testdir
+</code></pre></div><h2 id="_2、远程执行脚本"><a href="#_2、远程执行脚本" class="header-anchor">#</a> 2、远程执行脚本</h2> <p>服务端配置
+接着编辑/srv/salt/目录下的top.sls 文件</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# vi /srv/salt/top.sls    // 修改为如下
+base:
+  'client1':
+    - shelltest
+</code></pre></div><p>新建 shelltest.sls 文件</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# vi /srv/salt/shelltest.sls
+shell-test:
+  cmd.script:
+    - source: salt://test/1.sh
+    - user: root
+</code></pre></div><p>新建 1.sh 脚本文件</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# vi /srv/salt/test/1.sh
+#!/bin/sh
+touch /tmp/shelltest.txt
+if [ -d /tmp/shelltest ]
+then
+    rm -rf /tmp/shelltest
+else
+    mkdir /tmp/shelltest
+fi
+</code></pre></div><p>执行命令：</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# salt 'client1' state.highstate
+</code></pre></div><p><img src="http://upload-images.jianshu.io/upload_images/4262139-af1368d545be274a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p> <p>客户端验证</p> <div class="language- extra-class"><pre class="language-text"><code>[root@client1 ~]# ll /tmp/
+drwxr-xr-x  2 root  root      6 4月  26 12:08 shelltest
+-rw-r--r--  1 root  root      0 4月  26 12:08 shelltest.txt
+</code></pre></div><p>通过上面的例子，我们实现了远程执行脚本；如果我们想一键远程安装 LAMP 或者 LNMP，那么只需把本例中的 1.sh 脚本替换成 一键安装的脚本就行。</p> <h1 id="管理任务计划"><a href="#管理任务计划" class="header-anchor">#</a> 管理任务计划</h1> <h2 id="_1、建立-cron"><a href="#_1、建立-cron" class="header-anchor">#</a> 1、建立 cron</h2> <p>服务端配置
+编辑/srv/salt/目录下的top.sls 文件</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# vi /srv/salt/top.sls     // 修改为如下
+#base:
+#  'client1':
+#    - apache
+#base:
+#  'client1':
+#    - filetest
+#base:
+#  'client1':
+#    - filedir
+#base:
+#  'client1':
+#    - cmdtest
+#base:
+#  'client1':
+#    - shelltest
+#base:
+#  'client1':
+#    - shelltest
+base:
+  'client1':
+    - crontest
+</code></pre></div><p>编辑 crontest.sls 文件</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# vim /srv/salt/crontest.sls
+cron-test:
+  cron.present:
+    - name: /bin/touch /tmp/111.txt
+    - user: root
+    - minute: '*'
+    - hour: 20
+    - daymonth: 1-10
+    - month: '3,5'
+    - dayweek: '*'
+</code></pre></div><p>注意，*需要用单引号引起来。当然我们还可以使用 file.managed 模块来管理 cron，因为系统的 cron都是以配置文件的形式存在的。</p> <p>执行命令：</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# salt 'client1' state.highstate
+</code></pre></div><p><img src="http://upload-images.jianshu.io/upload_images/4262139-844a1bd48458663f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p> <p>客户端验证</p> <div class="language- extra-class"><pre class="language-text"><code>[root@client1 ~]# crontab -l
+# Lines below here are managed by Salt, do not edit
+# SALT_CRON_IDENTIFIER:/bin/touch /tmp/111.txt
+* 20 1-10 3,5 * /bin/touch /tmp/111.txt
+</code></pre></div><h2 id="_2、删除-cron"><a href="#_2、删除-cron" class="header-anchor">#</a> 2、删除 cron</h2> <p>服务端配置
+我们只需修改 crontest.sls 文件</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# vim /srv/salt/crontest.sls
+cron.present    改为    cron.absent
+</code></pre></div><p>注意：两者不能共存，要想删除一个 cron，那之前的 present 就得替换掉或者删除掉。</p> <p>执行命令：</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# salt 'client1' state.highstate
+</code></pre></div><p><img src="http://upload-images.jianshu.io/upload_images/4262139-960cc066a0407f20.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p> <p>客户端验证</p> <div class="language- extra-class"><pre class="language-text"><code>[root@client1 ~]# crontab -l        // 可查看到该任务计划已删除
+# Lines below here are managed by Salt, do not edit
+</code></pre></div><br>
+# 一键搭建rsync服务
+**rsync服务端搭建配置文件介绍**
+<div class="language- extra-class"><pre class="language-text"><code>[root@saltstack rsync]# cat rsync_server.sls 
+rsync:    ##ID  这个ID必须是唯一的名字
+ user.present:    ##user模块中present应用
+   - fullname: rsync  ##用户名字
+   - createhome: False  ##不创建家目录
+   - shell: /sbin/nologin  ##禁止登录
+   - empty_password: True  ##不需要密码
+rsyncd.conf: ##ID
+ file.managed:  ##file模块
+   - name: /etc/rsyncd.conf  ##客户端文件存放路径
+   - source: salt://rsync/rsyncd.conf   ##服务端文件路径
+   - user: root    ##属主
+   - group: root  ##属组
+   - mode: 644 ##权限
+backup:
+ file.directory: ##file模块
+   - name: /backup ##创建目录名
+   - user: rsync
+   - group: rsync
+   - mode: 755
+   - makedirs: True  ##如果没有自动创建
+rsync.password:  
+ file.managed:
+   - name: /etc/rsync.password
+   - source: salt://rsync/rsyncd.password
+   - user: root
+   - group: root
+   - mode: 600
+daemon:
+ cmd.run:  ##使用cmd.run模块
+   - name: rsync --daemon
+Boot from open:
+ cmd.run:
+   - name: echo &quot;/usr/bin/rsync --daemon&quot; &gt;&gt;/etc/rc.local
+</code></pre></div><p>开始部署
+服务端配置
+编辑/srv/salt/目录下的top.sls 文件</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# vi /srv/salt/top.sls        // 修改为下面内容
+ base:
+  'client1':
+    - rsync.rsync_server
+  'client2':
+    - rsync.rsync_client
+</code></pre></div><p>创建rsync服务端搭建配置文件</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# mkdir /srv/salt/rsync
+[root@saltstack ~]# cd /srv/salt/rsync/
+[root@saltstack rsync]# vi rsync_server.sls                // 添加下面内容
+rsync:   
+  user.present:    
+    - fullname: rsync  
+    - createhome: False  
+    - shell: /sbin/nologin  
+    - empty_password: True  
+rsyncd.conf: ##ID
+  file.managed:  
+    - name: /etc/rsyncd.conf  
+    - source: salt://rsync/rsyncd.conf   
+    - user: root    
+    - group: root  
+    - mode: 644 
+backup:
+  file.directory: 
+    - name: /backup 
+    - user: rsync
+    - group: rsync
+    - mode: 755
+    - makedirs: True  
+rsync.password:  
+  file.managed:
+    - name: /etc/rsync.password
+    - source: salt://rsync/rsyncd.password
+    - user: root
+    - group: root
+    - mode: 600
+daemon:
+  cmd.run:  
+    - name: rsync --daemon
+Boot from open:
+  cmd.run:
+    - name: echo &quot;/usr/bin/rsync --daemon&quot; &gt;&gt;/etc/rc.local
+</code></pre></div><p>创建rsync客户端搭建配置文件</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack rsync]# vi rsync_client.sls              // 添加下面内容 
+rsync.passwd:
+  file.managed:
+    - name: /etc/rsync.password
+    - source: salt://rsync/rsync.password
+    - user: root
+    - group: root
+    - mode: 600
+backup:
+  file.directory:
+    - name: /backup
+    - user: root
+    - group: root
+    - mode: 755
+    - makedirs: True
+</code></pre></div><p>创建rsync服务配置文件（这里是rsync服务的配置文件，上面的是salt安装rsync服务应用的搭建配置文件）</p> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack rsync]# vi rsyncd.conf           // rsync配置文件
+uid =rsync     
+gid =rsync     
+use chroot=no
+max chonnections =200
+timeout = 300
+pid file =/var/run/rsyncd.pid
+lock file = /var/run/rsync.lock
+log file = /var/log/rsyncd.log
+ignore errors
+read only = false
+list = false
+hosts allow = 172.16.0.0/24
+hosts deny = 0.0.0.0/32
+auth users = rsync_backup
+secrets file = /etc/rsync.password
+[backup]                
+path = /backup 
+
+[root@saltstack rsync]# vi rsyncd.password            // 服务端密码文件
+rsync_backup:123456
+
+[root@saltstack rsync]# vi rsync.password             // 客户端密码文件
+123456
+
+[root@saltstack rsync]# ll
+总用量 20
+-rw-r--r-- 1 root root 274 4月  26 15:17 rsync_client.sls
+-rw-r--r-- 1 root root 376 4月  26 15:11 rsyncd.conf
+-rw-r--r-- 1 root root  20 4月  26 15:15 rsyncd.password
+-rw-r--r-- 1 root root   7 4月  26 15:15 rsync.password
+-rw-r--r-- 1 root root 723 4月  26 15:16 rsync_server.sls
+</code></pre></div><p>验证rsync服务是否安装成功
+rsync服务端查看服务是否启动</p> <div class="language- extra-class"><pre class="language-text"><code>[root@client1 ~]# ll /etc/rsync.password 
+-rw------- 1 root root 20 4月  26 15:24 /etc/rsync.password
+[root@client1 ~]# cat /etc/rsync.password 
+rsync_backup:123456
+[root@client1 ~]# ps -ef|grep rsync
+root      12636      1  0 15:24 ?        00:00:00 rsync --daemon
+root      12710   2400  0 15:25 pts/0    00:00:00 grep --color=auto rsync
+</code></pre></div><p>好极了，我们在rsync客户端推送一个文件到服务端是否成功</p> <div class="language- extra-class"><pre class="language-text"><code>[root@client2 ~]# cd /backup/
+[root@client2 backup]# echo 'this msg from new install rsync client used by test' &gt; test.txt
+[root@client2 backup]# ls test.txt 
+test.txt
+[root@client2 backup]# rsync -avz /backup/  rsync_backup@172.16.0.20::backup --password-file=/etc/rsync.password
+sending incremental file list
+./
+test.txt
+
+sent 132 bytes  received 30 bytes  324.00 bytes/sec
+total size is 52  speedup is 0.32
+</code></pre></div><p>貌似推送成功了，快去rsync服务端看下吧</p> <div class="language- extra-class"><pre class="language-text"><code>[root@client1 ~]# cd /backup/
+[root@client1 backup]# ll
+总用量 4
+-rw-r--r-- 1 rsync rsync 52 4月  26 15:46 test.txt
+[root@client1 backup]# cat test.txt 
+this msg from new install rsync client used by test
+</code></pre></div><p>好的，顺利装完，出去抽支烟和活动下颈椎吧。</p> <h1 id="saltstack-常用命令"><a href="#saltstack-常用命令" class="header-anchor">#</a> Saltstack 常用命令</h1> <h2 id="_1、拷贝文件到客户端"><a href="#_1、拷贝文件到客户端" class="header-anchor">#</a> 1、拷贝文件到客户端</h2> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# salt 'client2' cp.get_file salt://apache.sls /tmp/cp.txt
+client2:
+    /tmp/cp.txt
+</code></pre></div><p>客户端查看</p> <div class="language- extra-class"><pre class="language-text"><code>[root@client2 ~]# ll /tmp
+总用量 4
+-rw-r--r-- 1 root root 151 4月  26 14:04 cp.txt
+</code></pre></div><h2 id="_2、拷贝目录到客户端"><a href="#_2、拷贝目录到客户端" class="header-anchor">#</a> 2、拷贝目录到客户端</h2> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# salt 'client2' cp.get_dir salt://test /tmp
+client2:
+    - /tmp/test/1.sh
+    - /tmp/test/123/1.txt
+</code></pre></div><p>客户端查看</p> <div class="language- extra-class"><pre class="language-text"><code>root@client2 ~]# ll /tmp/
+总用量 4
+-rw-r--r-- 1 root root 151 4月  26 14:04 cp.txt
+drwxr-xr-x 3 root root  29 4月  26 14:14 test
+</code></pre></div><h2 id="_3、显示存活的客户端"><a href="#_3、显示存活的客户端" class="header-anchor">#</a> 3、显示存活的客户端</h2> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# salt-run manage.up
+- client1
+- client2
+- saltstack
+</code></pre></div><h2 id="_4、命令下执行服务端的脚本"><a href="#_4、命令下执行服务端的脚本" class="header-anchor">#</a> 4、命令下执行服务端的脚本</h2> <div class="language- extra-class"><pre class="language-text"><code>[root@saltstack ~]# vim /srv/salt/test/shell.sh
+#! /bin/sh
+echo &quot;salt server do run shell script on client&quot; &gt; /tmp/shell.txt
+
+[root@saltstack ~]# salt 'client2' cmd.script salt://test/shell.sh
+</code></pre></div><p><img src="http://upload-images.jianshu.io/upload_images/4262139-4bd3af9dc3922c5a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p> <p>客户端查看</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token punctuation">[</span>root@client2 ~<span class="token punctuation">]</span><span class="token comment"># ll /tmp/</span>
+-rw-r--r-- <span class="token number">1</span> root root  <span class="token number">42</span> <span class="token number">4</span>月  <span class="token number">26</span> <span class="token number">14</span>:20 shell.txt
+<span class="token punctuation">[</span>root@client2 ~<span class="token punctuation">]</span><span class="token comment"># cat /tmp/shell.txt </span>
+salt server <span class="token keyword">do</span> run shell script on client
+</code></pre></div><p>文档参考
+https://docs.saltstack.com/en/latest/ref/modules/all/index.html 官网
+http://docs.saltstack.cn/ref/states/all/index.html 中文官网</p></div> <footer class="page-edit" style="display:none;"><!----> <!----></footer> <!----> <!----></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-44bd5a18 data-v-44bd5a18><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-44bd5a18><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-44bd5a18></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-44bd5a18></path></svg></div></div></div>
+    <script src="/assets/js/app.4c0f163f.js" defer></script><script src="/assets/js/3.5c161e77.js" defer></script><script src="/assets/js/1.b50dabeb.js" defer></script><script src="/assets/js/21.83dfac32.js" defer></script>
+  </body>
+</html>

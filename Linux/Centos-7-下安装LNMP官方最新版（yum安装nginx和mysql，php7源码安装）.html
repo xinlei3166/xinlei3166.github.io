@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Centos-7-下安装LNMP官方最新版（yum安装nginx和mysql，php7源码安装） | 君惜の博客</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    
+    <meta name="description" content="">
+    <link rel="preload" href="/assets/css/0.styles.ff30c3b6.css" as="style"><link rel="preload" href="/assets/js/app.4c0f163f.js" as="script"><link rel="preload" href="/assets/js/3.5c161e77.js" as="script"><link rel="preload" href="/assets/js/1.b50dabeb.js" as="script"><link rel="preload" href="/assets/js/19.5ed05463.js" as="script"><link rel="prefetch" href="/assets/js/10.7fffa9c4.js"><link rel="prefetch" href="/assets/js/11.a894a0a3.js"><link rel="prefetch" href="/assets/js/12.7c1460cd.js"><link rel="prefetch" href="/assets/js/13.dd983835.js"><link rel="prefetch" href="/assets/js/14.1487eb9d.js"><link rel="prefetch" href="/assets/js/15.4756daf1.js"><link rel="prefetch" href="/assets/js/16.a530f05a.js"><link rel="prefetch" href="/assets/js/17.29f6aa52.js"><link rel="prefetch" href="/assets/js/18.e4a9724e.js"><link rel="prefetch" href="/assets/js/20.0cce4e1a.js"><link rel="prefetch" href="/assets/js/21.83dfac32.js"><link rel="prefetch" href="/assets/js/22.ad29d758.js"><link rel="prefetch" href="/assets/js/23.18313ffe.js"><link rel="prefetch" href="/assets/js/24.665841c7.js"><link rel="prefetch" href="/assets/js/25.5e232809.js"><link rel="prefetch" href="/assets/js/26.af71fdca.js"><link rel="prefetch" href="/assets/js/27.8a2d98c2.js"><link rel="prefetch" href="/assets/js/28.1306b459.js"><link rel="prefetch" href="/assets/js/29.29630159.js"><link rel="prefetch" href="/assets/js/30.b89be015.js"><link rel="prefetch" href="/assets/js/31.6295dd91.js"><link rel="prefetch" href="/assets/js/32.b7becd12.js"><link rel="prefetch" href="/assets/js/33.8faf9a10.js"><link rel="prefetch" href="/assets/js/34.cd57f657.js"><link rel="prefetch" href="/assets/js/35.7e2b5a6f.js"><link rel="prefetch" href="/assets/js/36.d71a14b1.js"><link rel="prefetch" href="/assets/js/37.959b4726.js"><link rel="prefetch" href="/assets/js/38.f931a68f.js"><link rel="prefetch" href="/assets/js/39.c3ea2b40.js"><link rel="prefetch" href="/assets/js/4.c1ea1bf1.js"><link rel="prefetch" href="/assets/js/40.4982c905.js"><link rel="prefetch" href="/assets/js/41.203d520e.js"><link rel="prefetch" href="/assets/js/42.7e5a0064.js"><link rel="prefetch" href="/assets/js/43.6b7dcc89.js"><link rel="prefetch" href="/assets/js/44.ace44d85.js"><link rel="prefetch" href="/assets/js/45.e7334ca4.js"><link rel="prefetch" href="/assets/js/46.2f73e550.js"><link rel="prefetch" href="/assets/js/47.bb851a3c.js"><link rel="prefetch" href="/assets/js/48.9ead4a3a.js"><link rel="prefetch" href="/assets/js/49.f6d187a3.js"><link rel="prefetch" href="/assets/js/5.4f3c9bb5.js"><link rel="prefetch" href="/assets/js/50.44513019.js"><link rel="prefetch" href="/assets/js/51.f92332ae.js"><link rel="prefetch" href="/assets/js/52.1a90855d.js"><link rel="prefetch" href="/assets/js/53.a6063052.js"><link rel="prefetch" href="/assets/js/54.5e4dc526.js"><link rel="prefetch" href="/assets/js/55.b4cf2cca.js"><link rel="prefetch" href="/assets/js/56.5afab6b8.js"><link rel="prefetch" href="/assets/js/57.13db934e.js"><link rel="prefetch" href="/assets/js/58.45393b85.js"><link rel="prefetch" href="/assets/js/59.312d0c74.js"><link rel="prefetch" href="/assets/js/6.0583317e.js"><link rel="prefetch" href="/assets/js/60.868da390.js"><link rel="prefetch" href="/assets/js/61.06d72270.js"><link rel="prefetch" href="/assets/js/62.95d65aff.js"><link rel="prefetch" href="/assets/js/63.36ccfb18.js"><link rel="prefetch" href="/assets/js/64.02290762.js"><link rel="prefetch" href="/assets/js/65.eac6abdc.js"><link rel="prefetch" href="/assets/js/66.5c7a3796.js"><link rel="prefetch" href="/assets/js/67.6d2a84e7.js"><link rel="prefetch" href="/assets/js/68.12b35d40.js"><link rel="prefetch" href="/assets/js/69.da3256da.js"><link rel="prefetch" href="/assets/js/7.60184b24.js"><link rel="prefetch" href="/assets/js/70.76e73b0c.js"><link rel="prefetch" href="/assets/js/71.99afbb77.js"><link rel="prefetch" href="/assets/js/72.19feaec4.js"><link rel="prefetch" href="/assets/js/73.ba5ee2ed.js"><link rel="prefetch" href="/assets/js/74.cef516f6.js"><link rel="prefetch" href="/assets/js/75.90f4a703.js"><link rel="prefetch" href="/assets/js/76.885ff289.js"><link rel="prefetch" href="/assets/js/77.823d6f1d.js"><link rel="prefetch" href="/assets/js/78.2c2736ff.js"><link rel="prefetch" href="/assets/js/79.cbfa5ae7.js"><link rel="prefetch" href="/assets/js/8.ccce47cf.js"><link rel="prefetch" href="/assets/js/80.431573aa.js"><link rel="prefetch" href="/assets/js/9.9160a89c.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.ff30c3b6.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-19557b78><div data-v-19557b78><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-19557b78 data-v-19557b78><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-64685f0e data-v-19557b78 data-v-19557b78><h3 class="title" style="display:none;" data-v-64685f0e data-v-64685f0e>君惜の博客</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-64685f0e data-v-64685f0e><input type="password" value="" data-v-64685f0e> <span data-v-64685f0e>Konck! Knock!</span> <button data-v-64685f0e>OK</button></label> <div class="footer" style="display:none;" data-v-64685f0e data-v-64685f0e><span data-v-64685f0e><i class="iconfont reco-theme" data-v-64685f0e></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-64685f0e>vuePress-theme-reco</a></span> <span data-v-64685f0e><i class="iconfont reco-copyright" data-v-64685f0e></i> <a data-v-64685f0e><span data-v-64685f0e>君惜</span>
+            
+          <!---->
+          2020
+        </a></span></div></div> <div class="hide" data-v-19557b78><header class="navbar" data-v-19557b78><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">君惜の博客</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/Docker/" class="nav-link"><i class="iconfont undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Git/" class="nav-link"><i class="iconfont undefined"></i>
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JavaScript/" class="nav-link"><i class="iconfont undefined"></i>
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Linux/" class="nav-link"><i class="iconfont undefined"></i>
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Mysql/" class="nav-link"><i class="iconfont undefined"></i>
+  Mysql
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Node.js/" class="nav-link"><i class="iconfont undefined"></i>
+  Node.js
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Python/" class="nav-link"><i class="iconfont undefined"></i>
+  Python
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Redis/" class="nav-link"><i class="iconfont undefined"></i>
+  Redis
+</a></li><li class="dropdown-item"><!----> <a href="/categories/并发测试/" class="nav-link"><i class="iconfont undefined"></i>
+  并发测试
+</a></li><li class="dropdown-item"><!----> <a href="/categories/随笔/" class="nav-link"><i class="iconfont undefined"></i>
+  随笔
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div> <a href="https://github.com/xinlei3166" target="_blank" rel="noopener noreferrer" class="repo-link"><i class="iconfont reco-github"></i>
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask" data-v-19557b78></div> <aside class="sidebar" data-v-19557b78><div class="personal-info-wrapper" data-v-b038cec6><img src="/img/avatar.jpg" alt="author-avatar" class="personal-img" data-v-b038cec6> <h3 class="name" data-v-b038cec6>
+    君惜
+  </h3> <div class="num" data-v-b038cec6><div data-v-b038cec6><h3 data-v-b038cec6>68</h3> <h6 data-v-b038cec6>Article</h6></div> <div data-v-b038cec6><h3 data-v-b038cec6>76</h3> <h6 data-v-b038cec6>Tag</h6></div></div> <hr data-v-b038cec6></div> <nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/Docker/" class="nav-link"><i class="iconfont undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Git/" class="nav-link"><i class="iconfont undefined"></i>
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JavaScript/" class="nav-link"><i class="iconfont undefined"></i>
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Linux/" class="nav-link"><i class="iconfont undefined"></i>
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Mysql/" class="nav-link"><i class="iconfont undefined"></i>
+  Mysql
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Node.js/" class="nav-link"><i class="iconfont undefined"></i>
+  Node.js
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Python/" class="nav-link"><i class="iconfont undefined"></i>
+  Python
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Redis/" class="nav-link"><i class="iconfont undefined"></i>
+  Redis
+</a></li><li class="dropdown-item"><!----> <a href="/categories/并发测试/" class="nav-link"><i class="iconfont undefined"></i>
+  并发测试
+</a></li><li class="dropdown-item"><!----> <a href="/categories/随笔/" class="nav-link"><i class="iconfont undefined"></i>
+  随笔
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div> <a href="https://github.com/xinlei3166" target="_blank" rel="noopener noreferrer" class="repo-link"><i class="iconfont reco-github"></i>
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Centos-7-下安装LNMP官方最新版（yum安装nginx和mysql，php7源码安装）</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Linux/Centos-7-%E4%B8%8B%E5%AE%89%E8%A3%85LNMP%E5%AE%98%E6%96%B9%E6%9C%80%E6%96%B0%E7%89%88%EF%BC%88yum%E5%AE%89%E8%A3%85nginx%E5%92%8Cmysql%EF%BC%8Cphp7%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85%EF%BC%89.html#软件版本" class="sidebar-link">软件版本</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Linux/Centos-7-%E4%B8%8B%E5%AE%89%E8%A3%85LNMP%E5%AE%98%E6%96%B9%E6%9C%80%E6%96%B0%E7%89%88%EF%BC%88yum%E5%AE%89%E8%A3%85nginx%E5%92%8Cmysql%EF%BC%8Cphp7%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85%EF%BC%89.html#实现环境" class="sidebar-link">实现环境</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Linux/Centos-7-%E4%B8%8B%E5%AE%89%E8%A3%85LNMP%E5%AE%98%E6%96%B9%E6%9C%80%E6%96%B0%E7%89%88%EF%BC%88yum%E5%AE%89%E8%A3%85nginx%E5%92%8Cmysql%EF%BC%8Cphp7%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85%EF%BC%89.html#nginx-安装" class="sidebar-link">Nginx 安装</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Linux/Centos-7-%E4%B8%8B%E5%AE%89%E8%A3%85LNMP%E5%AE%98%E6%96%B9%E6%9C%80%E6%96%B0%E7%89%88%EF%BC%88yum%E5%AE%89%E8%A3%85nginx%E5%92%8Cmysql%EF%BC%8Cphp7%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85%EF%BC%89.html#mysql-安装" class="sidebar-link">MySQL 安装</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Linux/Centos-7-%E4%B8%8B%E5%AE%89%E8%A3%85LNMP%E5%AE%98%E6%96%B9%E6%9C%80%E6%96%B0%E7%89%88%EF%BC%88yum%E5%AE%89%E8%A3%85nginx%E5%92%8Cmysql%EF%BC%8Cphp7%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85%EF%BC%89.html#php-7-安装" class="sidebar-link">PHP 7 安装</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-64685f0e data-v-19557b78><h3 class="title" style="display:none;" data-v-64685f0e data-v-64685f0e>Centos-7-下安装LNMP官方最新版（yum安装nginx和mysql，php7源码安装）</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-64685f0e data-v-64685f0e><input type="password" value="" data-v-64685f0e> <span data-v-64685f0e>Konck! Knock!</span> <button data-v-64685f0e>OK</button></label> <div class="footer" style="display:none;" data-v-64685f0e data-v-64685f0e><span data-v-64685f0e><i class="iconfont reco-theme" data-v-64685f0e></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-64685f0e>vuePress-theme-reco</a></span> <span data-v-64685f0e><i class="iconfont reco-copyright" data-v-64685f0e></i> <a data-v-64685f0e><span data-v-64685f0e>君惜</span>
+            
+          <!---->
+          2020
+        </a></span></div></div> <div data-v-19557b78><main class="page"><div class="page-title" style="display:none;"><h1>Centos-7-下安装LNMP官方最新版（yum安装nginx和mysql，php7源码安装）</h1> <hr> <div data-v-cd8d63d2><i class="iconfont reco-account" data-v-cd8d63d2><span data-v-cd8d63d2>君惜</span></i> <!----> <!----> <i class="iconfont reco-tag tags" data-v-cd8d63d2><span class="tag-item" data-v-cd8d63d2>
+      Centos
+    </span><span class="tag-item" data-v-cd8d63d2>
+      Linux
+    </span><span class="tag-item" data-v-cd8d63d2>
+      Nginx
+    </span><span class="tag-item" data-v-cd8d63d2>
+      Mysql
+    </span><span class="tag-item" data-v-cd8d63d2>
+      PHP
+    </span></i></div></div> <div class="theme-reco-content content__default" style="display:none;"><h2 id="软件版本"><a href="#软件版本" class="header-anchor">#</a> 软件版本</h2> <blockquote><p>Nginx版本: nginx 1.12.0
+Mysql版本：mysql 5.7.18
+PHP版本：php 7.1.4</p></blockquote> <h2 id="实现环境"><a href="#实现环境" class="header-anchor">#</a> 实现环境</h2> <blockquote><p>Centos版本：CentOS Linux release 7.3.1611 (Core) 64位</p></blockquote> <h2 id="nginx-安装"><a href="#nginx-安装" class="header-anchor">#</a> Nginx 安装</h2> <p>这里将用 yum 来安装 Nginx。首先更新一下 yum repo, 以便可以安装到对应的最新版本 nginx。
+http://nginx.org/packages/centos/7/noarch/RPMS/
+可以通过变换上面的地址找到和自己服务器对应版本的 repo 的 rpm。</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost ~]# rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
+</code></pre></div><p>安装好 yum repo 之后，接下来用 yum 安装 nginx</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost ~]# yum -y install nginx
+</code></pre></div><p>好了，Nginx 已经安装完成，版本是 1.12.0</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost ~]# nginx -v
+nginx version: nginx/1.12.0
+</code></pre></div><p>现在设置让 Nginx 在随开机自动启动</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost ~]# systemctl enable nginx
+Created symlink from /etc/systemd/system/multi-user.target.wants/nginx.service to /usr/lib/systemd/system/nginx.service.
+</code></pre></div><p>Centos 7启动服务命令（启动Nginx）</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost ~]# systemctl start nginx
+</code></pre></div><p>查看Nignx 状态</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost ~]# systemctl status nginx
+● nginx.service - nginx - high performance web server
+   Loaded: loaded (/usr/lib/systemd/system/nginx.service; enabled; vendor preset: disabled)
+   Active: active (running) since 一 2017-04-17 11:48:32 CST; 6min ago
+     Docs: http://nginx.org/en/docs/
+  Process: 11987 ExecStart=/usr/sbin/nginx -c /etc/nginx/nginx.conf (code=exited, status=0/SUCCESS)
+  Process: 11985 ExecStartPre=/usr/sbin/nginx -t -c /etc/nginx/nginx.conf (code=exited, status=0/SUCCESS)
+ Main PID: 11989 (nginx)
+   CGroup: /system.slice/nginx.service
+           ├─11989 nginx: master process /usr/sbin/nginx -c /etc/nginx/nginx.conf
+           └─11990 nginx: worker process
+
+4月 17 11:48:32 localhost.localdomain systemd[1]: Starting nginx - high performance web server...
+4月 17 11:48:32 localhost.localdomain nginx[11985]: nginx: the configuration file /etc/nginx/nginx... ok
+4月 17 11:48:32 localhost.localdomain nginx[11985]: nginx: configuration file /etc/nginx/nginx.con...ful
+4月 17 11:48:32 localhost.localdomain systemd[1]: Failed to read PID from file /run/nginx.pid: Inv...ent
+4月 17 11:48:32 localhost.localdomain systemd[1]: Started nginx - high performance web server.
+Hint: Some lines were ellipsized, use -l to show in full.
+</code></pre></div><h2 id="mysql-安装"><a href="#mysql-安装" class="header-anchor">#</a> MySQL 安装</h2> <p>这里同样用 yum 安装 MySQL. 可以从以下地址中找到对应的 yum repo：
+http://dev.mysql.com/doc/refman/5.7/en/linux-installation-yum-repo.html</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost ~]# rpm -Uvh http://dev.mysql.com/get/mysql57-community-release-el7-7.noarch.rpm
+</code></pre></div><p>接着安装 MySQL</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost ~]# yum -y install mysql-community-server mysql-community-devel
+</code></pre></div><p>MySQL安装完成后配置文件会在这个路径 /etc/my.cnf 可以根据实际需要修改里边的选项。这里暂时不做任何修改，但有个选项是要注意的，因为后面配置 PHP 的时候讲会用到：</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost ~]# grep socket /etc/my.cnf
+socket=/var/lib/mysql/mysql.sock
+</code></pre></div><p>看看下 MySQL 的状态</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost ~]# systemctl status mysqld
+● mysqld.service - MySQL Server
+   Loaded: loaded (/usr/lib/systemd/system/mysqld.service; disabled; vendor preset: disabled)
+   Active: inactive (dead)
+     Docs: man:mysqld(8)
+           http://dev.mysql.com/doc/refman/en/using-systemd.html
+</code></pre></div><p>把Mysql添加到开机启动项</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost ~]# systemctl enable mysqld
+</code></pre></div><p>启动 MySQL</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost ~]# systemctl start mysqld
+</code></pre></div><p>MySQL 5.7 和之前版本很大区别是在安装后会自动为 root@localhost 用户设置一个随机初始密码，之前的版本密码为空的。那如何找到这个初始密码呢？网上很多文章说初始密码在这个文件中 /root/.mysql_secret 我不清楚早前的版本是不是这样，但 MySQL 5.7.11 并不然，而是保持到 error log 文件中。可以通过下面方法找到 MySQL 5.7 root 的初始密码</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost ~]# grep 'temporary password' /var/log/mysqld.log
+2017-04-17T04:09:50.383473Z 1 [Note] A temporary password is generated for root@localhost: )(9lIA*hT=q#
+</code></pre></div><p>其中 )(9lIA*hT=q# 就是密码。现在立即用这个密码登录 MySQL 并且修改密码（MySQL 5.7 版本对密码的安全性要求很严格，必须至少包含1个大写字母、1个小写字母、1个数字和1个特殊字符，长度不得小于8个字符）</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost ~]# mysql -uroot -p')(9lIA*hT=q#'
+mysql: [Warning] Using a password on the command line interface can be insecure.
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 5.7.18
+
+Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql&gt; ALTER USER 'root'@'localhost' IDENTIFIED BY 'Yasn2017.';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql&gt; update mysql.user set Host='%' where HOST='localhost' and User='root';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql&gt; flush privileges;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql&gt; SELECT DISTINCT CONCAT('User: ''',user,'''@''',host,''';') AS query FROM mysql.user;
++--------------------------------+
+| query                          |
++--------------------------------+
+| User: 'root'@'%';              |
+| User: 'mysql.sys'@'localhost'; |
++--------------------------------+
+2 rows in set (0.00 sec)
+</code></pre></div><p>其中 Yasn2017. 就是新密码。好了 MySQL 5.7 已经安装完成，退出 MySQL 命令行接着安装 PHP 7</p> <div class="language- extra-class"><pre class="language-text"><code>mysql&gt; quit
+</code></pre></div><p>ps：如果mysql授权远程访问之后，访问还是失败。可能是由于防火墙和selinux没有关闭到底。
+Centos 7 关闭防火墙和selinux命令如下：</p> <div class="language- extra-class"><pre class="language-text"><code>systemctl disable firewalld.service 
+systemctl stop firewalld.service 
+sed -i 's/SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config
+setenforce 0
+</code></pre></div><h2 id="php-7-安装"><a href="#php-7-安装" class="header-anchor">#</a> PHP 7 安装</h2> <p>PHP 7 在15年年底推出，PHP官方说的比 PHP 5 快2倍，就为这个，这个鲜必须尝。不过有个很值得注意的地方是，虽然 PHP 7 增加了不少新特性，但也很多地方是向后不兼容的，例如 mysql 扩展，在 PHP 7 中已经被删除。 这些向后不兼容导致很多程序在 PHP 7 中运行不了，例如 Discuz。但其实也不需要特别担心，因为我们可以在同一服务器上安装多个版本的 PHP。
+现在最新版本是7.1.4。先把源码下载到 /software</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost ~]# mkdir /software
+[root@localhost ~]# cd /software/
+[root@localhost software]# wget http://219.239.26.13/files/206300000A0566B7/am1.php.net/distributions/php-7.1.4.tar.gz
+</code></pre></div><p>接着解压</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost software]# tar zxf php-7.1.4.tar.gz 
+</code></pre></div><p>再进入解压后的文件夹</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost software]# cd php-7.1.4/
+
+</code></pre></div><p>这里将只安装一些常用的扩展，大家可以根据自己的实际需要进行增减，可以通过以下命令查看PHP安装是具体有有些扩展和选项：</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost php-7.1.4]# ./configure --help
+</code></pre></div><p>有接近300个选项。
+安装之前要先安装那些准备装的扩展要用到的软件模块</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost php-7.1.4]# yum -y install libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel libxml2 libxml2-devel zlib zlib-devel curl curl-devel openssl openssl-devel
+
+</code></pre></div><p>接下来 configure PHP 7</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost php-7.1.4]# ./configure --prefix=/usr/local/php7 --enable-fpm --with-fpm-user=nginx --with-fpm-group=nginx --with-mysqli --with-zlib --with-curl --with-gd --with-jpeg-dir --with-png-dir --with-freetype-dir --with-openssl --enable-mbstring --enable-xml --enable-session --enable-ftp --enable-pdo -enable-tokenizer --enable-zip
+</code></pre></div><p>上面已经提到，PHP 7 已经删除了 MySQL 扩展，所以 -with-mysql 不再是一个有效的选项。这里用 MySQLi 或 PDO 代替。
+其中 --prefix 是安装目录，上面提到在同一个服务器安装多个 PHP 版本，这个 --prefix 设定是很有必要的。至于其他扩展大家按实际增减。
+如果 configure 成功的话，将会看到以下类似字样：</p> <div class="language- extra-class"><pre class="language-text"><code>+--------------------------------------------------------------------+
+| License:                                                           |
+| This software is subject to the PHP License, available in this     |
+| distribution in the file LICENSE.  By continuing this installation |
+| process, you are bound by the terms of this license agreement.     |
+| If you do not agree with the terms of this license, you must abort |
+| the installation process at this point.                            |
++--------------------------------------------------------------------+
+
+Thank you for using PHP.
+</code></pre></div><p>编译和安装</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost php-7.1.4]# make &amp;&amp;  make install
+</code></pre></div><p>好，PHP 7 已经安装完成，下面进行配置
+先是 PHP 的配置文档</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost php-7.1.4]# cp php.ini-development /usr/local/php7/lib/php.ini
+</code></pre></div><p>php.ini 路径应该放在 PREFIX/lib 文件夹，除非在安装的时候通过这个选项修改
+--with-config-file-path=PATH
+如果安装 PHP 时没有指明 --prefix ，那么就 php.ini 路径就是 /usr/local/lib/php.ini 。刚才安装时有指明 --prefix ，所以是 /usr/local/php7/lib/php.ini
+然后根据实际自己需要修改 php.ini。
+查找 mysqli.default_socket，修改成 mysqli.default_socket = /var/lib/mysql/mysql.sock：</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost php-7.1.4]# grep mysqli.default_socket  /usr/local/php7/lib/php.ini
+mysqli.default_socket = 
+[root@localhost php-7.1.4]# sed -i 's#mysqli.default_socket =#mysqli.default_socket = /var/lib/mysql/mysql.sock#'  /usr/local/php7/lib/php.ini
+[root@localhost php-7.1.4]# grep mysqli.default_socket  /usr/local/php7/lib/php.ini
+mysqli.default_socket = /var/lib/mysql/mysql.sock
+</code></pre></div><p>其中 /var/lib/mysql/mysql.sock 就是上面安装 MySQL 时提到的。这个值必须填，否则会出现如下错误：
+Warning: mysqli_connect(): (HY000/2002): No such file or directory</p> <p>修改时区，查找 date.timezone，改成（主要将前面的 ; 去掉，这个是注释用的）：</p> <div class="language- extra-class"><pre class="language-text"><code>root@localhost php-7.1.4]# grep date.timezone /usr/local/php7/lib/php.ini 
+; http://php.net/date.timezone
+;date.timezone =
+[root@localhost php-7.1.4]# sed -i 's#;date.timezone =#date.timezone = Asia/Shanghai#' /usr/local/php7/lib/php.ini 
+[root@localhost php-7.1.4]# grep date.timezone /usr/local/php7/lib/php.ini 
+; http://php.net/date.timezone
+date.timezone = Asia/Shanghai
+</code></pre></div><p>好了，PHP 7 已经安装好，下面验证一下</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost php-7.1.4]# /usr/local/php7/bin/php -v
+PHP 7.1.4 (cli) (built: Apr 17 2017 14:58:11) ( NTS )
+Copyright (c) 1997-2017 The PHP Group
+Zend Engine v3.1.0, Copyright (c) 1998-2017 Zend Technologies
+</code></pre></div><p>再查看下已经安装的模块</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost php-7.1.4]# /usr/local/php7/bin/php -m
+[PHP Modules]
+Core
+ctype
+curl
+date
+dom
+fileinfo
+filter
+ftp
+gd
+hash
+iconv
+json
+libxml
+mbstring
+mysqli
+mysqlnd
+openssl
+pcre
+PDO
+pdo_sqlite
+Phar
+posix
+Reflection
+session
+SimpleXML
+SPL
+sqlite3
+standard
+tokenizer
+xml
+xmlreader
+xmlwriter
+zip
+zlib
+
+[Zend Modules]
+
+</code></pre></div><p>接下来配置 php-fpm，复制 php-fpm 的配置文档</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost php-7.1.4]# cp /usr/local/php7/etc/php-fpm.conf.default /usr/local/php7/etc/php-fpm.conf
+[root@localhost php-7.1.4]# cp /usr/local/php7/etc/php-fpm.d/www.conf.default /usr/local/php7/etc/php-fpm.d/www.conf
+</code></pre></div><p>修改 /usr/local/php7/etc/php-fpm.d/www.conf，把启动用户改为和nginx服务同一个启动用户（这里Nginx服务使用的是nginx用户，改为nginx即可。一般都是使用www用户）</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost php-7.1.4]# grep -E 'user =|group =' /usr/local/php7/etc/php-fpm.d/www.conf
+user = nginx
+group = nginx
+[root@localhost php-7.1.4]# sed -i 's#user = nobody#user = nginx#' /usr/local/php7/etc/php-fpm.d/www.conf 
+[root@localhost php-7.1.4]# sed -i 's#group = nobody#group = nginx#' /usr/local/php7/etc/php-fpm.d/www.conf 
+[root@localhost php-7.1.4]# grep -E 'user =|group =' /usr/local/php7/etc/php-fpm.d/www.conf
+user = nginx
+group = nginx
+</code></pre></div><p>其中 www.conf 中要留意这个值 listen = 127.0.0.1:9000</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost php-7.1.4]# grep 'listen = 127.0.0.1' /usr/local/php7/etc/php-fpm.d/www.conf
+
+</code></pre></div><p>这里使用 9000 端口，这个选项在配置 Nginx 网站时要用到的。
+配置 php-fpm 启动服务脚本</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost php-7.1.4]# cp sapi/fpm/php-fpm.service /usr/lib/systemd/system/
+</code></pre></div><p>查看启动脚本中指定的程序目录和pid文件（默认已经修改过了，如果没有修改过执行下面操作）</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost php-7.1.4]# grep -E 'PIDFile|ExecStart' /usr/lib/systemd/system/php-fpm.service
+PIDFile=/usr/local/php7/var/run/php-fpm.pid
+ExecStart=/usr/local/php7/sbin/php-fpm --nodaemonize --fpm-config /usr/local/php7/etc/php-fpm.conf
+</code></pre></div><p>修改启动脚本，把里边 prefix 相关的内容用实际路径代替</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost php-7.1.4]# vim /usr/lib/systemd/system/php-fpm.service
+将
+PIDFile=${prefix}/var/run/php-fpm.pid
+ExecStart=${exec_prefix}/sbin/php-fpm --nodaemonize --fpm-config ${prefix}/etc/php-fpm.conf
+修改成
+PIDFile=/usr/local/php7/var/run/php-fpm.pid
+ExecStart=/usr/local/php7/sbin/php-fpm --nodaemonize --fpm-config /usr/local/php7/etc/php-fpm.conf
+</code></pre></div><p>重新载入 systemd</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost php-7.1.4]# systemctl daemon-reload
+
+</code></pre></div><p>让 php-fpm 随机启动</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost php-7.1.4]# systemctl enable php-fpm
+Created symlink from /etc/systemd/system/multi-user.target.wants/php-fpm.service to /usr/lib/systemd/system/php-fpm.service.
+
+</code></pre></div><p>立即启动 php-fpm</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost php-7.1.4]# systemctl start php-fpm
+
+</code></pre></div><p>查看状态</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost php-7.1.4]# systemctl status php-fpm
+● php-fpm.service - The PHP FastCGI Process Manager
+   Loaded: loaded (/usr/lib/systemd/system/php-fpm.service; enabled; vendor preset: disabled)
+   Active: active (running) since 一 2017-04-17 15:37:06 CST; 1min 9s ago
+ Main PID: 55770 (php-fpm)
+   CGroup: /system.slice/php-fpm.service
+           ├─55770 php-fpm: master process (/usr/local/php7/etc/php-fpm.conf)
+           ├─55771 php-fpm: pool www
+           └─55772 php-fpm: pool www
+
+4月 17 15:37:06 localhost.localdomain systemd[1]: Started The PHP FastCGI Process Manager.
+4月 17 15:37:06 localhost.localdomain systemd[1]: Starting The PHP FastCGI Process Manager...
+
+</code></pre></div><p>好，php-fpm 已经成功启动，那就立即建个网站看看</p> <p>配置 Nginx 站点
+先建立一个 lnmp 站点，路径是  /var/www/html</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost php-7.1.4]# mkdir -p /var/www/html
+
+</code></pre></div><p>并准备好 phpinfo 测试文件</p> <div class="language- extra-class"><pre class="language-text"><code>cat &gt;&gt; /var/www/html/test.php &lt;&lt; EOF
+&lt;?php
+phpinfo();
+EOF
+</code></pre></div><p>创建一个 Nginx 配置文件放到 /etc/nginx/conf.d/ 中</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost php-7.1.4]# cd /etc/nginx/conf.d/
+</code></pre></div><p>删除默认的default.conf</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost nginx]# rm -f /etc/nginx/conf.d/default.conf
+</code></pre></div><p>创建test.com.conf文件并写入以下内容</p> <div class="language- extra-class"><pre class="language-text"><code>cat &gt;&gt; test.com.conf &lt;&lt;EOF
+server {
+    listen       80;
+    server_name  localhost;
+    root         /var/www/html;
+    location / {
+        index  index.php index.html index.htm;
+    }
+    location ~ \.php$ {
+        fastcgi_pass   127.0.0.1:9000;
+        fastcgi_index  index.php;
+	fastcgi_param	SCRIPT_FILENAME	$document_root$fastcgi_script_name;
+	fastcgi_param  PHP_VALUE        open_basedir=$document_root:/tmp/:/proc/;
+        include        fastcgi_params;
+    }
+}
+EOF
+</code></pre></div><p>其中 server_name  localhost; 中的 localhost 改成你自己的域名（例如：www.baidu.com，这里我直接使用localhost来测试）
+其中 root         /var/www/html; 就是刚才创建的站点目录
+其中 fastcgi_pass   127.0.0.1:9000; 就是上面配置 php-fpm 提到要留意的值
+修改配置后一定要记得 reload nginx 才能生效</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost conf.d]# systemctl reload nginx
+</code></pre></div><p>最后的配置（nginx服务器的IP必须和域名做解析，才可以使用域名访问服务，域名购买一般在阿里云上购买）
+这里我们直接使用IP访问（因为我们使用的域名是localhost，也就是nginx所在主机IP的意思）
+<img src="http://upload-images.jianshu.io/upload_images/4262139-8283697331b000ef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p></div> <footer class="page-edit" style="display:none;"><!----> <!----></footer> <!----> <!----></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-44bd5a18 data-v-44bd5a18><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-44bd5a18><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-44bd5a18></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-44bd5a18></path></svg></div></div></div>
+    <script src="/assets/js/app.4c0f163f.js" defer></script><script src="/assets/js/3.5c161e77.js" defer></script><script src="/assets/js/1.b50dabeb.js" defer></script><script src="/assets/js/19.5ed05463.js" defer></script>
+  </body>
+</html>

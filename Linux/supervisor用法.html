@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>supervisor用法 | 君惜の博客</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    
+    <meta name="description" content="">
+    <link rel="preload" href="/assets/css/0.styles.ff30c3b6.css" as="style"><link rel="preload" href="/assets/js/app.4c0f163f.js" as="script"><link rel="preload" href="/assets/js/3.5c161e77.js" as="script"><link rel="preload" href="/assets/js/1.b50dabeb.js" as="script"><link rel="preload" href="/assets/js/29.29630159.js" as="script"><link rel="prefetch" href="/assets/js/10.7fffa9c4.js"><link rel="prefetch" href="/assets/js/11.a894a0a3.js"><link rel="prefetch" href="/assets/js/12.7c1460cd.js"><link rel="prefetch" href="/assets/js/13.dd983835.js"><link rel="prefetch" href="/assets/js/14.1487eb9d.js"><link rel="prefetch" href="/assets/js/15.4756daf1.js"><link rel="prefetch" href="/assets/js/16.a530f05a.js"><link rel="prefetch" href="/assets/js/17.29f6aa52.js"><link rel="prefetch" href="/assets/js/18.e4a9724e.js"><link rel="prefetch" href="/assets/js/19.5ed05463.js"><link rel="prefetch" href="/assets/js/20.0cce4e1a.js"><link rel="prefetch" href="/assets/js/21.83dfac32.js"><link rel="prefetch" href="/assets/js/22.ad29d758.js"><link rel="prefetch" href="/assets/js/23.18313ffe.js"><link rel="prefetch" href="/assets/js/24.665841c7.js"><link rel="prefetch" href="/assets/js/25.5e232809.js"><link rel="prefetch" href="/assets/js/26.af71fdca.js"><link rel="prefetch" href="/assets/js/27.8a2d98c2.js"><link rel="prefetch" href="/assets/js/28.1306b459.js"><link rel="prefetch" href="/assets/js/30.b89be015.js"><link rel="prefetch" href="/assets/js/31.6295dd91.js"><link rel="prefetch" href="/assets/js/32.b7becd12.js"><link rel="prefetch" href="/assets/js/33.8faf9a10.js"><link rel="prefetch" href="/assets/js/34.cd57f657.js"><link rel="prefetch" href="/assets/js/35.7e2b5a6f.js"><link rel="prefetch" href="/assets/js/36.d71a14b1.js"><link rel="prefetch" href="/assets/js/37.959b4726.js"><link rel="prefetch" href="/assets/js/38.f931a68f.js"><link rel="prefetch" href="/assets/js/39.c3ea2b40.js"><link rel="prefetch" href="/assets/js/4.c1ea1bf1.js"><link rel="prefetch" href="/assets/js/40.4982c905.js"><link rel="prefetch" href="/assets/js/41.203d520e.js"><link rel="prefetch" href="/assets/js/42.7e5a0064.js"><link rel="prefetch" href="/assets/js/43.6b7dcc89.js"><link rel="prefetch" href="/assets/js/44.ace44d85.js"><link rel="prefetch" href="/assets/js/45.e7334ca4.js"><link rel="prefetch" href="/assets/js/46.2f73e550.js"><link rel="prefetch" href="/assets/js/47.bb851a3c.js"><link rel="prefetch" href="/assets/js/48.9ead4a3a.js"><link rel="prefetch" href="/assets/js/49.f6d187a3.js"><link rel="prefetch" href="/assets/js/5.4f3c9bb5.js"><link rel="prefetch" href="/assets/js/50.44513019.js"><link rel="prefetch" href="/assets/js/51.f92332ae.js"><link rel="prefetch" href="/assets/js/52.1a90855d.js"><link rel="prefetch" href="/assets/js/53.a6063052.js"><link rel="prefetch" href="/assets/js/54.5e4dc526.js"><link rel="prefetch" href="/assets/js/55.b4cf2cca.js"><link rel="prefetch" href="/assets/js/56.5afab6b8.js"><link rel="prefetch" href="/assets/js/57.13db934e.js"><link rel="prefetch" href="/assets/js/58.45393b85.js"><link rel="prefetch" href="/assets/js/59.312d0c74.js"><link rel="prefetch" href="/assets/js/6.0583317e.js"><link rel="prefetch" href="/assets/js/60.868da390.js"><link rel="prefetch" href="/assets/js/61.06d72270.js"><link rel="prefetch" href="/assets/js/62.95d65aff.js"><link rel="prefetch" href="/assets/js/63.36ccfb18.js"><link rel="prefetch" href="/assets/js/64.02290762.js"><link rel="prefetch" href="/assets/js/65.eac6abdc.js"><link rel="prefetch" href="/assets/js/66.5c7a3796.js"><link rel="prefetch" href="/assets/js/67.6d2a84e7.js"><link rel="prefetch" href="/assets/js/68.12b35d40.js"><link rel="prefetch" href="/assets/js/69.da3256da.js"><link rel="prefetch" href="/assets/js/7.60184b24.js"><link rel="prefetch" href="/assets/js/70.76e73b0c.js"><link rel="prefetch" href="/assets/js/71.99afbb77.js"><link rel="prefetch" href="/assets/js/72.19feaec4.js"><link rel="prefetch" href="/assets/js/73.ba5ee2ed.js"><link rel="prefetch" href="/assets/js/74.cef516f6.js"><link rel="prefetch" href="/assets/js/75.90f4a703.js"><link rel="prefetch" href="/assets/js/76.885ff289.js"><link rel="prefetch" href="/assets/js/77.823d6f1d.js"><link rel="prefetch" href="/assets/js/78.2c2736ff.js"><link rel="prefetch" href="/assets/js/79.cbfa5ae7.js"><link rel="prefetch" href="/assets/js/8.ccce47cf.js"><link rel="prefetch" href="/assets/js/80.431573aa.js"><link rel="prefetch" href="/assets/js/9.9160a89c.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.ff30c3b6.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-19557b78><div data-v-19557b78><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-19557b78 data-v-19557b78><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-64685f0e data-v-19557b78 data-v-19557b78><h3 class="title" style="display:none;" data-v-64685f0e data-v-64685f0e>君惜の博客</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-64685f0e data-v-64685f0e><input type="password" value="" data-v-64685f0e> <span data-v-64685f0e>Konck! Knock!</span> <button data-v-64685f0e>OK</button></label> <div class="footer" style="display:none;" data-v-64685f0e data-v-64685f0e><span data-v-64685f0e><i class="iconfont reco-theme" data-v-64685f0e></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-64685f0e>vuePress-theme-reco</a></span> <span data-v-64685f0e><i class="iconfont reco-copyright" data-v-64685f0e></i> <a data-v-64685f0e><span data-v-64685f0e>君惜</span>
+            
+          <!---->
+          2020
+        </a></span></div></div> <div class="hide" data-v-19557b78><header class="navbar" data-v-19557b78><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">君惜の博客</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/Docker/" class="nav-link"><i class="iconfont undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Git/" class="nav-link"><i class="iconfont undefined"></i>
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JavaScript/" class="nav-link"><i class="iconfont undefined"></i>
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Linux/" class="nav-link"><i class="iconfont undefined"></i>
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Mysql/" class="nav-link"><i class="iconfont undefined"></i>
+  Mysql
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Node.js/" class="nav-link"><i class="iconfont undefined"></i>
+  Node.js
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Python/" class="nav-link"><i class="iconfont undefined"></i>
+  Python
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Redis/" class="nav-link"><i class="iconfont undefined"></i>
+  Redis
+</a></li><li class="dropdown-item"><!----> <a href="/categories/并发测试/" class="nav-link"><i class="iconfont undefined"></i>
+  并发测试
+</a></li><li class="dropdown-item"><!----> <a href="/categories/随笔/" class="nav-link"><i class="iconfont undefined"></i>
+  随笔
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div> <a href="https://github.com/xinlei3166" target="_blank" rel="noopener noreferrer" class="repo-link"><i class="iconfont reco-github"></i>
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask" data-v-19557b78></div> <aside class="sidebar" data-v-19557b78><div class="personal-info-wrapper" data-v-b038cec6><img src="/img/avatar.jpg" alt="author-avatar" class="personal-img" data-v-b038cec6> <h3 class="name" data-v-b038cec6>
+    君惜
+  </h3> <div class="num" data-v-b038cec6><div data-v-b038cec6><h3 data-v-b038cec6>68</h3> <h6 data-v-b038cec6>Article</h6></div> <div data-v-b038cec6><h3 data-v-b038cec6>76</h3> <h6 data-v-b038cec6>Tag</h6></div></div> <hr data-v-b038cec6></div> <nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/Docker/" class="nav-link"><i class="iconfont undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Git/" class="nav-link"><i class="iconfont undefined"></i>
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JavaScript/" class="nav-link"><i class="iconfont undefined"></i>
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Linux/" class="nav-link"><i class="iconfont undefined"></i>
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Mysql/" class="nav-link"><i class="iconfont undefined"></i>
+  Mysql
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Node.js/" class="nav-link"><i class="iconfont undefined"></i>
+  Node.js
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Python/" class="nav-link"><i class="iconfont undefined"></i>
+  Python
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Redis/" class="nav-link"><i class="iconfont undefined"></i>
+  Redis
+</a></li><li class="dropdown-item"><!----> <a href="/categories/并发测试/" class="nav-link"><i class="iconfont undefined"></i>
+  并发测试
+</a></li><li class="dropdown-item"><!----> <a href="/categories/随笔/" class="nav-link"><i class="iconfont undefined"></i>
+  随笔
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div> <a href="https://github.com/xinlei3166" target="_blank" rel="noopener noreferrer" class="repo-link"><i class="iconfont reco-github"></i>
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>supervisor用法</span> <!----></p> <!----></section></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-64685f0e data-v-19557b78><h3 class="title" style="display:none;" data-v-64685f0e data-v-64685f0e>supervisor用法</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-64685f0e data-v-64685f0e><input type="password" value="" data-v-64685f0e> <span data-v-64685f0e>Konck! Knock!</span> <button data-v-64685f0e>OK</button></label> <div class="footer" style="display:none;" data-v-64685f0e data-v-64685f0e><span data-v-64685f0e><i class="iconfont reco-theme" data-v-64685f0e></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-64685f0e>vuePress-theme-reco</a></span> <span data-v-64685f0e><i class="iconfont reco-copyright" data-v-64685f0e></i> <a data-v-64685f0e><span data-v-64685f0e>君惜</span>
+            
+          <!---->
+          2020
+        </a></span></div></div> <div data-v-19557b78><main class="page"><div class="page-title" style="display:none;"><h1>supervisor用法</h1> <hr> <div data-v-cd8d63d2><i class="iconfont reco-account" data-v-cd8d63d2><span data-v-cd8d63d2>君惜</span></i> <!----> <!----> <i class="iconfont reco-tag tags" data-v-cd8d63d2><span class="tag-item" data-v-cd8d63d2>
+      Linux
+    </span><span class="tag-item" data-v-cd8d63d2>
+      Supervisor
+    </span><span class="tag-item" data-v-cd8d63d2>
+      Python
+    </span></i></div></div> <div class="theme-reco-content content__default" style="display:none;"><h1 id="_1-什么是supervisor"><a href="#_1-什么是supervisor" class="header-anchor">#</a> 1. 什么是supervisor</h1> <p>superviosr是一个Linux/Unix系统上的进程监控工具，他/她upervisor是一个Python开发的通用的进程管理程序，可以管理和监控Linux上面的进程，能将一个普通的命令行进程变为后台daemon，并监控进程状态，异常退出时能自动重启。不过同daemontools一样，它不能监控daemon进程</p> <p>superviosr<a href="http://supervisord.org/" target="_blank" rel="noopener noreferrer">官网点此<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>。</p> <h1 id="_2-为什么用supervisor"><a href="#_2-为什么用supervisor" class="header-anchor">#</a> 2. 为什么用supervisor</h1> <ul><li>使用简单
+supervisor提供了一种统一的方式来start、stop、monitor你的进程， 进程可以单独控制，也可以成组的控制。你可以在本地或者远程命令行或者web接口来配置Supervisor。
+在linux下的很多程序通常都是一直运行着的，一般来说都需要自己编写一个能够实现进程start/stop/restart/reload功能的脚本，然后放到/etc/init.d/下面。但这样做也有很多弊端，第一我们要为每个程序编写一个类似脚本，第二，当这个进程挂掉的时候，linux不会自动重启它的，想要自动重启的话，我们还要自己写一个监控重启脚本。
+而supervisor则可以完美的解决这些问题。supervisor管理进程，就是通过fork/exec的方式把这些被管理的进程，当作supervisor的子进程来启动。这样的话，我们只要在supervisor的配置文件中，把要管理的进程的可执行文件的路径写进去就OK了。第二，被管理进程作为supervisor的子进程，当子进程挂掉的时候，父进程可以准确获取子进程挂掉的信息的，所以当然也就可以对挂掉的子进程进行自动重启，当然重启还是不重启，也要看你的配置文件里面有木有设置autostart=true了。
+supervisor通过INI格式配置文件进行配置，很容易掌握，它为每个进程提供了很多配置选项，可以使你很容易的重启进程或者自动的轮转日志。</li> <li>集中管理
+supervisor管理的进程，进程组信息，全部都写在一个ini格式的文件里就OK了。而且，我们管理supervisor的时候的可以在本地进行管理，也可以远程管理，而且supervisor提供了一个web界面，我们可以在web界面上监控，管理进程。 当然了，本地，远程和web管理的时候，需要调用supervisor的xml_rpc接口，这个也是后话。
+supervisor可以对进程组统一管理，也就是说咱们可以把需要管理的进程写到一个组里面，然后我们把这个组作为一个对象进行管理，如启动，停止，重启等等操作。而linux系统则是没有这种功能的，我们想要停止一个进程，只能一个一个的去停止，要么就自己写个脚本去批量停止。</li></ul> <h1 id="_3-supervisor组件"><a href="#_3-supervisor组件" class="header-anchor">#</a> 3. supervisor组件</h1> <ul><li>supervisord
+主进程,负责管理进程的server，它会根据配置文件创建指定数量的应用程序的子进程，管理子进程的整个生命周期，对crash的进程重启，对进程变化发送事件通知等。同时内置web server和XML-RPC Interface，轻松实现进程管理。。该服务的配置文件在/etc/supervisor/supervisord.conf。</li> <li>supervisorctl
+客户端的命令行工具，提供一个类似shell的操作接口，通过它你可以连接到不同的supervisord进程上来管理它们各自的子程序，命令通过UNIX socket或者TCP来和服务通讯。用户通过命令行发送消息给supervisord，可以查看进程状态，加载配置文件，启停进程，查看进程标准输出和错误输出，远程操作等。服务端也可以要求客户端提供身份验证之后才能进行操作。</li> <li>Web Server
+superviosr提供了web server功能，可通过web控制进程(需要设置[inet<em>http</em>server]配置项)。</li> <li>XML-RPC Interface
+XML-RPC接口， 就像HTTP提供WEB UI一样，用来控制supervisor和由它运行的程序。</li></ul> <h1 id="_4-安装、配置、使用"><a href="#_4-安装、配置、使用" class="header-anchor">#</a> 4. 安装、配置、使用</h1> <p>supervisor是python编写的，可以用easy_install、pip都可以安装，比如在我的centos机器下，安装命令如下：</p> <div class="language- extra-class"><pre class="language-text"><code>yum install python-setuptools
+easy_install pip
+pip install superviso
+
+在这里我使用pip安装之后，在创建配置文件的时候出错，所以我又选择了使用easy_install supervisor的安装方法
+
+当然也可以下载源码进行安装，比如：
+</code></pre></div><p>wget https://pypi.python.org/packages/source/s/supervisor/supervisor-3.1.3.tar.gz --no-check-certificat</p> <div class="language- extra-class"><pre class="language-text"><code>tar -zxvf supervisor-3.1.3.tar.gz
+cd supervisor-3.1.3
+sudo python setup.py install
+</code></pre></div><p>安装之后可以直接supervisord运行验证是否成功，如果报错，再逐一解决，比如可能会报meld3版本问题，这里给出安装步骤：</p> <div class="language- extra-class"><pre class="language-text"><code>wget http://effbot.org/media/downloads/elementtree-1.2.7-20070827-preview.zip
+unzip elementtree-1.2.7-20070827-preview.zip  &amp;&amp;  cd elementtree-1.2.7-20070827-preview
+python setup.py install
+</code></pre></div><p>或者下载此版本：</p> <div class="language- extra-class"><pre class="language-text"><code>wget http://www.plope.com/software/meld3/meld3-0.6.5.tar.gz
+tar -xf meld3-0.6.5.tar.gz &amp;&amp; cd meld3-0.6.5
+python setup.py install
+</code></pre></div><p>如果安装成功就可以进行下一步了：设置配置文件。</p> <div class="language- extra-class"><pre class="language-text"><code>### 生成配置文件，且放在/etc目录下
+echo_supervisord_conf &gt; /etc/supervisord.conf  
+
+###为了不将所有新增配置信息全写在一个配置文件里，这里新建一个文件夹，每个程序设置一个配置文件，相互隔离
+mkdir /etc/supervisord.d/  
+
+### 修改配置文件
+vim /etc/supervisord.conf
+
+### 加入以下配置信息
+[include]
+files = /etc/supervisord.d/*.conf
+
+### 在supervisord.conf中设置通过web可以查看管理的进程，加入以下代码（默认即有，取消注释即可）    
+[inet_http_server] 
+port=9001
+username=user      
+password=123
+</code></pre></div><p>启动supervisord</p> <div class="language- extra-class"><pre class="language-text"><code> # supervisord -c /etc/supervisord.conf
+</code></pre></div><p>查看一下是否监听</p> <div class="language- extra-class"><pre class="language-text"><code> # lsof -i:9001
+ COMMAND     PID USER   FD   TYPE   DEVICE SIZE/OFF NODE NAME
+ superviso 14685 root    4u  IPv4 20155719      0t0  TCP *:etlservicemgr (LISTEN)
+</code></pre></div><p>现在通过 http://ip:9001/ 就可以查看supervisor的web界面了(默认用户名及密码是user和123)，当然目前还没有加入任何监控的程序。</p> <p><img src="http://i.imgur.com/XnqmIH5.png" alt="img"></p> <p>下面写一个简单的python脚本，用来验证supervisor的监控效果。</p> <div class="language- extra-class"><pre class="language-text"><code>#cat /root/temp/test_http.py   ###以下即是test_http.py脚本中的代码
+#!/usr/bin/env python
+# coding=utf-8
+import sys  
+import BaseHTTPServer  
+from SimpleHTTPServer import SimpleHTTPRequestHandler  
+HandlerClass = SimpleHTTPRequestHandler  
+ServerClass = BaseHTTPServer.HTTPServer  
+Protocol = &quot;HTTP/1.0&quot;  
+
+if __name__ == &quot;__main__&quot;:
+    if sys.argv[1:]:  
+        port = int(sys.argv[1])  
+    else:  
+        port = 10000  
+
+    server_address = ('0.0.0.0', port)  
+    HandlerClass.protocol_version = Protocol  
+    httpd = ServerClass(server_address, HandlerClass)  
+
+    sa = httpd.socket.getsockname()  
+    print &quot;Serving HTTP on&quot;, sa[0], &quot;port&quot;, sa[1], &quot;...&quot;  
+    httpd.serve_forever()
+</code></pre></div><p>增加一个配置文件，以便supervisor用来监控test_http.py程序。</p> <div class="language- extra-class"><pre class="language-text"><code>#cat /etc/supervisord.d/supervisor_test_http.conf  ### 以下即为配置文件中的内容
+[program:test_http]
+command=python /root/temp/test_http.py 9999    ; 被监控的进程路径
+directory=/root/temp                ; 执行前要不要先cd到目录去，一般不用
+priority=1                    ;数字越高，优先级越高
+numprocs=1                    ; 启动几个进程
+autostart=true                ; 随着supervisord的启动而启动
+autorestart=true              ; 自动重启。。当然要选上了
+startretries=10               ; 启动失败时的最多重试次数
+exitcodes=0                   ; 正常退出代码（是说退出代码是这个时就不再重启了吗？待确定）
+stopsignal=KILL               ; 用来杀死进程的信号
+stopwaitsecs=10               ; 发送SIGKILL前的等待时间
+redirect_stderr=true          ; 重定向stderr到stdout
+</code></pre></div><p>重新启动supervisord，或者重新加载配置文件：</p> <div class="language- extra-class"><pre class="language-text"><code>supervisorctl reload
+### 或者
+supervisorctl -c /etc/supervisord.conf
+</code></pre></div><p>此时再访问http页面，就会发现test_http.py程序已经被监控了，且已经自动启动了。</p> <p><img src="http://i.imgur.com/N3dKFaC.png" alt="img"></p> <p>此时也可以访问test_http.py程序提供的http服务了，比如http://ip:9999。</p> <p><strong>注意：supervisor只能监控前台程序， 如果你的程序是通过fork方式实现的daemon服务，则不能用它监控，否则supervisor&gt; status 会提示：BACKOFF  Exited too quickly (process log may have details)。</strong> 因此像apache、tomcat服务默认启动都是按daemon方式启动的，则不能通过supervisor直接运行启动脚本(service httpd start)，相反要通过一个包装过的启停脚本来完成，比如tomcat在supervisor下的启停脚本请参考：<a href="http://serverfault.com/questions/425132/controlling-tomcat-with-supervisor" target="_blank" rel="noopener noreferrer">Controlling tomcat with supervisor<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>或者<a href="https://gist.github.com/mariorez/d70ee9e8301eec783d0e" target="_blank" rel="noopener noreferrer">supervisor-tomcat.conf<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>。</p> <p>另外，可以将supervisor随系统启动而启动，Linux 在启动的时候会执行 /etc/rc.local 里面的脚本，所以只要在这里添加执行命令即可：</p> <div class="language- extra-class"><pre class="language-text"><code># 如果是 Ubuntu 添加以下内容（这里要写全路径，因为此时PATH的环境变量未必设置）
+/usr/local/bin/supervisord -c /etc/supervisord.conf
+
+# 如果是 Centos 添加以下内容
+/usr/bin/supervisord -c /etc/supervisord.conf
+</code></pre></div><h1 id="_5-supervisor管理"><a href="#_5-supervisor管理" class="header-anchor">#</a> 5. supervisor管理</h1> <p>supervisor的管理可以用命令行工具（supervisorctl）或者web界面管理，如果一步步按上面步骤操作，那么web管理就可以正常使用了，这里单独介绍下supervisorctl命令工具：</p> <div class="language- extra-class"><pre class="language-text"><code>### 查看supervisorctl支持的命令
+# supervisorctl help    
+default commands (type help &lt;topic&gt;):
+=====================================
+add    exit      open  reload  restart   start   tail   
+avail  fg        pid   remove  shutdown  status  update 
+clear  maintail  quit  reread  signal    stop    version
+
+### 查看当前运行的进程列表
+# supervisorctl status
+test_http                        RUNNING   pid 28087, uptime 0:05:17
+</code></pre></div><p>其中</p> <ul><li>update 更新新的配置到supervisord（不会重启原来已运行的程序）</li> <li>reload，载入所有配置文件，并按新的配置启动、管理所有进程（会重启原来已运行的程序）</li> <li>start xxx: 启动某个进程</li> <li>restart xxx: 重启某个进程</li> <li>stop xxx: 停止某一个进程(xxx)，xxx为[program:theprogramname]里配置的值</li> <li>stop groupworker: 重启所有属于名为groupworker这个分组的进程(start,restart同理)</li> <li>stop all，停止全部进程，注：start、restart、stop都不会载入最新的配置文</li> <li>reread，当一个服务由自动启动修改为手动启动时执行一下就ok</li></ul> <p>注意：如果原来的程序启动时需要带上参数，那通过supervisorctl start时应该先写一个shell脚本，然后supervisorctl运行该脚本即可。</p> <h1 id="_6-supervisor配置参数介绍"><a href="#_6-supervisor配置参数介绍" class="header-anchor">#</a> 6. supervisor配置参数介绍</h1> <p>supervisord的配置文件主要由几个配置段构成，配置项以K/V格式呈现。</p> <ul><li>unix<em>http</em>server配置块</li></ul> <p>在该配置块的参数项表示的是一个监听在socket上的HTTP server，如果[unix<em>http</em>server]块不在配置文件中或被注释，则不会启动基于socket的HTTP server。该块的参数介绍如下：</p> <div class="language- extra-class"><pre class="language-text"><code>- file：一个unix domain socket的文件路径，HTTP/XML-RPC会监听在这上面
+- chmod：在启动时修改unix domain socket的mode
+- chown：修改socket文件的属主
+- username：HTTP server在认证时的用户名
+- password：认证密码
+</code></pre></div><ul><li>inet<em>http</em>server配置块</li></ul> <p>在该配置块的参数项表示的是一个监听在TCP上的HTTP server，如果[inet<em>http</em>server]块不在配置文件中或被注释，则不会启动基于TCP的HTTP server。该块的参数介绍如下：</p> <div class="language- extra-class"><pre class="language-text"><code>- port：TCP监听的地址和端口(ip:port)，这个地址会被HTTP/XML-RPC监听
+- username：HTTP server在认证时的用户名
+- password：认证密码
+</code></pre></div><p>比如：</p> <div class="language- extra-class"><pre class="language-text"><code> [inet_http_server]         ; inet (TCP) server disabled by default
+ port=0.0.0.0:9001          ; (ip_address:port specifier, *:port for all iface)
+ username=user              ; (default is no username (open server))
+ password=123               ; (default is no password (open server))
+</code></pre></div><p>表示监听在9001端口，需要使用用户名+密码的方式访问，访问地址是:http//127.0.0.1:9001。</p> <ul><li>supervisord配置块</li></ul> <p>该配置块的参数项是关于supervisord进程的全局配置项。该块的参数介绍如下：</p> <div class="language- extra-class"><pre class="language-text"><code>- logfile：log文件路径
+- logfile_maxbytes：log文件达到多少后自动进行轮转，单位是KB、MB、GB。如果设置为0则表示不限制日志文件大小
+- logfile_backups：轮转日志备份的数量，默认是10，如果设置为0，则不备份
+- loglevel：error、warn、info、debug、trace、blather、critical
+- pidfile：pid文件路径
+- umask：umask值，默认022
+- nodaemon：如果设置为true，则supervisord在前台启动，而不是以守护进程启动
+- minfds：supervisord在成功启动前可用的最小文件描述符数量，默认1024
+- minprocs：supervisord在成功启动前可用的最小进程描述符数量，默认200
+- nocleanup：防止supervisord在启动的时候清除已经存在的子进程日志文件
+- childlogdir：自动启动的子进程的日志目录
+- user：supervisord的运行用户
+- directory：supervisord以守护进程运行的时候切换到这个目录
+- strip_ansi：消除子进程日志文件中的转义序列
+- environment：一个k/v对的list列表
+</code></pre></div><p>该块的参数通常不需要改动就可以使用，当然也可以按需修改。</p> <ul><li>program配置块</li></ul> <p>该块就是我们要监控的程序的配置项。该配置块的头部是有固定格式的，一个关键字program，后面跟着一个冒号，接下来才是程序名。例如：[program:foo]，foo就是程序名，在使用supervisorctl来操作程序的时候，就是以foo来标明的。该块的参数介绍如下：</p> <div class="language- extra-class"><pre class="language-text"><code>- command：启动程序使用的命令，可以是绝对路径或者相对路径
+- process_name：一个python字符串表达式，用来表示supervisor进程启动的这个的名称，默认值是%(program_name)s
+- numprocs：Supervisor启动这个程序的多个实例，如果numprocs&gt;1，则process_name的表达式必须包含%(process_num)s，默认是1
+- numprocs_start：一个int偏移值，当启动实例的时候用来计算numprocs的值
+- priority：权重，可以控制程序启动和关闭时的顺序，权重越低：越早启动，越晚关闭。默认值是999
+- autostart：如果设置为true，当supervisord启动的时候，进程会自动重启。
+- autorestart：值可以是false、true、unexpected。false：进程不会自动重启，unexpected：当程序退出时的退出码不是exitcodes中定义的时，进程会重启，true：进程会无条件重启当退出的时候。
+- startsecs：程序启动后等待多长时间后才认为程序启动成功
+- startretries：supervisord尝试启动一个程序时尝试的次数。默认是3
+- exitcodes：一个预期的退出返回码，默认是0,2。
+- stopsignal：当收到stop请求的时候，发送信号给程序，默认是TERM信号，也可以是 HUP, INT, QUIT, KILL, USR1, or USR2。
+- stopwaitsecs：在操作系统给supervisord发送SIGCHILD信号时等待的时间
+- stopasgroup：如果设置为true，则会使supervisor发送停止信号到整个进程组
+- killasgroup：如果设置为true，则在给程序发送SIGKILL信号的时候，会发送到整个进程组，它的子进程也会受到影响。
+- user：如果supervisord以root运行，则会使用这个设置用户启动子程序
+- redirect_stderr：如果设置为true，进程则会把标准错误输出到supervisord后台的标准输出文件描述符。
+- stdout_logfile：把进程的标准输出写入文件中，如果stdout_logfile没有设置或者设置为AUTO，则supervisor会自动选择一个文件位置。
+- stdout_logfile_maxbytes：标准输出log文件达到多少后自动进行轮转，单位是KB、MB、GB。如果设置为0则表示不限制日志文件大小
+- stdout_logfile_backups：标准输出日志轮转备份的数量，默认是10，如果设置为0，则不备份
+- stdout_capture_maxbytes：当进程处于stderr capture mode模式的时候，写入FIFO队列的最大bytes值，单位可以是KB、MB、GB
+- stdout_events_enabled：如果设置为true，当进程在写它的stderr到文件描述符的时候，PROCESS_LOG_STDERR事件会被触发
+- stderr_logfile：把进程的错误日志输出一个文件中，除非redirect_stderr参数被设置为true
+- stderr_logfile_maxbytes：错误log文件达到多少后自动进行轮转，单位是KB、MB、GB。如果设置为0则表示不限制日志文件大小
+- stderr_logfile_backups：错误日志轮转备份的数量，默认是10，如果设置为0，则不备份
+- stderr_capture_maxbytes：当进程处于stderr capture mode模式的时候，写入FIFO队列的最大bytes值，单位可以是KB、MB、GB
+- stderr_events_enabled：如果设置为true，当进程在写它的stderr到文件描述符的时候，PROCESS_LOG_STDERR事件会被触发
+- environment：一个k/v对的list列表
+- directory：supervisord在生成子进程的时候会切换到该目录
+- umask：设置进程的umask
+- serverurl：是否允许子进程和内部的HTTP服务通讯，如果设置为AUTO，supervisor会自动的构造一个url
+</code></pre></div><p>比如下面这个选项块就表示监控一个名叫test_http的程序：</p> <div class="language- extra-class"><pre class="language-text"><code>[program:test_http]
+command=python test_http.py 10000  ; 被监控的进程启动命令
+directory=/root/                ; 执行前要不要先cd到目录去，一般不用
+priority=1                    ;数字越高，优先级越高
+numprocs=1                    ; 启动几个进程
+autostart=true                ; 随着supervisord的启动而启动
+autorestart=true              ; 自动重启。。当然要选上了
+startretries=10               ; 启动失败时的最多重试次数
+exitcodes=0                   ; 正常退出代码（是说退出代码是这个时就不再重启了吗？待确定）
+stopsignal=KILL               ; 用来杀死进程的信号
+stopwaitsecs=10               ; 发送SIGKILL前的等待时间
+redirect_stderr=true          ; 重定向stderr到stdout
+</code></pre></div><h1 id="_7-集群管理"><a href="#_7-集群管理" class="header-anchor">#</a> 7. 集群管理</h1> <p>supervisor不支持跨机器的进程监控，一个supervisord只能监控本机上的程序，大大限制了supervisor的使用。</p> <p>不过由于supervisor本身支持xml-rpc，因此也有一些基于supervisor二次开发的多机器进程管理工具。比如：</p> <ul><li><a href="https://github.com/aleszoulek/django-dashvisor" target="_blank" rel="noopener noreferrer">Django-Dashvisor<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>
+Web-based dashboard written in Python. Requires Django 1.3 or 1.4.</li> <li><a href="https://github.com/TAKEALOT/nodervisor" target="_blank" rel="noopener noreferrer">Nodervisor<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>
+Web-based dashboard written in Node.js.</li> <li><a href="https://github.com/mlazarov/supervisord-monitor" target="_blank" rel="noopener noreferrer">Supervisord-Monitor<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>
+Web-based dashboard written in PHP.</li> <li><a href="https://github.com/luxbet/supervisorui" target="_blank" rel="noopener noreferrer">SupervisorUI<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>
+Another Web-based dashboard written in PHP.</li> <li><a href="https://github.com/Gamegos/cesi" target="_blank" rel="noopener noreferrer">cesi<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>
+cesi is a web interface provides manage supervizors from same interface.</li></ul> <p>以上那么多，我都不会，一个个试起来也很麻烦，搞不定，除了最后一个<a href="https://github.com/Gamegos/cesi" target="_blank" rel="noopener noreferrer">cesi<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>，还好懂点pyhon，勉强安装成功了。</p> <p><strong>cesi具体安装说明请直接参考原Readme。这里只做一点说明：</strong></p> <div class="language- extra-class"><pre class="language-text"><code>git clone https://github.com/Gamegos/cesi
+cd cesi &amp;&amp; mkdir pack
+python setup.py build
+python setup.py install
+sqlite3 /自己的路径path/userinfo.db &lt; userinfo.sql
+cp cesi.conf /etc/cesi.conf  ### 自行修改cesi.conf内容，kv对，很简单
+cd cesi &amp;&amp; python web.py     ### 即可启动成功
+</code></pre></div><p>cesi.conf配置文件的设置：</p> <div class="language- extra-class"><pre class="language-text"><code>[node:local]                            ### 设置监控的各个机器
+username = user
+password = 123
+host = 192.168.14.8
+port = 9001
+
+;[node:&lt;node_name2&gt;]                    ### 如果有多台机器，就依次添加
+;username = &lt;username&gt;
+;password = &lt;password&gt;
+;host = &lt;hostname&gt;
+;port = &lt;port&gt;
+
+;[environment:&lt;environment_name&gt;]
+;members = &lt;node_name&gt;, &lt;node_name2&gt;
+
+[cesi]
+database = /root/temp/cesi/userinfo.db    ### 设置db路径
+activity_log = /root/temp/cesi/cesi.log   ### 设置log路径
+host = 0.0.0.0
+</code></pre></div><p>一切顺利的话，可通过页面http://ip:5000，用户名，密码都是admin，最终的效果如下所示：
+<img src="http://i.imgur.com/0UBx7qF.png" alt="img"></p> <p>cesi repo上的示例效果：</p> <p><img src="https://github.com/GulsahKose/cesi/raw/master/screenshots/image1" alt="img"></p> <p>记录下用法学习使用。</p> <p>转载自：https://www.cnblogs.com/smail-bao/p/5673434.html</p></div> <footer class="page-edit" style="display:none;"><!----> <!----></footer> <!----> <!----></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-44bd5a18 data-v-44bd5a18><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-44bd5a18><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-44bd5a18></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-44bd5a18></path></svg></div></div></div>
+    <script src="/assets/js/app.4c0f163f.js" defer></script><script src="/assets/js/3.5c161e77.js" defer></script><script src="/assets/js/1.b50dabeb.js" defer></script><script src="/assets/js/29.29630159.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Django增加QQ第三方登录 | 君惜の博客</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    
+    <meta name="description" content="">
+    <link rel="preload" href="/assets/css/0.styles.ff30c3b6.css" as="style"><link rel="preload" href="/assets/js/app.4c0f163f.js" as="script"><link rel="preload" href="/assets/js/3.5c161e77.js" as="script"><link rel="preload" href="/assets/js/1.b50dabeb.js" as="script"><link rel="preload" href="/assets/js/35.7e2b5a6f.js" as="script"><link rel="prefetch" href="/assets/js/10.7fffa9c4.js"><link rel="prefetch" href="/assets/js/11.a894a0a3.js"><link rel="prefetch" href="/assets/js/12.7c1460cd.js"><link rel="prefetch" href="/assets/js/13.dd983835.js"><link rel="prefetch" href="/assets/js/14.1487eb9d.js"><link rel="prefetch" href="/assets/js/15.4756daf1.js"><link rel="prefetch" href="/assets/js/16.a530f05a.js"><link rel="prefetch" href="/assets/js/17.29f6aa52.js"><link rel="prefetch" href="/assets/js/18.e4a9724e.js"><link rel="prefetch" href="/assets/js/19.5ed05463.js"><link rel="prefetch" href="/assets/js/20.0cce4e1a.js"><link rel="prefetch" href="/assets/js/21.83dfac32.js"><link rel="prefetch" href="/assets/js/22.ad29d758.js"><link rel="prefetch" href="/assets/js/23.18313ffe.js"><link rel="prefetch" href="/assets/js/24.665841c7.js"><link rel="prefetch" href="/assets/js/25.5e232809.js"><link rel="prefetch" href="/assets/js/26.af71fdca.js"><link rel="prefetch" href="/assets/js/27.8a2d98c2.js"><link rel="prefetch" href="/assets/js/28.1306b459.js"><link rel="prefetch" href="/assets/js/29.29630159.js"><link rel="prefetch" href="/assets/js/30.b89be015.js"><link rel="prefetch" href="/assets/js/31.6295dd91.js"><link rel="prefetch" href="/assets/js/32.b7becd12.js"><link rel="prefetch" href="/assets/js/33.8faf9a10.js"><link rel="prefetch" href="/assets/js/34.cd57f657.js"><link rel="prefetch" href="/assets/js/36.d71a14b1.js"><link rel="prefetch" href="/assets/js/37.959b4726.js"><link rel="prefetch" href="/assets/js/38.f931a68f.js"><link rel="prefetch" href="/assets/js/39.c3ea2b40.js"><link rel="prefetch" href="/assets/js/4.c1ea1bf1.js"><link rel="prefetch" href="/assets/js/40.4982c905.js"><link rel="prefetch" href="/assets/js/41.203d520e.js"><link rel="prefetch" href="/assets/js/42.7e5a0064.js"><link rel="prefetch" href="/assets/js/43.6b7dcc89.js"><link rel="prefetch" href="/assets/js/44.ace44d85.js"><link rel="prefetch" href="/assets/js/45.e7334ca4.js"><link rel="prefetch" href="/assets/js/46.2f73e550.js"><link rel="prefetch" href="/assets/js/47.bb851a3c.js"><link rel="prefetch" href="/assets/js/48.9ead4a3a.js"><link rel="prefetch" href="/assets/js/49.f6d187a3.js"><link rel="prefetch" href="/assets/js/5.4f3c9bb5.js"><link rel="prefetch" href="/assets/js/50.44513019.js"><link rel="prefetch" href="/assets/js/51.f92332ae.js"><link rel="prefetch" href="/assets/js/52.1a90855d.js"><link rel="prefetch" href="/assets/js/53.a6063052.js"><link rel="prefetch" href="/assets/js/54.5e4dc526.js"><link rel="prefetch" href="/assets/js/55.b4cf2cca.js"><link rel="prefetch" href="/assets/js/56.5afab6b8.js"><link rel="prefetch" href="/assets/js/57.13db934e.js"><link rel="prefetch" href="/assets/js/58.45393b85.js"><link rel="prefetch" href="/assets/js/59.312d0c74.js"><link rel="prefetch" href="/assets/js/6.0583317e.js"><link rel="prefetch" href="/assets/js/60.868da390.js"><link rel="prefetch" href="/assets/js/61.06d72270.js"><link rel="prefetch" href="/assets/js/62.95d65aff.js"><link rel="prefetch" href="/assets/js/63.36ccfb18.js"><link rel="prefetch" href="/assets/js/64.02290762.js"><link rel="prefetch" href="/assets/js/65.eac6abdc.js"><link rel="prefetch" href="/assets/js/66.5c7a3796.js"><link rel="prefetch" href="/assets/js/67.6d2a84e7.js"><link rel="prefetch" href="/assets/js/68.12b35d40.js"><link rel="prefetch" href="/assets/js/69.da3256da.js"><link rel="prefetch" href="/assets/js/7.60184b24.js"><link rel="prefetch" href="/assets/js/70.76e73b0c.js"><link rel="prefetch" href="/assets/js/71.99afbb77.js"><link rel="prefetch" href="/assets/js/72.19feaec4.js"><link rel="prefetch" href="/assets/js/73.ba5ee2ed.js"><link rel="prefetch" href="/assets/js/74.cef516f6.js"><link rel="prefetch" href="/assets/js/75.90f4a703.js"><link rel="prefetch" href="/assets/js/76.885ff289.js"><link rel="prefetch" href="/assets/js/77.823d6f1d.js"><link rel="prefetch" href="/assets/js/78.2c2736ff.js"><link rel="prefetch" href="/assets/js/79.cbfa5ae7.js"><link rel="prefetch" href="/assets/js/8.ccce47cf.js"><link rel="prefetch" href="/assets/js/80.431573aa.js"><link rel="prefetch" href="/assets/js/9.9160a89c.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.ff30c3b6.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-19557b78><div data-v-19557b78><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-19557b78 data-v-19557b78><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-64685f0e data-v-19557b78 data-v-19557b78><h3 class="title" style="display:none;" data-v-64685f0e data-v-64685f0e>君惜の博客</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-64685f0e data-v-64685f0e><input type="password" value="" data-v-64685f0e> <span data-v-64685f0e>Konck! Knock!</span> <button data-v-64685f0e>OK</button></label> <div class="footer" style="display:none;" data-v-64685f0e data-v-64685f0e><span data-v-64685f0e><i class="iconfont reco-theme" data-v-64685f0e></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-64685f0e>vuePress-theme-reco</a></span> <span data-v-64685f0e><i class="iconfont reco-copyright" data-v-64685f0e></i> <a data-v-64685f0e><span data-v-64685f0e>君惜</span>
+            
+          <!---->
+          2020
+        </a></span></div></div> <div class="hide" data-v-19557b78><header class="navbar" data-v-19557b78><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">君惜の博客</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/Docker/" class="nav-link"><i class="iconfont undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Git/" class="nav-link"><i class="iconfont undefined"></i>
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JavaScript/" class="nav-link"><i class="iconfont undefined"></i>
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Linux/" class="nav-link"><i class="iconfont undefined"></i>
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Mysql/" class="nav-link"><i class="iconfont undefined"></i>
+  Mysql
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Node.js/" class="nav-link"><i class="iconfont undefined"></i>
+  Node.js
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Python/" class="nav-link"><i class="iconfont undefined"></i>
+  Python
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Redis/" class="nav-link"><i class="iconfont undefined"></i>
+  Redis
+</a></li><li class="dropdown-item"><!----> <a href="/categories/并发测试/" class="nav-link"><i class="iconfont undefined"></i>
+  并发测试
+</a></li><li class="dropdown-item"><!----> <a href="/categories/随笔/" class="nav-link"><i class="iconfont undefined"></i>
+  随笔
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div> <a href="https://github.com/xinlei3166" target="_blank" rel="noopener noreferrer" class="repo-link"><i class="iconfont reco-github"></i>
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask" data-v-19557b78></div> <aside class="sidebar" data-v-19557b78><div class="personal-info-wrapper" data-v-b038cec6><img src="/img/avatar.jpg" alt="author-avatar" class="personal-img" data-v-b038cec6> <h3 class="name" data-v-b038cec6>
+    君惜
+  </h3> <div class="num" data-v-b038cec6><div data-v-b038cec6><h3 data-v-b038cec6>68</h3> <h6 data-v-b038cec6>Article</h6></div> <div data-v-b038cec6><h3 data-v-b038cec6>76</h3> <h6 data-v-b038cec6>Tag</h6></div></div> <hr data-v-b038cec6></div> <nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/Docker/" class="nav-link"><i class="iconfont undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Git/" class="nav-link"><i class="iconfont undefined"></i>
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JavaScript/" class="nav-link"><i class="iconfont undefined"></i>
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Linux/" class="nav-link"><i class="iconfont undefined"></i>
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Mysql/" class="nav-link"><i class="iconfont undefined"></i>
+  Mysql
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Node.js/" class="nav-link"><i class="iconfont undefined"></i>
+  Node.js
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Python/" class="nav-link"><i class="iconfont undefined"></i>
+  Python
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Redis/" class="nav-link"><i class="iconfont undefined"></i>
+  Redis
+</a></li><li class="dropdown-item"><!----> <a href="/categories/并发测试/" class="nav-link"><i class="iconfont undefined"></i>
+  并发测试
+</a></li><li class="dropdown-item"><!----> <a href="/categories/随笔/" class="nav-link"><i class="iconfont undefined"></i>
+  随笔
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div> <a href="https://github.com/xinlei3166" target="_blank" rel="noopener noreferrer" class="repo-link"><i class="iconfont reco-github"></i>
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Django增加QQ第三方登录</span> <!----></p> <!----></section></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-64685f0e data-v-19557b78><h3 class="title" style="display:none;" data-v-64685f0e data-v-64685f0e>Django增加QQ第三方登录</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-64685f0e data-v-64685f0e><input type="password" value="" data-v-64685f0e> <span data-v-64685f0e>Konck! Knock!</span> <button data-v-64685f0e>OK</button></label> <div class="footer" style="display:none;" data-v-64685f0e data-v-64685f0e><span data-v-64685f0e><i class="iconfont reco-theme" data-v-64685f0e></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-64685f0e>vuePress-theme-reco</a></span> <span data-v-64685f0e><i class="iconfont reco-copyright" data-v-64685f0e></i> <a data-v-64685f0e><span data-v-64685f0e>君惜</span>
+            
+          <!---->
+          2020
+        </a></span></div></div> <div data-v-19557b78><main class="page"><div class="page-title" style="display:none;"><h1>Django增加QQ第三方登录</h1> <hr> <div data-v-cd8d63d2><i class="iconfont reco-account" data-v-cd8d63d2><span data-v-cd8d63d2>君惜</span></i> <!----> <!----> <i class="iconfont reco-tag tags" data-v-cd8d63d2><span class="tag-item" data-v-cd8d63d2>
+      Python
+    </span><span class="tag-item" data-v-cd8d63d2>
+      Django
+    </span><span class="tag-item" data-v-cd8d63d2>
+      OAuth
+    </span><span class="tag-item" data-v-cd8d63d2>
+      QQ
+    </span><span class="tag-item" data-v-cd8d63d2>
+      第三方登录
+    </span></i></div></div> <div class="theme-reco-content content__default" style="display:none;"><h3 id="准备工作-oauth2-0"><a href="#准备工作-oauth2-0" class="header-anchor">#</a> 准备工作_OAuth2.0</h3> <p>接入QQ登录前，网站需首先进行申请，获得对应的appid与appkey，以保证后续流程中可正确对网站与用户进行验证与授权。
+<img src="http://upload-images.jianshu.io/upload_images/4262139-f12adb012928f407.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="QQ-API调用步骤"></p> <p>在开发的过程中，发现获取不到QQ号，只能获取一个OpenID的东西。最后采取存储这个OpenID并绑定对应账号的方式。
+所以需要创建对应的模型，即创建一个应用管理第三方登录。</p> <p>QQ登录功能开发流程如下图:
+<img src="http://upload-images.jianshu.io/upload_images/4262139-15306e3a4534a70e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="QQ第三方登录"></p> <h3 id="第1步、qq互联注册网站应用"><a href="#第1步、qq互联注册网站应用" class="header-anchor">#</a> <strong>第1步、QQ互联注册网站应用</strong></h3> <p>打开<a href="http://open.qq.com" target="_blank" rel="noopener noreferrer">QQ互联<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>，进入管理中心。注册一下应用开发者，并添加网站应用，获得对应的appid与appkey。</p> <p><img src="http://upload-images.jianshu.io/upload_images/4262139-bca6de1fa1e9bcf4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="APP ID和KEY"></p> <p>申请appid和appkey的用途
+appid：应用的唯一标识。在OAuth2.0认证过程中，appid的值即为oauth_consumer_key的值。
+appkey：appid对应的密钥，访问用户资源时用来验证应用的合法性。在OAuth2.0认证过程中，appkey的值即为oauth_consumer_secret的值。</p> <p><img src="http://upload-images.jianshu.io/upload_images/4262139-7a3ff4b416e3b271.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="应用申请"></p> <p><img src="http://upload-images.jianshu.io/upload_images/4262139-8654f3640bb72b89.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="应用接口"></p> <p>理解回调地址需要了解一下<a href="http://wiki.open.qq.com/wiki/website/OAuth2.0%E7%AE%80%E4%BB%8B" target="_blank" rel="noopener noreferrer">OAuth协议<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>。
+在你的网站页面里面，打开授权页面（这个授权页面不是回调地址）。在授权页面里面，登录QQ并确认授权。
+授权之后，会得到一个授权码。回调地址就是用于接收这个授权码。
+授权码以GET的方式返回，例如 http://www.junxi.site/web/oauth/qq/check/?code=xxxxxxxxxxxxx
+通过这种方式，可以获取授权码，所以需要提供一个地址。这个地址先写一个暂时没有的地址，后面开发的时候，再给这个地址写对应的响应方法。</p> <h3 id="第2步、放置qq按钮"><a href="#第2步、放置qq按钮" class="header-anchor">#</a> <strong>第2步、放置QQ按钮</strong></h3> <p>这个QQ按钮是提供QQ登录的入口。从腾讯提供的<a href="http://wiki.open.qq.com/wiki/website/%E7%BD%91%E7%AB%99%E5%89%8D%E7%AB%AF%E9%A1%B5%E9%9D%A2%E8%A7%84%E8%8C%83#2._.E6.A0.87.E8.AF.86.E6.94.BE.E7.BD.AE.E4.BD.8D.E7.BD.AE.E8.A7.84.E8.8C.83" target="_blank" rel="noopener noreferrer">QQ按钮<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>下载放到你的登录页面即可。
+<img src="http://upload-images.jianshu.io/upload_images/4262139-ab1888efea94bbe0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="QQ登录按钮">
+不用看帮助文档里面的什么前端代码。这些用不上，只需要加一个固定的访问链接，再重定向即可。
+前端页面此处的代码如下：</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>span<span class="token operator">&gt;</span>其他登录方式：<span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>a href<span class="token operator">=</span><span class="token string">&quot;{% url 'qq_login' %}&quot;</span><span class="token operator">&gt;</span>
+        !<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token operator">/</span>static<span class="token operator">/</span>images<span class="token operator">/</span>connect_qq<span class="token punctuation">.</span>png<span class="token punctuation">)</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+</code></pre></div><p>qq_login链接在下面第3步创建web应用里面设置。</p> <h3 id="第3步、创建web应用"><a href="#第3步、创建web应用" class="header-anchor">#</a> <strong>第3步、创建web应用</strong></h3> <p>怎么创建应用就不细说了，这是基本功。这里我已经创建了一个名称为web的django app应用。
+创建完成之后，打开models.py文件，编写模型：</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment">#!/usr/bin/env python</span>
+<span class="token comment"># _*_ coding:utf-8 _*_</span>
+__author__ <span class="token operator">=</span> <span class="token string">'junxi'</span>
+
+<span class="token keyword">import</span> sys
+<span class="token builtin">reload</span><span class="token punctuation">(</span>sys<span class="token punctuation">)</span>
+sys<span class="token punctuation">.</span>setdefaultencoding<span class="token punctuation">(</span><span class="token string">'utf8'</span><span class="token punctuation">)</span>
+
+<span class="token keyword">class</span> <span class="token class-name">OAuthQQ</span><span class="token punctuation">(</span>models<span class="token punctuation">.</span>Model<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">&quot;&quot;&quot;QQ and User Bind&quot;&quot;&quot;</span>
+    user <span class="token operator">=</span> models<span class="token punctuation">.</span>ForeignKey<span class="token punctuation">(</span>UserProfile<span class="token punctuation">)</span>   <span class="token comment"># 关联用户信息表</span>
+    qq_openid <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">64</span><span class="token punctuation">)</span>   <span class="token comment"># QQ的关联OpenID</span>
+    
+    <span class="token comment"># def __str__(self):</span>
+    <span class="token comment">#    return self.user</span>
+</code></pre></div><p>该模型用于存储QQ登录返回的OpenID值。这个OpenID值是用QQ号一一对应。腾讯不给得到真实QQ号可能是出于保护隐私的考虑。</p> <p>在总的urls路由中，加入这个应用路由。(总路由在和工程名一样的文件夹中的urls.py文件。这种方式对urls管理比较清晰)</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">from</span> django<span class="token punctuation">.</span>conf<span class="token punctuation">.</span>urls <span class="token keyword">import</span> url<span class="token punctuation">,</span> include
+<span class="token keyword">from</span> django<span class="token punctuation">.</span>contrib <span class="token keyword">import</span> admin
+<span class="token keyword">import</span> web<span class="token punctuation">.</span>urls
+<span class="token keyword">import</span> web<span class="token punctuation">.</span>views
+
+urlpatterns <span class="token operator">=</span> <span class="token punctuation">[</span>
+    url<span class="token punctuation">(</span><span class="token string">r'^admin/'</span><span class="token punctuation">,</span> admin<span class="token punctuation">.</span>site<span class="token punctuation">.</span>urls<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    url<span class="token punctuation">(</span><span class="token string">r'^web/'</span><span class="token punctuation">,</span> include<span class="token punctuation">(</span>web<span class="token punctuation">.</span>urls<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span>
+</code></pre></div><p>路由控制根据自己的工程自己写即可。</p> <p>打开web应用目录下urls.py文件，先写一下需要哪些链接地址：</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">from</span> django<span class="token punctuation">.</span>conf<span class="token punctuation">.</span>urls <span class="token keyword">import</span> url
+<span class="token keyword">from</span> <span class="token punctuation">.</span>views <span class="token keyword">import</span> <span class="token operator">*</span>
+
+urlpatterns <span class="token operator">=</span> <span class="token punctuation">[</span>
+    url<span class="token punctuation">(</span><span class="token string">r'^oauth/qq/login/$'</span><span class="token punctuation">,</span> login<span class="token punctuation">,</span> name<span class="token operator">=</span><span class="token string">'qq_login'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    url<span class="token punctuation">(</span><span class="token string">r'^oauth/qq/check/$'</span><span class="token punctuation">,</span> login<span class="token punctuation">,</span> name<span class="token operator">=</span><span class="token string">'qq_check'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    url<span class="token punctuation">(</span><span class="token string">r'^oauth/bind/account/$'</span><span class="token punctuation">,</span> login<span class="token punctuation">,</span> name<span class="token operator">=</span><span class="token string">'bind_account'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span>
+</code></pre></div><p>qq_login和qq_check，分别是打开授权页面和回调地址。
+bind_account是绑定用户的页面。
+大致思路是授权之后，得到OpenID。判断这个OpenID是否存在数据库中。若存在，则直接登录对应的用户即可；若不存在，则打开这个绑定邮箱页面，绑定对应的用户。</p> <h3 id="第4步、开发oauth登录功能"><a href="#第4步、开发oauth登录功能" class="header-anchor">#</a> <strong>第4步、开发OAuth登录功能</strong></h3> <p>为了管理好OAuth，在web应用的文件夹下创建oauth_client.py文件。把相关的OAuth操作方法集成在一起。编辑oauth_client.py文件：</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment">#!/usr/bin/env python</span>
+<span class="token comment"># _*_ coding:utf-8 _*_</span>
+__author__ <span class="token operator">=</span> <span class="token string">'junxi'</span>
+
+<span class="token keyword">import</span> json
+<span class="token keyword">import</span> urllib<span class="token punctuation">,</span> urllib2<span class="token punctuation">,</span> urlparse
+
+
+<span class="token keyword">class</span> <span class="token class-name">OAuthQQ</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> client_id<span class="token punctuation">,</span> client_key<span class="token punctuation">,</span> redirect_uri<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>client_id <span class="token operator">=</span> client_id
+        self<span class="token punctuation">.</span>client_key <span class="token operator">=</span> client_key
+        self<span class="token punctuation">.</span>redirect_uri <span class="token operator">=</span> redirect_uri
+
+    <span class="token keyword">def</span> <span class="token function">get_auth_url</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">&quot;&quot;&quot;获取授权页面的网址&quot;&quot;&quot;</span>
+        params <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'client_id'</span><span class="token punctuation">:</span> self<span class="token punctuation">.</span>client_id<span class="token punctuation">,</span>
+                  <span class="token string">'response_type'</span><span class="token punctuation">:</span> <span class="token string">'code'</span><span class="token punctuation">,</span>
+                  <span class="token string">'redirect_uri'</span><span class="token punctuation">:</span> self<span class="token punctuation">.</span>redirect_uri<span class="token punctuation">,</span>
+                  <span class="token string">'scope'</span><span class="token punctuation">:</span> <span class="token string">'get_user_info'</span><span class="token punctuation">,</span>
+                  <span class="token string">'state'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">}</span>
+        url <span class="token operator">=</span> <span class="token string">'https://graph.qq.com/oauth2.0/authorize?%s'</span> <span class="token operator">%</span> urllib<span class="token punctuation">.</span>urlencode<span class="token punctuation">(</span>params<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> url
+</code></pre></div><p>创建一个类，需要申请QQ登录的APP_ID、APP_KEY和回调地址。这些都是固定的，我把这几个常量放入到settings.py中。settings.py添加如下常量，具体的值请在你的申请页面查找（这里还需要提一下，本地调试的方法。因为授权之后是调整到部署之后的网站上，而部署的网站还没开发响应的代码，无法响应对应的地址。这里我是本地测试环境，强制绑定Hosts域名文件解析）：</p> <p><img src="http://upload-images.jianshu.io/upload_images/4262139-fcfa8ac03514e77a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="修改Hosts文件"></p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># OAuth设置</span>
+QQ_APP_ID <span class="token operator">=</span> <span class="token string">'XXXXXX'</span>
+QQ_KEY <span class="token operator">=</span> <span class="token string">'XXXXXX'</span>
+QQ_RECALL_URL <span class="token operator">=</span> <span class="token string">'http://www.junxi.site/web/oauth/qq/check'</span>
+</code></pre></div><p>回到OAuthQQ类，现里面有个get_auth_url方法。该方法是获取打开授权页面的链接地址。（可参考<a href="http://wiki.connect.qq.com/%E4%BD%BF%E7%94%A8authorization_code%E8%8E%B7%E5%8F%96access_token#Step1.EF.BC.9A.E8.8E.B7.E5.8F.96AuthorizationCode" target="_blank" rel="noopener noreferrer">官方帮助<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>，写得不够清晰）</p> <p>接着，在编辑web应用的views.py文件，加入qq_login对应的响应方法：</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">from</span> django<span class="token punctuation">.</span>shortcuts <span class="token keyword">import</span> HttpResponseRedirect
+<span class="token keyword">from</span> django<span class="token punctuation">.</span>conf <span class="token keyword">import</span> settings
+<span class="token keyword">from</span> oauth_client <span class="token keyword">import</span> OAuthQQ
+ 
+
+<span class="token keyword">def</span> <span class="token function">qq_login</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    oauth_qq <span class="token operator">=</span> OAuthQQ<span class="token punctuation">(</span>settings<span class="token punctuation">.</span>QQ_APP_ID<span class="token punctuation">,</span> settings<span class="token punctuation">.</span>QQ_KEY<span class="token punctuation">,</span> settings<span class="token punctuation">.</span>QQ_RECALL_URL<span class="token punctuation">)</span>
+ 
+    <span class="token comment">#获取 得到Authorization Code的地址</span>
+    url <span class="token operator">=</span> oauth_qq<span class="token punctuation">.</span>get_auth_url<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token comment">#重定向到授权页面</span>
+    <span class="token keyword">return</span> HttpResponseRedirect<span class="token punctuation">(</span>url<span class="token punctuation">)</span>
+</code></pre></div><p>到这里为止，就完成了点击QQ登录按钮，跳转到授权页面。
+登录授权之后，授权页面会自动跳转到我们设置的回调地址。例如 http://www.junxi.site/web/oauth/qq/check?code=xxxxxxxxxxxxx
+我们可以获取这个地址上面的GET参数。先假设我们可以顺利获取到，继续完善OAuthQQ类。拿到这个授权码之后，需要用该码获取腾讯的access_token通行令牌。</p> <p>打开oauth_client.py文件，在OAuthQQ类添加如下方法：</p> <div class="language-python extra-class"><pre class="language-python"><code>    <span class="token keyword">def</span> <span class="token function">get_access_token</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> code<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">&quot;&quot;&quot;根据code获取access_token&quot;&quot;&quot;</span>
+        params <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'grant_type'</span><span class="token punctuation">:</span> <span class="token string">'authorization_code'</span><span class="token punctuation">,</span>
+                  <span class="token string">'client_id'</span><span class="token punctuation">:</span> self<span class="token punctuation">.</span>client_id<span class="token punctuation">,</span>
+                  <span class="token string">'client_secret'</span><span class="token punctuation">:</span> self<span class="token punctuation">.</span>client_key<span class="token punctuation">,</span>
+                  <span class="token string">'code'</span><span class="token punctuation">:</span> code<span class="token punctuation">,</span>
+                  <span class="token string">'redirect_uri'</span><span class="token punctuation">:</span> self<span class="token punctuation">.</span>redirect_uri<span class="token punctuation">}</span>    <span class="token comment"># 回调地址</span>
+        url <span class="token operator">=</span> <span class="token string">'https://graph.qq.com/oauth2.0/token?%s'</span> <span class="token operator">%</span> urllib<span class="token punctuation">.</span>urlencode<span class="token punctuation">(</span>params<span class="token punctuation">)</span>
+
+        <span class="token comment"># 访问该网址，获取access_token</span>
+        response <span class="token operator">=</span> urllib2<span class="token punctuation">.</span>urlopen<span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        result <span class="token operator">=</span> urlparse<span class="token punctuation">.</span>parse_qs<span class="token punctuation">(</span>response<span class="token punctuation">,</span> <span class="token boolean">True</span><span class="token punctuation">)</span>
+
+        access_token <span class="token operator">=</span> <span class="token builtin">str</span><span class="token punctuation">(</span>result<span class="token punctuation">[</span><span class="token string">'access_token'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>access_token <span class="token operator">=</span> access_token
+        <span class="token keyword">return</span> access_token
+</code></pre></div><p>该方法使用了urllib2，在服务器后台访问对应的链接，获取access_token，并返回该值。因为我后续不需要用access_token做其他动作，直接一次性获取QQ昵称和OpenID。所以不用记录这个通行令牌的有效期。</p> <p>得到这个access_token之后，就可以做其他事了。首先需要获取授权用户的OpenID，因为腾讯不允许获取QQ号。只好退而求次，获取并保存OpenID。可参考<a href="http://wiki.connect.qq.com/%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7openid_oauth2-0" target="_blank" rel="noopener noreferrer">官方文档<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>。
+继续给这个OAuthQQ添加获取OpenID的方法和使用OpenID获取QQ基本信息的方法：</p> <div class="language-python extra-class"><pre class="language-python"><code>    <span class="token keyword">def</span> <span class="token function">get_open_id</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">&quot;&quot;&quot;获取QQ的OpenID&quot;&quot;&quot;</span>
+        params <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'access_token'</span><span class="token punctuation">:</span> self<span class="token punctuation">.</span>access_token<span class="token punctuation">}</span>
+        url <span class="token operator">=</span> <span class="token string">'https://graph.qq.com/oauth2.0/me?%s'</span> <span class="token operator">%</span> urllib<span class="token punctuation">.</span>urlencode<span class="token punctuation">(</span>params<span class="token punctuation">)</span>
+
+        response <span class="token operator">=</span> urllib2<span class="token punctuation">.</span>urlopen<span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        v_str <span class="token operator">=</span> <span class="token builtin">str</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">9</span><span class="token punctuation">:</span><span class="token operator">-</span><span class="token number">3</span><span class="token punctuation">]</span>  <span class="token comment"># 去掉callback的字符</span>
+        v_json <span class="token operator">=</span> json<span class="token punctuation">.</span>loads<span class="token punctuation">(</span>v_str<span class="token punctuation">)</span>
+
+        openid <span class="token operator">=</span> v_json<span class="token punctuation">[</span><span class="token string">'openid'</span><span class="token punctuation">]</span>
+        self<span class="token punctuation">.</span>openid <span class="token operator">=</span> openid
+        <span class="token keyword">return</span> openid
+
+    <span class="token keyword">def</span> <span class="token function">get_qq_info</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">&quot;&quot;&quot;获取QQ用户的资料信息&quot;&quot;&quot;</span>
+        params <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'access_token'</span><span class="token punctuation">:</span> self<span class="token punctuation">.</span>access_token<span class="token punctuation">,</span>
+                  <span class="token string">'oauth_consumer_key'</span><span class="token punctuation">:</span> self<span class="token punctuation">.</span>client_id<span class="token punctuation">,</span>
+                  <span class="token string">'openid'</span><span class="token punctuation">:</span> self<span class="token punctuation">.</span>openid<span class="token punctuation">}</span>
+        url <span class="token operator">=</span> <span class="token string">'https://graph.qq.com/user/get_user_info?%s'</span> <span class="token operator">%</span> urllib<span class="token punctuation">.</span>urlencode<span class="token punctuation">(</span>params<span class="token punctuation">)</span>
+
+        response <span class="token operator">=</span> urllib2<span class="token punctuation">.</span>urlopen<span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> json<span class="token punctuation">.</span>loads<span class="token punctuation">(</span>response<span class="token punctuation">)</span>
+</code></pre></div><p>腾讯返回OpenID和QQ基本信息的内容格式都不一样。</p> <p>再回头编辑views.py，添加回调地址的处理方法：</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">from</span> django<span class="token punctuation">.</span>shortcuts <span class="token keyword">import</span> render<span class="token punctuation">,</span> HttpResponseRedirect<span class="token punctuation">,</span> HttpResponse<span class="token punctuation">,</span> reverse <span class="token comment"># reverse url逆向解析</span>
+<span class="token keyword">from</span> django<span class="token punctuation">.</span>http <span class="token keyword">import</span> JsonResponse
+<span class="token keyword">from</span> <span class="token punctuation">.</span> <span class="token keyword">import</span> models
+<span class="token keyword">from</span> <span class="token punctuation">.</span>form <span class="token keyword">import</span> <span class="token operator">*</span>
+<span class="token keyword">import</span> json
+<span class="token keyword">import</span> time
+<span class="token keyword">from</span> django<span class="token punctuation">.</span>conf <span class="token keyword">import</span> settings
+<span class="token keyword">from</span> oauth_client <span class="token keyword">import</span> OAuthQQ
+
+<span class="token keyword">def</span> <span class="token function">qq_check</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment"># 第三方QQ登录，回调函数</span>
+        <span class="token triple-quoted-string string">&quot;&quot;&quot;登录之后，会跳转到这里。需要判断code和state&quot;&quot;&quot;</span>
+        request_code <span class="token operator">=</span> request<span class="token punctuation">.</span>GET<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'code'</span><span class="token punctuation">)</span>
+        oauth_qq <span class="token operator">=</span> OAuthQQ<span class="token punctuation">(</span>settings<span class="token punctuation">.</span>QQ_APP_ID<span class="token punctuation">,</span> settings<span class="token punctuation">.</span>QQ_KEY<span class="token punctuation">,</span> settings<span class="token punctuation">.</span>QQ_RECALL_URL<span class="token punctuation">)</span>
+
+        <span class="token comment"># 获取access_token</span>
+        access_token <span class="token operator">=</span> oauth_qq<span class="token punctuation">.</span>get_access_token<span class="token punctuation">(</span>request_code<span class="token punctuation">)</span>
+        time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">0.05</span><span class="token punctuation">)</span>  <span class="token comment"># 稍微休息一下，避免发送urlopen的10060错误</span>
+        open_id <span class="token operator">=</span> oauth_qq<span class="token punctuation">.</span>get_open_id<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span> open_id
+
+        <span class="token comment"># 检查open_id是否存在</span>
+        qq_open_id <span class="token operator">=</span> models<span class="token punctuation">.</span>OAuthQQ<span class="token punctuation">.</span>objects<span class="token punctuation">.</span><span class="token builtin">filter</span><span class="token punctuation">(</span>qq_openid<span class="token operator">=</span><span class="token builtin">str</span><span class="token punctuation">(</span>open_id<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span> qq_open_id
+        <span class="token keyword">if</span> qq_open_id<span class="token punctuation">:</span>
+            <span class="token comment"># 存在则获取对应的用户，并登录</span>
+            user <span class="token operator">=</span> qq_open_id<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>user<span class="token punctuation">.</span>username
+            <span class="token keyword">print</span> user
+            request<span class="token punctuation">.</span>session<span class="token punctuation">[</span><span class="token string">'username'</span><span class="token punctuation">]</span> <span class="token operator">=</span> user
+            <span class="token keyword">return</span> HttpResponseRedirect<span class="token punctuation">(</span><span class="token string">'/web/'</span><span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token comment"># 不存在，则跳转到绑定用户页面</span>
+            infos <span class="token operator">=</span> oauth_qq<span class="token punctuation">.</span>get_qq_info<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># 获取用户信息</span>
+            url <span class="token operator">=</span> <span class="token string">'%s?open_id=%s&amp;nickname=%s'</span> <span class="token operator">%</span> <span class="token punctuation">(</span>reverse<span class="token punctuation">(</span><span class="token string">'bind_account'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> open_id<span class="token punctuation">,</span> infos<span class="token punctuation">[</span><span class="token string">'nickname'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> HttpResponseRedirect<span class="token punctuation">(</span>url<span class="token punctuation">)</span>
+</code></pre></div><p>按照思路，授权之后，调整到处理授权结果的页面。获取授权码之后，用get_access_token方法得到access_token。
+再用access_token获取OpenID。坑出现了，若不加time.sleep(0.05)休息一下的话，会得到urlopen 10060错误。
+获取到open_id之后，再判断一下数据库中是否存在。若存在，则已经关联对应的用户了，直接登录该用户。
+若open_id不存在，则跳转到绑定用户的页面。该页面需要知道open_id和QQ昵称（为什么需要QQ昵称，下一步会提到）。通过GET方式，把这两个参数写在链接上即可传递过去。</p> <p><strong>本地调试</strong>，先本地打开授权页面授权，得到一个回调地址。回调地址上有授权码，如下图：</p> <p><img src="http://upload-images.jianshu.io/upload_images/4262139-b878368e1b79b6be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="授权页面"></p> <p><img src="http://upload-images.jianshu.io/upload_images/4262139-258b79902511f93d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="回调地址"></p> <p><img src="http://upload-images.jianshu.io/upload_images/4262139-1b66fd9d51c07e72.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="QQ提醒"></p> <h3 id="第5步、绑定用户"><a href="#第5步、绑定用户" class="header-anchor">#</a> <strong>第5步、绑定用户</strong></h3> <p>上面提到若open_id在数据库中不存在，则打开绑定用户页面。该页面我设计成html表单，在templates下新建qq-bind-account.html文件。如下代码：</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token punctuation">{</span><span class="token operator">%</span> extends <span class="token string">'base.html'</span> <span class="token operator">%</span><span class="token punctuation">}</span>
+
+<span class="token punctuation">{</span><span class="token operator">%</span> block title <span class="token operator">%</span><span class="token punctuation">}</span>
+    <span class="token operator">&lt;</span>title<span class="token operator">&gt;</span>QQ和账户绑定<span class="token operator">&lt;</span><span class="token operator">/</span>title<span class="token operator">&gt;</span>
+<span class="token punctuation">{</span><span class="token operator">%</span> endblock <span class="token operator">%</span><span class="token punctuation">}</span>
+
+<span class="token punctuation">{</span><span class="token operator">%</span> block head<span class="token operator">-</span>js <span class="token operator">%</span><span class="token punctuation">}</span>
+<span class="token punctuation">{</span><span class="token operator">%</span> endblock <span class="token operator">%</span><span class="token punctuation">}</span>
+
+<span class="token punctuation">{</span><span class="token operator">%</span> block nav <span class="token operator">%</span><span class="token punctuation">}</span>
+<span class="token punctuation">{</span><span class="token operator">%</span> endblock <span class="token operator">%</span><span class="token punctuation">}</span>
+
+<span class="token punctuation">{</span><span class="token operator">%</span> block content <span class="token operator">%</span><span class="token punctuation">}</span>
+<span class="token operator">&lt;</span>form <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;form-horizontal&quot;</span> enctype<span class="token operator">=</span><span class="token string">&quot;multipart/form-data&quot;</span> action<span class="token operator">=</span><span class="token string">&quot;&quot;</span> method<span class="token operator">=</span><span class="token string">&quot;post&quot;</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;login&quot;</span><span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>h1<span class="token operator">&gt;</span><span class="token operator">&lt;</span>a href<span class="token operator">=</span><span class="token string">&quot;{% url 'index' %}&quot;</span><span class="token operator">&gt;</span>Primumest<span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>h1<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;login-bottom&quot;</span><span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>h2<span class="token operator">&gt;</span>HI，!<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token operator">/</span>static<span class="token operator">/</span>images<span class="token operator">/</span>connect_qq<span class="token punctuation">.</span>png<span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">{</span> nickname <span class="token punctuation">}</span><span class="token punctuation">}</span>！您已登录。请绑定用户，完成QQ登录。<span class="token operator">&lt;</span><span class="token operator">/</span>h2<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;col-md-6&quot;</span><span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;login-mail&quot;</span><span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span><span class="token builtin">input</span> <span class="token builtin">type</span><span class="token operator">=</span><span class="token string">&quot;text&quot;</span> placeholder<span class="token operator">=</span><span class="token string">&quot;请输入你的账户名&quot;</span> name<span class="token operator">=</span><span class="token string">&quot;username&quot;</span> required<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span>i <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;fa fa-user&quot;</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>i<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;login-mail&quot;</span><span class="token operator">&gt;</span>
+					<span class="token operator">&lt;</span><span class="token builtin">input</span> <span class="token builtin">type</span><span class="token operator">=</span><span class="token string">&quot;text&quot;</span> placeholder<span class="token operator">=</span><span class="token string">&quot;请输入你的昵称&quot;</span> name<span class="token operator">=</span><span class="token string">&quot;nickname&quot;</span> required<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token operator">&gt;</span>
+					<span class="token operator">&lt;</span>i <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;fa fa-users&quot;</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>i<span class="token operator">&gt;</span>
+				<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;login-mail&quot;</span><span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span><span class="token builtin">input</span> <span class="token builtin">type</span><span class="token operator">=</span><span class="token string">&quot;password&quot;</span> placeholder<span class="token operator">=</span><span class="token string">&quot;请输入密码&quot;</span> name<span class="token operator">=</span><span class="token string">&quot;password&quot;</span> required<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span>i <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;fa fa-lock&quot;</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>i<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;login-mail&quot;</span><span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span><span class="token builtin">input</span> <span class="token builtin">type</span><span class="token operator">=</span><span class="token string">&quot;password&quot;</span> placeholder<span class="token operator">=</span><span class="token string">&quot;请再次输入密码&quot;</span> name<span class="token operator">=</span><span class="token string">&quot;password&quot;</span> required<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span>i <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;fa fa-lock&quot;</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>i<span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;col-md-6 login-do&quot;</span><span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span>label <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;hvr-shutter-in-horizontal login-sub&quot;</span><span class="token operator">&gt;</span>
+                    <span class="token operator">&lt;</span><span class="token builtin">input</span> <span class="token builtin">type</span><span class="token operator">=</span><span class="token string">&quot;submit&quot;</span> value<span class="token operator">=</span><span class="token string">&quot;确定&quot;</span><span class="token operator">&gt;</span>
+                <span class="token operator">&lt;</span><span class="token operator">/</span>label<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;clearfix&quot;</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>form<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>!<span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;copy-right&quot;</span><span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>p<span class="token operator">&gt;</span>© <span class="token number">2017</span> JunXi<span class="token punctuation">.</span> All Rights Reserved<span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+<span class="token punctuation">{</span><span class="token operator">%</span> endblock <span class="token operator">%</span><span class="token punctuation">}</span>
+</code></pre></div><p>接着，在views.py继续编辑，添加表单处理的对应方法：</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">def</span> <span class="token function">bind_account</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment"># 绑定账户</span>
+    open_id <span class="token operator">=</span> request<span class="token punctuation">.</span>GET<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'open_id'</span><span class="token punctuation">)</span>
+    nickname <span class="token operator">=</span> request<span class="token punctuation">.</span>GET<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'nickname'</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> request<span class="token punctuation">.</span>method <span class="token operator">==</span> <span class="token string">'POST'</span> <span class="token keyword">and</span> request<span class="token punctuation">.</span>POST<span class="token punctuation">:</span>
+        data <span class="token operator">=</span> request<span class="token punctuation">.</span>POST <span class="token comment"># 接收到前台form表单传过来的注册账户信息</span>
+        user <span class="token operator">=</span> models<span class="token punctuation">.</span>UserProfile<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        username <span class="token operator">=</span> data<span class="token punctuation">[</span><span class="token string">'username'</span><span class="token punctuation">]</span>
+        password <span class="token operator">=</span> data<span class="token punctuation">[</span><span class="token string">'password'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">','</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+        user<span class="token punctuation">.</span>username <span class="token operator">=</span> username
+        password <span class="token operator">=</span> hash_sha256<span class="token punctuation">(</span>password<span class="token punctuation">,</span> username<span class="token punctuation">)</span>
+        user<span class="token punctuation">.</span>password <span class="token operator">=</span> password
+        user<span class="token punctuation">.</span>nickname <span class="token operator">=</span> data<span class="token punctuation">[</span><span class="token string">'nickname'</span><span class="token punctuation">]</span>
+        user<span class="token punctuation">.</span>departments_id <span class="token operator">=</span> <span class="token number">1</span>
+        user<span class="token punctuation">.</span>save<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        oauthqq <span class="token operator">=</span> models<span class="token punctuation">.</span>OAuthQQ<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        oauthqq<span class="token punctuation">.</span>qq_openid <span class="token operator">=</span> open_id
+        oauthqq<span class="token punctuation">.</span>user_id <span class="token operator">=</span> models<span class="token punctuation">.</span>UserProfile<span class="token punctuation">.</span>objects<span class="token punctuation">.</span>get<span class="token punctuation">(</span>username<span class="token operator">=</span>username<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token builtin">id</span>
+        oauthqq<span class="token punctuation">.</span>save<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        response <span class="token operator">=</span> HttpResponseRedirect<span class="token punctuation">(</span><span class="token string">&quot;/web/&quot;</span><span class="token punctuation">)</span>
+        request<span class="token punctuation">.</span>session<span class="token punctuation">[</span><span class="token string">'username'</span><span class="token punctuation">]</span> <span class="token operator">=</span> username  <span class="token comment"># 设置session</span>
+        <span class="token keyword">return</span> response  <span class="token comment"># 返回首页</span>
+    <span class="token keyword">return</span> render<span class="token punctuation">(</span>request<span class="token punctuation">,</span> <span class="token string">'qq-bind-account.html'</span><span class="token punctuation">,</span> <span class="token builtin">locals</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre></div><p>访问测试：
+打开首页
+<img src="http://upload-images.jianshu.io/upload_images/4262139-8033c5f98ec5893e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="首页">
+点击QQ登录
+<img src="http://upload-images.jianshu.io/upload_images/4262139-31a9df8789a40fe1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="获取授权页面"></p> <p><img src="http://upload-images.jianshu.io/upload_images/4262139-e38b13d248249b32.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="绑定用户界面"></p> <p>获取授权并登录
+<img src="http://upload-images.jianshu.io/upload_images/4262139-5cfe2e7d5b1913fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="登录成功了"></p> <p>写完代码之后，本地测试可以通过。最后再部署到服务器并在QQ互联提交审核。一般审核要1~2天左右。若审核不通过，又不明白审核说明，就直接找客服问问。</p> <p>-----&lt;我是分割线，下面是项目在pycharm中的展示&gt;-----</p> <p><img src="http://upload-images.jianshu.io/upload_images/4262139-297cd7c4fc0ccaf1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="项目展示1"></p> <p><img src="http://upload-images.jianshu.io/upload_images/4262139-bfdd8bd8a295ff77.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="项目展示2"></p> <p>-----&lt;我是分割线，下面是urls.py、view.py、oauth_client.py完整的代码&gt;-----
+urls.py</p> <div class="language- extra-class"><pre class="language-text"><code>urlpatterns = [
+    url(r'^oauth/qq/login', qq_login, name='qq_login'),
+    url(r'^oauth/qq/check', qq_check, name='qq_check'),
+    url(r'^oauth/bind/account', bind_account, name='bind_account'),
+]
+</code></pre></div><p>views.py</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment">#!/usr/bin/env python</span>
+<span class="token comment"># _*_ coding:utf-8 _*_</span>
+__author__ <span class="token operator">=</span> <span class="token string">'junxi'</span>
+
+<span class="token keyword">from</span> django<span class="token punctuation">.</span>shortcuts <span class="token keyword">import</span> render<span class="token punctuation">,</span> HttpResponseRedirect<span class="token punctuation">,</span> HttpResponse<span class="token punctuation">,</span> reverse <span class="token comment"># reverse url逆向解析</span>
+<span class="token keyword">from</span> django<span class="token punctuation">.</span>http <span class="token keyword">import</span> JsonResponse
+<span class="token keyword">from</span> <span class="token punctuation">.</span> <span class="token keyword">import</span> models
+<span class="token keyword">from</span> <span class="token punctuation">.</span>form <span class="token keyword">import</span> <span class="token operator">*</span>
+<span class="token keyword">from</span> script<span class="token punctuation">.</span>salt_api <span class="token keyword">import</span> salt
+<span class="token keyword">from</span> script<span class="token punctuation">.</span>web_ssh <span class="token keyword">import</span> webssh
+<span class="token keyword">from</span> django<span class="token punctuation">.</span>contrib<span class="token punctuation">.</span>auth<span class="token punctuation">.</span>hashers <span class="token keyword">import</span> make_password<span class="token punctuation">,</span> check_password
+<span class="token comment"># from django.forms.models import model_to_dict</span>
+<span class="token keyword">from</span> django<span class="token punctuation">.</span>core <span class="token keyword">import</span> serializers
+<span class="token keyword">import</span> datetime
+<span class="token keyword">import</span> json
+<span class="token keyword">import</span> hashlib
+<span class="token keyword">import</span> re
+<span class="token keyword">import</span> time
+<span class="token keyword">import</span> os
+<span class="token keyword">from</span> django<span class="token punctuation">.</span>conf <span class="token keyword">import</span> settings
+<span class="token keyword">from</span> oauth_client <span class="token keyword">import</span> OAuthQQ
+
+
+<span class="token keyword">def</span> <span class="token function">hash_sha256</span><span class="token punctuation">(</span>password<span class="token punctuation">,</span> username<span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment"># sha256加密</span>
+    sha256 <span class="token operator">=</span> hashlib<span class="token punctuation">.</span>sha256<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    sha256<span class="token punctuation">.</span>update<span class="token punctuation">(</span><span class="token punctuation">(</span>password <span class="token operator">+</span> username<span class="token punctuation">)</span><span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    sha256_password <span class="token operator">=</span> sha256<span class="token punctuation">.</span>hexdigest<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> sha256_password
+
+
+<span class="token keyword">def</span> <span class="token function">qq_login</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment"># 第三方QQ登录</span>
+    oauth_qq <span class="token operator">=</span> OAuthQQ<span class="token punctuation">(</span>settings<span class="token punctuation">.</span>QQ_APP_ID<span class="token punctuation">,</span> settings<span class="token punctuation">.</span>QQ_KEY<span class="token punctuation">,</span> settings<span class="token punctuation">.</span>QQ_RECALL_URL<span class="token punctuation">)</span>
+
+    <span class="token comment"># 获取 得到Authorization Code的地址</span>
+    url <span class="token operator">=</span> oauth_qq<span class="token punctuation">.</span>get_auth_url<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token comment"># 重定向到授权页面</span>
+    <span class="token keyword">return</span> HttpResponseRedirect<span class="token punctuation">(</span>url<span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">qq_check</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment"># 第三方QQ登录，回调函数</span>
+        <span class="token triple-quoted-string string">&quot;&quot;&quot;登录之后，会跳转到这里。需要判断code和state&quot;&quot;&quot;</span>
+        request_code <span class="token operator">=</span> request<span class="token punctuation">.</span>GET<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'code'</span><span class="token punctuation">)</span>
+        oauth_qq <span class="token operator">=</span> OAuthQQ<span class="token punctuation">(</span>settings<span class="token punctuation">.</span>QQ_APP_ID<span class="token punctuation">,</span> settings<span class="token punctuation">.</span>QQ_KEY<span class="token punctuation">,</span> settings<span class="token punctuation">.</span>QQ_RECALL_URL<span class="token punctuation">)</span>
+
+        <span class="token comment"># 获取access_token</span>
+        access_token <span class="token operator">=</span> oauth_qq<span class="token punctuation">.</span>get_access_token<span class="token punctuation">(</span>request_code<span class="token punctuation">)</span>
+        time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">0.05</span><span class="token punctuation">)</span>  <span class="token comment"># 稍微休息一下，避免发送urlopen的10060错误</span>
+        open_id <span class="token operator">=</span> oauth_qq<span class="token punctuation">.</span>get_open_id<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span> open_id
+
+        <span class="token comment"># 检查open_id是否存在</span>
+        qq_open_id <span class="token operator">=</span> models<span class="token punctuation">.</span>OAuthQQ<span class="token punctuation">.</span>objects<span class="token punctuation">.</span><span class="token builtin">filter</span><span class="token punctuation">(</span>qq_openid<span class="token operator">=</span><span class="token builtin">str</span><span class="token punctuation">(</span>open_id<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span> qq_open_id
+        <span class="token keyword">if</span> qq_open_id<span class="token punctuation">:</span>
+            <span class="token comment"># 存在则获取对应的用户，并登录</span>
+            user <span class="token operator">=</span> qq_open_id<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>user<span class="token punctuation">.</span>username
+            <span class="token keyword">print</span> user
+            request<span class="token punctuation">.</span>session<span class="token punctuation">[</span><span class="token string">'username'</span><span class="token punctuation">]</span> <span class="token operator">=</span> user
+            <span class="token keyword">return</span> HttpResponseRedirect<span class="token punctuation">(</span><span class="token string">'/web/'</span><span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token comment"># 不存在，则跳转到绑定用户页面</span>
+            infos <span class="token operator">=</span> oauth_qq<span class="token punctuation">.</span>get_qq_info<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># 获取用户信息</span>
+            url <span class="token operator">=</span> <span class="token string">'%s?open_id=%s&amp;nickname=%s'</span> <span class="token operator">%</span> <span class="token punctuation">(</span>reverse<span class="token punctuation">(</span><span class="token string">'bind_account'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> open_id<span class="token punctuation">,</span> infos<span class="token punctuation">[</span><span class="token string">'nickname'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> HttpResponseRedirect<span class="token punctuation">(</span>url<span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">bind_account</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment"># 绑定账户</span>
+    open_id <span class="token operator">=</span> request<span class="token punctuation">.</span>GET<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'open_id'</span><span class="token punctuation">)</span>
+    nickname <span class="token operator">=</span> request<span class="token punctuation">.</span>GET<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'nickname'</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> request<span class="token punctuation">.</span>method <span class="token operator">==</span> <span class="token string">'POST'</span> <span class="token keyword">and</span> request<span class="token punctuation">.</span>POST<span class="token punctuation">:</span>
+        data <span class="token operator">=</span> request<span class="token punctuation">.</span>POST <span class="token comment"># 接收到前台form表单传过来的注册账户信息</span>
+        user <span class="token operator">=</span> models<span class="token punctuation">.</span>UserProfile<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        username <span class="token operator">=</span> data<span class="token punctuation">[</span><span class="token string">'username'</span><span class="token punctuation">]</span>
+        password <span class="token operator">=</span> data<span class="token punctuation">[</span><span class="token string">'password'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">','</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+        user<span class="token punctuation">.</span>username <span class="token operator">=</span> username
+        password <span class="token operator">=</span> hash_sha256<span class="token punctuation">(</span>password<span class="token punctuation">,</span> username<span class="token punctuation">)</span>
+        user<span class="token punctuation">.</span>password <span class="token operator">=</span> password
+        user<span class="token punctuation">.</span>nickname <span class="token operator">=</span> data<span class="token punctuation">[</span><span class="token string">'nickname'</span><span class="token punctuation">]</span>
+        user<span class="token punctuation">.</span>departments_id <span class="token operator">=</span> <span class="token number">1</span>
+        user<span class="token punctuation">.</span>save<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        oauthqq <span class="token operator">=</span> models<span class="token punctuation">.</span>OAuthQQ<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        oauthqq<span class="token punctuation">.</span>qq_openid <span class="token operator">=</span> open_id
+        oauthqq<span class="token punctuation">.</span>user_id <span class="token operator">=</span> models<span class="token punctuation">.</span>UserProfile<span class="token punctuation">.</span>objects<span class="token punctuation">.</span>get<span class="token punctuation">(</span>username<span class="token operator">=</span>username<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token builtin">id</span>
+        oauthqq<span class="token punctuation">.</span>save<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        response <span class="token operator">=</span> HttpResponseRedirect<span class="token punctuation">(</span><span class="token string">&quot;/web/&quot;</span><span class="token punctuation">)</span>
+        request<span class="token punctuation">.</span>session<span class="token punctuation">[</span><span class="token string">'username'</span><span class="token punctuation">]</span> <span class="token operator">=</span> username  <span class="token comment"># 设置session</span>
+        <span class="token keyword">return</span> response  <span class="token comment"># 返回首页</span>
+    <span class="token keyword">return</span> render<span class="token punctuation">(</span>request<span class="token punctuation">,</span> <span class="token string">'qq-bind-account.html'</span><span class="token punctuation">,</span> <span class="token builtin">locals</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre></div><p>oauth_client.py</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment">#!/usr/bin/env python</span>
+<span class="token comment"># _*_ coding:utf-8 _*_</span>
+__author__ <span class="token operator">=</span> <span class="token string">'junxi'</span>
+
+<span class="token keyword">import</span> json
+<span class="token keyword">import</span> urllib<span class="token punctuation">,</span> urllib2<span class="token punctuation">,</span> urlparse
+
+
+<span class="token keyword">class</span> <span class="token class-name">OAuthQQ</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> client_id<span class="token punctuation">,</span> client_key<span class="token punctuation">,</span> redirect_uri<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>client_id <span class="token operator">=</span> client_id
+        self<span class="token punctuation">.</span>client_key <span class="token operator">=</span> client_key
+        self<span class="token punctuation">.</span>redirect_uri <span class="token operator">=</span> redirect_uri
+
+    <span class="token keyword">def</span> <span class="token function">get_auth_url</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">&quot;&quot;&quot;获取授权页面的网址&quot;&quot;&quot;</span>
+        params <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'client_id'</span><span class="token punctuation">:</span> self<span class="token punctuation">.</span>client_id<span class="token punctuation">,</span>
+                  <span class="token string">'response_type'</span><span class="token punctuation">:</span> <span class="token string">'code'</span><span class="token punctuation">,</span>
+                  <span class="token string">'redirect_uri'</span><span class="token punctuation">:</span> self<span class="token punctuation">.</span>redirect_uri<span class="token punctuation">,</span>
+                  <span class="token string">'scope'</span><span class="token punctuation">:</span> <span class="token string">'get_user_info'</span><span class="token punctuation">,</span>
+                  <span class="token string">'state'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">}</span>
+        url <span class="token operator">=</span> <span class="token string">'https://graph.qq.com/oauth2.0/authorize?%s'</span> <span class="token operator">%</span> urllib<span class="token punctuation">.</span>urlencode<span class="token punctuation">(</span>params<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> url
+
+    <span class="token keyword">def</span> <span class="token function">get_access_token</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> code<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">&quot;&quot;&quot;根据code获取access_token&quot;&quot;&quot;</span>
+        params <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'grant_type'</span><span class="token punctuation">:</span> <span class="token string">'authorization_code'</span><span class="token punctuation">,</span>
+                  <span class="token string">'client_id'</span><span class="token punctuation">:</span> self<span class="token punctuation">.</span>client_id<span class="token punctuation">,</span>
+                  <span class="token string">'client_secret'</span><span class="token punctuation">:</span> self<span class="token punctuation">.</span>client_key<span class="token punctuation">,</span>
+                  <span class="token string">'code'</span><span class="token punctuation">:</span> code<span class="token punctuation">,</span>
+                  <span class="token string">'redirect_uri'</span><span class="token punctuation">:</span> self<span class="token punctuation">.</span>redirect_uri<span class="token punctuation">}</span>    <span class="token comment"># 回调地址</span>
+        url <span class="token operator">=</span> <span class="token string">'https://graph.qq.com/oauth2.0/token?%s'</span> <span class="token operator">%</span> urllib<span class="token punctuation">.</span>urlencode<span class="token punctuation">(</span>params<span class="token punctuation">)</span>
+
+        <span class="token comment"># 访问该网址，获取access_token</span>
+        response <span class="token operator">=</span> urllib2<span class="token punctuation">.</span>urlopen<span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        result <span class="token operator">=</span> urlparse<span class="token punctuation">.</span>parse_qs<span class="token punctuation">(</span>response<span class="token punctuation">,</span> <span class="token boolean">True</span><span class="token punctuation">)</span>
+
+        access_token <span class="token operator">=</span> <span class="token builtin">str</span><span class="token punctuation">(</span>result<span class="token punctuation">[</span><span class="token string">'access_token'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>access_token <span class="token operator">=</span> access_token
+        <span class="token keyword">return</span> access_token
+
+    <span class="token keyword">def</span> <span class="token function">get_open_id</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">&quot;&quot;&quot;获取QQ的OpenID&quot;&quot;&quot;</span>
+        params <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'access_token'</span><span class="token punctuation">:</span> self<span class="token punctuation">.</span>access_token<span class="token punctuation">}</span>
+        url <span class="token operator">=</span> <span class="token string">'https://graph.qq.com/oauth2.0/me?%s'</span> <span class="token operator">%</span> urllib<span class="token punctuation">.</span>urlencode<span class="token punctuation">(</span>params<span class="token punctuation">)</span>
+
+        response <span class="token operator">=</span> urllib2<span class="token punctuation">.</span>urlopen<span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        v_str <span class="token operator">=</span> <span class="token builtin">str</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">9</span><span class="token punctuation">:</span><span class="token operator">-</span><span class="token number">3</span><span class="token punctuation">]</span>  <span class="token comment"># 去掉callback的字符</span>
+        v_json <span class="token operator">=</span> json<span class="token punctuation">.</span>loads<span class="token punctuation">(</span>v_str<span class="token punctuation">)</span>
+
+        openid <span class="token operator">=</span> v_json<span class="token punctuation">[</span><span class="token string">'openid'</span><span class="token punctuation">]</span>
+        self<span class="token punctuation">.</span>openid <span class="token operator">=</span> openid
+        <span class="token keyword">return</span> openid
+
+    <span class="token keyword">def</span> <span class="token function">get_qq_info</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">&quot;&quot;&quot;获取QQ用户的资料信息&quot;&quot;&quot;</span>
+        params <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'access_token'</span><span class="token punctuation">:</span> self<span class="token punctuation">.</span>access_token<span class="token punctuation">,</span>
+                  <span class="token string">'oauth_consumer_key'</span><span class="token punctuation">:</span> self<span class="token punctuation">.</span>client_id<span class="token punctuation">,</span>
+                  <span class="token string">'openid'</span><span class="token punctuation">:</span> self<span class="token punctuation">.</span>openid<span class="token punctuation">}</span>
+        url <span class="token operator">=</span> <span class="token string">'https://graph.qq.com/user/get_user_info?%s'</span> <span class="token operator">%</span> urllib<span class="token punctuation">.</span>urlencode<span class="token punctuation">(</span>params<span class="token punctuation">)</span>
+
+        response <span class="token operator">=</span> urllib2<span class="token punctuation">.</span>urlopen<span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> json<span class="token punctuation">.</span>loads<span class="token punctuation">(</span>response<span class="token punctuation">)</span>
+</code></pre></div><br>
+[参考文章](http://yshblog.com/blog/60)
+。。。。。。</div> <footer class="page-edit" style="display:none;"><!----> <!----></footer> <!----> <!----></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-44bd5a18 data-v-44bd5a18><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-44bd5a18><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-44bd5a18></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-44bd5a18></path></svg></div></div></div>
+    <script src="/assets/js/app.4c0f163f.js" defer></script><script src="/assets/js/3.5c161e77.js" defer></script><script src="/assets/js/1.b50dabeb.js" defer></script><script src="/assets/js/35.7e2b5a6f.js" defer></script>
+  </body>
+</html>

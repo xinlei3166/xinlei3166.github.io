@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>wrk安装及使用 | 君惜の博客</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    
+    <meta name="description" content="">
+    <link rel="preload" href="/assets/css/0.styles.ff30c3b6.css" as="style"><link rel="preload" href="/assets/js/app.4c0f163f.js" as="script"><link rel="preload" href="/assets/js/3.5c161e77.js" as="script"><link rel="preload" href="/assets/js/1.b50dabeb.js" as="script"><link rel="preload" href="/assets/js/78.2c2736ff.js" as="script"><link rel="prefetch" href="/assets/js/10.7fffa9c4.js"><link rel="prefetch" href="/assets/js/11.a894a0a3.js"><link rel="prefetch" href="/assets/js/12.7c1460cd.js"><link rel="prefetch" href="/assets/js/13.dd983835.js"><link rel="prefetch" href="/assets/js/14.1487eb9d.js"><link rel="prefetch" href="/assets/js/15.4756daf1.js"><link rel="prefetch" href="/assets/js/16.a530f05a.js"><link rel="prefetch" href="/assets/js/17.29f6aa52.js"><link rel="prefetch" href="/assets/js/18.e4a9724e.js"><link rel="prefetch" href="/assets/js/19.5ed05463.js"><link rel="prefetch" href="/assets/js/20.0cce4e1a.js"><link rel="prefetch" href="/assets/js/21.83dfac32.js"><link rel="prefetch" href="/assets/js/22.ad29d758.js"><link rel="prefetch" href="/assets/js/23.18313ffe.js"><link rel="prefetch" href="/assets/js/24.665841c7.js"><link rel="prefetch" href="/assets/js/25.5e232809.js"><link rel="prefetch" href="/assets/js/26.af71fdca.js"><link rel="prefetch" href="/assets/js/27.8a2d98c2.js"><link rel="prefetch" href="/assets/js/28.1306b459.js"><link rel="prefetch" href="/assets/js/29.29630159.js"><link rel="prefetch" href="/assets/js/30.b89be015.js"><link rel="prefetch" href="/assets/js/31.6295dd91.js"><link rel="prefetch" href="/assets/js/32.b7becd12.js"><link rel="prefetch" href="/assets/js/33.8faf9a10.js"><link rel="prefetch" href="/assets/js/34.cd57f657.js"><link rel="prefetch" href="/assets/js/35.7e2b5a6f.js"><link rel="prefetch" href="/assets/js/36.d71a14b1.js"><link rel="prefetch" href="/assets/js/37.959b4726.js"><link rel="prefetch" href="/assets/js/38.f931a68f.js"><link rel="prefetch" href="/assets/js/39.c3ea2b40.js"><link rel="prefetch" href="/assets/js/4.c1ea1bf1.js"><link rel="prefetch" href="/assets/js/40.4982c905.js"><link rel="prefetch" href="/assets/js/41.203d520e.js"><link rel="prefetch" href="/assets/js/42.7e5a0064.js"><link rel="prefetch" href="/assets/js/43.6b7dcc89.js"><link rel="prefetch" href="/assets/js/44.ace44d85.js"><link rel="prefetch" href="/assets/js/45.e7334ca4.js"><link rel="prefetch" href="/assets/js/46.2f73e550.js"><link rel="prefetch" href="/assets/js/47.bb851a3c.js"><link rel="prefetch" href="/assets/js/48.9ead4a3a.js"><link rel="prefetch" href="/assets/js/49.f6d187a3.js"><link rel="prefetch" href="/assets/js/5.4f3c9bb5.js"><link rel="prefetch" href="/assets/js/50.44513019.js"><link rel="prefetch" href="/assets/js/51.f92332ae.js"><link rel="prefetch" href="/assets/js/52.1a90855d.js"><link rel="prefetch" href="/assets/js/53.a6063052.js"><link rel="prefetch" href="/assets/js/54.5e4dc526.js"><link rel="prefetch" href="/assets/js/55.b4cf2cca.js"><link rel="prefetch" href="/assets/js/56.5afab6b8.js"><link rel="prefetch" href="/assets/js/57.13db934e.js"><link rel="prefetch" href="/assets/js/58.45393b85.js"><link rel="prefetch" href="/assets/js/59.312d0c74.js"><link rel="prefetch" href="/assets/js/6.0583317e.js"><link rel="prefetch" href="/assets/js/60.868da390.js"><link rel="prefetch" href="/assets/js/61.06d72270.js"><link rel="prefetch" href="/assets/js/62.95d65aff.js"><link rel="prefetch" href="/assets/js/63.36ccfb18.js"><link rel="prefetch" href="/assets/js/64.02290762.js"><link rel="prefetch" href="/assets/js/65.eac6abdc.js"><link rel="prefetch" href="/assets/js/66.5c7a3796.js"><link rel="prefetch" href="/assets/js/67.6d2a84e7.js"><link rel="prefetch" href="/assets/js/68.12b35d40.js"><link rel="prefetch" href="/assets/js/69.da3256da.js"><link rel="prefetch" href="/assets/js/7.60184b24.js"><link rel="prefetch" href="/assets/js/70.76e73b0c.js"><link rel="prefetch" href="/assets/js/71.99afbb77.js"><link rel="prefetch" href="/assets/js/72.19feaec4.js"><link rel="prefetch" href="/assets/js/73.ba5ee2ed.js"><link rel="prefetch" href="/assets/js/74.cef516f6.js"><link rel="prefetch" href="/assets/js/75.90f4a703.js"><link rel="prefetch" href="/assets/js/76.885ff289.js"><link rel="prefetch" href="/assets/js/77.823d6f1d.js"><link rel="prefetch" href="/assets/js/79.cbfa5ae7.js"><link rel="prefetch" href="/assets/js/8.ccce47cf.js"><link rel="prefetch" href="/assets/js/80.431573aa.js"><link rel="prefetch" href="/assets/js/9.9160a89c.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.ff30c3b6.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-19557b78><div data-v-19557b78><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-19557b78 data-v-19557b78><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-64685f0e data-v-19557b78 data-v-19557b78><h3 class="title" style="display:none;" data-v-64685f0e data-v-64685f0e>君惜の博客</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-64685f0e data-v-64685f0e><input type="password" value="" data-v-64685f0e> <span data-v-64685f0e>Konck! Knock!</span> <button data-v-64685f0e>OK</button></label> <div class="footer" style="display:none;" data-v-64685f0e data-v-64685f0e><span data-v-64685f0e><i class="iconfont reco-theme" data-v-64685f0e></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-64685f0e>vuePress-theme-reco</a></span> <span data-v-64685f0e><i class="iconfont reco-copyright" data-v-64685f0e></i> <a data-v-64685f0e><span data-v-64685f0e>君惜</span>
+            
+          <!---->
+          2020
+        </a></span></div></div> <div class="hide" data-v-19557b78><header class="navbar" data-v-19557b78><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">君惜の博客</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/Docker/" class="nav-link"><i class="iconfont undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Git/" class="nav-link"><i class="iconfont undefined"></i>
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JavaScript/" class="nav-link"><i class="iconfont undefined"></i>
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Linux/" class="nav-link"><i class="iconfont undefined"></i>
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Mysql/" class="nav-link"><i class="iconfont undefined"></i>
+  Mysql
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Node.js/" class="nav-link"><i class="iconfont undefined"></i>
+  Node.js
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Python/" class="nav-link"><i class="iconfont undefined"></i>
+  Python
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Redis/" class="nav-link"><i class="iconfont undefined"></i>
+  Redis
+</a></li><li class="dropdown-item"><!----> <a href="/categories/并发测试/" class="nav-link"><i class="iconfont undefined"></i>
+  并发测试
+</a></li><li class="dropdown-item"><!----> <a href="/categories/随笔/" class="nav-link"><i class="iconfont undefined"></i>
+  随笔
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div> <a href="https://github.com/xinlei3166" target="_blank" rel="noopener noreferrer" class="repo-link"><i class="iconfont reco-github"></i>
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask" data-v-19557b78></div> <aside class="sidebar" data-v-19557b78><div class="personal-info-wrapper" data-v-b038cec6><img src="/img/avatar.jpg" alt="author-avatar" class="personal-img" data-v-b038cec6> <h3 class="name" data-v-b038cec6>
+    君惜
+  </h3> <div class="num" data-v-b038cec6><div data-v-b038cec6><h3 data-v-b038cec6>68</h3> <h6 data-v-b038cec6>Article</h6></div> <div data-v-b038cec6><h3 data-v-b038cec6>76</h3> <h6 data-v-b038cec6>Tag</h6></div></div> <hr data-v-b038cec6></div> <nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/Docker/" class="nav-link"><i class="iconfont undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Git/" class="nav-link"><i class="iconfont undefined"></i>
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JavaScript/" class="nav-link"><i class="iconfont undefined"></i>
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Linux/" class="nav-link"><i class="iconfont undefined"></i>
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Mysql/" class="nav-link"><i class="iconfont undefined"></i>
+  Mysql
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Node.js/" class="nav-link"><i class="iconfont undefined"></i>
+  Node.js
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Python/" class="nav-link"><i class="iconfont undefined"></i>
+  Python
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Redis/" class="nav-link"><i class="iconfont undefined"></i>
+  Redis
+</a></li><li class="dropdown-item"><!----> <a href="/categories/并发测试/" class="nav-link"><i class="iconfont undefined"></i>
+  并发测试
+</a></li><li class="dropdown-item"><!----> <a href="/categories/随笔/" class="nav-link"><i class="iconfont undefined"></i>
+  随笔
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div> <a href="https://github.com/xinlei3166" target="_blank" rel="noopener noreferrer" class="repo-link"><i class="iconfont reco-github"></i>
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>wrk安装及使用</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/%E5%B9%B6%E5%8F%91%E6%B5%8B%E8%AF%95/wrk%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8.html#安装" class="sidebar-link">安装</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/%E5%B9%B6%E5%8F%91%E6%B5%8B%E8%AF%95/wrk%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8.html#基本使用" class="sidebar-link">基本使用</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/%E5%B9%B6%E5%8F%91%E6%B5%8B%E8%AF%95/wrk%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8.html#使用lua脚本个性化wrk压测" class="sidebar-link">使用Lua脚本个性化wrk压测</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/%E5%B9%B6%E5%8F%91%E6%B5%8B%E8%AF%95/wrk%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8.html#启动阶段" class="sidebar-link">启动阶段</a></li><li class="sidebar-sub-header"><a href="/%E5%B9%B6%E5%8F%91%E6%B5%8B%E8%AF%95/wrk%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8.html#运行阶段" class="sidebar-link">运行阶段</a></li><li class="sidebar-sub-header"><a href="/%E5%B9%B6%E5%8F%91%E6%B5%8B%E8%AF%95/wrk%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8.html#结束阶段" class="sidebar-link">结束阶段</a></li><li class="sidebar-sub-header"><a href="/%E5%B9%B6%E5%8F%91%E6%B5%8B%E8%AF%95/wrk%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8.html#自定义脚本中可访问的变量和方法" class="sidebar-link">自定义脚本中可访问的变量和方法</a></li><li class="sidebar-sub-header"><a href="/%E5%B9%B6%E5%8F%91%E6%B5%8B%E8%AF%95/wrk%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8.html#使用post-method" class="sidebar-link">使用POST METHOD</a></li><li class="sidebar-sub-header"><a href="/%E5%B9%B6%E5%8F%91%E6%B5%8B%E8%AF%95/wrk%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8.html#为每次request更换一个参数" class="sidebar-link">为每次request更换一个参数</a></li><li class="sidebar-sub-header"><a href="/%E5%B9%B6%E5%8F%91%E6%B5%8B%E8%AF%95/wrk%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8.html#每次请求之前延迟10ms" class="sidebar-link">每次请求之前延迟10ms</a></li><li class="sidebar-sub-header"><a href="/%E5%B9%B6%E5%8F%91%E6%B5%8B%E8%AF%95/wrk%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8.html#每个线程要先进行认证，认证之后获取token以进行压测" class="sidebar-link">每个线程要先进行认证，认证之后获取token以进行压测</a></li><li class="sidebar-sub-header"><a href="/%E5%B9%B6%E5%8F%91%E6%B5%8B%E8%AF%95/wrk%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8.html#压测支持http-pipeline的服务" class="sidebar-link">压测支持HTTP pipeline的服务</a></li></ul></li></ul></section></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-64685f0e data-v-19557b78><h3 class="title" style="display:none;" data-v-64685f0e data-v-64685f0e>wrk安装及使用</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-64685f0e data-v-64685f0e><input type="password" value="" data-v-64685f0e> <span data-v-64685f0e>Konck! Knock!</span> <button data-v-64685f0e>OK</button></label> <div class="footer" style="display:none;" data-v-64685f0e data-v-64685f0e><span data-v-64685f0e><i class="iconfont reco-theme" data-v-64685f0e></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-64685f0e>vuePress-theme-reco</a></span> <span data-v-64685f0e><i class="iconfont reco-copyright" data-v-64685f0e></i> <a data-v-64685f0e><span data-v-64685f0e>君惜</span>
+            
+          <!---->
+          2020
+        </a></span></div></div> <div data-v-19557b78><main class="page"><div class="page-title" style="display:none;"><h1>wrk安装及使用</h1> <hr> <div data-v-cd8d63d2><i class="iconfont reco-account" data-v-cd8d63d2><span data-v-cd8d63d2>君惜</span></i> <!----> <!----> <i class="iconfont reco-tag tags" data-v-cd8d63d2><span class="tag-item" data-v-cd8d63d2>
+      Shell
+    </span><span class="tag-item" data-v-cd8d63d2>
+      并发测试
+    </span></i></div></div> <div class="theme-reco-content content__default" style="display:none;"><p>用过了很多压测工具，却一直没找到中意的那款。最近试了wrk感觉不错，写下这份使用指南给自己备忘用，如果能帮到你，那也很好。</p> <h2 id="安装"><a href="#安装" class="header-anchor">#</a> 安装</h2> <p>wrk支持大多数类UNIX系统，不支持windows。需要操作系统支持LuaJIT和OpenSSL，不过不用担心，大多数类Unix系统都支持。安装wrk非常简单，只要从github上下载wrk源码，在项目路径下执行make命令即可。</p> <div class="language-Sh extra-class"><pre class="language-sh"><code><span class="token function">git</span> clone https://github.com/wg/wrk
+
+<span class="token function">make</span>
+</code></pre></div><p>make之后，会在项目路径下生成可执行文件wrk，随后就可以用其进行HTTP压测了。可以把这个可执行文件拷贝到某个已在path中的路径，比如/usr/local/bin，这样就可以在任何路径直接使用wrk了。</p> <p>默认情况下wrk会使用自带的LuaJIT和OpenSSL，如果你想使用系统已安装的版本，可以使用WITH_LUAJIT和WITH_OPENSSL这两个选项来指定它们的路径。比如：</p> <div class="language-Sh extra-class"><pre class="language-sh"><code><span class="token function">make</span> <span class="token assign-left variable">WITH_LUAJIT</span><span class="token operator">=</span>/usr <span class="token assign-left variable">WITH_OPENSSL</span><span class="token operator">=</span>/usr
+</code></pre></div><p>mac下快捷安装</p> <div class="language-Sh extra-class"><pre class="language-sh"><code>brew <span class="token function">install</span> wrk
+</code></pre></div><h2 id="基本使用"><a href="#基本使用" class="header-anchor">#</a> 基本使用</h2> <p>命令行敲下wrk，可以看到使用帮助</p> <div class="language- extra-class"><pre class="language-text"><code>Usage: wrk &lt;options&gt; &lt;url&gt;                            
+  Options:                                            
+    -c, --connections &lt;N&gt;  Connections to keep open   
+    -d, --duration    &lt;T&gt;  Duration of test           
+    -t, --threads     &lt;N&gt;  Number of threads to use   
+                                                      
+    -s, --script      &lt;S&gt;  Load Lua script file       
+    -H, --header      &lt;H&gt;  Add header to request      
+        --latency          Print latency statistics   
+        --timeout     &lt;T&gt;  Socket/request timeout     
+    -v, --version          Print version details      
+                                                      
+  Numeric arguments may include a SI unit (1k, 1M, 1G)
+  Time arguments may include a time unit (2s, 2m, 2h)
+</code></pre></div><p>简单翻成中文：</p> <div class="language- extra-class"><pre class="language-text"><code>使用方法: wrk &lt;选项&gt; &lt;被测HTTP服务的URL&gt;                            
+  Options:                                            
+    -c, --connections &lt;N&gt;  跟服务器建立并保持的TCP连接数量  
+    -d, --duration    &lt;T&gt;  压测时间           
+    -t, --threads     &lt;N&gt;  使用多少个线程进行压测   
+                                                      
+    -s, --script      &lt;S&gt;  指定Lua脚本路径       
+    -H, --header      &lt;H&gt;  为每一个HTTP请求添加HTTP头      
+        --latency          在压测结束后，打印延迟统计信息   
+        --timeout     &lt;T&gt;  超时时间     
+    -v, --version          打印正在使用的wrk的详细版本信息
+                                                      
+  &lt;N&gt;代表数字参数，支持国际单位 (1k, 1M, 1G)
+  &lt;T&gt;代表时间参数，支持时间单位 (2s, 2m, 2h)
+</code></pre></div><p>看下版本</p> <div class="language- extra-class"><pre class="language-text"><code>wrk -v
+
+输出：
+wrk 4.0.2 [epoll] Copyright (C) 2012 Will Glozer
+</code></pre></div><p>看到是4.0.2版本的wrk，使用了epoll。这意味着我们可以用少量的线程来跟被测服务创建大量连接，进行压测。</p> <p>做一次简单压测，分析下结果</p> <div class="language- extra-class"><pre class="language-text"><code>wrk -t8 -c200 -d30s --latency  &quot;http://www.bing.com&quot;
+
+输出：
+Running 30s test @ http://www.bing.com
+  8 threads and 200 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    46.67ms  215.38ms   1.67s    95.59%
+    Req/Sec     7.91k     1.15k   10.26k    70.77%
+  Latency Distribution
+     50%    2.93ms
+     75%    3.78ms
+     90%    4.73ms
+     99%    1.35s 
+  1790465 requests in 30.01s, 684.08MB read
+Requests/sec:  59658.29
+Transfer/sec:     22.79MB
+</code></pre></div><p>以上使用8个线程200个连接，对bing首页进行了30秒的压测，并要求在压测结果中输出响应延迟信息。以下对压测结果进行简单注释：</p> <div class="language- extra-class"><pre class="language-text"><code>Running 30s test @ http://www.bing.com （压测时间30s）
+  8 threads and 200 connections （共8个测试线程，200个连接）
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+              （平均值） （标准差）（最大值）（正负一个标准差所占比例）
+    Latency    46.67ms  215.38ms   1.67s    95.59%
+    （延迟）
+    Req/Sec     7.91k     1.15k   10.26k    70.77%
+    （处理中的请求数）
+  Latency Distribution （延迟分布）
+     50%    2.93ms
+     75%    3.78ms
+     90%    4.73ms
+     99%    1.35s （99分位的延迟）
+  1790465 requests in 30.01s, 684.08MB read （30.01秒内共处理完成了1790465个请求，读取了684.08MB数据）
+Requests/sec:  59658.29 （平均每秒处理完成59658.29个请求）
+Transfer/sec:     22.79MB （平均每秒读取数据22.79MB）
+</code></pre></div><p>可以看到，wrk使用方便，结果清晰。并且因为非阻塞IO的使用，可以在普通的测试机上创建出大量的连接，从而达到较好的压测效果。</p> <h2 id="使用lua脚本个性化wrk压测"><a href="#使用lua脚本个性化wrk压测" class="header-anchor">#</a> 使用Lua脚本个性化wrk压测</h2> <p>以上两节安装并简单使用了wrk，但这种简单的压测可能不能满足我们的需求。比如我们可能需要使用POST METHOD跟服务器交互；可能需要为每一次请求使用不同的参数，以更好的模拟服务的实际使用场景等。wrk支持用户使用--script指定Lua脚本，来定制压测过程，满足个性化需求。</p> <p>介绍wrk对Lua脚本的支持</p> <p>wrk支持在三个阶段对压测进行个性化，分别是启动阶段、运行阶段和结束阶段。每个测试线程，都拥有独立的Lua运行环境。</p> <h3 id="启动阶段"><a href="#启动阶段" class="header-anchor">#</a> 启动阶段</h3> <div class="language- extra-class"><pre class="language-text"><code>function setup(thread)
+</code></pre></div><p>在脚本文件中实现setup方法，wrk就会在测试线程已经初始化但还没有启动的时候调用该方法。wrk会为每一个测试线程调用一次setup方法，并传入代表测试线程的对象thread作为参数。setup方法中可操作该thread对象，获取信息、存储信息、甚至关闭该线程。</p> <div class="language- extra-class"><pre class="language-text"><code>thread.addr             - get or set the thread's server address
+thread:get(name)        - get the value of a global in the thread's env
+thread:set(name, value) - set the value of a global in the thread's env
+thread:stop()           - stop the thread
+</code></pre></div><h3 id="运行阶段"><a href="#运行阶段" class="header-anchor">#</a> 运行阶段</h3> <div class="language- extra-class"><pre class="language-text"><code>function init(args)
+function delay()
+function request()
+function response(status, headers, body)
+</code></pre></div><p>init由测试线程调用，只会在进入运行阶段时，调用一次。支持从启动wrk的命令中，获取命令行参数；
+delay在每次发送request之前调用，如果需要delay，那么delay相应时间；
+request用来生成请求；每一次请求都会调用该方法，所以注意不要在该方法中做耗时的操作；
+reponse在每次收到一个响应时调用；为提升性能，如果没有定义该方法，那么wrk不会解析headers和body；</p> <h3 id="结束阶段"><a href="#结束阶段" class="header-anchor">#</a> 结束阶段</h3> <div class="language- extra-class"><pre class="language-text"><code>function done(summary, latency, requests)
+</code></pre></div><p>该方法在整个测试过程中只会调用一次，可从参数给定的对象中，获取压测结果，生成定制化的测试报告。</p> <h3 id="自定义脚本中可访问的变量和方法"><a href="#自定义脚本中可访问的变量和方法" class="header-anchor">#</a> 自定义脚本中可访问的变量和方法</h3> <p>变量：wrk</p> <div class="language- extra-class"><pre class="language-text"><code> wrk = {
+    scheme  = &quot;http&quot;,
+    host    = &quot;localhost&quot;,
+    port    = nil,
+    method  = &quot;GET&quot;,
+    path    = &quot;/&quot;,
+    headers = {},
+    body    = nil,
+    thread  = &lt;userdata&gt;,
+  }
+</code></pre></div><p>一个table类型的变量wrk，是全局变量，修改该table，会影响所有请求。</p> <p>方法：wrk.fomat wrk.lookup wrk.connect</p> <div class="language- extra-class"><pre class="language-text"><code>  function wrk.format(method, path, headers, body)
+
+    wrk.format returns a HTTP request string containing the passed parameters
+    merged with values from the wrk table.
+    根据参数和全局变量wrk，生成一个HTTP rquest string。
+
+  function wrk.lookup(host, service)
+
+    wrk.lookup returns a table containing all known addresses for the host
+    and service pair. This corresponds to the POSIX getaddrinfo() function.
+    给定host和service（port/well known service name），返回所有可用的服务器地址信息。
+
+  function wrk.connect(addr)
+
+    wrk.connect returns true if the address can be connected to, otherwise
+    it returns false. The address must be one returned from wrk.lookup().
+    测试与给定的服务器地址信息是否可以成功创建连接
+</code></pre></div><p>示例</p> <h3 id="使用post-method"><a href="#使用post-method" class="header-anchor">#</a> 使用POST METHOD</h3> <div class="language- extra-class"><pre class="language-text"><code>wrk.method = &quot;POST&quot;
+wrk.body   = &quot;foo=bar&amp;baz=quux&quot;
+wrk.headers[&quot;Content-Type&quot;] = &quot;application/x-www-form-urlencoded&quot;
+</code></pre></div><p>通过修改全局变量wrk，使得所有请求都使用POST方法，并指定了body和Content-Type头。</p> <h3 id="为每次request更换一个参数"><a href="#为每次request更换一个参数" class="header-anchor">#</a> 为每次request更换一个参数</h3> <div class="language- extra-class"><pre class="language-text"><code>request = function()
+   uid = math.random(1, 10000000)
+   path = &quot;/test?uid=&quot; .. uid
+   return wrk.format(nil, path)
+end
+</code></pre></div><p>通过在request方法中随机生成1~10000000之间的uid，使得请求中的uid参数随机。</p> <h3 id="每次请求之前延迟10ms"><a href="#每次请求之前延迟10ms" class="header-anchor">#</a> 每次请求之前延迟10ms</h3> <div class="language- extra-class"><pre class="language-text"><code>function delay()
+   return 10
+end
+</code></pre></div><h3 id="每个线程要先进行认证，认证之后获取token以进行压测"><a href="#每个线程要先进行认证，认证之后获取token以进行压测" class="header-anchor">#</a> 每个线程要先进行认证，认证之后获取token以进行压测</h3> <div class="language- extra-class"><pre class="language-text"><code>token = nil
+path  = &quot;/authenticate&quot;
+
+request = function()
+   return wrk.format(&quot;GET&quot;, path)
+end
+
+response = function(status, headers, body)
+   if not token and status == 200 then
+      token = headers[&quot;X-Token&quot;]
+      path  = &quot;/resource&quot;
+      wrk.headers[&quot;X-Token&quot;] = token
+   end
+end
+</code></pre></div><p>在没有token的情况下，先访问/authenticate认证。认证成功后，读取token并替换path为/resource。</p> <h3 id="压测支持http-pipeline的服务"><a href="#压测支持http-pipeline的服务" class="header-anchor">#</a> 压测支持HTTP pipeline的服务</h3> <div class="language- extra-class"><pre class="language-text"><code>init = function(args)
+   local r = {}
+   r[1] = wrk.format(nil, &quot;/?foo&quot;)
+   r[2] = wrk.format(nil, &quot;/?bar&quot;)
+   r[3] = wrk.format(nil, &quot;/?baz&quot;)
+
+   req = table.concat(r)
+end
+
+request = function()
+   return req
+end
+</code></pre></div><p>通过在init方法中将三个HTTP request请求拼接在一起，实现每次发送三个请求，以使用HTTP pipeline。</p> <p>转载自：http://www.cnblogs.com/xinzhao/p/6233009.html</p></div> <footer class="page-edit" style="display:none;"><!----> <!----></footer> <!----> <!----></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-44bd5a18 data-v-44bd5a18><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-44bd5a18><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-44bd5a18></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-44bd5a18></path></svg></div></div></div>
+    <script src="/assets/js/app.4c0f163f.js" defer></script><script src="/assets/js/3.5c161e77.js" defer></script><script src="/assets/js/1.b50dabeb.js" defer></script><script src="/assets/js/78.2c2736ff.js" defer></script>
+  </body>
+</html>

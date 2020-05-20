@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Centos7下编译安装Nginx、Mysql、PHP（文章底部包含一键安装脚本） | 君惜の博客</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    
+    <meta name="description" content="">
+    <link rel="preload" href="/assets/css/0.styles.ff30c3b6.css" as="style"><link rel="preload" href="/assets/js/app.4c0f163f.js" as="script"><link rel="preload" href="/assets/js/3.5c161e77.js" as="script"><link rel="preload" href="/assets/js/1.b50dabeb.js" as="script"><link rel="preload" href="/assets/js/24.665841c7.js" as="script"><link rel="prefetch" href="/assets/js/10.7fffa9c4.js"><link rel="prefetch" href="/assets/js/11.a894a0a3.js"><link rel="prefetch" href="/assets/js/12.7c1460cd.js"><link rel="prefetch" href="/assets/js/13.dd983835.js"><link rel="prefetch" href="/assets/js/14.1487eb9d.js"><link rel="prefetch" href="/assets/js/15.4756daf1.js"><link rel="prefetch" href="/assets/js/16.a530f05a.js"><link rel="prefetch" href="/assets/js/17.29f6aa52.js"><link rel="prefetch" href="/assets/js/18.e4a9724e.js"><link rel="prefetch" href="/assets/js/19.5ed05463.js"><link rel="prefetch" href="/assets/js/20.0cce4e1a.js"><link rel="prefetch" href="/assets/js/21.83dfac32.js"><link rel="prefetch" href="/assets/js/22.ad29d758.js"><link rel="prefetch" href="/assets/js/23.18313ffe.js"><link rel="prefetch" href="/assets/js/25.5e232809.js"><link rel="prefetch" href="/assets/js/26.af71fdca.js"><link rel="prefetch" href="/assets/js/27.8a2d98c2.js"><link rel="prefetch" href="/assets/js/28.1306b459.js"><link rel="prefetch" href="/assets/js/29.29630159.js"><link rel="prefetch" href="/assets/js/30.b89be015.js"><link rel="prefetch" href="/assets/js/31.6295dd91.js"><link rel="prefetch" href="/assets/js/32.b7becd12.js"><link rel="prefetch" href="/assets/js/33.8faf9a10.js"><link rel="prefetch" href="/assets/js/34.cd57f657.js"><link rel="prefetch" href="/assets/js/35.7e2b5a6f.js"><link rel="prefetch" href="/assets/js/36.d71a14b1.js"><link rel="prefetch" href="/assets/js/37.959b4726.js"><link rel="prefetch" href="/assets/js/38.f931a68f.js"><link rel="prefetch" href="/assets/js/39.c3ea2b40.js"><link rel="prefetch" href="/assets/js/4.c1ea1bf1.js"><link rel="prefetch" href="/assets/js/40.4982c905.js"><link rel="prefetch" href="/assets/js/41.203d520e.js"><link rel="prefetch" href="/assets/js/42.7e5a0064.js"><link rel="prefetch" href="/assets/js/43.6b7dcc89.js"><link rel="prefetch" href="/assets/js/44.ace44d85.js"><link rel="prefetch" href="/assets/js/45.e7334ca4.js"><link rel="prefetch" href="/assets/js/46.2f73e550.js"><link rel="prefetch" href="/assets/js/47.bb851a3c.js"><link rel="prefetch" href="/assets/js/48.9ead4a3a.js"><link rel="prefetch" href="/assets/js/49.f6d187a3.js"><link rel="prefetch" href="/assets/js/5.4f3c9bb5.js"><link rel="prefetch" href="/assets/js/50.44513019.js"><link rel="prefetch" href="/assets/js/51.f92332ae.js"><link rel="prefetch" href="/assets/js/52.1a90855d.js"><link rel="prefetch" href="/assets/js/53.a6063052.js"><link rel="prefetch" href="/assets/js/54.5e4dc526.js"><link rel="prefetch" href="/assets/js/55.b4cf2cca.js"><link rel="prefetch" href="/assets/js/56.5afab6b8.js"><link rel="prefetch" href="/assets/js/57.13db934e.js"><link rel="prefetch" href="/assets/js/58.45393b85.js"><link rel="prefetch" href="/assets/js/59.312d0c74.js"><link rel="prefetch" href="/assets/js/6.0583317e.js"><link rel="prefetch" href="/assets/js/60.868da390.js"><link rel="prefetch" href="/assets/js/61.06d72270.js"><link rel="prefetch" href="/assets/js/62.95d65aff.js"><link rel="prefetch" href="/assets/js/63.36ccfb18.js"><link rel="prefetch" href="/assets/js/64.02290762.js"><link rel="prefetch" href="/assets/js/65.eac6abdc.js"><link rel="prefetch" href="/assets/js/66.5c7a3796.js"><link rel="prefetch" href="/assets/js/67.6d2a84e7.js"><link rel="prefetch" href="/assets/js/68.12b35d40.js"><link rel="prefetch" href="/assets/js/69.da3256da.js"><link rel="prefetch" href="/assets/js/7.60184b24.js"><link rel="prefetch" href="/assets/js/70.76e73b0c.js"><link rel="prefetch" href="/assets/js/71.99afbb77.js"><link rel="prefetch" href="/assets/js/72.19feaec4.js"><link rel="prefetch" href="/assets/js/73.ba5ee2ed.js"><link rel="prefetch" href="/assets/js/74.cef516f6.js"><link rel="prefetch" href="/assets/js/75.90f4a703.js"><link rel="prefetch" href="/assets/js/76.885ff289.js"><link rel="prefetch" href="/assets/js/77.823d6f1d.js"><link rel="prefetch" href="/assets/js/78.2c2736ff.js"><link rel="prefetch" href="/assets/js/79.cbfa5ae7.js"><link rel="prefetch" href="/assets/js/8.ccce47cf.js"><link rel="prefetch" href="/assets/js/80.431573aa.js"><link rel="prefetch" href="/assets/js/9.9160a89c.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.ff30c3b6.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-19557b78><div data-v-19557b78><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-19557b78 data-v-19557b78><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-64685f0e data-v-19557b78 data-v-19557b78><h3 class="title" style="display:none;" data-v-64685f0e data-v-64685f0e>君惜の博客</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-64685f0e data-v-64685f0e><input type="password" value="" data-v-64685f0e> <span data-v-64685f0e>Konck! Knock!</span> <button data-v-64685f0e>OK</button></label> <div class="footer" style="display:none;" data-v-64685f0e data-v-64685f0e><span data-v-64685f0e><i class="iconfont reco-theme" data-v-64685f0e></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-64685f0e>vuePress-theme-reco</a></span> <span data-v-64685f0e><i class="iconfont reco-copyright" data-v-64685f0e></i> <a data-v-64685f0e><span data-v-64685f0e>君惜</span>
+            
+          <!---->
+          2020
+        </a></span></div></div> <div class="hide" data-v-19557b78><header class="navbar" data-v-19557b78><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">君惜の博客</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/Docker/" class="nav-link"><i class="iconfont undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Git/" class="nav-link"><i class="iconfont undefined"></i>
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JavaScript/" class="nav-link"><i class="iconfont undefined"></i>
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Linux/" class="nav-link"><i class="iconfont undefined"></i>
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Mysql/" class="nav-link"><i class="iconfont undefined"></i>
+  Mysql
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Node.js/" class="nav-link"><i class="iconfont undefined"></i>
+  Node.js
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Python/" class="nav-link"><i class="iconfont undefined"></i>
+  Python
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Redis/" class="nav-link"><i class="iconfont undefined"></i>
+  Redis
+</a></li><li class="dropdown-item"><!----> <a href="/categories/并发测试/" class="nav-link"><i class="iconfont undefined"></i>
+  并发测试
+</a></li><li class="dropdown-item"><!----> <a href="/categories/随笔/" class="nav-link"><i class="iconfont undefined"></i>
+  随笔
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div> <a href="https://github.com/xinlei3166" target="_blank" rel="noopener noreferrer" class="repo-link"><i class="iconfont reco-github"></i>
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask" data-v-19557b78></div> <aside class="sidebar" data-v-19557b78><div class="personal-info-wrapper" data-v-b038cec6><img src="/img/avatar.jpg" alt="author-avatar" class="personal-img" data-v-b038cec6> <h3 class="name" data-v-b038cec6>
+    君惜
+  </h3> <div class="num" data-v-b038cec6><div data-v-b038cec6><h3 data-v-b038cec6>68</h3> <h6 data-v-b038cec6>Article</h6></div> <div data-v-b038cec6><h3 data-v-b038cec6>76</h3> <h6 data-v-b038cec6>Tag</h6></div></div> <hr data-v-b038cec6></div> <nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/Docker/" class="nav-link"><i class="iconfont undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Git/" class="nav-link"><i class="iconfont undefined"></i>
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JavaScript/" class="nav-link"><i class="iconfont undefined"></i>
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Linux/" class="nav-link"><i class="iconfont undefined"></i>
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Mysql/" class="nav-link"><i class="iconfont undefined"></i>
+  Mysql
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Node.js/" class="nav-link"><i class="iconfont undefined"></i>
+  Node.js
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Python/" class="nav-link"><i class="iconfont undefined"></i>
+  Python
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Redis/" class="nav-link"><i class="iconfont undefined"></i>
+  Redis
+</a></li><li class="dropdown-item"><!----> <a href="/categories/并发测试/" class="nav-link"><i class="iconfont undefined"></i>
+  并发测试
+</a></li><li class="dropdown-item"><!----> <a href="/categories/随笔/" class="nav-link"><i class="iconfont undefined"></i>
+  随笔
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div> <a href="https://github.com/xinlei3166" target="_blank" rel="noopener noreferrer" class="repo-link"><i class="iconfont reco-github"></i>
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Centos7下编译安装Nginx、Mysql、PHP（文章底部包含一键安装脚本）</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Linux/Centos7%E4%B8%8B%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Nginx%E3%80%81Mysql%E3%80%81PHP%EF%BC%88%E6%96%87%E7%AB%A0%E5%BA%95%E9%83%A8%E5%8C%85%E5%90%AB%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%EF%BC%89.html#实现环境" class="sidebar-link">实现环境</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Linux/Centos7%E4%B8%8B%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Nginx%E3%80%81Mysql%E3%80%81PHP%EF%BC%88%E6%96%87%E7%AB%A0%E5%BA%95%E9%83%A8%E5%8C%85%E5%90%AB%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%EF%BC%89.html#首先下载好我们的需要的包" class="sidebar-link">首先下载好我们的需要的包</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Linux/Centos7%E4%B8%8B%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Nginx%E3%80%81Mysql%E3%80%81PHP%EF%BC%88%E6%96%87%E7%AB%A0%E5%BA%95%E9%83%A8%E5%8C%85%E5%90%AB%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%EF%BC%89.html#软件下载地址" class="sidebar-link">软件下载地址</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Linux/Centos7%E4%B8%8B%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Nginx%E3%80%81Mysql%E3%80%81PHP%EF%BC%88%E6%96%87%E7%AB%A0%E5%BA%95%E9%83%A8%E5%8C%85%E5%90%AB%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%EF%BC%89.html#关闭系统限制" class="sidebar-link">关闭系统限制</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Linux/Centos7%E4%B8%8B%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Nginx%E3%80%81Mysql%E3%80%81PHP%EF%BC%88%E6%96%87%E7%AB%A0%E5%BA%95%E9%83%A8%E5%8C%85%E5%90%AB%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%EF%BC%89.html#开始安装nginx" class="sidebar-link">开始安装nginx</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Linux/Centos7%E4%B8%8B%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Nginx%E3%80%81Mysql%E3%80%81PHP%EF%BC%88%E6%96%87%E7%AB%A0%E5%BA%95%E9%83%A8%E5%8C%85%E5%90%AB%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%EF%BC%89.html#创建www账户-用来启动nginx" class="sidebar-link">创建www账户 用来启动nginx</a></li><li class="sidebar-sub-header"><a href="/Linux/Centos7%E4%B8%8B%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Nginx%E3%80%81Mysql%E3%80%81PHP%EF%BC%88%E6%96%87%E7%AB%A0%E5%BA%95%E9%83%A8%E5%8C%85%E5%90%AB%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%EF%BC%89.html#安装依赖的包" class="sidebar-link">安装依赖的包</a></li><li class="sidebar-sub-header"><a href="/Linux/Centos7%E4%B8%8B%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Nginx%E3%80%81Mysql%E3%80%81PHP%EF%BC%88%E6%96%87%E7%AB%A0%E5%BA%95%E9%83%A8%E5%8C%85%E5%90%AB%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%EF%BC%89.html#解压nginx源码包" class="sidebar-link">解压Nginx源码包</a></li><li class="sidebar-sub-header"><a href="/Linux/Centos7%E4%B8%8B%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Nginx%E3%80%81Mysql%E3%80%81PHP%EF%BC%88%E6%96%87%E7%AB%A0%E5%BA%95%E9%83%A8%E5%8C%85%E5%90%AB%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%EF%BC%89.html#进入解压后的目录，对nginx进行配置" class="sidebar-link">进入解压后的目录，对Nginx进行配置</a></li><li class="sidebar-sub-header"><a href="/Linux/Centos7%E4%B8%8B%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Nginx%E3%80%81Mysql%E3%80%81PHP%EF%BC%88%E6%96%87%E7%AB%A0%E5%BA%95%E9%83%A8%E5%8C%85%E5%90%AB%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%EF%BC%89.html#编译和安装" class="sidebar-link">编译和安装</a></li><li class="sidebar-sub-header"><a href="/Linux/Centos7%E4%B8%8B%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Nginx%E3%80%81Mysql%E3%80%81PHP%EF%BC%88%E6%96%87%E7%AB%A0%E5%BA%95%E9%83%A8%E5%8C%85%E5%90%AB%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%EF%BC%89.html#启动nginx" class="sidebar-link">启动Nginx</a></li><li class="sidebar-sub-header"><a href="/Linux/Centos7%E4%B8%8B%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Nginx%E3%80%81Mysql%E3%80%81PHP%EF%BC%88%E6%96%87%E7%AB%A0%E5%BA%95%E9%83%A8%E5%8C%85%E5%90%AB%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%EF%BC%89.html#浏览器访问测试是否ok" class="sidebar-link">浏览器访问测试是否ok</a></li><li class="sidebar-sub-header"><a href="/Linux/Centos7%E4%B8%8B%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Nginx%E3%80%81Mysql%E3%80%81PHP%EF%BC%88%E6%96%87%E7%AB%A0%E5%BA%95%E9%83%A8%E5%8C%85%E5%90%AB%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%EF%BC%89.html#关闭nginx进程" class="sidebar-link">关闭Nginx进程</a></li><li class="sidebar-sub-header"><a href="/Linux/Centos7%E4%B8%8B%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Nginx%E3%80%81Mysql%E3%80%81PHP%EF%BC%88%E6%96%87%E7%AB%A0%E5%BA%95%E9%83%A8%E5%8C%85%E5%90%AB%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%EF%BC%89.html#nginx命令做软连接方便使用" class="sidebar-link">nginx命令做软连接方便使用</a></li><li class="sidebar-sub-header"><a href="/Linux/Centos7%E4%B8%8B%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Nginx%E3%80%81Mysql%E3%80%81PHP%EF%BC%88%E6%96%87%E7%AB%A0%E5%BA%95%E9%83%A8%E5%8C%85%E5%90%AB%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%EF%BC%89.html#编写nginx启动脚本" class="sidebar-link">编写nginx启动脚本</a></li><li class="sidebar-sub-header"><a href="/Linux/Centos7%E4%B8%8B%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Nginx%E3%80%81Mysql%E3%80%81PHP%EF%BC%88%E6%96%87%E7%AB%A0%E5%BA%95%E9%83%A8%E5%8C%85%E5%90%AB%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%EF%BC%89.html#修改完systemctl服务，需要重新加载下daemon" class="sidebar-link">修改完systemctl服务，需要重新加载下daemon</a></li><li class="sidebar-sub-header"><a href="/Linux/Centos7%E4%B8%8B%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Nginx%E3%80%81Mysql%E3%80%81PHP%EF%BC%88%E6%96%87%E7%AB%A0%E5%BA%95%E9%83%A8%E5%8C%85%E5%90%AB%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%EF%BC%89.html#用systemctl启动nginx服务，并查看状态" class="sidebar-link">用systemctl启动Nginx服务，并查看状态</a></li><li class="sidebar-sub-header"><a href="/Linux/Centos7%E4%B8%8B%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Nginx%E3%80%81Mysql%E3%80%81PHP%EF%BC%88%E6%96%87%E7%AB%A0%E5%BA%95%E9%83%A8%E5%8C%85%E5%90%AB%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%EF%BC%89.html#设置nginx开机启动" class="sidebar-link">设置nginx开机启动</a></li><li class="sidebar-sub-header"><a href="/Linux/Centos7%E4%B8%8B%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Nginx%E3%80%81Mysql%E3%80%81PHP%EF%BC%88%E6%96%87%E7%AB%A0%E5%BA%95%E9%83%A8%E5%8C%85%E5%90%AB%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%EF%BC%89.html#创建用户和组" class="sidebar-link">创建用户和组</a></li><li class="sidebar-sub-header"><a href="/Linux/Centos7%E4%B8%8B%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Nginx%E3%80%81Mysql%E3%80%81PHP%EF%BC%88%E6%96%87%E7%AB%A0%E5%BA%95%E9%83%A8%E5%8C%85%E5%90%AB%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%EF%BC%89.html#解压mysql源码包" class="sidebar-link">解压mysql源码包</a></li><li class="sidebar-sub-header"><a href="/Linux/Centos7%E4%B8%8B%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Nginx%E3%80%81Mysql%E3%80%81PHP%EF%BC%88%E6%96%87%E7%AB%A0%E5%BA%95%E9%83%A8%E5%8C%85%E5%90%AB%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%EF%BC%89.html#进入解压后的目录，对mysql进行配置（5-5以上都是cmake）" class="sidebar-link">进入解压后的目录，对mysql进行配置（5.5以上都是cmake）</a></li><li class="sidebar-sub-header"><a href="/Linux/Centos7%E4%B8%8B%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Nginx%E3%80%81Mysql%E3%80%81PHP%EF%BC%88%E6%96%87%E7%AB%A0%E5%BA%95%E9%83%A8%E5%8C%85%E5%90%AB%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%EF%BC%89.html#编译和安装-2" class="sidebar-link">编译和安装</a></li><li class="sidebar-sub-header"><a href="/Linux/Centos7%E4%B8%8B%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Nginx%E3%80%81Mysql%E3%80%81PHP%EF%BC%88%E6%96%87%E7%AB%A0%E5%BA%95%E9%83%A8%E5%8C%85%E5%90%AB%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%EF%BC%89.html#初始化数据库及启动" class="sidebar-link">初始化数据库及启动</a></li><li class="sidebar-sub-header"><a href="/Linux/Centos7%E4%B8%8B%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Nginx%E3%80%81Mysql%E3%80%81PHP%EF%BC%88%E6%96%87%E7%AB%A0%E5%BA%95%E9%83%A8%E5%8C%85%E5%90%AB%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%EF%BC%89.html#设置mysql开机启动" class="sidebar-link">设置mysql开机启动</a></li><li class="sidebar-sub-header"><a href="/Linux/Centos7%E4%B8%8B%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Nginx%E3%80%81Mysql%E3%80%81PHP%EF%BC%88%E6%96%87%E7%AB%A0%E5%BA%95%E9%83%A8%E5%8C%85%E5%90%AB%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%EF%BC%89.html#查看mysql启动状态" class="sidebar-link">查看Mysql启动状态</a></li><li class="sidebar-sub-header"><a href="/Linux/Centos7%E4%B8%8B%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Nginx%E3%80%81Mysql%E3%80%81PHP%EF%BC%88%E6%96%87%E7%AB%A0%E5%BA%95%E9%83%A8%E5%8C%85%E5%90%AB%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%EF%BC%89.html#进入数据库，创建一个测试数据库以及授权远程用户可访问这个数据库" class="sidebar-link">进入数据库，创建一个测试数据库以及授权远程用户可访问这个数据库</a></li><li class="sidebar-sub-header"><a href="/Linux/Centos7%E4%B8%8B%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Nginx%E3%80%81Mysql%E3%80%81PHP%EF%BC%88%E6%96%87%E7%AB%A0%E5%BA%95%E9%83%A8%E5%8C%85%E5%90%AB%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%EF%BC%89.html#查看授权的用户表" class="sidebar-link">查看授权的用户表</a></li></ul></li><li><a href="/Linux/Centos7%E4%B8%8B%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Nginx%E3%80%81Mysql%E3%80%81PHP%EF%BC%88%E6%96%87%E7%AB%A0%E5%BA%95%E9%83%A8%E5%8C%85%E5%90%AB%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%EF%BC%89.html#php-7-安装" class="sidebar-link">PHP 7 安装</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Linux/Centos7%E4%B8%8B%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Nginx%E3%80%81Mysql%E3%80%81PHP%EF%BC%88%E6%96%87%E7%AB%A0%E5%BA%95%E9%83%A8%E5%8C%85%E5%90%AB%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%EF%BC%89.html#进入software目录" class="sidebar-link">进入software目录</a></li><li class="sidebar-sub-header"><a href="/Linux/Centos7%E4%B8%8B%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Nginx%E3%80%81Mysql%E3%80%81PHP%EF%BC%88%E6%96%87%E7%AB%A0%E5%BA%95%E9%83%A8%E5%8C%85%E5%90%AB%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%EF%BC%89.html#接着解压php源码包" class="sidebar-link">接着解压php源码包</a></li><li class="sidebar-sub-header"><a href="/Linux/Centos7%E4%B8%8B%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Nginx%E3%80%81Mysql%E3%80%81PHP%EF%BC%88%E6%96%87%E7%AB%A0%E5%BA%95%E9%83%A8%E5%8C%85%E5%90%AB%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%EF%BC%89.html#再进入解压后的文件夹" class="sidebar-link">再进入解压后的文件夹</a></li><li class="sidebar-sub-header"><a href="/Linux/Centos7%E4%B8%8B%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Nginx%E3%80%81Mysql%E3%80%81PHP%EF%BC%88%E6%96%87%E7%AB%A0%E5%BA%95%E9%83%A8%E5%8C%85%E5%90%AB%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%EF%BC%89.html#安装之前要先安装那些准备装的扩展要用到的软件模块" class="sidebar-link">安装之前要先安装那些准备装的扩展要用到的软件模块</a></li><li class="sidebar-sub-header"><a href="/Linux/Centos7%E4%B8%8B%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Nginx%E3%80%81Mysql%E3%80%81PHP%EF%BC%88%E6%96%87%E7%AB%A0%E5%BA%95%E9%83%A8%E5%8C%85%E5%90%AB%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%EF%BC%89.html#接下来-configure-php-7" class="sidebar-link">接下来 configure PHP 7</a></li><li class="sidebar-sub-header"><a href="/Linux/Centos7%E4%B8%8B%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Nginx%E3%80%81Mysql%E3%80%81PHP%EF%BC%88%E6%96%87%E7%AB%A0%E5%BA%95%E9%83%A8%E5%8C%85%E5%90%AB%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%EF%BC%89.html#编译和安装-3" class="sidebar-link">编译和安装</a></li><li class="sidebar-sub-header"><a href="/Linux/Centos7%E4%B8%8B%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Nginx%E3%80%81Mysql%E3%80%81PHP%EF%BC%88%E6%96%87%E7%AB%A0%E5%BA%95%E9%83%A8%E5%8C%85%E5%90%AB%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%EF%BC%89.html#php-的配置文档" class="sidebar-link">PHP 的配置文档</a></li></ul></li><li><a href="/Linux/Centos7%E4%B8%8B%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Nginx%E3%80%81Mysql%E3%80%81PHP%EF%BC%88%E6%96%87%E7%AB%A0%E5%BA%95%E9%83%A8%E5%8C%85%E5%90%AB%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%EF%BC%89.html#配置-nginx-站点" class="sidebar-link">配置 Nginx 站点</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-64685f0e data-v-19557b78><h3 class="title" style="display:none;" data-v-64685f0e data-v-64685f0e>Centos7下编译安装Nginx、Mysql、PHP（文章底部包含一键安装脚本）</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-64685f0e data-v-64685f0e><input type="password" value="" data-v-64685f0e> <span data-v-64685f0e>Konck! Knock!</span> <button data-v-64685f0e>OK</button></label> <div class="footer" style="display:none;" data-v-64685f0e data-v-64685f0e><span data-v-64685f0e><i class="iconfont reco-theme" data-v-64685f0e></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-64685f0e>vuePress-theme-reco</a></span> <span data-v-64685f0e><i class="iconfont reco-copyright" data-v-64685f0e></i> <a data-v-64685f0e><span data-v-64685f0e>君惜</span>
+            
+          <!---->
+          2020
+        </a></span></div></div> <div data-v-19557b78><main class="page"><div class="page-title" style="display:none;"><h1>Centos7下编译安装Nginx、Mysql、PHP（文章底部包含一键安装脚本）</h1> <hr> <div data-v-cd8d63d2><i class="iconfont reco-account" data-v-cd8d63d2><span data-v-cd8d63d2>君惜</span></i> <!----> <!----> <i class="iconfont reco-tag tags" data-v-cd8d63d2><span class="tag-item" data-v-cd8d63d2>
+      Centos
+    </span><span class="tag-item" data-v-cd8d63d2>
+      Linux
+    </span><span class="tag-item" data-v-cd8d63d2>
+      Nginx
+    </span><span class="tag-item" data-v-cd8d63d2>
+      Mysql
+    </span><span class="tag-item" data-v-cd8d63d2>
+      PHP
+    </span></i></div></div> <div class="theme-reco-content content__default" style="display:none;"><h2 id="实现环境"><a href="#实现环境" class="header-anchor">#</a> 实现环境</h2> <blockquote><p>Centos 7 64位<br>
+IP地址：172.16.0.20
+Nginx：1.12.0
+Mysql：5.7.18
+PHP：7.1.4
+yum源：aliyun源</p></blockquote> <h6 id="如果你的系统是新安装的redhat-7或-centos-7-，可以使用我的一键优化脚本优化系统，有利于系统的使用和下面的安装。点击我查看"><a href="#如果你的系统是新安装的redhat-7或-centos-7-，可以使用我的一键优化脚本优化系统，有利于系统的使用和下面的安装。点击我查看" class="header-anchor">#</a> 如果你的系统是新安装的redhat 7或 Centos 7 ，可以使用我的一键优化脚本优化系统，有利于系统的使用和下面的安装。<a href="http://www.jianshu.com/p/f9ea135af86a" target="_blank" rel="noopener noreferrer">点击我查看<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></h6> <h2 id="首先下载好我们的需要的包"><a href="#首先下载好我们的需要的包" class="header-anchor">#</a> 首先下载好我们的需要的包</h2> <p>创建一个目录存放下载的软件</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost ~]# mkdir /software
+[root@localhost ~]# cd /software/
+</code></pre></div><h2 id="软件下载地址"><a href="#软件下载地址" class="header-anchor">#</a> 软件下载地址</h2> <p><a href="https://share.weiyun.com/a493518acad655626ac0f779bc625bff" target="_blank" rel="noopener noreferrer">这是我的网盘链接<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>
+或者去它们各自的官网下载最新版，下载命令参考</p> <div class="language- extra-class"><pre class="language-text"><code>wget https://cdn.mysql.com//Downloads/MySQL-5.7/mysql-boost-5.7.18.tar.gz
+wget https://sourceforge.net/projects/pcre/files/pcre/8.40/pcre-8.40.tar.gz
+wget http://nginx.org/download/nginx-1.12.0.tar.gz
+wget http://hk1.php.net/distributions/php-7.1.4.tar.gz
+</code></pre></div><p>这是需要的包</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost software]# ll
+总用量 757804
+
+-rw-r--r--   1 root root   61612105 4月  18 14:55 mysql-boost-5.7.18.tar.gz
+-rw-r--r--.  1 root root     980831 4月  14 17:08 nginx-1.12.0.tar.gz
+-rw-r--r--   1 root root  20319716 4月  18 15:41 php-7.1.4.tar.gz
+</code></pre></div><h2 id="关闭系统限制"><a href="#关闭系统限制" class="header-anchor">#</a> <strong>关闭系统限制</strong></h2> <p>关闭系统防火墙</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost software]# systemctl stop firewalld.service 
+[root@localhost software]# systemctl disable firewalld.service 
+</code></pre></div><p>关闭SElinux</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost software]# sed -i 's/SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config
+[root@localhost software]# setenforce 0
+</code></pre></div><h2 id="开始安装nginx"><a href="#开始安装nginx" class="header-anchor">#</a> 开始安装nginx</h2> <h3 id="创建www账户-用来启动nginx"><a href="#创建www账户-用来启动nginx" class="header-anchor">#</a> 创建www账户 用来启动nginx</h3> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost software]# useradd www -s /sbin/nologin 
+</code></pre></div><h3 id="安装依赖的包"><a href="#安装依赖的包" class="header-anchor">#</a> 安装依赖的包</h3> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost software]# yum -y install pcre pcre-devel zlib zlib-devel gcc-c++ gcc openssl*
+</code></pre></div><h3 id="解压nginx源码包"><a href="#解压nginx源码包" class="header-anchor">#</a> 解压Nginx源码包</h3> <div class="language- extra-class"><pre class="language-text"><code>root@localhost software]# tar zxvf nginx-1.12.0.tar.gz 
+</code></pre></div><h3 id="进入解压后的目录，对nginx进行配置"><a href="#进入解压后的目录，对nginx进行配置" class="header-anchor">#</a> 进入解压后的目录，对Nginx进行配置</h3> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost software]# cd nginx-1.12.0/
+[root@localhost nginx-1.12.0]# ./configure --user=www --group=www --prefix=/usr/local/nginx --with-http_realip_module --with-http_sub_module --with-http_gzip_static_module --with-http_stub_status_module  --with-pcre
+</code></pre></div><h3 id="编译和安装"><a href="#编译和安装" class="header-anchor">#</a> 编译和安装</h3> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost nginx-1.12.0]# make &amp;&amp; make install
+</code></pre></div><h3 id="启动nginx"><a href="#启动nginx" class="header-anchor">#</a> 启动Nginx</h3> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost nginx-1.12.0]# /usr/local/nginx/sbin/nginx
+</code></pre></div><h3 id="浏览器访问测试是否ok"><a href="#浏览器访问测试是否ok" class="header-anchor">#</a> 浏览器访问测试是否ok</h3> <p><img src="http://upload-images.jianshu.io/upload_images/4262139-42bdfeb1435bb703.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p> <h3 id="关闭nginx进程"><a href="#关闭nginx进程" class="header-anchor">#</a> 关闭Nginx进程</h3> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost nginx-1.12.0]# killall nginx
+[root@localhost nginx-1.12.0]# ps -ef|grep nginx
+</code></pre></div><h3 id="nginx命令做软连接方便使用"><a href="#nginx命令做软连接方便使用" class="header-anchor">#</a> nginx命令做软连接方便使用</h3> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost nginx-1.12.0]# ln -s /usr/local/nginx/sbin/nginx /sbin/nginx
+</code></pre></div><h3 id="编写nginx启动脚本"><a href="#编写nginx启动脚本" class="header-anchor">#</a> 编写nginx启动脚本</h3> <div class="language- extra-class"><pre class="language-text"><code>cat &gt;&gt; /usr/lib/systemd/system/nginx.service &lt;&lt; EOF
+[Unit]
+Description=nginx - high performance web server
+Documentation=http://nginx.org/en/docs/
+After=network-online.target remote-fs.target nss-lookup.target
+ 
+[Service]
+Type=forking
+PIDFile=/usr/local/nginx/logs/nginx.pid
+ExecStartPre=/usr/sbin/nginx -t
+ExecStart=/usr/sbin/nginx
+ExecReload=//usr/sbin/nginx -s reload
+ExecStop=/usr/sbin/nginx -s stop
+PrivateTmp=true
+ 
+[Install]
+WantedBy=multi-user.target
+EOF
+</code></pre></div><h3 id="修改完systemctl服务，需要重新加载下daemon"><a href="#修改完systemctl服务，需要重新加载下daemon" class="header-anchor">#</a> 修改完systemctl服务，需要重新加载下daemon</h3> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost nginx-1.12.0]# systemctl daemon-reload 
+</code></pre></div><h3 id="用systemctl启动nginx服务，并查看状态"><a href="#用systemctl启动nginx服务，并查看状态" class="header-anchor">#</a> 用systemctl启动Nginx服务，并查看状态</h3> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost nginx-1.12.0]# systemctl start nginx
+[root@localhost nginx-1.12.0]# systemctl status nginx
+● nginx.service - nginx - high performance web server
+   Loaded: loaded (/usr/lib/systemd/system/nginx.service; enabled; vendor preset: disabled)
+   Active: active (running) since 二 2017-04-18 14:06:58 CST; 8s ago
+     Docs: http://nginx.org/en/docs/
+  Process: 11816 ExecStart=/usr/sbin/nginx (code=exited, status=0/SUCCESS)
+  Process: 11813 ExecStartPre=/usr/sbin/nginx -t (code=exited, status=0/SUCCESS)
+ Main PID: 11818 (nginx)
+   CGroup: /system.slice/nginx.service
+           ├─11818 nginx: master process /usr/sbin/nginx
+           └─11820 nginx: worker process
+
+4月 18 14:06:58 localhost.localdomain systemd[1]: Starting nginx - high performance web server...
+4月 18 14:06:58 localhost.localdomain nginx[11813]: nginx: the configuration file /usr/local/nginx/conf/nginx...s ok
+4月 18 14:06:58 localhost.localdomain nginx[11813]: nginx: configuration file /usr/local/nginx/conf/nginx.con...sful
+4月 18 14:06:58 localhost.localdomain systemd[1]: Failed to read PID from file /usr/local/nginx/logs/nginx.pi...ment
+4月 18 14:06:58 localhost.localdomain systemd[1]: Started nginx - high performance web server.
+</code></pre></div><h3 id="设置nginx开机启动"><a href="#设置nginx开机启动" class="header-anchor">#</a> 设置nginx开机启动</h3> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost nginx-1.12.0]# systemctl enable nginx
+</code></pre></div><p>nginx安装完成，下面安装mysql</p> <hr> <br>
+## 安装MySQL
+### 安装依赖包
+<div class="language- extra-class"><pre class="language-text"><code>[root@localhost nginx-1.12.0]# cd /software/
+[root@localhost software]# yum -y install ncurses ncurses-devel bison cmake gcc gcc-c++
+</code></pre></div><h3 id="创建用户和组"><a href="#创建用户和组" class="header-anchor">#</a> 创建用户和组</h3> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost software]# groupadd mysql
+[root@localhost software]# useradd -s /sbin/nologin -g mysql mysql -M
+[root@localhost software]# id mysql
+</code></pre></div><h3 id="解压mysql源码包"><a href="#解压mysql源码包" class="header-anchor">#</a> 解压mysql源码包</h3> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost software]# tar zxvf mysql-boost-5.7.18.tar.gz 
+</code></pre></div><h3 id="进入解压后的目录，对mysql进行配置（5-5以上都是cmake）"><a href="#进入解压后的目录，对mysql进行配置（5-5以上都是cmake）" class="header-anchor">#</a> 进入解压后的目录，对mysql进行配置（5.5以上都是cmake）</h3> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost software]# cd mysql-5.7.18/
+[root@localhost mysql-5.7.18]# cmake . -DCMAKE_INSTALL_PREFIX=/usr/local/mysql -DMYSQL_UNIX_ADDR=/usr/local/mysql/mysql.sock -DSYSCONFDIR=/usr/local/mysql/etc -DSYSTEMD_PID_DIR=/usr/local/mysql -DDEFAULT_CHARSET=utf8  -DDEFAULT_COLLATION=utf8_general_ci -DWITH_INNOBASE_STORAGE_ENGINE=1 -DWITH_ARCHIVE_STORAGE_ENGINE=1 -DWITH_BLACKHOLE_STORAGE_ENGINE=1 -DWITH_PERFSCHEMA_STORAGE_ENGINE=1 -DMYSQL_DATADIR=/usr/local/mysql/data -DWITH_BOOST=boost -DWITH_SYSTEMD=1
+</code></pre></div><p>记住这个/usr/local/mysql/mysql.sock，php连接mysql会用到。</p> <h3 id="编译和安装-2"><a href="#编译和安装-2" class="header-anchor">#</a> 编译和安装</h3> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost mysql-5.7.18]# make &amp;&amp; make install
+</code></pre></div><h3 id="初始化数据库及启动"><a href="#初始化数据库及启动" class="header-anchor">#</a> 初始化数据库及启动</h3> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost mysql-5.7.18]# chown -R mysql.mysql /usr/local/mysql/
+[root@localhost mysql-5.7.18]# cd /usr/local/mysql/
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code>cat &gt;&gt; my.cnf &lt;&lt; EOF
+[client]
+port = 3306
+default-character-set=utf8
+socket = /usr/local/mysql/mysql.sock
+ 
+[mysql]
+port = 3306
+default-character-set=utf8
+socket = /usr/local/mysql/mysql.sock
+
+[mysqld]
+user = mysql
+basedir = /usr/local/mysql
+datadir = /usr/local/mysql/data
+port = 3306
+default-character-set=utf8
+pid-file = /usr/local/mysql/mysqld.pid
+socket = /usr/local/mysql/mysql.sock
+server-id = 1
+
+# Remove leading # to set options mainly useful for reporting servers.
+# The server defaults are faster for transactions and fast SELECTs.
+# Adjust sizes as needed, experiment to find the optimal values.
+# join_buffer_size = 128M
+# sort_buffer_size = 2M
+# read_rnd_buffer_size = 2M 
+
+sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
+EOF
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code>[root@localhost mysql]# chown mysql.mysql my.cnf
+[root@localhost mysql]# echo 'PATH=/usr/local/mysql/bin:/usr/local/mysql/lib:$PATH' &gt;&gt; /etc/profile
+[root@localhost mysql]# echo 'export PATH' &gt;&gt; /etc/profile
+[root@localhost mysql]# source /etc/profile
+[root@localhost mysql]# bin/mysqld --initialize-insecure --user=mysql --basedir=/usr/local/mysql --datadir=/usr/local/mysql/data
+[root@localhost mysql]# cp usr/lib/systemd/system/mysqld.service /usr/lib/systemd/system/
+[root@localhost mysql]# systemctl daemon-reload 
+[root@localhost mysql]# systemctl start mysqld
+[root@localhost data]# ps -ef|grep mysql
+</code></pre></div><h3 id="设置mysql开机启动"><a href="#设置mysql开机启动" class="header-anchor">#</a> 设置mysql开机启动</h3> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost mysql]# systemctl enable mysqld
+</code></pre></div><h3 id="查看mysql启动状态"><a href="#查看mysql启动状态" class="header-anchor">#</a> 查看Mysql启动状态</h3> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost mysql]# systemctl status mysqld
+● mysqld.service - MySQL Server
+   Loaded: loaded (/usr/lib/systemd/system/mysqld.service; disabled; vendor preset: disabled)
+   Active: active (running) since 三 2017-04-19 10:48:20 CST; 25min ago
+     Docs: man:mysqld(8)
+           http://dev.mysql.com/doc/refman/en/using-systemd.html
+  Process: 12734 ExecStart=/usr/local/mysql/bin/mysqld --daemonize --pid-file=/usr/local/mysql/mysqld.pid $MYSQLD_OPTS (code=exited, status=0/SUCCESS)
+  Process: 12714 ExecStartPre=/usr/local/mysql/bin/mysqld_pre_systemd (code=exited, status=0/SUCCESS)
+ Main PID: 12737 (mysqld)
+   CGroup: /system.slice/mysqld.service
+           └─12737 /usr/local/mysql/bin/mysqld --daemonize --pid-file=/usr/local/mysql/mysqld.pid
+
+4月 19 10:48:20 localhost.localdomain mysqld[12734]: 2017-04-19T02:48:20.943096Z 0 [Note] Server hostname (bi...3306
+4月 19 10:48:20 localhost.localdomain mysqld[12734]: 2017-04-19T02:48:20.943247Z 0 [Note] IPv6 is available.
+4月 19 10:48:20 localhost.localdomain mysqld[12734]: 2017-04-19T02:48:20.943354Z 0 [Note]   - '::' resolves to '::';
+4月 19 10:48:20 localhost.localdomain mysqld[12734]: 2017-04-19T02:48:20.943397Z 0 [Note] Server socket creat...::'.
+4月 19 10:48:20 localhost.localdomain mysqld[12734]: 2017-04-19T02:48:20.966965Z 0 [Note] Event Scheduler: Lo...ents
+4月 19 10:48:20 localhost.localdomain mysqld[12734]: 2017-04-19T02:48:20.967379Z 0 [Note] /usr/local/mysql/bi...ons.
+4月 19 10:48:20 localhost.localdomain mysqld[12734]: Version: '5.7.18'  socket: '/usr/local/mysql/mysql.sock'...tion
+4月 19 10:48:20 localhost.localdomain mysqld[12734]: 2017-04-19T02:48:20.967402Z 0 [Note] Executing 'SELECT *...eck.
+4月 19 10:48:20 localhost.localdomain mysqld[12734]: 2017-04-19T02:48:20.967409Z 0 [Note] Beginning of list o...bles
+4月 19 10:48:20 localhost.localdomain systemd[1]: Started MySQL Server.
+</code></pre></div><h3 id="进入数据库，创建一个测试数据库以及授权远程用户可访问这个数据库"><a href="#进入数据库，创建一个测试数据库以及授权远程用户可访问这个数据库" class="header-anchor">#</a> 进入数据库，创建一个测试数据库以及授权远程用户可访问这个数据库</h3> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost mysql]# mysql
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 5
+Server version: 5.7.18 Source distribution
+
+Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql&gt; create database ceshi CHARACTER SET utf8  COLLATE utf8_general_ci;
+Query OK, 1 row affected (0.00 sec)
+
+mysql&gt; grant all on ceshi.* to ceshi@'%' identified by 'ceshi2017';
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+mysql&gt; flush privileges;
+Query OK, 0 rows affected (0.01 sec)
+
+</code></pre></div><h3 id="查看授权的用户表"><a href="#查看授权的用户表" class="header-anchor">#</a> 查看授权的用户表</h3> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost mysql]# mysql
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Server version: 5.7.18 Source distribution
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql&gt; SELECT DISTINCT CONCAT('User: ''',user,'''@''',host,''';') AS query FROM mysql.user;
++--------------------------------+
+| query                          |
++--------------------------------+
+| User: 'ceshi'@'%';             |
+| User: 'mysql.sys'@'localhost'; |
+| User: 'root'@'localhost';      |
++--------------------------------+
+3 rows in set (0.00 sec)
+
+</code></pre></div><p>在别的机器连接172.16.0.20的ceshi数据库</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost ~]# mysql -h172.16.0.20 -uceshi -p'ceshi2017'
+mysql: [Warning] Using a password on the command line interface can be insecure.
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 11
+Server version: 5.7.18 Source distribution
+
+Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql&gt; show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| ceshi              |
++--------------------+
+2 rows in set (0.00 sec)
+</code></pre></div><br>
+***
+<h2 id="php-7-安装"><a href="#php-7-安装" class="header-anchor">#</a> PHP 7 安装</h2> <p>PHP 7 在15年年底推出，PHP官方说的比 PHP 5 快2倍，就为这个，这个鲜必须尝。不过有个很值得注意的地方是，虽然 PHP 7 增加了不少新特性，但也很多地方是向后不兼容的，例如 mysql 扩展，在 PHP 7 中已经被删除。 现在最新版本是7.1.4。</p> <h3 id="进入software目录"><a href="#进入software目录" class="header-anchor">#</a> 进入software目录</h3> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost mysql]# cd /software/
+</code></pre></div><h3 id="接着解压php源码包"><a href="#接着解压php源码包" class="header-anchor">#</a> 接着解压php源码包</h3> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost software]# tar zxvf php-7.1.4.tar.gz 
+</code></pre></div><h3 id="再进入解压后的文件夹"><a href="#再进入解压后的文件夹" class="header-anchor">#</a> 再进入解压后的文件夹</h3> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost software]# cd php-7.1.4/
+
+</code></pre></div><p>这里将只安装一些常用的扩展，大家可以根据自己的实际需要进行增减，可以通过以下命令查看PHP安装是具体有有些扩展和选项：</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost php-7.1.4]# ./configure --help
+</code></pre></div><p>有接近300个选项。</p> <h3 id="安装之前要先安装那些准备装的扩展要用到的软件模块"><a href="#安装之前要先安装那些准备装的扩展要用到的软件模块" class="header-anchor">#</a> 安装之前要先安装那些准备装的扩展要用到的软件模块</h3> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost php-7.1.4]# yum -y install libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel libxml2 libxml2-devel zlib zlib-devel curl curl-devel openssl openssl-devel
+
+</code></pre></div><h3 id="接下来-configure-php-7"><a href="#接下来-configure-php-7" class="header-anchor">#</a> 接下来 configure PHP 7</h3> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost php-7.1.4]# ./configure --prefix=/usr/local/php --enable-fpm --with-fpm-user=nginx --with-fpm-group=nginx --with-mysqli --with-zlib --with-curl --with-gd --with-jpeg-dir --with-png-dir --with-freetype-dir --with-openssl --enable-mbstring --enable-xml --enable-session --enable-ftp --enable-pdo -enable-tokenizer --enable-zip
+</code></pre></div><p>上面已经提到，PHP 7 已经删除了 MySQL 扩展，所以 -with-mysql 不再是一个有效的选项。这里用 MySQLi 或 PDO 代替。
+其中 --prefix 是安装目录，上面提到在同一个服务器安装多个 PHP 版本，这个 --prefix 设定是很有必要的。至于其他扩展大家按实际增减。
+如果 configure 成功的话，将会看到以下类似字样：</p> <div class="language- extra-class"><pre class="language-text"><code>+--------------------------------------------------------------------+
+| License:                                                           |
+| This software is subject to the PHP License, available in this     |
+| distribution in the file LICENSE.  By continuing this installation |
+| process, you are bound by the terms of this license agreement.     |
+| If you do not agree with the terms of this license, you must abort |
+| the installation process at this point.                            |
++--------------------------------------------------------------------+
+
+Thank you for using PHP.
+</code></pre></div><h3 id="编译和安装-3"><a href="#编译和安装-3" class="header-anchor">#</a> 编译和安装</h3> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost php-7.1.4]# make &amp;&amp; make install
+</code></pre></div><p>好，PHP 7 已经安装完成，下面进行配置</p> <h3 id="php-的配置文档"><a href="#php-的配置文档" class="header-anchor">#</a> PHP 的配置文档</h3> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost php-7.1.4]# cp php.ini-development /usr/local/php/lib/php.ini
+</code></pre></div><p>php.ini 路径应该放在 PREFIX/lib 文件夹，除非在安装的时候通过这个选项修改
+--with-config-file-path=PATH
+如果安装 PHP 时没有指明 --prefix ，那么就 php.ini 路径就是 /usr/local/lib/php.ini 。刚才安装时有指明 --prefix ，所以是 /usr/local/php/lib/php.ini
+然后根据实际自己需要修改 php.ini。
+查找 mysqli.default_socket，修改成 mysqli.default_socket = /usr/local/mysql/mysql.sock：</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost php-7.1.4]# grep mysqli.default_socket  /usr/local/php/lib/php.ini
+mysqli.default_socket = 
+[root@localhost php-7.1.4]# sed -i 's#mysqli.default_socket =#mysqli.default_socket = /usr/local/mysql/mysql.sock#'  /usr/local/php/lib/php.ini
+[root@localhost php-7.1.4]# grep mysqli.default_socket  /usr/local/php/lib/php.ini
+mysqli.default_socket = /usr/local/mysql/mysql.sock
+</code></pre></div><p>其中 /usr/local/mysql/mysql.sock 就是上面安装 MySQL 时提到的。这个值必须填，否则会出现如下错误：
+Warning: mysqli_connect(): (HY000/2002): No such file or directory</p> <p>修改时区，查找 date.timezone，改成（主要将前面的 ; 去掉，这个是注释用的）：</p> <div class="language- extra-class"><pre class="language-text"><code>root@localhost php-7.1.4]# grep date.timezone /usr/local/php/lib/php.ini 
+; http://php.net/date.timezone
+;date.timezone =
+[root@localhost php-7.1.4]# sed -i 's#;date.timezone =#date.timezone = Asia/Shanghai#' /usr/local/php/lib/php.ini 
+[root@localhost php-7.1.4]# grep date.timezone /usr/local/php/lib/php.ini 
+; http://php.net/date.timezone
+date.timezone = Asia/Shanghai
+</code></pre></div><p>好了，PHP 7 已经安装好，下面验证一下</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost php-7.1.4]# /usr/local/php/bin/php -v
+PHP 7.1.4 (cli) (built: Apr 17 2017 14:58:11) ( NTS )
+Copyright (c) 1997-2017 The PHP Group
+Zend Engine v3.1.0, Copyright (c) 1998-2017 Zend Technologies
+</code></pre></div><p>再查看下已经安装的模块</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost php-7.1.4]# /usr/local/php/bin/php -m
+[PHP Modules]
+Core
+ctype
+curl
+date
+dom
+fileinfo
+filter
+ftp
+gd
+hash
+iconv
+json
+libxml
+mbstring
+mysqli
+mysqlnd
+openssl
+pcre
+PDO
+pdo_sqlite
+Phar
+posix
+Reflection
+session
+SimpleXML
+SPL
+sqlite3
+standard
+tokenizer
+xml
+xmlreader
+xmlwriter
+zip
+zlib
+
+[Zend Modules]
+
+</code></pre></div><p>接下来配置 php-fpm，复制 php-fpm 的配置文档</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost php-7.1.4]# cp /usr/local/php/etc/php-fpm.conf.default /usr/local/php/etc/php-fpm.conf
+[root@localhost php-7.1.4]# cp /usr/local/php/etc/php-fpm.d/www.conf.default /usr/local/php/etc/php-fpm.d/www.conf
+</code></pre></div><p>修改 /usr/local/php/etc/php-fpm.d/www.conf，把启动用户改为和nginx服务同一个启动用户（前面Nginx使用的是www账户，这里改成和Nginx使用一样的账户；一般都是使用www用户）</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost php-7.1.4]# grep -E 'user =|group =' /usr/local/php/etc/php-fpm.d/www.conf
+user = nginx
+group = nginx
+[root@localhost php-7.1.4]# sed -i 's#user = nginx#user = www#' /usr/local/php/etc/php-fpm.d/www.conf
+[root@localhost php-7.1.4]# sed -i 's#group = nginx#group = www#' /usr/local/php/etc/php-fpm.d/www.conf 
+[root@localhost php-7.1.4]# grep -E 'user =|group =' /usr/local/php/etc/php-fpm.d/www.conf
+user = www
+group = www
+;listen.group = www
+</code></pre></div><p>其中 www.conf 中要留意这个值 listen = 127.0.0.1:9000</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost php-7.1.4]# grep 'listen = 127.0.0.1' /usr/local/php/etc/php-fpm.d/www.conf
+
+</code></pre></div><p>这里使用 9000 端口，这个选项在配置 Nginx 网站时要用到的。
+配置 php-fpm 启动服务脚本</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost php-7.1.4]# cp sapi/fpm/php-fpm.service /usr/lib/systemd/system/
+</code></pre></div><p>查看启动脚本中指定的程序目录和pid文件（默认已经修改过了，如果没有修改过执行下面操作）</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost php-7.1.4]# grep -E 'PIDFile|ExecStart' /usr/lib/systemd/system/php-fpm.service
+PIDFile=/usr/local/php/var/run/php-fpm.pid
+ExecStart=/usr/local/php/sbin/php-fpm --nodaemonize --fpm-config /usr/local/php/etc/php-fpm.conf
+</code></pre></div><p>修改启动脚本，把里边 prefix 相关的内容用实际路径代替</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost php-7.1.4]# vim /usr/lib/systemd/system/php-fpm.service
+将
+PIDFile=${prefix}/var/run/php-fpm.pid
+ExecStart=${exec_prefix}/sbin/php-fpm --nodaemonize --fpm-config ${prefix}/etc/php-fpm.conf
+修改成
+PIDFile=/usr/local/php/var/run/php-fpm.pid
+ExecStart=/usr/local/php/sbin/php-fpm --nodaemonize --fpm-config /usr/local/php/etc/php-fpm.conf
+</code></pre></div><p>重新载入 systemd</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost php-7.1.4]# systemctl daemon-reload
+
+</code></pre></div><p>让 php-fpm 随机启动</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost php-7.1.4]# systemctl enable php-fpm
+Created symlink from /etc/systemd/system/multi-user.target.wants/php-fpm.service to /usr/lib/systemd/system/php-fpm.service.
+</code></pre></div><p>立即启动 php-fpm</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost php-7.1.4]# systemctl start php-fpm
+
+</code></pre></div><p>查看状态</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost php-7.1.4]# systemctl status php-fpm
+● php-fpm.service - The PHP FastCGI Process Manager
+   Loaded: loaded (/usr/lib/systemd/system/php-fpm.service; enabled; vendor preset: disabled)
+   Active: active (running) since 一 2017-04-17 15:37:06 CST; 1min 9s ago
+ Main PID: 55770 (php-fpm)
+   CGroup: /system.slice/php-fpm.service
+           ├─55770 php-fpm: master process (/usr/local/php/etc/php-fpm.conf)
+           ├─55771 php-fpm: pool www
+           └─55772 php-fpm: pool www
+
+4月 17 15:37:06 localhost.localdomain systemd[1]: Started The PHP FastCGI Process Manager.
+4月 17 15:37:06 localhost.localdomain systemd[1]: Starting The PHP FastCGI Process Manager...
+
+</code></pre></div><p>好，php-fpm 已经成功启动，那就立即建个网站看看</p> <h2 id="配置-nginx-站点"><a href="#配置-nginx-站点" class="header-anchor">#</a> 配置 Nginx 站点</h2> <p>先建立一个 lnmp 站点，路径是  /var/www/html</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost php-7.1.4]# mkdir -p /var/www/html
+[root@localhost php-7.1.4]# chown -R www.www /var/www
+</code></pre></div><p>并准备好 phpinfo 测试文件</p> <div class="language- extra-class"><pre class="language-text"><code>cat &gt;&gt; /var/www/html/test.php &lt;&lt; EOF
+&lt;?php
+phpinfo();
+EOF
+</code></pre></div><p>创建一个 Nginx 配置文件放到 /usr/local/nginx/conf/conf.d 中</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost php-7.1.4]# cd /usr/local/nginx/conf
+[root@localhost conf]# sed -i '$i\include /usr/local/nginx/conf/conf.d/*;' nginx.conf
+[root@localhost conf]# cat nginx.conf
+[root@localhost conf]# mkdir conf.d
+[root@localhost conf]# cd conf.d/
+</code></pre></div><p>创建test.com.conf文件并写入以下内容</p> <div class="language- extra-class"><pre class="language-text"><code>cat &gt;&gt; test.com.conf &lt;&lt;EOF
+server {
+    listen       81;
+    server_name  localhost;
+    root         /var/www/html;
+    location / {
+        index  index.php index.html index.htm;
+    }
+    location ~ \.php$ {
+        fastcgi_pass   127.0.0.1:9000;
+        fastcgi_index  index.php;
+        fastcgi_param  SCRIPT_FILENAME    \$document_root\$fastcgi_script_name;
+        fastcgi_param  PHP_VALUE          open_basedir=\$document_root:/tmp/:/proc/;
+        include        fastcgi_params;
+    }
+}
+EOF
+</code></pre></div><p>其中 server_name  localhost; 中的 localhost 改成你自己的域名（例如：www.baidu.com，这里我直接使用localhost和81端口来测试。网站域名解析默认都是使用80端口的）
+其中 root         /var/www/html; 就是刚才创建的站点目录
+其中 fastcgi_pass   127.0.0.1:9000; 就是上面配置 php-fpm 提到要留意的值
+修改配置后一定要记得 reload nginx 才能生效</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost conf.d]# systemctl reload nginx
+[root@localhost conf.d]# systemctl reload php-fpm
+</code></pre></div><p>最后的配置（nginx服务器的IP必须和域名做解析，才可以使用域名访问服务，域名购买一般在阿里云上购买）
+这里我们直接使用IP:81访问（因为我们使用的端口是81；域名是localhost，也就是nginx所在主机IP的意思）</p> <p><img src="http://upload-images.jianshu.io/upload_images/4262139-a5d90811a3198d78.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p> <br>
+***
+## 创建一键安装脚本one-click-install-lnmp.sh
+```
+#!/bin/sh 
+# __author__ = 'junxi'
+<h1 id="this-script-is-used-by-fast-installed-lnmp"><a href="#this-script-is-used-by-fast-installed-lnmp" class="header-anchor">#</a> This script is used by fast installed lnmp ......</h1> <h1 id="write-by-2017-04-19"><a href="#write-by-2017-04-19" class="header-anchor">#</a> write by 2017/04/19</h1> <p>mkdir /software
+cd /software/
+ll
+systemctl stop firewalld.service
+systemctl disable firewalld.service
+sed -i 's/SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config
+setenforce 0</p> <p>######start install nginx######
+echo '######start install nginx######'
+useradd www -s /sbin/nologin
+yum -y install pcre pcre-devel zlib zlib-devel gcc-c++ gcc openssl*
+tar zxvf nginx-1.12.0.tar.gz
+cd nginx-1.12.0/
+./configure --user=www --group=www --prefix=/usr/local/nginx --with-http_realip_module --with-http_sub_module --with-http_gzip_static_module --with-http_stub_status_module  --with-pcre
+make &amp;&amp; make install
+sleep 2
+ln -s /usr/local/nginx/sbin/nginx /sbin/nginx
+cat &gt;&gt; /usr/lib/systemd/system/nginx.service &lt;&lt; EOF
+[Unit]
+Description=nginx - high performance web server
+Documentation=http://nginx.org/en/docs/
+After=network-online.target remote-fs.target nss-lookup.target</p> <p>[Service]
+Type=forking
+PIDFile=/usr/local/nginx/logs/nginx.pid
+ExecStartPre=/usr/sbin/nginx -t
+ExecStart=/usr/sbin/nginx
+ExecReload=//usr/sbin/nginx -s reload
+ExecStop=/usr/sbin/nginx -s stop
+PrivateTmp=true</p> <p>[Install]
+WantedBy=multi-user.target
+EOF
+systemctl daemon-reload
+systemctl start nginx
+systemctl enable nginx
+systemctl status nginx
+sleep 2
+echo '######nginx is install completed done.######'</p> <h6 id="start-install-mysql"><a href="#start-install-mysql" class="header-anchor">#</a> start install mysql</h6> <p>cd /software/
+yum -y install ncurses ncurses-devel bison cmake gcc gcc-c++
+groupadd mysql
+useradd -s /sbin/nologin -g mysql mysql -M
+id mysql
+chown -R mysql.mysql /usr/local/mysql
+tar zxvf mysql-boost-5.7.18.tar.gz
+cd mysql-5.7.18/
+cmake . -DCMAKE_INSTALL_PREFIX=/usr/local/mysql -DMYSQL_UNIX_ADDR=/usr/local/mysql/mysql.sock -DSYSCONFDIR=/usr/local/mysql/etc -DSYSTEMD_PID_DIR=/usr/local/mysql -DDEFAULT_CHARSET=utf8  -DDEFAULT_COLLATION=utf8_general_ci -DWITH_INNOBASE_STORAGE_ENGINE=1 -DWITH_ARCHIVE_STORAGE_ENGINE=1 -DWITH_BLACKHOLE_STORAGE_ENGINE=1 -DWITH_PERFSCHEMA_STORAGE_ENGINE=1 -DMYSQL_DATADIR=/usr/local/mysql/data -DWITH_BOOST=boost -DWITH_SYSTEMD=1
+sleep 1
+make &amp;&amp; make install
+sleep 2
+chown -R mysql.mysql /usr/local/mysql/
+cd /usr/local/mysql/
+echo '######create my.cnf######'
+cat &gt;&gt; my.cnf &lt;&lt; EOF
+[client]
+port = 3306
+default-character-set=utf8
+socket = /usr/local/mysql/mysql.sock</p> <p>[mysql]
+port = 3306
+default-character-set=utf8
+socket = /usr/local/mysql/mysql.sock</p> <p>[mysqld]
+user = mysql
+basedir = /usr/local/mysql
+datadir = /usr/local/mysql/data
+port = 3306
+default-character-set=utf8
+pid-file = /usr/local/mysql/mysqld.pid
+socket = /usr/local/mysql/mysql.sock
+server-id = 1</p> <h1 id="remove-leading-to-set-options-mainly-useful-for-reporting-servers"><a href="#remove-leading-to-set-options-mainly-useful-for-reporting-servers" class="header-anchor">#</a> Remove leading # to set options mainly useful for reporting servers.</h1> <h1 id="the-server-defaults-are-faster-for-transactions-and-fast-selects"><a href="#the-server-defaults-are-faster-for-transactions-and-fast-selects" class="header-anchor">#</a> The server defaults are faster for transactions and fast SELECTs.</h1> <h1 id="adjust-sizes-as-needed-experiment-to-find-the-optimal-values"><a href="#adjust-sizes-as-needed-experiment-to-find-the-optimal-values" class="header-anchor">#</a> Adjust sizes as needed, experiment to find the optimal values.</h1> <h1 id="join-buffer-size-128m"><a href="#join-buffer-size-128m" class="header-anchor">#</a> join_buffer_size = 128M</h1> <h1 id="sort-buffer-size-2m"><a href="#sort-buffer-size-2m" class="header-anchor">#</a> sort_buffer_size = 2M</h1> <h1 id="read-rnd-buffer-size-2m"><a href="#read-rnd-buffer-size-2m" class="header-anchor">#</a> read_rnd_buffer_size = 2M</h1> <p>sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
+EOF</p> <p>chown mysql.mysql my.cnf
+echo 'PATH=/usr/local/mysql/bin:/usr/local/mysql/lib:$PATH' &gt;&gt; /etc/profile
+echo 'export PATH' &gt;&gt; /etc/profile
+source /etc/profile
+bin/mysqld --initialize-insecure --user=mysql --basedir=/usr/local/mysql --datadir=/usr/local/mysql/data
+cp usr/lib/systemd/system/mysqld.service /usr/lib/systemd/system/
+systemctl daemon-reload
+systemctl start mysqld
+systemctl enable mysqld
+ps -ef|grep mysql
+systemctl status mysqld
+echo '######mysql is install completed done.######'</p> <h6 id="start-install-php"><a href="#start-install-php" class="header-anchor">#</a> start install php</h6> <p>cd /software
+tar zxvf php-7.1.4.tar.gz
+cd php-7.1.4/
+./configure --help
+yum -y install libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel libxml2 libxml2-devel zlib zlib-devel curl curl-devel openssl openssl-devel
+./configure --prefix=/usr/local/php --enable-fpm --with-fpm-user=nginx --with-fpm-group=nginx --with-mysqli --with-zlib --with-curl --with-gd --with-jpeg-dir --with-png-dir --with-freetype-dir --with-openssl --enable-mbstring --enable-xml --enable-session --enable-ftp --enable-pdo -enable-tokenizer --enable-zip
+sleep 1
+make &amp;&amp; make install
+sleep 2
+cp php.ini-development /usr/local/php/lib/php.ini
+grep mysqli.default_socket  /usr/local/php/lib/php.ini
+sed -i 's#mysqli.default_socket =#mysqli.default_socket = /usr/local/mysql/mysql.sock#'  /usr/local/php/lib/php.ini
+grep mysqli.default_socket  /usr/local/php/lib/php.ini
+grep date.timezone /usr/local/php/lib/php.ini
+sed -i 's#;date.timezone =#date.timezone = Asia/Shanghai#' /usr/local/php/lib/php.ini
+grep date.timezone /usr/local/php/lib/php.ini
+/usr/local/php/bin/php -v
+/usr/local/php/bin/php -m
+cp /usr/local/php/etc/php-fpm.conf.default
+cp /usr/local/php/etc/php-fpm.conf.default /usr/local/php/etc/php-fpm.conf
+cp /usr/local/php/etc/php-fpm.d/www.conf.default /usr/local/php/etc/php-fpm.d/www.conf
+grep -E 'user =|group =' /usr/local/php/etc/php-fpm.d/www.conf
+sed -i 's#user = nginx#user = www#' /usr/local/php/etc/php-fpm.d/www.conf
+sed -i 's#group = nginx#group = www#' /usr/local/php/etc/php-fpm.d/www.conf
+grep -E 'user =|group =' /usr/local/php/etc/php-fpm.d/www.conf
+cp sapi/fpm/php-fpm.service /usr/lib/systemd/system/
+grep -E 'PIDFile|ExecStart' /usr/lib/systemd/system/php-fpm.service
+systemctl daemon-reload
+systemctl enable php-fpm
+systemctl start php-fpm
+systemctl status php-fpm
+echo '######php is install completed done.######'</p> <p>####### create test.com file used by test lnmp config is correct or incorrect ######
+mkdir -p /var/www/html
+chown -R www.www /var/www
+cat &gt;&gt; /var/www/html/test.php &lt;&lt; EOF
+&lt;?php
+phpinfo();
+EOF
+cd /usr/local/nginx/conf
+sed -i '$i\include /usr/local/nginx/conf/conf.d/*;' nginx.conf
+mkdir conf.d
+cd conf.d/
+echo '######create test.com.conf site file######'
+cat &gt;&gt; test.com.conf &lt;&lt;EOF
+server {
+listen       81;
+server_name  localhost;
+root         /var/www/html;
+location / {
+index  index.php index.html index.htm;
+}
+location ~ .php$ {
+fastcgi_pass   127.0.0.1:9000;
+fastcgi_index  index.php;
+fastcgi_param  SCRIPT_FILENAME    $document_root$fastcgi_script_name;
+fastcgi_param  PHP_VALUE          open_basedir=$document_root:/tmp/:/proc/;
+include        fastcgi_params;
+}
+}
+EOF
+systemctl reload nginx
+systemctl reload php-fpm
+sleep 2
+echo '######LNMP is install completed done.######'
+echo '######please Open the similar &quot;172.16.0.20:81/test.php&quot; to Visit the test.######'</p> <div class="language- extra-class"><pre class="language-text"><code>
+把nginx-1.12.0.tar.gz、mysql-boost-5.7.18.tar.gz、php-7.1.4.tar.gz这三个文件和one-click-install-lnmp.sh脚本下载下来，放到/software目录下（[这是下载地址](https://share.weiyun.com/a493518acad655626ac0f779bc625bff)），放在同一个目录下，运行下面命令进行安装
+</code></pre></div><p>[root@localhost ~]# mkdir /software
+[root@localhost ~]# cd /software/
+[root@localhost software]# ll
+总用量 80984
+-rw-r--r--. 1 root root 61612105 4月  19 14:22 mysql-boost-5.7.18.tar.gz
+-rw-r--r--. 1 root root   980831 4月  19 14:23 nginx-1.12.0.tar.gz
+-rw-r--r--. 1 root root     6282 4月  19 14:24 one-click-install-lnmp.sh
+-rw-r--r--. 1 root root 20319716 4月  19 14:23 php-7.1.4.tar.gz
+[root@localhost software]# sh one-click-install-lnmp.sh</p> <div class="language- extra-class"><pre class="language-text"><code>等待安装完成即可。
+</code></pre></div></div> <footer class="page-edit" style="display:none;"><!----> <!----></footer> <!----> <!----></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-44bd5a18 data-v-44bd5a18><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-44bd5a18><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-44bd5a18></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-44bd5a18></path></svg></div></div></div>
+    <script src="/assets/js/app.4c0f163f.js" defer></script><script src="/assets/js/3.5c161e77.js" defer></script><script src="/assets/js/1.b50dabeb.js" defer></script><script src="/assets/js/24.665841c7.js" defer></script>
+  </body>
+</html>

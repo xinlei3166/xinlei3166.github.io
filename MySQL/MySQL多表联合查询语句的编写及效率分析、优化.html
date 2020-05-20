@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>MySQL多表联合查询语句的编写及效率分析、优化 | 君惜の博客</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    
+    <meta name="description" content="">
+    <link rel="preload" href="/assets/css/0.styles.ff30c3b6.css" as="style"><link rel="preload" href="/assets/js/app.4c0f163f.js" as="script"><link rel="preload" href="/assets/js/3.5c161e77.js" as="script"><link rel="preload" href="/assets/js/1.b50dabeb.js" as="script"><link rel="preload" href="/assets/js/31.6295dd91.js" as="script"><link rel="prefetch" href="/assets/js/10.7fffa9c4.js"><link rel="prefetch" href="/assets/js/11.a894a0a3.js"><link rel="prefetch" href="/assets/js/12.7c1460cd.js"><link rel="prefetch" href="/assets/js/13.dd983835.js"><link rel="prefetch" href="/assets/js/14.1487eb9d.js"><link rel="prefetch" href="/assets/js/15.4756daf1.js"><link rel="prefetch" href="/assets/js/16.a530f05a.js"><link rel="prefetch" href="/assets/js/17.29f6aa52.js"><link rel="prefetch" href="/assets/js/18.e4a9724e.js"><link rel="prefetch" href="/assets/js/19.5ed05463.js"><link rel="prefetch" href="/assets/js/20.0cce4e1a.js"><link rel="prefetch" href="/assets/js/21.83dfac32.js"><link rel="prefetch" href="/assets/js/22.ad29d758.js"><link rel="prefetch" href="/assets/js/23.18313ffe.js"><link rel="prefetch" href="/assets/js/24.665841c7.js"><link rel="prefetch" href="/assets/js/25.5e232809.js"><link rel="prefetch" href="/assets/js/26.af71fdca.js"><link rel="prefetch" href="/assets/js/27.8a2d98c2.js"><link rel="prefetch" href="/assets/js/28.1306b459.js"><link rel="prefetch" href="/assets/js/29.29630159.js"><link rel="prefetch" href="/assets/js/30.b89be015.js"><link rel="prefetch" href="/assets/js/32.b7becd12.js"><link rel="prefetch" href="/assets/js/33.8faf9a10.js"><link rel="prefetch" href="/assets/js/34.cd57f657.js"><link rel="prefetch" href="/assets/js/35.7e2b5a6f.js"><link rel="prefetch" href="/assets/js/36.d71a14b1.js"><link rel="prefetch" href="/assets/js/37.959b4726.js"><link rel="prefetch" href="/assets/js/38.f931a68f.js"><link rel="prefetch" href="/assets/js/39.c3ea2b40.js"><link rel="prefetch" href="/assets/js/4.c1ea1bf1.js"><link rel="prefetch" href="/assets/js/40.4982c905.js"><link rel="prefetch" href="/assets/js/41.203d520e.js"><link rel="prefetch" href="/assets/js/42.7e5a0064.js"><link rel="prefetch" href="/assets/js/43.6b7dcc89.js"><link rel="prefetch" href="/assets/js/44.ace44d85.js"><link rel="prefetch" href="/assets/js/45.e7334ca4.js"><link rel="prefetch" href="/assets/js/46.2f73e550.js"><link rel="prefetch" href="/assets/js/47.bb851a3c.js"><link rel="prefetch" href="/assets/js/48.9ead4a3a.js"><link rel="prefetch" href="/assets/js/49.f6d187a3.js"><link rel="prefetch" href="/assets/js/5.4f3c9bb5.js"><link rel="prefetch" href="/assets/js/50.44513019.js"><link rel="prefetch" href="/assets/js/51.f92332ae.js"><link rel="prefetch" href="/assets/js/52.1a90855d.js"><link rel="prefetch" href="/assets/js/53.a6063052.js"><link rel="prefetch" href="/assets/js/54.5e4dc526.js"><link rel="prefetch" href="/assets/js/55.b4cf2cca.js"><link rel="prefetch" href="/assets/js/56.5afab6b8.js"><link rel="prefetch" href="/assets/js/57.13db934e.js"><link rel="prefetch" href="/assets/js/58.45393b85.js"><link rel="prefetch" href="/assets/js/59.312d0c74.js"><link rel="prefetch" href="/assets/js/6.0583317e.js"><link rel="prefetch" href="/assets/js/60.868da390.js"><link rel="prefetch" href="/assets/js/61.06d72270.js"><link rel="prefetch" href="/assets/js/62.95d65aff.js"><link rel="prefetch" href="/assets/js/63.36ccfb18.js"><link rel="prefetch" href="/assets/js/64.02290762.js"><link rel="prefetch" href="/assets/js/65.eac6abdc.js"><link rel="prefetch" href="/assets/js/66.5c7a3796.js"><link rel="prefetch" href="/assets/js/67.6d2a84e7.js"><link rel="prefetch" href="/assets/js/68.12b35d40.js"><link rel="prefetch" href="/assets/js/69.da3256da.js"><link rel="prefetch" href="/assets/js/7.60184b24.js"><link rel="prefetch" href="/assets/js/70.76e73b0c.js"><link rel="prefetch" href="/assets/js/71.99afbb77.js"><link rel="prefetch" href="/assets/js/72.19feaec4.js"><link rel="prefetch" href="/assets/js/73.ba5ee2ed.js"><link rel="prefetch" href="/assets/js/74.cef516f6.js"><link rel="prefetch" href="/assets/js/75.90f4a703.js"><link rel="prefetch" href="/assets/js/76.885ff289.js"><link rel="prefetch" href="/assets/js/77.823d6f1d.js"><link rel="prefetch" href="/assets/js/78.2c2736ff.js"><link rel="prefetch" href="/assets/js/79.cbfa5ae7.js"><link rel="prefetch" href="/assets/js/8.ccce47cf.js"><link rel="prefetch" href="/assets/js/80.431573aa.js"><link rel="prefetch" href="/assets/js/9.9160a89c.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.ff30c3b6.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-19557b78><div data-v-19557b78><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-19557b78 data-v-19557b78><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-64685f0e data-v-19557b78 data-v-19557b78><h3 class="title" style="display:none;" data-v-64685f0e data-v-64685f0e>君惜の博客</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-64685f0e data-v-64685f0e><input type="password" value="" data-v-64685f0e> <span data-v-64685f0e>Konck! Knock!</span> <button data-v-64685f0e>OK</button></label> <div class="footer" style="display:none;" data-v-64685f0e data-v-64685f0e><span data-v-64685f0e><i class="iconfont reco-theme" data-v-64685f0e></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-64685f0e>vuePress-theme-reco</a></span> <span data-v-64685f0e><i class="iconfont reco-copyright" data-v-64685f0e></i> <a data-v-64685f0e><span data-v-64685f0e>君惜</span>
+            
+          <!---->
+          2020
+        </a></span></div></div> <div class="hide" data-v-19557b78><header class="navbar" data-v-19557b78><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">君惜の博客</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/Docker/" class="nav-link"><i class="iconfont undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Git/" class="nav-link"><i class="iconfont undefined"></i>
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JavaScript/" class="nav-link"><i class="iconfont undefined"></i>
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Linux/" class="nav-link"><i class="iconfont undefined"></i>
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Mysql/" class="nav-link"><i class="iconfont undefined"></i>
+  Mysql
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Node.js/" class="nav-link"><i class="iconfont undefined"></i>
+  Node.js
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Python/" class="nav-link"><i class="iconfont undefined"></i>
+  Python
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Redis/" class="nav-link"><i class="iconfont undefined"></i>
+  Redis
+</a></li><li class="dropdown-item"><!----> <a href="/categories/并发测试/" class="nav-link"><i class="iconfont undefined"></i>
+  并发测试
+</a></li><li class="dropdown-item"><!----> <a href="/categories/随笔/" class="nav-link"><i class="iconfont undefined"></i>
+  随笔
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div> <a href="https://github.com/xinlei3166" target="_blank" rel="noopener noreferrer" class="repo-link"><i class="iconfont reco-github"></i>
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask" data-v-19557b78></div> <aside class="sidebar" data-v-19557b78><div class="personal-info-wrapper" data-v-b038cec6><img src="/img/avatar.jpg" alt="author-avatar" class="personal-img" data-v-b038cec6> <h3 class="name" data-v-b038cec6>
+    君惜
+  </h3> <div class="num" data-v-b038cec6><div data-v-b038cec6><h3 data-v-b038cec6>68</h3> <h6 data-v-b038cec6>Article</h6></div> <div data-v-b038cec6><h3 data-v-b038cec6>76</h3> <h6 data-v-b038cec6>Tag</h6></div></div> <hr data-v-b038cec6></div> <nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/Docker/" class="nav-link"><i class="iconfont undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Git/" class="nav-link"><i class="iconfont undefined"></i>
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JavaScript/" class="nav-link"><i class="iconfont undefined"></i>
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Linux/" class="nav-link"><i class="iconfont undefined"></i>
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Mysql/" class="nav-link"><i class="iconfont undefined"></i>
+  Mysql
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Node.js/" class="nav-link"><i class="iconfont undefined"></i>
+  Node.js
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Python/" class="nav-link"><i class="iconfont undefined"></i>
+  Python
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Redis/" class="nav-link"><i class="iconfont undefined"></i>
+  Redis
+</a></li><li class="dropdown-item"><!----> <a href="/categories/并发测试/" class="nav-link"><i class="iconfont undefined"></i>
+  并发测试
+</a></li><li class="dropdown-item"><!----> <a href="/categories/随笔/" class="nav-link"><i class="iconfont undefined"></i>
+  随笔
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div> <a href="https://github.com/xinlei3166" target="_blank" rel="noopener noreferrer" class="repo-link"><i class="iconfont reco-github"></i>
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>MySQL多表联合查询语句的编写及效率分析、优化</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/MySQL/MySQL%E5%A4%9A%E8%A1%A8%E8%81%94%E5%90%88%E6%9F%A5%E8%AF%A2%E8%AF%AD%E5%8F%A5%E7%9A%84%E7%BC%96%E5%86%99%E5%8F%8A%E6%95%88%E7%8E%87%E5%88%86%E6%9E%90%E3%80%81%E4%BC%98%E5%8C%96.html#_1-笛卡尔积-交叉连接" class="sidebar-link">1. 笛卡尔积(交叉连接)</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/MySQL/MySQL%E5%A4%9A%E8%A1%A8%E8%81%94%E5%90%88%E6%9F%A5%E8%AF%A2%E8%AF%AD%E5%8F%A5%E7%9A%84%E7%BC%96%E5%86%99%E5%8F%8A%E6%95%88%E7%8E%87%E5%88%86%E6%9E%90%E3%80%81%E4%BC%98%E5%8C%96.html#_2-内连接inner-join" class="sidebar-link">2.   内连接INNER JOIN</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/MySQL/MySQL%E5%A4%9A%E8%A1%A8%E8%81%94%E5%90%88%E6%9F%A5%E8%AF%A2%E8%AF%AD%E5%8F%A5%E7%9A%84%E7%BC%96%E5%86%99%E5%8F%8A%E6%95%88%E7%8E%87%E5%88%86%E6%9E%90%E3%80%81%E4%BC%98%E5%8C%96.html#_3-mysql中的外连接" class="sidebar-link">3. MySQL中的外连接</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/MySQL/MySQL%E5%A4%9A%E8%A1%A8%E8%81%94%E5%90%88%E6%9F%A5%E8%AF%A2%E8%AF%AD%E5%8F%A5%E7%9A%84%E7%BC%96%E5%86%99%E5%8F%8A%E6%95%88%E7%8E%87%E5%88%86%E6%9E%90%E3%80%81%E4%BC%98%E5%8C%96.html#_1-where子句" class="sidebar-link">1. WHERE子句</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/MySQL/MySQL%E5%A4%9A%E8%A1%A8%E8%81%94%E5%90%88%E6%9F%A5%E8%AF%A2%E8%AF%AD%E5%8F%A5%E7%9A%84%E7%BC%96%E5%86%99%E5%8F%8A%E6%95%88%E7%8E%87%E5%88%86%E6%9E%90%E3%80%81%E4%BC%98%E5%8C%96.html#_2-on" class="sidebar-link">2. ON</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-64685f0e data-v-19557b78><h3 class="title" style="display:none;" data-v-64685f0e data-v-64685f0e>MySQL多表联合查询语句的编写及效率分析、优化</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-64685f0e data-v-64685f0e><input type="password" value="" data-v-64685f0e> <span data-v-64685f0e>Konck! Knock!</span> <button data-v-64685f0e>OK</button></label> <div class="footer" style="display:none;" data-v-64685f0e data-v-64685f0e><span data-v-64685f0e><i class="iconfont reco-theme" data-v-64685f0e></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-64685f0e>vuePress-theme-reco</a></span> <span data-v-64685f0e><i class="iconfont reco-copyright" data-v-64685f0e></i> <a data-v-64685f0e><span data-v-64685f0e>君惜</span>
+            
+          <!---->
+          2020
+        </a></span></div></div> <div data-v-19557b78><main class="page"><div class="page-title" style="display:none;"><h1>MySQL多表联合查询语句的编写及效率分析、优化</h1> <hr> <div data-v-cd8d63d2><i class="iconfont reco-account" data-v-cd8d63d2><span data-v-cd8d63d2>君惜</span></i> <!----> <!----> <i class="iconfont reco-tag tags" data-v-cd8d63d2><span class="tag-item" data-v-cd8d63d2>
+      Mysql
+    </span><span class="tag-item" data-v-cd8d63d2>
+      Sql
+    </span></i></div></div> <div class="theme-reco-content content__default" style="display:none;"><h1 id="一、多表连接类型"><a href="#一、多表连接类型" class="header-anchor">#</a> 一、多表连接类型</h1> <hr> <h2 id="_1-笛卡尔积-交叉连接"><a href="#_1-笛卡尔积-交叉连接" class="header-anchor">#</a> 1. 笛卡尔积(交叉连接)</h2> <p>在MySQL中可以为CROSS JOIN或者省略CROSS即JOIN，或者使用','  如：</p> <div class="language-mysql extra-class"><pre class="language-text"><code>SELECT * FROM table1 CROSS JOIN table2   
+SELECT * FROM table1 JOIN table2   
+SELECT * FROM table1,table2  
+</code></pre></div><div class="language-mysql extra-class"><pre class="language-text"><code>SELECT * FROM users CROSS JOIN articles;
+SELECT * FROM users JOIN articles;
+SELECT * FROM users, articles;
+</code></pre></div><p>由于其返回的结果为被连接的两个数据表的乘积，因此当有WHERE, ON或USING条件的时候一般不建议使用，因为当数据表项目太多的时候，会非常慢。一般使用LEFT [OUTER] JOIN或者RIGHT [OUTER] JOIN</p> <h2 id="_2-内连接inner-join"><a href="#_2-内连接inner-join" class="header-anchor">#</a> <strong>2.   内连接INNER JOIN</strong></h2> <p>在MySQL中把INNER JOIN叫做等值连接，即需要指定等值连接条件在MySQL中CROSS和INNER JOIN被划分在一起。</p> <div class="language-mysql extra-class"><pre class="language-text"><code>SELECT * FROM users as u INNER JOIN articles as a where u.id = a.user_id 
+</code></pre></div><h2 id="_3-mysql中的外连接"><a href="#_3-mysql中的外连接" class="header-anchor">#</a> <strong>3. MySQL中的外连接</strong></h2> <p>分为左外连接和右连接，即除了返回符合连接条件的结果之外，还要返回左表(左连接)或者右表(右连接)中不符合连接条件的结果，相对应的使用NULL对应。</p> <p><strong>例子：</strong>
+users表：</p> <div class="language-mysql extra-class"><pre class="language-text"><code>+----+----------+----------+--------------------+
+| id | username | password | email              |
++----+----------+----------+--------------------+
+|  1 | junxi    | 123      | xinlei3166@126.com |
+|  2 | tangtang | 456      | xinlei3166@126.com |
+|  3 | ceshi3   | 456      | ceshi3@11.com      |
+|  4 | ceshi4   | 456      | ceshi4@qq.com      |
+|  5 | ceshi3   | 456      | ceshi3@11.com      |
+|  6 | ceshi4   | 456      | ceshi4@qq.com      |
+|  7 | ceshi3   | 456      | ceshi3@11.com      |
+|  8 | ceshi4   | 456      | ceshi4@qq.com      |
+|  9 | ceshi3   | 333      | ceshi3@11.com      |
+| 10 | ceshi4   | 444      | ceshi4@qq.com      |
+| 11 | ceshi3   | 333      | ceshi3@11.com      |
+| 12 | ceshi4   | 444      | ceshi4@qq.com      |
++----+----------+----------+--------------------+
+</code></pre></div><p>userinfos表：</p> <div class="language-mysql extra-class"><pre class="language-text"><code>+----+-------+--------+-------------+----------------+---------+
+| id | name  | qq     | phone       | link           | user_id |
++----+-------+--------+-------------+----------------+---------+
+|  1 | 君惜  | 666666 | 16616555188 | www.junxi.site |       1 |
+|  2 | 糖糖  | 777777 | 17717555177 | www.weizhi.com |       2 |
+|  3 | 测试3 | 333333 | 13313333177 | www.ceshi3.com |       3 |
++----+-------+--------+-------------+----------------+---------+
+</code></pre></div><p>SQL语句：</p> <div class="language-mysql extra-class"><pre class="language-text"><code>SELECT * FROM users as u LEFT JOIN userinfos as i on u.id = i.user_id;
+</code></pre></div><p>执行结果：</p> <div class="language-mysql extra-class"><pre class="language-text"><code>+----+----------+----------+--------------------+------+-------+--------+-------------+----------------+---------+
+| id | username | password | email              | id   | name  | qq     | phone       | link           | user_id |
++----+----------+----------+--------------------+------+-------+--------+-------------+----------------+---------+
+|  1 | junxi    | 123      | xinlei3166@126.com |    1 | 君惜  | 666666 | 16616555188 | www.junxi.site |       1 |
+|  2 | tangtang | 456      | xinlei3166@126.com |    2 | 糖糖  | 777777 | 17717555177 | www.weizhi.com |       2 |
+|  3 | ceshi3   | 456      | ceshi3@11.com      |    3 | 测试3 | 333333 | 13313333177 | www.ceshi3.com |       3 |
+|  4 | ceshi4   | 456      | ceshi4@qq.com      | NULL | NULL  | NULL   | NULL        | NULL           |    NULL |
+|  5 | ceshi3   | 456      | ceshi3@11.com      | NULL | NULL  | NULL   | NULL        | NULL           |    NULL |
+|  6 | ceshi4   | 456      | ceshi4@qq.com      | NULL | NULL  | NULL   | NULL        | NULL           |    NULL |
+|  7 | ceshi3   | 456      | ceshi3@11.com      | NULL | NULL  | NULL   | NULL        | NULL           |    NULL |
+|  8 | ceshi4   | 456      | ceshi4@qq.com      | NULL | NULL  | NULL   | NULL        | NULL           |    NULL |
+|  9 | ceshi3   | 333      | ceshi3@11.com      | NULL | NULL  | NULL   | NULL        | NULL           |    NULL |
+| 10 | ceshi4   | 444      | ceshi4@qq.com      | NULL | NULL  | NULL   | NULL        | NULL           |    NULL |
+| 11 | ceshi3   | 333      | ceshi3@11.com      | NULL | NULL  | NULL   | NULL        | NULL           |    NULL |
+| 12 | ceshi4   | 444      | ceshi4@qq.com      | NULL | NULL  | NULL   | NULL        | NULL           |    NULL |
++----+----------+----------+--------------------+------+-------+--------+-------------+----------------+---------+
+</code></pre></div><p>分析：
+而users表中的id大于3的用户在userinfos中没有相应的纪录，但是却出现在了结果集中
+因为现在是left join，所有的工作以left为准.
+结果1，2，3都是既在左表又在右表的纪录4, 5, 6, 7, 8, 9, 10, 11, 12是只在左表，不在右表的纪录</p> <p>工作原理：
+从左表读出一条，选出所有与on匹配的右表纪录(n条)进行连接，形成n条纪录(包括重复的行)，如果右边没有与on条件匹配的表，那连接的字段都是null.然后继续读下一条。
+引申：
+我们可以用右表没有on匹配则显示null的规律, 来找出所有在左表，不在右表的纪录， 注意用来判断的那列必须声明为not null的。
+如：
+SQL:
+(注意:
+1.列值为null应该用is null 而不能用=NULL
+2.这里i.user_id 列必须声明为 NOT NULL 的.
+）</p> <div class="language-mysql extra-class"><pre class="language-text"><code>SELECT * FROM users as u LEFT JOIN userinfos as i on u.id = i.user_id WHERE i.user_id is NULL;
+</code></pre></div><p>执行结果：</p> <div class="language-mysql extra-class"><pre class="language-text"><code>+----+----------+----------+---------------+------+------+------+-------+------+---------+
+| id | username | password | email         | id   | name | qq   | phone | link | user_id |
++----+----------+----------+---------------+------+------+------+-------+------+---------+
+|  4 | ceshi4   | 456      | ceshi4@qq.com | NULL | NULL | NULL | NULL  | NULL |    NULL |
+|  5 | ceshi3   | 456      | ceshi3@11.com | NULL | NULL | NULL | NULL  | NULL |    NULL |
+|  6 | ceshi4   | 456      | ceshi4@qq.com | NULL | NULL | NULL | NULL  | NULL |    NULL |
+|  7 | ceshi3   | 456      | ceshi3@11.com | NULL | NULL | NULL | NULL  | NULL |    NULL |
+|  8 | ceshi4   | 456      | ceshi4@qq.com | NULL | NULL | NULL | NULL  | NULL |    NULL |
+|  9 | ceshi3   | 333      | ceshi3@11.com | NULL | NULL | NULL | NULL  | NULL |    NULL |
+| 10 | ceshi4   | 444      | ceshi4@qq.com | NULL | NULL | NULL | NULL  | NULL |    NULL |
+| 11 | ceshi3   | 333      | ceshi3@11.com | NULL | NULL | NULL | NULL  | NULL |    NULL |
+| 12 | ceshi4   | 444      | ceshi4@qq.com | NULL | NULL | NULL | NULL  | NULL |    NULL |
++----+----------+----------+---------------+------+------+------+-------+------+---------+
+</code></pre></div><p>一般用法：
+a. LEFT [OUTER] JOIN：
+除了返回符合连接条件的结果之外，还需要显示左表中不符合连接条件的数据列，相对应使用NULL对应</p> <div class="language- extra-class"><pre class="language-text"><code>SELECT column_name FROM table1 LEFT [OUTER] JOIN table2 ON table1.column=table2.column 
+</code></pre></div><p>b. RIGHT [OUTER] JOIN：
+RIGHT与LEFT JOIN相似不同的仅仅是除了显示符合连接条件的结果之外，还需要显示右表中不符合连接条件的数据列，相应使用NULL对应</p> <div class="language- extra-class"><pre class="language-text"><code>SELECT column_name FROM table1 RIGHT [OUTER] JOIN table2 ON table1.column=table2.column  
+</code></pre></div><blockquote><p>Tips:</p> <ol><li>on a.c1 = b.c1 等同于 using(c1)</li> <li>INNER JOIN 和 , (逗号) 在语义上是等同的</li> <li>当 MySQL 在从一个表中检索信息时，你可以提示它选择了哪一个索引。
+如果 EXPLAIN 显示 MySQL 使用了可能的索引列表中错误的索引，这个特性将是很有用的。
+通过指定 USE INDEX (key_list)，你可以告诉 MySQL 使用可能的索引中最合适的一个索引在表中查找记录行。
+可选的二选一句法 IGNORE INDEX (key_list) 可被用于告诉 MySQL 不使用特定的索引。如：</li></ol> <div class="language-mysql extra-class"><pre class="language-text"><code>mysql&gt; SELECT * FROM table1 USE INDEX (key1,key2) WHERE key1=1 AND key2=2 AND key3=3;  
+mysql&gt; SELECT * FROM table1 IGNORE INDEX (key3) WHERE key1=1 AND key2=2 AND key3=3;  
+</code></pre></div></blockquote> <h1 id="二、表连接的约束条件"><a href="#二、表连接的约束条件" class="header-anchor">#</a> 二、表连接的约束条件</h1> <hr> <p>添加显示条件WHERE, ON, USING</p> <h2 id="_1-where子句"><a href="#_1-where子句" class="header-anchor">#</a> <strong>1. WHERE子句</strong></h2> <div class="language-mysql extra-class"><pre class="language-text"><code>SELECT * FROM table1,table2 WHERE table1.id=table2.id;  
+</code></pre></div><div class="language-mysql extra-class"><pre class="language-text"><code>SELECT * FROM users, userinfos WHERE users.id=userinfos.user_id;
+</code></pre></div><h2 id="_2-on"><a href="#_2-on" class="header-anchor">#</a> <strong>2. ON</strong></h2> <div class="language-mysql extra-class"><pre class="language-text"><code>SELECT * FROM table1 LEFT JOIN table2 ON table1.id=table2.id;  
+SELECT * FROM table1 LEFT JOIN table2 ON table1.id=table2.id LEFT JOIN table3 ON table2.id=table3.id;  
+</code></pre></div><div class="language-mysql extra-class"><pre class="language-text"><code>SELECT * FROM users LEFT JOIN articles ON users.id = articles.user_id;
+SELECT * FROM users LEFT JOIN userinfos ON users.id = userinfos.user_id LEFT JOIN articles ON users.id = articles.user_id;
+</code></pre></div><p><strong>3. USING子句，如果连接的两个表连接条件的两个列具有相同的名字的话可以使用USING</strong></p> <p>例如：</p> <div class="language-mysql extra-class"><pre class="language-text"><code>SELECT FROM LEFT JOIN USING ()
+</code></pre></div><p>连接多于两个表的情况举例：</p> <div class="language-mysql extra-class"><pre class="language-text"><code>SELECT users.username, userinfos.name, articles.title FROM users LEFT JOIN userinfos ON users.id = userinfos.user_id LEFT JOIN articles ON users.id = articles.user_id;
+</code></pre></div><p>执行结果：</p> <div class="language-mysql extra-class"><pre class="language-text"><code>mysql&gt; SELECT users.username, userinfos.name, articles.title FROM users LEFT JOIN userinfos ON users.id = userinfos.user_id LEFT JOIN articles ON users.id = articles.user_id;
++----------+-------+------------+
+| username | name  | title      |
++----------+-------+------------+
+| junxi    | 君惜  | 中国有嘻哈 |
+| tangtang | 糖糖  | 星光大道   |
+| ceshi3   | 测试3 | 平凡的真谛 |
+| junxi    | 君惜  | python进阶 |
+| ceshi3   | NULL  | NULL       |
+| ceshi3   | NULL  | NULL       |
+</code></pre></div><p>或者</p> <div class="language-mysql extra-class"><pre class="language-text"><code>SELECT users.username, userinfos.name, articles.title FROM users LEFT JOIN userinfos ON users.id = userinfos.user_id LEFT JOIN articles ON users.id = articles.user_id WHERE (articles.user_id IS NOT NULL AND userinfos.user_id IS NOT NULL);
+</code></pre></div><p>执行结果：</p> <div class="language-mysql extra-class"><pre class="language-text"><code>mysql&gt; SELECT users.username, userinfos.name, articles.title FROM users LEFT JOIN userinfos ON users.id = userinfos.user_id LEFT JOIN articles ON users.id = articles.user_id WHERE (articles.user_id IS NOT NULL AND userinfos.user_
+id IS NOT NULL);
++----------+-------+------------+
+| username | name  | title      |
++----------+-------+------------+
+| junxi    | 君惜  | 中国有嘻哈 |
+| tangtang | 糖糖  | 星光大道   |
+| ceshi3   | 测试3 | 平凡的真谛 |
+| junxi    | 君惜  | python进阶 |
++----------+-------+------------+
+</code></pre></div><p>或者</p> <div class="language-mysql extra-class"><pre class="language-text"><code>SELECT users.username, userinfos.name, articles.title FROM users LEFT JOIN userinfos ON users.id = userinfos.user_id LEFT JOIN articles ON users.id = articles.user_id WHERE (userinfos.name = '君惜');
+</code></pre></div><p>执行结果：</p> <div class="language-mysql extra-class"><pre class="language-text"><code>mysql&gt; SELECT users.username, userinfos.name, articles.title FROM users LEFT JOIN userinfos ON users.id = userinfos.user_id LEFT JOIN articles ON users.id = articles.user_id WHERE (userinfos.name = '君惜');
++----------+------+------------+
+| username | name | title      |
++----------+------+------------+
+| junxi    | 君惜 | 中国有嘻哈 |
+| junxi    | 君惜 | python进阶 |
++----------+------+------------+
+</code></pre></div><blockquote><p><strong>另外需要注意的地方</strong> 在MySQL中涉及到多表查询的时候，需要根据查询的情况，想好使用哪种连接方式效率更高。</p> <ol><li>交叉连接(笛卡尔积)或者内连接 [INNER | CROSS] JOIN</li> <li>左外连接LEFT [OUTER] JOIN或者右外连接RIGHT [OUTER] JOIN 注意指定连接条件WHERE, ON，USING.</li></ol></blockquote> <h1 id="三、mysql如何优化left-join和right-join"><a href="#三、mysql如何优化left-join和right-join" class="header-anchor">#</a> 三、MySQL如何优化LEFT JOIN和RIGHT JOIN</h1> <hr> <blockquote><p>在MySQL中，A LEFT JOIN B join_condition执行过程如下：
+1)·  根据表A和A依赖的所有表设置表B。
+2)·  根据LEFT JOIN条件中使用的所有表(除了B)设置表A。
+3)·   LEFT JOIN条件用于确定如何从表B搜索行。(换句话说，不使用WHERE子句中的任何条件）。
+4)·  可以对所有标准连接进行优化，只是只有从它所依赖的所有表读取的表例外。如果出现循环依赖关系，MySQL提示出现一个错误。
+5)· 进行所有标准WHERE优化。
+6)· 如果A中有一行匹配WHERE子句，但B中没有一行匹配ON条件，则生成另一个B行，其中所有列设置为NULL。
+7)· 如果使用LEFT JOIN找出在某些表中不存在的行，并且进行了下面的测试：WHERE部分的col_name IS NULL，其中col_name是一个声明为 NOT NULL的列，MySQL找到匹配LEFT JOIN条件的一个行后停止(为具体的关键字组合)搜索其它行。
+RIGHT JOIN的执行类似LEFT JOIN，只是表的角色反过来。</p></blockquote> <p>连接优化器计算表应连接的顺序。LEFT JOIN和STRAIGHT_JOIN强制的表读顺序可以帮助连接优化器更快地工作，因为检查的表交换更少。请注意这说明如果执行下面类型的查询，MySQL进行全扫描b，因为LEFT JOIN强制它在d之前读取：</p> <div class="language-mysql extra-class"><pre class="language-text"><code>SELECT * FROM a,b LEFT JOIN c ON (c.key=a.key) LEFT JOIN d ON (d.key=a.key) WHERE b.key=d.key;  
+</code></pre></div><p>在这种情况下修复时用a的相反顺序，b列于FROM子句中：</p> <div class="language-mysql extra-class"><pre class="language-text"><code>SELECT * FROM b,a LEFT JOIN c ON (c.key=a.key) LEFT JOIN d ON (d.key=a.key) WHERE b.key=d.key;
+</code></pre></div><p>MySQL可以进行下面的LEFT JOIN优化：如果对于产生的NULL行，WHERE条件总为假，LEFT JOIN变为普通联接。
+例如，在下面的查询中如果t2.column1为NULL，WHERE 子句将为false：</p> <div class="language-mysql extra-class"><pre class="language-text"><code>SELECT * FROM t1 LEFT JOIN t2 ON (column1) WHERE t2.column2=5;
+</code></pre></div><p>因此，可以安全地将查询转换为普通联接：</p> <div class="language-mysql extra-class"><pre class="language-text"><code>SELECT * FROM t1, t2 WHERE t2.column2=5 AND t1.column1=t2.column1;  
+</code></pre></div><p>这样可以更快，因为如果可以使查询更佳，MySQL可以在表t1之前使用表t2。为了强制使用表顺序，使用RIGHT_JOIN。</p></div> <footer class="page-edit" style="display:none;"><!----> <!----></footer> <!----> <!----></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-44bd5a18 data-v-44bd5a18><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-44bd5a18><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-44bd5a18></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-44bd5a18></path></svg></div></div></div>
+    <script src="/assets/js/app.4c0f163f.js" defer></script><script src="/assets/js/3.5c161e77.js" defer></script><script src="/assets/js/1.b50dabeb.js" defer></script><script src="/assets/js/31.6295dd91.js" defer></script>
+  </body>
+</html>

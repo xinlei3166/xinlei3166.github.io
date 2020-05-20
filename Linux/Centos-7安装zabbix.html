@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Centos-7安装zabbix | 君惜の博客</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    
+    <meta name="description" content="">
+    <link rel="preload" href="/assets/css/0.styles.ff30c3b6.css" as="style"><link rel="preload" href="/assets/js/app.4c0f163f.js" as="script"><link rel="preload" href="/assets/js/3.5c161e77.js" as="script"><link rel="preload" href="/assets/js/1.b50dabeb.js" as="script"><link rel="preload" href="/assets/js/22.ad29d758.js" as="script"><link rel="prefetch" href="/assets/js/10.7fffa9c4.js"><link rel="prefetch" href="/assets/js/11.a894a0a3.js"><link rel="prefetch" href="/assets/js/12.7c1460cd.js"><link rel="prefetch" href="/assets/js/13.dd983835.js"><link rel="prefetch" href="/assets/js/14.1487eb9d.js"><link rel="prefetch" href="/assets/js/15.4756daf1.js"><link rel="prefetch" href="/assets/js/16.a530f05a.js"><link rel="prefetch" href="/assets/js/17.29f6aa52.js"><link rel="prefetch" href="/assets/js/18.e4a9724e.js"><link rel="prefetch" href="/assets/js/19.5ed05463.js"><link rel="prefetch" href="/assets/js/20.0cce4e1a.js"><link rel="prefetch" href="/assets/js/21.83dfac32.js"><link rel="prefetch" href="/assets/js/23.18313ffe.js"><link rel="prefetch" href="/assets/js/24.665841c7.js"><link rel="prefetch" href="/assets/js/25.5e232809.js"><link rel="prefetch" href="/assets/js/26.af71fdca.js"><link rel="prefetch" href="/assets/js/27.8a2d98c2.js"><link rel="prefetch" href="/assets/js/28.1306b459.js"><link rel="prefetch" href="/assets/js/29.29630159.js"><link rel="prefetch" href="/assets/js/30.b89be015.js"><link rel="prefetch" href="/assets/js/31.6295dd91.js"><link rel="prefetch" href="/assets/js/32.b7becd12.js"><link rel="prefetch" href="/assets/js/33.8faf9a10.js"><link rel="prefetch" href="/assets/js/34.cd57f657.js"><link rel="prefetch" href="/assets/js/35.7e2b5a6f.js"><link rel="prefetch" href="/assets/js/36.d71a14b1.js"><link rel="prefetch" href="/assets/js/37.959b4726.js"><link rel="prefetch" href="/assets/js/38.f931a68f.js"><link rel="prefetch" href="/assets/js/39.c3ea2b40.js"><link rel="prefetch" href="/assets/js/4.c1ea1bf1.js"><link rel="prefetch" href="/assets/js/40.4982c905.js"><link rel="prefetch" href="/assets/js/41.203d520e.js"><link rel="prefetch" href="/assets/js/42.7e5a0064.js"><link rel="prefetch" href="/assets/js/43.6b7dcc89.js"><link rel="prefetch" href="/assets/js/44.ace44d85.js"><link rel="prefetch" href="/assets/js/45.e7334ca4.js"><link rel="prefetch" href="/assets/js/46.2f73e550.js"><link rel="prefetch" href="/assets/js/47.bb851a3c.js"><link rel="prefetch" href="/assets/js/48.9ead4a3a.js"><link rel="prefetch" href="/assets/js/49.f6d187a3.js"><link rel="prefetch" href="/assets/js/5.4f3c9bb5.js"><link rel="prefetch" href="/assets/js/50.44513019.js"><link rel="prefetch" href="/assets/js/51.f92332ae.js"><link rel="prefetch" href="/assets/js/52.1a90855d.js"><link rel="prefetch" href="/assets/js/53.a6063052.js"><link rel="prefetch" href="/assets/js/54.5e4dc526.js"><link rel="prefetch" href="/assets/js/55.b4cf2cca.js"><link rel="prefetch" href="/assets/js/56.5afab6b8.js"><link rel="prefetch" href="/assets/js/57.13db934e.js"><link rel="prefetch" href="/assets/js/58.45393b85.js"><link rel="prefetch" href="/assets/js/59.312d0c74.js"><link rel="prefetch" href="/assets/js/6.0583317e.js"><link rel="prefetch" href="/assets/js/60.868da390.js"><link rel="prefetch" href="/assets/js/61.06d72270.js"><link rel="prefetch" href="/assets/js/62.95d65aff.js"><link rel="prefetch" href="/assets/js/63.36ccfb18.js"><link rel="prefetch" href="/assets/js/64.02290762.js"><link rel="prefetch" href="/assets/js/65.eac6abdc.js"><link rel="prefetch" href="/assets/js/66.5c7a3796.js"><link rel="prefetch" href="/assets/js/67.6d2a84e7.js"><link rel="prefetch" href="/assets/js/68.12b35d40.js"><link rel="prefetch" href="/assets/js/69.da3256da.js"><link rel="prefetch" href="/assets/js/7.60184b24.js"><link rel="prefetch" href="/assets/js/70.76e73b0c.js"><link rel="prefetch" href="/assets/js/71.99afbb77.js"><link rel="prefetch" href="/assets/js/72.19feaec4.js"><link rel="prefetch" href="/assets/js/73.ba5ee2ed.js"><link rel="prefetch" href="/assets/js/74.cef516f6.js"><link rel="prefetch" href="/assets/js/75.90f4a703.js"><link rel="prefetch" href="/assets/js/76.885ff289.js"><link rel="prefetch" href="/assets/js/77.823d6f1d.js"><link rel="prefetch" href="/assets/js/78.2c2736ff.js"><link rel="prefetch" href="/assets/js/79.cbfa5ae7.js"><link rel="prefetch" href="/assets/js/8.ccce47cf.js"><link rel="prefetch" href="/assets/js/80.431573aa.js"><link rel="prefetch" href="/assets/js/9.9160a89c.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.ff30c3b6.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-19557b78><div data-v-19557b78><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-19557b78 data-v-19557b78><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-64685f0e data-v-19557b78 data-v-19557b78><h3 class="title" style="display:none;" data-v-64685f0e data-v-64685f0e>君惜の博客</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-64685f0e data-v-64685f0e><input type="password" value="" data-v-64685f0e> <span data-v-64685f0e>Konck! Knock!</span> <button data-v-64685f0e>OK</button></label> <div class="footer" style="display:none;" data-v-64685f0e data-v-64685f0e><span data-v-64685f0e><i class="iconfont reco-theme" data-v-64685f0e></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-64685f0e>vuePress-theme-reco</a></span> <span data-v-64685f0e><i class="iconfont reco-copyright" data-v-64685f0e></i> <a data-v-64685f0e><span data-v-64685f0e>君惜</span>
+            
+          <!---->
+          2020
+        </a></span></div></div> <div class="hide" data-v-19557b78><header class="navbar" data-v-19557b78><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">君惜の博客</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/Docker/" class="nav-link"><i class="iconfont undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Git/" class="nav-link"><i class="iconfont undefined"></i>
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JavaScript/" class="nav-link"><i class="iconfont undefined"></i>
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Linux/" class="nav-link"><i class="iconfont undefined"></i>
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Mysql/" class="nav-link"><i class="iconfont undefined"></i>
+  Mysql
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Node.js/" class="nav-link"><i class="iconfont undefined"></i>
+  Node.js
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Python/" class="nav-link"><i class="iconfont undefined"></i>
+  Python
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Redis/" class="nav-link"><i class="iconfont undefined"></i>
+  Redis
+</a></li><li class="dropdown-item"><!----> <a href="/categories/并发测试/" class="nav-link"><i class="iconfont undefined"></i>
+  并发测试
+</a></li><li class="dropdown-item"><!----> <a href="/categories/随笔/" class="nav-link"><i class="iconfont undefined"></i>
+  随笔
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div> <a href="https://github.com/xinlei3166" target="_blank" rel="noopener noreferrer" class="repo-link"><i class="iconfont reco-github"></i>
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask" data-v-19557b78></div> <aside class="sidebar" data-v-19557b78><div class="personal-info-wrapper" data-v-b038cec6><img src="/img/avatar.jpg" alt="author-avatar" class="personal-img" data-v-b038cec6> <h3 class="name" data-v-b038cec6>
+    君惜
+  </h3> <div class="num" data-v-b038cec6><div data-v-b038cec6><h3 data-v-b038cec6>68</h3> <h6 data-v-b038cec6>Article</h6></div> <div data-v-b038cec6><h3 data-v-b038cec6>76</h3> <h6 data-v-b038cec6>Tag</h6></div></div> <hr data-v-b038cec6></div> <nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/Docker/" class="nav-link"><i class="iconfont undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Git/" class="nav-link"><i class="iconfont undefined"></i>
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JavaScript/" class="nav-link"><i class="iconfont undefined"></i>
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Linux/" class="nav-link"><i class="iconfont undefined"></i>
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Mysql/" class="nav-link"><i class="iconfont undefined"></i>
+  Mysql
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Node.js/" class="nav-link"><i class="iconfont undefined"></i>
+  Node.js
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Python/" class="nav-link"><i class="iconfont undefined"></i>
+  Python
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Redis/" class="nav-link"><i class="iconfont undefined"></i>
+  Redis
+</a></li><li class="dropdown-item"><!----> <a href="/categories/并发测试/" class="nav-link"><i class="iconfont undefined"></i>
+  并发测试
+</a></li><li class="dropdown-item"><!----> <a href="/categories/随笔/" class="nav-link"><i class="iconfont undefined"></i>
+  随笔
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div> <a href="https://github.com/xinlei3166" target="_blank" rel="noopener noreferrer" class="repo-link"><i class="iconfont reco-github"></i>
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Centos-7安装zabbix</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Linux/Centos-7%E5%AE%89%E8%A3%85zabbix.html#本例环境使用centos7-3-64位" class="sidebar-link">本例环境使用Centos7.3 64位</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Linux/Centos-7%E5%AE%89%E8%A3%85zabbix.html#安装lnmp" class="sidebar-link">安装LNMP</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Linux/Centos-7%E5%AE%89%E8%A3%85zabbix.html#配置源" class="sidebar-link">配置源</a></li><li class="sidebar-sub-header"><a href="/Linux/Centos-7%E5%AE%89%E8%A3%85zabbix.html#安装zabbix-server-and-agent（agent是可选的）" class="sidebar-link">安装Zabbix server and agent（agent是可选的）</a></li><li class="sidebar-sub-header"><a href="/Linux/Centos-7%E5%AE%89%E8%A3%85zabbix.html#创建mysql-数据库和用户" class="sidebar-link">创建MySQL 数据库和用户</a></li><li class="sidebar-sub-header"><a href="/Linux/Centos-7%E5%AE%89%E8%A3%85zabbix.html#数据库导入zabbix-template" class="sidebar-link">数据库导入zabbix template</a></li><li class="sidebar-sub-header"><a href="/Linux/Centos-7%E5%AE%89%E8%A3%85zabbix.html#配置zabbix-server" class="sidebar-link">配置Zabbix server</a></li><li class="sidebar-sub-header"><a href="/Linux/Centos-7%E5%AE%89%E8%A3%85zabbix.html#配置zabbix-agent" class="sidebar-link">配置zabbix-agent</a></li><li class="sidebar-sub-header"><a href="/Linux/Centos-7%E5%AE%89%E8%A3%85zabbix.html#修改php-设置" class="sidebar-link">修改PHP 设置</a></li><li class="sidebar-sub-header"><a href="/Linux/Centos-7%E5%AE%89%E8%A3%85zabbix.html#方法一：使用-apache-服务器" class="sidebar-link">方法一：使用 apache 服务器</a></li><li class="sidebar-sub-header"><a href="/Linux/Centos-7%E5%AE%89%E8%A3%85zabbix.html#方法二：使用-nginx-服务器" class="sidebar-link">方法二：使用 Nginx 服务器</a></li><li class="sidebar-sub-header"><a href="/Linux/Centos-7%E5%AE%89%E8%A3%85zabbix.html#修改firewall-和selinux-设置" class="sidebar-link">修改Firewall 和SELinux 设置</a></li><li class="sidebar-sub-header"><a href="/Linux/Centos-7%E5%AE%89%E8%A3%85zabbix.html#输入ip-setup-php进入zabbix-web界面进行后续安装操作" class="sidebar-link">输入ip/setup.php进入zabbix-web界面进行后续安装操作</a></li></ul></li></ul></section></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-64685f0e data-v-19557b78><h3 class="title" style="display:none;" data-v-64685f0e data-v-64685f0e>Centos-7安装zabbix</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-64685f0e data-v-64685f0e><input type="password" value="" data-v-64685f0e> <span data-v-64685f0e>Konck! Knock!</span> <button data-v-64685f0e>OK</button></label> <div class="footer" style="display:none;" data-v-64685f0e data-v-64685f0e><span data-v-64685f0e><i class="iconfont reco-theme" data-v-64685f0e></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-64685f0e>vuePress-theme-reco</a></span> <span data-v-64685f0e><i class="iconfont reco-copyright" data-v-64685f0e></i> <a data-v-64685f0e><span data-v-64685f0e>君惜</span>
+            
+          <!---->
+          2020
+        </a></span></div></div> <div data-v-19557b78><main class="page"><div class="page-title" style="display:none;"><h1>Centos-7安装zabbix</h1> <hr> <div data-v-cd8d63d2><i class="iconfont reco-account" data-v-cd8d63d2><span data-v-cd8d63d2>君惜</span></i> <!----> <!----> <i class="iconfont reco-tag tags" data-v-cd8d63d2><span class="tag-item" data-v-cd8d63d2>
+      Centos
+    </span><span class="tag-item" data-v-cd8d63d2>
+      Linux
+    </span><span class="tag-item" data-v-cd8d63d2>
+      Zabbix
+    </span><span class="tag-item" data-v-cd8d63d2>
+      监控
+    </span></i></div></div> <div class="theme-reco-content content__default" style="display:none;"><h2 id="本例环境使用centos7-3-64位"><a href="#本例环境使用centos7-3-64位" class="header-anchor">#</a> 本例环境使用Centos7.3 64位</h2> <p><strong>安装zabbix需要mysql的支持，下面是快速安装LNMP的方法（使用EZHTTP安装）</strong></p> <h2 id="安装lnmp"><a href="#安装lnmp" class="header-anchor">#</a> 安装LNMP</h2> <p><strong>首先创建一个目录存放下载文件：</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment"># mkdir /software</span>
+<span class="token punctuation">[</span>root@localhost software<span class="token punctuation">]</span><span class="token comment"># cd /software/</span>
+</code></pre></div><p><strong>安装wget工具：</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token punctuation">[</span>root@localhost software<span class="token punctuation">]</span><span class="token comment"># yum -y install wget</span>
+</code></pre></div><p><strong>下载EZHTTP安装脚本：</strong></p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost software]# wget --no-check-certificate https://github.com/centos-bz/ezhttp/archive/master.zip?time=$(date +%s) -O ezhttp.zip
+</code></pre></div><p><strong>启动脚本：</strong></p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost software]# unzip ezhttp.zip
+[root@localhost software]# cd ezhttp-master
+[root@localhost ezhttp-master]# chmod +x start.sh
+[root@localhost ezhttp-master]# ./start.sh
+</code></pre></div><p><strong>进去选择页面</strong></p> <p><strong>除了数字选择项需要确认输入，其他的的按回车默认就行：</strong></p> <p>nginx 和 apache 都行，个人比较喜欢nginx
+php版本5.5-7.1
+mysql版本5.6</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost ezhttp-master]# ./start.sh
+#############################################################################
+
+You are welcome to use this script to deploy your linux,hope you like.
+The script is written by Zhu Maohai.
+If you have any question.
+please visit http://www.centos.bz/ezhttp/ and submit your issue.thank you.
+
+############################################################################
+
+1) LAMP LNMP LANMP Installation.
+2) Some Useful Tools.
+3) Upgrade Software
+4) Exit.
+
+please select: 1
+you select LAMP LNMP LANMP Installation.
+1) LNMP(Nginx MySQL PHP)
+2) LAMP(Apache MySQL PHP)
+3) LNAMP(Nginx Apache MySQL PHP)
+4) back to main menu
+
+please input the package you like to install: 1
+#################### nginx setting ####################
+
+
+1) nginx-1.8.0
+2) tengine-2.1.0
+3) openresty-1.9.7.3
+4) custom_version
+5) do_not_install
+
+which nginx you do select(default do_not_install): 1
+your selection: nginx-1.8.0
+nginx-1.8.0 install location(default:/usr/local/nginx,leave blank for default): 
+nginx-1.8.0 install location: /usr/local/nginx
+the nginx-1.8.0 configure parameter is:
+--prefix=/usr/local/nginx --with-http_ssl_module --with-openssl=/software/ezhttp-master/soft/openssl-1.0.2h  --with-http_sub_module --with-http_stub_status_module --with-pcre --with-pcre=/software/ezhttp-master/soft/pcre-8.33 --with-zlib=/software/ezhttp-master/soft/zlib-1.2.8 --with-http_secure_link_module
+
+
+Would you like to change it?[N/y](default n): 
+you select no,configure parameter will not be changed.
+
+Do you need to install nginx module?[N/y](default n): 
+#################### mysql setting ####################
+
+
+1) mysql-5.1.73
+2) mysql-5.5.54
+3) mysql-5.6.35
+4) mysql-5.7.17 (need about 2GB RAM when building,try mysql-5.6 if failed)
+5) libmysqlclient18
+6) custom_version
+7) do_not_install
+
+which mysql you\'d select(default do_not_install): 3
+your selection: mysql-5.6.35
+mysql-5.6.35 install location(default:/usr/local/mysql,leave blank for default): 
+mysql-5.6.35 install location: /usr/local/mysql
+mysql data location(default:/usr/local/mysql/data,leave blank for default): 
+mysql-5.6.35 data location: /usr/local/mysql/data
+mysql port number(default:3306,leave blank for default): 
+mysql port number: 3306
+mysql server root password (default:root,leave blank for default): 123456
+mysql-5.6.35 root password: 123456
+the mysql-5.6.35 configure parameter is:
+-DCMAKE_INSTALL_PREFIX=/usr/local/mysql -DSYSCONFDIR=/usr/local/mysql/etc -DMYSQL_UNIX_ADDR=/usr/local/mysql/data/mysql.sock -DDEFAULT_CHARSET=utf8 -DDEFAULT_COLLATION=utf8_general_ci -DWITH_EXTRA_CHARSETS=complex -DENABLED_LOCAL_INFILE=1 
+
+
+Would you like to change it?[N/y](default n): 
+you select no,configure parameter will not be changed.
+#################### php setting ####################
+
+
+1) php-5.2.17
+2) php-5.3.29
+3) php-5.4.43
+4) php-5.5.27
+5) php-5.6.15
+6) php-7.1.0
+7) custom_version
+8) do_not_install
+
+which php you\'d select(default do_not_install): 6
+your selection: php-7.1.0
+php-7.1.0 install location(default:/usr/local/php,leave blank for default): 
+php-7.1.0 install location: /usr/local/php
+the php-7.1.0 configure parameter is:
+--prefix=/usr/local/php --with-config-file-path=/usr/local/php/etc --enable-fpm --enable-bcmath=shared --with-pdo_sqlite --with-gettext=shared --with-iconv --enable-ftp=shared --with-sqlite --with-sqlite3 --enable-mbstring=shared --enable-sockets=shared --enable-zip --enable-soap=shared --with-openssl --with-zlib --with-curl=shared --with-gd=shared --with-jpeg-dir --with-png-dir --with-freetype-dir --with-mcrypt=shared,/opt/ezhttp/libmcrypt-2.5.8 --with-mhash=shared,/opt/ezhttp/mhash-0.9.9.9 --enable-opcache --with-mysql=mysqlnd --with-mysqli=shared,mysqlnd --with-pdo-mysql=shared,mysqlnd --without-pear --with-libdir=lib64 --disable-fileinfo
+
+
+Would you like to change it?[N/y](default n): 
+you select no,configure parameter will not be changed.
+#################### PHP modules install ####################
+php-7.1.0 version available modules:
+
+#################### php_modules install ####################
+
+1) fileinfo
+2) php-gmp
+3) php-swoole-1.7.20
+4) do_not_install
+
+please input one or more number between 1 and 4(default do_not_install)(ie.1 2 3): 
+your selection do_not_install
+#################### other_soft install ####################
+
+1) memcached-1.4.24
+2) pure-ftpd-1.0.41
+3) phpMyAdmin-4.4.12-all-languages
+4) redis-3.0.3
+5) mongodb-linux-x86_64-2.4.9
+6) phpRedisAdmin-1.1.0
+7) memadmin-1.0.12
+8) rockmongo-1.1.6-fix-auth
+9) jdk1.7.0_79
+10) jdk1.8.0_66
+11) apache-tomcat-7.0.68
+12) apache-tomcat-8.0.39
+13) do_not_install
+
+please input one or more number between 1 and 13(default do_not_install)(ie.1 2 3): 1 2 3 4 6 10 12
+your selection memcached-1.4.24 pure-ftpd-1.0.41 phpMyAdmin-4.4.12-all-languages redis-3.0.3 phpRedisAdmin-1.1.0 jdk1.8.0_66 apache-tomcat-8.0.39
+input memcached-1.4.24 location(default:/usr/local/memcached): 
+memcached location: /usr/local/memcached
+input pure-ftpd-1.0.41 location(default:/usr/local/pureftpd): 
+pureftpd location: /usr/local/pureftpd
+Would you like to install web user manager for pureftpd?[N/y](default n): 
+you select not install web manager
+input phpMyAdmin-4.4.12-all-languages location(default:/home/wwwroot/phpmyadmin): 
+phpmyadmin location: /home/wwwroot/phpmyadmin
+input redis-3.0.3 location(default:/usr/local/redis): 
+redis location: /usr/local/redis
+please input the max memory allowed for redis(ie.128M,512m,2G,4g): 128M
+128M
+input phpRedisAdmin-1.1.0 location(default:/home/wwwroot/redisadmin): 
+phpRedisAdmin location: /home/wwwroot/redisadmin
+input jdk1.8.0_66 location(default:/usr/local/jdk1.8.0_66): 
+jdk8 location: /usr/local/jdk1.8.0_66
+input apache-tomcat-8.0.39 location(default:/usr/local/tomcat8): 
+tomcat8 location: /usr/local/tomcat8
+#################### your choice overview ####################
+
+Package: lnmp
+
+*****Nginx Setting*****
+Nginx: nginx-1.8.0
+Nginx Location: /usr/local/nginx
+Nginx Configure Parameter: --prefix=/usr/local/nginx --with-http_ssl_module --with-openssl=/software/ezhttp-master/soft/openssl-1.0.2h  --with-http_sub_module --with-http_stub_status_module --with-pcre --with-pcre=/software/ezhttp-master/soft/pcre-8.33 --with-zlib=/software/ezhttp-master/soft/zlib-1.2.8 --with-http_secure_link_module
+Nginx Modules: 
+
+
+*****MySQL Setting*****
+MySQL Server: mysql-5.6.35
+MySQL Location: /usr/local/mysql
+MySQL Data Location: /usr/local/mysql/data
+MySQL Port Number: 3306
+MySQL Root Password: 123456
+MySQL Configure Parameter: -DCMAKE_INSTALL_PREFIX=/usr/local/mysql -DSYSCONFDIR=/usr/local/mysql/etc -DMYSQL_UNIX_ADDR=/usr/local/mysql/data/mysql.sock -DDEFAULT_CHARSET=utf8 -DDEFAULT_COLLATION=utf8_general_ci -DWITH_EXTRA_CHARSETS=complex -DENABLED_LOCAL_INFILE=1 
+
+*****PHP Setting*****
+PHP: php-7.1.0
+PHP Location: /usr/local/php
+PHP Configure Parameter: --prefix=/usr/local/php --with-config-file-path=/usr/local/php/etc --enable-fpm --enable-bcmath=shared --with-pdo_sqlite --with-gettext=shared --with-iconv --enable-ftp=shared --with-sqlite --with-sqlite3 --enable-mbstring=shared --enable-sockets=shared --enable-zip --enable-soap=shared --with-openssl --with-zlib --with-curl=shared --with-gd=shared --with-jpeg-dir --with-png-dir --with-freetype-dir --with-mcrypt=shared,/opt/ezhttp/libmcrypt-2.5.8 --with-mhash=shared,/opt/ezhttp/mhash-0.9.9.9 --enable-opcache --with-mysql=mysqlnd --with-mysqli=shared,mysqlnd --with-pdo-mysql=shared,mysqlnd --without-pear --with-libdir=lib64 --disable-fileinfo
+
+*****Other Software Setting*****
+Other Software:  memcached-1.4.24 pure-ftpd-1.0.41 phpMyAdmin-4.4.12-all-languages redis-3.0.3 phpRedisAdmin-1.1.0 jdk1.8.0_66 apache-tomcat-8.0.39
+memcached location: /usr/local/memcached
+pureftpd location: /usr/local/pureftpd
+phpmyadmin_location: /home/wwwroot/phpmyadmin
+redis_location: /usr/local/redis
+phpRedisAdmin_location: /home/wwwroot/redisadmin
+jdk8_location: /usr/local/jdk1.8.0_66
+tomcat8_location: /usr/local/tomcat8
+JAVA_HOME: /usr/local/jdk1.8.0_66
+
+##############################################################
+
+Are you ready to configure your Linux?[Y/n](default y):
+
+</code></pre></div><p>安装过程等待即可：</p> <div class="language- extra-class"><pre class="language-text"><code>..............................
+..............................
+</code></pre></div><p>安装成功：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>start programs<span class="token punctuation">..</span>.
+Starting nginx daemon: <span class="token builtin class-name">.</span>
+Starting MySQL<span class="token punctuation">..</span> SUCCESS<span class="token operator">!</span> 
+Warning: Using a password on the <span class="token builtin class-name">command</span> line interface can be insecure.
+Starting php-fpm  <span class="token keyword">done</span>
+Starting memcached: 
+Start pureftpd<span class="token punctuation">..</span><span class="token punctuation">..</span>  <span class="token punctuation">[</span>OK<span class="token punctuation">]</span> 
+Starting Redis server<span class="token punctuation">..</span>.
+</code></pre></div><p><strong>使用EZHTTP安装成功后各服务已经打开，输入Linxu 机器IP 访问即可：</strong></p> <p><img src="http://upload-images.jianshu.io/upload_images/4262139-1fdd923b81b5872f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="">
+恭喜，安装成功了！</p> <br>
+## 开始安装zabbix
+<h3 id="配置源"><a href="#配置源" class="header-anchor">#</a> 配置源</h3> <p>Zabbix在CentOS基本源里不可获得，因此必须配置EPEL 和Zabbix 官方repository，因为需要一款名叫fping的软件（这款软件你下载源码编译安装貌似行不通！），然后其他的yum源将mysql全部识别为mariadb了，所以想yum安装mysql，请安装mysql社区版官方源，或者编译安装，上面的EZHTTP安装脚本就是编译安装</p> <p>安装EPEL repository</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost software]# pwd
+/software
+[root@localhost software]# yum -y install epel-release
+</code></pre></div><p>配置ZabbixZone package repository and GPG key</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost software]# rpm --import http://repo.zabbix.com/RPM-GPG-KEY-ZABBIX
+[root@localhost software]# rpm --import http://repo.zabbix.com/RPM-GPG-KEY-ZABBIX-A14FE591
+[root@localhost software]# yum -y install fping
+[root@localhost software]# rpm -ivh http://repo.zabbix.com/zabbix/3.2/rhel/7/x86_64/zabbix-release-3.2-1.el7.noarch.rpm
+</code></pre></div><h3 id="安装zabbix-server-and-agent（agent是可选的）"><a href="#安装zabbix-server-and-agent（agent是可选的）" class="header-anchor">#</a> 安装Zabbix server and agent（agent是可选的）</h3> <p>安装Zabbix server and agent:（配置自己监控自己，所以安装了zabbix-agent）</p> <div class="language- extra-class"><pre class="language-text"><code>yum -y install zabbix-server-mysql zabbix-web-mysql zabbix-agent
+</code></pre></div><p><strong>可以上zabbix rpm包官网查看或下载相应包</strong></p> <p>http://repo.zabbix.com/</p> <h3 id="创建mysql-数据库和用户"><a href="#创建mysql-数据库和用户" class="header-anchor">#</a> 创建MySQL 数据库和用户</h3> <p>登录Mysql：</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost software]# mysql -uroot -p123456
+</code></pre></div><p>创建一个数据库zabbix和数据库用户zabbix：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>mysql<span class="token operator">&gt;</span> create database zabbix character <span class="token builtin class-name">set</span> utf8<span class="token punctuation">;</span>
+
+mysql<span class="token operator">&gt;</span> grant all privileges on zabbix.* to <span class="token string">'zabbix'</span>@<span class="token string">'localhost'</span> identified by <span class="token string">'zabbix'</span><span class="token punctuation">;</span>
+
+mysql<span class="token operator">&gt;</span> flush privileges<span class="token punctuation">;</span>
+</code></pre></div><h3 id="数据库导入zabbix-template"><a href="#数据库导入zabbix-template" class="header-anchor">#</a> 数据库导入zabbix template</h3> <p>看yum安装的zabbix-server-mysql-3.x.x 这个文件的版本是多少就改成多少</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost software]# zcat /usr/share/doc/zabbix-server-mysql-3.2.4/create.sql.gz |mysql -uzabbix -pzabbix -b zabbix
+</code></pre></div><h3 id="配置zabbix-server"><a href="#配置zabbix-server" class="header-anchor">#</a> 配置Zabbix server</h3> <div class="language- extra-class"><pre class="language-text"><code>vi /etc/zabbix/zabbix_server.conf
+</code></pre></div><p>配置下面的几个参数
+带#号的就去掉#号，并修改其值</p> <div class="language- extra-class"><pre class="language-text"><code>ListenPort=10051
+DBHost=localhost
+DBName=zabbix
+DBUser=zabbix
+DBPassword=zabbix
+DBSocket=/usr/local/mysql/data/mysql.sock
+DBPort=3306
+</code></pre></div><h3 id="配置zabbix-agent"><a href="#配置zabbix-agent" class="header-anchor">#</a> 配置zabbix-agent</h3> <div class="language- extra-class"><pre class="language-text"><code>vi /etc/zabbix/zabbix_agentd.conf
+</code></pre></div><p>配置zabbix server的ip</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">## Line 95 - Specify Zabbix server ##</span>
+
+<span class="token assign-left variable">Server</span><span class="token operator">=</span><span class="token number">127.0</span>.0.1
+
+<span class="token comment">## Line 136 - Specify Zabbix server ##</span>
+
+<span class="token assign-left variable">ServerActive</span><span class="token operator">=</span><span class="token number">127.0</span>.0.1
+
+<span class="token comment">## Line 147 - Specify Zabbix server Hostname or IP address</span>
+
+<span class="token assign-left variable">Hostname</span><span class="token operator">=</span><span class="token number">127.0</span>.0.1
+
+</code></pre></div><h3 id="修改php-设置"><a href="#修改php-设置" class="header-anchor">#</a> 修改PHP 设置</h3> <p>修改php.ini为zabbix 建议的设置
+编辑文件 php.ini,</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost software]# vi /usr/local/php/etc/php.ini
+</code></pre></div><p>设置下面的参数：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>max_execution_time <span class="token operator">=</span> <span class="token number">300</span>
+
+max_input_time <span class="token operator">=</span> <span class="token number">300</span>
+
+memory_limit <span class="token operator">=</span> 128M
+
+post_max_size <span class="token operator">=</span> 32M
+
+upload_max_filesize <span class="token operator">=</span> 2M
+
+date.timezone <span class="token operator">=</span> Asia/Shanghai
+
+</code></pre></div><p>安装时可能缺少下面扩展，把下面内容添加到php.ini</p> <div class="language- extra-class"><pre class="language-text"><code>extension=bcmath.so
+extension=gettext.so
+extension=sockets.so
+</code></pre></div><p>安装扩展</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token punctuation">[</span>root@localhost ext<span class="token punctuation">]</span><span class="token comment"># cd /software/ezhttp-master/soft/php-7.1.0/ext</span>
+<span class="token punctuation">[</span>root@localhost ext<span class="token punctuation">]</span><span class="token comment"># pwd</span>
+/software/ezhttp-master/soft/php-7.1.0/ext
+<span class="token punctuation">[</span>root@localhost ext<span class="token punctuation">]</span><span class="token comment"># cd sockets/</span>
+<span class="token punctuation">[</span>root@localhost sockets<span class="token punctuation">]</span><span class="token comment"># /usr/local/php/bin/phpize</span>
+<span class="token punctuation">[</span>root@localhost sockets<span class="token punctuation">]</span><span class="token comment"># ./configure --with-php-config=/usr/local/php/bin/php-config</span>
+<span class="token punctuation">[</span>root@localhost sockets<span class="token punctuation">]</span><span class="token comment"># cd ..</span>
+<span class="token punctuation">[</span>root@localhost ext<span class="token punctuation">]</span><span class="token comment"># cd bcmath/</span>
+<span class="token punctuation">[</span>root@localhost bcmath<span class="token punctuation">]</span><span class="token comment"># /usr/local/php/bin/phpize</span>
+<span class="token punctuation">[</span>root@localhost bcmath<span class="token punctuation">]</span><span class="token comment"># ./configure --with-php-config=/usr/local/php/bin/php-config</span>
+<span class="token punctuation">[</span>root@localhost bcmath<span class="token punctuation">]</span><span class="token comment"># cd ..</span>
+<span class="token punctuation">[</span>root@localhost ext<span class="token punctuation">]</span><span class="token comment"># cd gettext/</span>
+<span class="token punctuation">[</span>root@localhost gettext<span class="token punctuation">]</span><span class="token comment"># /usr/local/php/bin/phpize</span>
+<span class="token punctuation">[</span>root@localhost gettext<span class="token punctuation">]</span><span class="token comment"># ./configure --with-php-config=/usr/local/php/bin/php-config</span>
+</code></pre></div><p>使用下面命令可以看到有一个扩展存放的目录，我们需要的扩展模块在其中即安装成功</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost gettext]# make &amp;&amp; make install
+</code></pre></div><p>修改php-fpm运行的用户和组</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost software]# vi /usr/local/php/etc/php-fpm.d/www.conf
+user = www
+group = www
+</code></pre></div><h3 id="方法一：使用-apache-服务器"><a href="#方法一：使用-apache-服务器" class="header-anchor">#</a> 方法一：使用 apache 服务器</h3> <p>apache配置zabbix-web站点文件</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost etc]# cd /etc/httpd/
+</code></pre></div><p>vi conf/httpd.conf
+修改下面内容：</p> <div class="language-bash extra-class"><pre class="language-bash"><code>Listen <span class="token number">80</span>
+
+User www
+Group wwww
+
+<span class="token operator">&lt;</span>IfModule dir_module<span class="token operator">&gt;</span>
+    DirectoryIndex index.html index.php
+<span class="token operator">&lt;</span>/IfModule<span class="token operator">&gt;</span>
+</code></pre></div><p>vi conf.d/zabbix.conf
+修改内容如下：</p> <div class="language- extra-class"><pre class="language-text"><code>&lt;IfModule mod_php5.c&gt;
+    php_value max_execution_time 300
+    php_value memory_limit 128M
+    php_value post_max_size 32M
+    php_value upload_max_filesize 8M
+    php_value max_input_time 300
+    php_value always_populate_raw_post_data -1
+    php_value date.timezone Asia/Shanghai
+&lt;/IfModule&gt;
+</code></pre></div><p>然后重启apache、mysql、php、zabbix-server
+浏览器输入ip/setup.php 即可进入zabbix初次web安装界面</p> <h3 id="方法二：使用-nginx-服务器"><a href="#方法二：使用-nginx-服务器" class="header-anchor">#</a> 方法二：使用 Nginx 服务器</h3> <p>配置zabbix-web站点文件</p> <p>把zabbix程序文件拷贝到我们指定的目录，并修改属主和属组</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token punctuation">[</span>root@localhost software<span class="token punctuation">]</span><span class="token comment"># cp -r /usr/share/zabbix /var/www/</span>
+<span class="token punctuation">[</span>root@localhost software<span class="token punctuation">]</span><span class="token comment"># chown -R www:www /var/www/zabbix</span>
+<span class="token punctuation">[</span>root@localhost software<span class="token punctuation">]</span><span class="token comment"># chown -R www:www /etc/zabbix</span>
+<span class="token punctuation">[</span>root@localhost software<span class="token punctuation">]</span><span class="token comment"># chown -R www:www /usr/share/zabbix</span>
+<span class="token punctuation">[</span>root@localhost software<span class="token punctuation">]</span><span class="token comment"># chown -R www:www /usr/lib/zabbix</span>
+<span class="token punctuation">[</span>root@localhost software<span class="token punctuation">]</span><span class="token comment"># chmod -R 755 /etc/zabbix/web</span>
+</code></pre></div><p>创建存放web站点配置文件的目录</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost ~]# cd /usr/local/nginx/conf/
+[root@localhost conf]# mkdir conf.d/
+</code></pre></div><p>配置nginx.conf，把新建的目录包含进去</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost conf]# vi nginx.conf
+
+listen 80 default_server;      ===&gt; 改为 listen 90 default_server;
+root /home/wwwroot/;      ===&gt; 改为 # root /home/wwwroot/;
+include vhost/*.conf;    ===&gt; 改为 include /usr/local/nginx/conf/conf.d/*.conf;
+</code></pre></div><p>配置zabbix.conf（zabiix站点的配置文件）</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost conf]# cd conf.d/
+[root@localhost conf.d]# vi zabbix.conf
+</code></pre></div><p>zabbix.conf 内容如下:</p> <div class="language-bash extra-class"><pre class="language-bash"><code>    server <span class="token punctuation">{</span>
+        listen <span class="token number">80</span><span class="token punctuation">;</span>
+        server_name localhost<span class="token punctuation">;</span>
+        root /var/www/zabbix<span class="token punctuation">;</span>
+        index index.php index.html index.htm<span class="token punctuation">;</span>
+        access_log  logs/zabbix.access.log<span class="token punctuation">;</span>
+        error_log   logs/zabbix.error.log<span class="token punctuation">;</span>
+
+        location / <span class="token punctuation">{</span>
+            try_files <span class="token variable">$uri</span> <span class="token variable">$uri</span>/ /index.php?<span class="token variable">$args</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        location ~ .*<span class="token punctuation">\</span>.<span class="token punctuation">(</span>php<span class="token punctuation">)</span>?$ <span class="token punctuation">{</span>
+            expires -1s<span class="token punctuation">;</span>
+            try_files <span class="token variable">$uri</span> <span class="token operator">=</span><span class="token number">404</span><span class="token punctuation">;</span>
+            fastcgi_split_path_info ^<span class="token punctuation">(</span>.+<span class="token punctuation">\</span>.php<span class="token punctuation">)</span><span class="token punctuation">(</span>/.+<span class="token punctuation">)</span>$<span class="token punctuation">;</span>
+            include        fastcgi_params<span class="token punctuation">;</span>
+            fastcgi_pass   <span class="token number">127.0</span>.0.1:9000<span class="token punctuation">;</span>
+            fastcgi_param PATH_INFO <span class="token variable">$fastcgi_path_info</span><span class="token punctuation">;</span>
+            fastcgi_index  index.php<span class="token punctuation">;</span>
+            fastcgi_param  SCRIPT_FILENAME  <span class="token variable">$document_root</span><span class="token variable">$fastcgi_script_name</span><span class="token punctuation">;</span>
+            fastcgi_param  PHP_VALUE        <span class="token assign-left variable">open_basedir</span><span class="token operator">=</span><span class="token variable">$document_root</span>:/tmp/:/proc/:/usr/share/zabbix/:/etc/zabbix/web/:/etc/zabbix/<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+    <span class="token punctuation">}</span>
+</code></pre></div><h5 id="启动zabbix-和-各服务"><a href="#启动zabbix-和-各服务" class="header-anchor">#</a> 启动zabbix 和 各服务</h5> <p>启动zabbix-server 和zabbix-agent。并设置zabbix-server和zabbix-agent开机自动启动</p> <div class="language-bash extra-class"><pre class="language-bash"><code>systemctl start zabbix-server
+
+systemctl start zabbix-agent
+
+/etc/init.d/nginx restart
+
+<span class="token function">chkconfig</span> nginx on
+
+/etc/init.d/mysqld restart
+
+<span class="token function">chkconfig</span> mysqld on
+
+/etc/init.d/php-fpm restart
+
+<span class="token function">chkconfig</span> php-fpm on
+
+systemctl <span class="token builtin class-name">enable</span> zabbix-server
+
+systemctl <span class="token builtin class-name">enable</span> zabbix-agent
+</code></pre></div><h3 id="修改firewall-和selinux-设置"><a href="#修改firewall-和selinux-设置" class="header-anchor">#</a> 修改Firewall 和SELinux 设置</h3> <p>开放zabbix端口10050 and 10051</p> <div class="language- extra-class"><pre class="language-text"><code>firewall-cmd --permanent --add-port=10050/tcp
+
+firewall-cmd --permanent --add-port=10051/tcp
+</code></pre></div><p>重启firewall</p> <div class="language- extra-class"><pre class="language-text"><code>systemctl restart firewalld
+</code></pre></div><p>如果使用 SELinux, 运行以下命令使 Apache 可以和 Zabbix通信</p> <div class="language- extra-class"><pre class="language-text"><code>setsebool -P httpd_can_connect_zabbix=1
+</code></pre></div><p>如果是测试环境可以直接关闭防火墙和selinux</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost software]# systemctl stop firewalld
+[root@localhost local]# chkconfig firewalld off
+</code></pre></div><p>修改配置文件，禁用selinux</p> <div class="language- extra-class"><pre class="language-text"><code>[root@localhost software]# setenforce 0
+[root@localhost software]# vi /etc/selinux/config
+
+SELINUX=disabled
+</code></pre></div><h3 id="输入ip-setup-php进入zabbix-web界面进行后续安装操作"><a href="#输入ip-setup-php进入zabbix-web界面进行后续安装操作" class="header-anchor">#</a> 输入ip/setup.php进入zabbix-web界面进行后续安装操作</h3> <p><img src="http://upload-images.jianshu.io/upload_images/4262139-db8ffdf58139d8de.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p> <p>确认状态都是ok</p> <p><img src="http://upload-images.jianshu.io/upload_images/4262139-3fc40c17e9fc0c71.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p> <p>配置数据库信息（填写上面我们设置的数据库账户和密码：zabbix，zabbix，测试环境可以直接用root）</p> <p><img src="http://upload-images.jianshu.io/upload_images/4262139-52a9f1f89aea0cd1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p> <p>进入下一步，默认即可</p> <p><img src="http://upload-images.jianshu.io/upload_images/4262139-d4824356ff2cb9b0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p> <p>如果出现下面错误</p> <p><img src="http://upload-images.jianshu.io/upload_images/4262139-ff60edcaf0e32bcb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="">
+解决方法：</p> <div class="language- extra-class"><pre class="language-text"><code>sed -i 's#cgi.fix_pathinfo=0#cgi.fix_pathinfo=1#' /usr/local/php/etc/php.ini
+/etc/init.d/php-fpm restart
+</code></pre></div><p>刷新浏览器， 一直下一步</p> <p>登录，默认用户名: Admin , 默认密码：zabbix</p> <p><img src="http://upload-images.jianshu.io/upload_images/4262139-8b105d93769010dd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p> <p>使用php7.0版本初始化完成后页面有如下的报错：</p> <p><img src="http://upload-images.jianshu.io/upload_images/4262139-4d9f12c8d410218c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p> <p>这个是因为PHP 7.1.0类型强化，处理方法也很简单找到Zabbix WEB目录下include/func.inc.php文件，执行下面命令，并重启php服务：</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">sed</span> -i <span class="token string">'/<span class="token variable">$last</span> = strtolower(substr(<span class="token variable">$val</span>, -1));/a<span class="token variable">$val</span> = substr(<span class="token variable">$val</span>,0,-1);'</span> /var/www/zabbix/include/func.inc.php
+/etc/init.d/php-fpm reload
+</code></pre></div><p>然后刷新页面可以看到已经正常。</p> <p>ok，初始化完毕。。。</p> <br>
+## 解决图形中文乱码
+<p><img src="http://upload-images.jianshu.io/upload_images/4262139-0fe91cab9756e860.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="">
+这个问题是由于zabbix的web端没有中文字库，我们最需要把中文字库加上即可
+解决办法如下
+1.从windows下控制面板-&gt;字体-&gt;选择一种中文字库例如“楷体”</p> <p><img src="http://upload-images.jianshu.io/upload_images/4262139-bc6dd0f78aacd666.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p> <p>2.把它拷贝到zabbix的web端的fonts目录下例如：/var/www/html/zabbix/fonts，确认后缀为ttf
+<img src="http://upload-images.jianshu.io/upload_images/4262139-e728c83852df078a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="">
+3.修改zabbix的web端/include/defines.inc.php
+点击(此处)折叠或打开</p> <div class="language-bash extra-class"><pre class="language-bash"><code>//define<span class="token punctuation">(</span><span class="token string">'ZBX_FONT_NAME'</span>, <span class="token string">'graphfont'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+define<span class="token punctuation">(</span><span class="token string">'ZBX_FONT_NAME'</span>, <span class="token string">'simkai'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+//define<span class="token punctuation">(</span><span class="token string">'ZBX_GRAPH_FONT_NAME'</span>,     <span class="token string">'graphfont'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> // font <span class="token function">file</span> name
+define<span class="token punctuation">(</span><span class="token string">'ZBX_GRAPH_FONT_NAME'</span>,       <span class="token string">'simkai'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> // font <span class="token function">file</span> name
+</code></pre></div><p>其中simkai为字库名字,不包含ttf后缀
+测试结果：</p> <p><img src="http://upload-images.jianshu.io/upload_images/4262139-87a0a189fda1b313.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p></div> <footer class="page-edit" style="display:none;"><!----> <!----></footer> <!----> <!----></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-44bd5a18 data-v-44bd5a18><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-44bd5a18><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-44bd5a18></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-44bd5a18></path></svg></div></div></div>
+    <script src="/assets/js/app.4c0f163f.js" defer></script><script src="/assets/js/3.5c161e77.js" defer></script><script src="/assets/js/1.b50dabeb.js" defer></script><script src="/assets/js/22.ad29d758.js" defer></script>
+  </body>
+</html>

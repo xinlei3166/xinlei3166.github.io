@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>SQLAlchemy的简单使用 | 君惜の博客</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    
+    <meta name="description" content="">
+    <link rel="preload" href="/assets/css/0.styles.ff30c3b6.css" as="style"><link rel="preload" href="/assets/js/app.4c0f163f.js" as="script"><link rel="preload" href="/assets/js/3.5c161e77.js" as="script"><link rel="preload" href="/assets/js/1.b50dabeb.js" as="script"><link rel="preload" href="/assets/js/41.203d520e.js" as="script"><link rel="prefetch" href="/assets/js/10.7fffa9c4.js"><link rel="prefetch" href="/assets/js/11.a894a0a3.js"><link rel="prefetch" href="/assets/js/12.7c1460cd.js"><link rel="prefetch" href="/assets/js/13.dd983835.js"><link rel="prefetch" href="/assets/js/14.1487eb9d.js"><link rel="prefetch" href="/assets/js/15.4756daf1.js"><link rel="prefetch" href="/assets/js/16.a530f05a.js"><link rel="prefetch" href="/assets/js/17.29f6aa52.js"><link rel="prefetch" href="/assets/js/18.e4a9724e.js"><link rel="prefetch" href="/assets/js/19.5ed05463.js"><link rel="prefetch" href="/assets/js/20.0cce4e1a.js"><link rel="prefetch" href="/assets/js/21.83dfac32.js"><link rel="prefetch" href="/assets/js/22.ad29d758.js"><link rel="prefetch" href="/assets/js/23.18313ffe.js"><link rel="prefetch" href="/assets/js/24.665841c7.js"><link rel="prefetch" href="/assets/js/25.5e232809.js"><link rel="prefetch" href="/assets/js/26.af71fdca.js"><link rel="prefetch" href="/assets/js/27.8a2d98c2.js"><link rel="prefetch" href="/assets/js/28.1306b459.js"><link rel="prefetch" href="/assets/js/29.29630159.js"><link rel="prefetch" href="/assets/js/30.b89be015.js"><link rel="prefetch" href="/assets/js/31.6295dd91.js"><link rel="prefetch" href="/assets/js/32.b7becd12.js"><link rel="prefetch" href="/assets/js/33.8faf9a10.js"><link rel="prefetch" href="/assets/js/34.cd57f657.js"><link rel="prefetch" href="/assets/js/35.7e2b5a6f.js"><link rel="prefetch" href="/assets/js/36.d71a14b1.js"><link rel="prefetch" href="/assets/js/37.959b4726.js"><link rel="prefetch" href="/assets/js/38.f931a68f.js"><link rel="prefetch" href="/assets/js/39.c3ea2b40.js"><link rel="prefetch" href="/assets/js/4.c1ea1bf1.js"><link rel="prefetch" href="/assets/js/40.4982c905.js"><link rel="prefetch" href="/assets/js/42.7e5a0064.js"><link rel="prefetch" href="/assets/js/43.6b7dcc89.js"><link rel="prefetch" href="/assets/js/44.ace44d85.js"><link rel="prefetch" href="/assets/js/45.e7334ca4.js"><link rel="prefetch" href="/assets/js/46.2f73e550.js"><link rel="prefetch" href="/assets/js/47.bb851a3c.js"><link rel="prefetch" href="/assets/js/48.9ead4a3a.js"><link rel="prefetch" href="/assets/js/49.f6d187a3.js"><link rel="prefetch" href="/assets/js/5.4f3c9bb5.js"><link rel="prefetch" href="/assets/js/50.44513019.js"><link rel="prefetch" href="/assets/js/51.f92332ae.js"><link rel="prefetch" href="/assets/js/52.1a90855d.js"><link rel="prefetch" href="/assets/js/53.a6063052.js"><link rel="prefetch" href="/assets/js/54.5e4dc526.js"><link rel="prefetch" href="/assets/js/55.b4cf2cca.js"><link rel="prefetch" href="/assets/js/56.5afab6b8.js"><link rel="prefetch" href="/assets/js/57.13db934e.js"><link rel="prefetch" href="/assets/js/58.45393b85.js"><link rel="prefetch" href="/assets/js/59.312d0c74.js"><link rel="prefetch" href="/assets/js/6.0583317e.js"><link rel="prefetch" href="/assets/js/60.868da390.js"><link rel="prefetch" href="/assets/js/61.06d72270.js"><link rel="prefetch" href="/assets/js/62.95d65aff.js"><link rel="prefetch" href="/assets/js/63.36ccfb18.js"><link rel="prefetch" href="/assets/js/64.02290762.js"><link rel="prefetch" href="/assets/js/65.eac6abdc.js"><link rel="prefetch" href="/assets/js/66.5c7a3796.js"><link rel="prefetch" href="/assets/js/67.6d2a84e7.js"><link rel="prefetch" href="/assets/js/68.12b35d40.js"><link rel="prefetch" href="/assets/js/69.da3256da.js"><link rel="prefetch" href="/assets/js/7.60184b24.js"><link rel="prefetch" href="/assets/js/70.76e73b0c.js"><link rel="prefetch" href="/assets/js/71.99afbb77.js"><link rel="prefetch" href="/assets/js/72.19feaec4.js"><link rel="prefetch" href="/assets/js/73.ba5ee2ed.js"><link rel="prefetch" href="/assets/js/74.cef516f6.js"><link rel="prefetch" href="/assets/js/75.90f4a703.js"><link rel="prefetch" href="/assets/js/76.885ff289.js"><link rel="prefetch" href="/assets/js/77.823d6f1d.js"><link rel="prefetch" href="/assets/js/78.2c2736ff.js"><link rel="prefetch" href="/assets/js/79.cbfa5ae7.js"><link rel="prefetch" href="/assets/js/8.ccce47cf.js"><link rel="prefetch" href="/assets/js/80.431573aa.js"><link rel="prefetch" href="/assets/js/9.9160a89c.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.ff30c3b6.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-19557b78><div data-v-19557b78><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-19557b78 data-v-19557b78><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-64685f0e data-v-19557b78 data-v-19557b78><h3 class="title" style="display:none;" data-v-64685f0e data-v-64685f0e>君惜の博客</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-64685f0e data-v-64685f0e><input type="password" value="" data-v-64685f0e> <span data-v-64685f0e>Konck! Knock!</span> <button data-v-64685f0e>OK</button></label> <div class="footer" style="display:none;" data-v-64685f0e data-v-64685f0e><span data-v-64685f0e><i class="iconfont reco-theme" data-v-64685f0e></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-64685f0e>vuePress-theme-reco</a></span> <span data-v-64685f0e><i class="iconfont reco-copyright" data-v-64685f0e></i> <a data-v-64685f0e><span data-v-64685f0e>君惜</span>
+            
+          <!---->
+          2020
+        </a></span></div></div> <div class="hide" data-v-19557b78><header class="navbar" data-v-19557b78><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">君惜の博客</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/Docker/" class="nav-link"><i class="iconfont undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Git/" class="nav-link"><i class="iconfont undefined"></i>
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JavaScript/" class="nav-link"><i class="iconfont undefined"></i>
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Linux/" class="nav-link"><i class="iconfont undefined"></i>
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Mysql/" class="nav-link"><i class="iconfont undefined"></i>
+  Mysql
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Node.js/" class="nav-link"><i class="iconfont undefined"></i>
+  Node.js
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Python/" class="nav-link"><i class="iconfont undefined"></i>
+  Python
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Redis/" class="nav-link"><i class="iconfont undefined"></i>
+  Redis
+</a></li><li class="dropdown-item"><!----> <a href="/categories/并发测试/" class="nav-link"><i class="iconfont undefined"></i>
+  并发测试
+</a></li><li class="dropdown-item"><!----> <a href="/categories/随笔/" class="nav-link"><i class="iconfont undefined"></i>
+  随笔
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div> <a href="https://github.com/xinlei3166" target="_blank" rel="noopener noreferrer" class="repo-link"><i class="iconfont reco-github"></i>
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask" data-v-19557b78></div> <aside class="sidebar" data-v-19557b78><div class="personal-info-wrapper" data-v-b038cec6><img src="/img/avatar.jpg" alt="author-avatar" class="personal-img" data-v-b038cec6> <h3 class="name" data-v-b038cec6>
+    君惜
+  </h3> <div class="num" data-v-b038cec6><div data-v-b038cec6><h3 data-v-b038cec6>68</h3> <h6 data-v-b038cec6>Article</h6></div> <div data-v-b038cec6><h3 data-v-b038cec6>76</h3> <h6 data-v-b038cec6>Tag</h6></div></div> <hr data-v-b038cec6></div> <nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/Docker/" class="nav-link"><i class="iconfont undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Git/" class="nav-link"><i class="iconfont undefined"></i>
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JavaScript/" class="nav-link"><i class="iconfont undefined"></i>
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Linux/" class="nav-link"><i class="iconfont undefined"></i>
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Mysql/" class="nav-link"><i class="iconfont undefined"></i>
+  Mysql
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Node.js/" class="nav-link"><i class="iconfont undefined"></i>
+  Node.js
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Python/" class="nav-link"><i class="iconfont undefined"></i>
+  Python
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Redis/" class="nav-link"><i class="iconfont undefined"></i>
+  Redis
+</a></li><li class="dropdown-item"><!----> <a href="/categories/并发测试/" class="nav-link"><i class="iconfont undefined"></i>
+  并发测试
+</a></li><li class="dropdown-item"><!----> <a href="/categories/随笔/" class="nav-link"><i class="iconfont undefined"></i>
+  随笔
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div> <a href="https://github.com/xinlei3166" target="_blank" rel="noopener noreferrer" class="repo-link"><i class="iconfont reco-github"></i>
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>SQLAlchemy的简单使用</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Python/SQLAlchemy%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8.html#_1-简述" class="sidebar-link">1.简述</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Python/SQLAlchemy%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8.html#_1-1-知识要点" class="sidebar-link">1.1 知识要点</a></li></ul></li><li><a href="/Python/SQLAlchemy%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8.html#_2-orm-与-sqlalchemy-简单介绍" class="sidebar-link">2. ORM 与 SQLAlchemy 简单介绍</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Python/SQLAlchemy%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8.html#_3-连接与创建" class="sidebar-link">3. 连接与创建</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Python/SQLAlchemy%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8.html#_3-1-连接数据库" class="sidebar-link">3.1 连接数据库</a></li><li class="sidebar-sub-header"><a href="/Python/SQLAlchemy%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8.html#_3-2-描述表结构" class="sidebar-link">3.2 描述表结构</a></li></ul></li><li><a href="/Python/SQLAlchemy%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8.html#_4-关系定义" class="sidebar-link">4. 关系定义</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Python/SQLAlchemy%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8.html#_4-1-一对多关系" class="sidebar-link">4.1 一对多关系</a></li><li class="sidebar-sub-header"><a href="/Python/SQLAlchemy%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8.html#_4-2-一对一关系" class="sidebar-link">4.2 一对一关系</a></li><li class="sidebar-sub-header"><a href="/Python/SQLAlchemy%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8.html#_4-3-多对多关系" class="sidebar-link">4.3 多对多关系</a></li><li class="sidebar-sub-header"><a href="/Python/SQLAlchemy%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8.html#_4-4-映射到数据库" class="sidebar-link">4.4 映射到数据库</a></li></ul></li></ul></section></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-64685f0e data-v-19557b78><h3 class="title" style="display:none;" data-v-64685f0e data-v-64685f0e>SQLAlchemy的简单使用</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-64685f0e data-v-64685f0e><input type="password" value="" data-v-64685f0e> <span data-v-64685f0e>Konck! Knock!</span> <button data-v-64685f0e>OK</button></label> <div class="footer" style="display:none;" data-v-64685f0e data-v-64685f0e><span data-v-64685f0e><i class="iconfont reco-theme" data-v-64685f0e></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-64685f0e>vuePress-theme-reco</a></span> <span data-v-64685f0e><i class="iconfont reco-copyright" data-v-64685f0e></i> <a data-v-64685f0e><span data-v-64685f0e>君惜</span>
+            
+          <!---->
+          2020
+        </a></span></div></div> <div data-v-19557b78><main class="page"><div class="page-title" style="display:none;"><h1>SQLAlchemy的简单使用</h1> <hr> <div data-v-cd8d63d2><i class="iconfont reco-account" data-v-cd8d63d2><span data-v-cd8d63d2>君惜</span></i> <!----> <!----> <i class="iconfont reco-tag tags" data-v-cd8d63d2><span class="tag-item" data-v-cd8d63d2>
+      Python
+    </span><span class="tag-item" data-v-cd8d63d2>
+      SQLAlchemy
+    </span></i></div></div> <div class="theme-reco-content content__default" style="display:none;"><h2 id="_1-简述"><a href="#_1-简述" class="header-anchor">#</a> 1.简述</h2> <p>最近在学习tornado，发现没有Orm模型。其自带的torndb模块不支持python3，学习一下SQLAlchemy供以后工作中使用。</p> <p>本文学习使用 SQLAlchemy 连接 MySQL 数据库，创建一个博客应用所需要的数据表，并介绍了使用 SQLAlchemy 进行简单了 CURD 操作及使用 Faker 生成测试数据。</p> <h3 id="_1-1-知识要点"><a href="#_1-1-知识要点" class="header-anchor">#</a> <strong>1.1 知识要点</strong></h3> <ul><li>学会用 SQLALchemy 连接数据库(MySQL, SQLite, PostgreSQL), 创建数据表；</li> <li>掌握表数据之间一对一，一对多及多对多的关系并能转化为对应 SQLAlchemy 描述；</li> <li>掌握使用 SQLAlchemy 进行 CURD 操作；</li> <li>学会使用 Faker 生成测试数据</li></ul> <h2 id="_2-orm-与-sqlalchemy-简单介绍"><a href="#_2-orm-与-sqlalchemy-简单介绍" class="header-anchor">#</a> 2. ORM 与 SQLAlchemy 简单介绍</h2> <p>ORM 全称 Object Relational Mapping, 翻译过来叫对象关系映射。简单的说，ORM 将数据库中的表与面向对象语言中的类建立了一种对应关系。这样，我们要操作数据库，数据库中的表或者表中的一条记录就可以直接通过操作类或者类实例来完成。</p> <p><img src="http://upload-images.jianshu.io/upload_images/4262139-4371850de09b0e58.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="对象关系映射"></p> <p>SQLAlchemy 是Python 社区最知名的 ORM 工具之一，为高效和高性能的数据库访问设计，实现了完整的企业级持久模型。</p> <p>接下来我们将使用 SQLAlchemy 和 MySQL 构建一个博客应用的实验库。</p> <h2 id="_3-连接与创建"><a href="#_3-连接与创建" class="header-anchor">#</a> 3. 连接与创建</h2> <p>安装SQLAlchemy</p> <div class="language- extra-class"><pre class="language-text"><code>pip install sqlalchemy
+</code></pre></div><p>数据库我们采用Mysql，安装过程这里省略。<a href="http://www.jianshu.com/p/1e51985b46dd" target="_blank" rel="noopener noreferrer">可参考我的lnmp安装步骤<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>。</p> <p>启动mysql服务</p> <div class="language-python extra-class"><pre class="language-python"><code>systemctl start mysqld
+</code></pre></div><p>进入数据库命令行</p> <div class="language-python extra-class"><pre class="language-python"><code>mysql
+</code></pre></div><p>更改数据库授权，远程主机可访问</p> <div class="language-python extra-class"><pre class="language-python"><code>update mysql<span class="token punctuation">.</span>user <span class="token builtin">set</span> Host<span class="token operator">=</span><span class="token string">'%'</span> where HOST<span class="token operator">=</span><span class="token string">'localhost'</span> <span class="token keyword">and</span> User<span class="token operator">=</span><span class="token string">'root'</span><span class="token punctuation">;</span>
+</code></pre></div><p>接下来我们使用图形化数据库操作工具（Navicat Premium）来操作数据库
+创建一个blog的数据库</p> <p><img src="http://upload-images.jianshu.io/upload_images/4262139-e2116bd830d90b6f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="数据库创建"></p> <p>安装数据库驱动</p> <div class="language-python extra-class"><pre class="language-python"><code>pip install pymysql
+</code></pre></div><h3 id="_3-1-连接数据库"><a href="#_3-1-连接数据库" class="header-anchor">#</a> <strong>3.1 连接数据库</strong></h3> <hr> <p>新建一个db.py的文件，写入下面的内容：</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment">#!/usr/bin/env python</span>
+<span class="token comment"># _*_ coding:utf-8 _*_</span>
+__author__ <span class="token operator">=</span> <span class="token string">'junxi'</span>
+
+<span class="token keyword">from</span> sqlalchemy <span class="token keyword">import</span> create_engine
+<span class="token keyword">from</span> sqlalchemy<span class="token punctuation">.</span>ext<span class="token punctuation">.</span>declarative <span class="token keyword">import</span> declarative_base
+
+
+engine <span class="token operator">=</span> create_engine<span class="token punctuation">(</span><span class="token string">'mysql+pymysql://blog:123456@localhost:3306/blog?charset=utf8'</span><span class="token punctuation">)</span>
+Base <span class="token operator">=</span> declarative_base<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>engine<span class="token punctuation">)</span>
+</code></pre></div><p>运行：</p> <div class="language-python extra-class"><pre class="language-python"><code>Engine<span class="token punctuation">(</span>mysql<span class="token operator">+</span>pymysql<span class="token punctuation">:</span><span class="token operator">//</span>blog<span class="token punctuation">:</span><span class="token operator">**</span><span class="token operator">*</span>@localhost<span class="token punctuation">:</span><span class="token number">3306</span><span class="token operator">/</span>blog?charset<span class="token operator">=</span>utf8<span class="token punctuation">)</span>
+</code></pre></div><h3 id="_3-2-描述表结构"><a href="#_3-2-描述表结构" class="header-anchor">#</a> <strong>3.2 描述表结构</strong></h3> <hr> <p>要使用 ORM, 我们需要将数据表的结构用 ORM 的语言描述出来。SQLAlchmey 提供了一套 Declarative 系统来完成这个任务。我们以创建一个 users 表为例，看看它是怎么用 SQLAlchemy 的语言来描述的：</p> <p>编辑db.py:</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment">#!/usr/bin/env python</span>
+<span class="token comment"># _*_ coding:utf-8 _*_</span>
+__author__ <span class="token operator">=</span> <span class="token string">'junxi'</span>
+
+<span class="token keyword">from</span> sqlalchemy <span class="token keyword">import</span> create_engine
+<span class="token keyword">from</span> sqlalchemy<span class="token punctuation">.</span>ext<span class="token punctuation">.</span>declarative <span class="token keyword">import</span> declarative_base
+<span class="token keyword">from</span> sqlalchemy <span class="token keyword">import</span> Column<span class="token punctuation">,</span> String<span class="token punctuation">,</span> Integer<span class="token punctuation">,</span> Text<span class="token punctuation">,</span> Boolean<span class="token punctuation">,</span> DateTime<span class="token punctuation">,</span> ForeignKey<span class="token punctuation">,</span> Table
+<span class="token keyword">from</span> sqlalchemy<span class="token punctuation">.</span>orm <span class="token keyword">import</span> relationship<span class="token punctuation">,</span> sessionmaker
+
+
+engine <span class="token operator">=</span> create_engine<span class="token punctuation">(</span><span class="token string">'mysql+pymysql://blog:123456@localhost:3306/blog?charset=utf8'</span><span class="token punctuation">)</span>
+Base <span class="token operator">=</span> declarative_base<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">class</span> <span class="token class-name">User</span><span class="token punctuation">(</span>Base<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    __tablename__ <span class="token operator">=</span> <span class="token string">'users'</span>
+
+    <span class="token builtin">id</span> <span class="token operator">=</span> Column<span class="token punctuation">(</span>Integer<span class="token punctuation">,</span> primary_key<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    username <span class="token operator">=</span> Column<span class="token punctuation">(</span>String<span class="token punctuation">(</span><span class="token number">64</span><span class="token punctuation">)</span><span class="token punctuation">,</span> nullable<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> index<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    password <span class="token operator">=</span> Column<span class="token punctuation">(</span>String<span class="token punctuation">(</span><span class="token number">64</span><span class="token punctuation">)</span><span class="token punctuation">,</span> nullable<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
+    email <span class="token operator">=</span> Column<span class="token punctuation">(</span>String<span class="token punctuation">(</span><span class="token number">64</span><span class="token punctuation">)</span><span class="token punctuation">,</span> nullable<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> index<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">__repr__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string">&quot;%s(%r)&quot;</span> <span class="token operator">%</span> <span class="token punctuation">(</span>self<span class="token punctuation">.</span>__class__<span class="token punctuation">.</span>__name__<span class="token punctuation">,</span> self<span class="token punctuation">.</span>username<span class="token punctuation">)</span>
+
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    Base<span class="token punctuation">.</span>metadata<span class="token punctuation">.</span>create_all<span class="token punctuation">(</span>engine<span class="token punctuation">)</span>
+</code></pre></div><p>我们看到，在 User 类中，用 <code>__tablename__</code>指定在 MySQL 中表的名字。我们创建了三个基本字段，类中的每一个 Column 代表数据库中的一列，在 Colunm中，指定该列的一些配置。第一个字段代表类的数据类型，上面我们使用 String, Integer 俩个最常用的类型，其他常用的包括：</p> <p>Text
+Boolean
+SmallInteger
+DateTime
+ForeignKey
+nullable=False 代表这一列不可以为空，index=True 表示在该列创建索引。</p> <p>另外定义<code>__repr__</code>是为了方便调试，你可以不定义，也可以定义的更详细一些。</p> <p>运行 db.py</p> <p>运行程序，我们在Mysql命令行中看看表是如何创建的：</p> <div class="language-python extra-class"><pre class="language-python"><code>C<span class="token punctuation">:</span>\Windows\system32<span class="token operator">&gt;</span>mysql <span class="token operator">-</span>ublog <span class="token operator">-</span>p123456
+
+mysql<span class="token operator">&gt;</span> use blog<span class="token punctuation">;</span>
+Database changed
+
+mysql<span class="token operator">&gt;</span> show create table users\G<span class="token punctuation">;</span>
+<span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">*</span> <span class="token number">1</span><span class="token punctuation">.</span> row <span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">*</span>
+       Table<span class="token punctuation">:</span> users
+Create Table<span class="token punctuation">:</span> CREATE TABLE `users` <span class="token punctuation">(</span>
+  `<span class="token builtin">id</span>` <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">)</span> NOT NULL AUTO_INCREMENT<span class="token punctuation">,</span>
+  `username` varchar<span class="token punctuation">(</span><span class="token number">64</span><span class="token punctuation">)</span> NOT NULL<span class="token punctuation">,</span>
+  `password` varchar<span class="token punctuation">(</span><span class="token number">64</span><span class="token punctuation">)</span> NOT NULL<span class="token punctuation">,</span>
+  `email` varchar<span class="token punctuation">(</span><span class="token number">64</span><span class="token punctuation">)</span> NOT NULL<span class="token punctuation">,</span>
+  PRIMARY KEY <span class="token punctuation">(</span>`<span class="token builtin">id</span>`<span class="token punctuation">)</span><span class="token punctuation">,</span>
+  KEY `ix_users_username` <span class="token punctuation">(</span>`username`<span class="token punctuation">)</span><span class="token punctuation">,</span>
+  KEY `ix_users_email` <span class="token punctuation">(</span>`email`<span class="token punctuation">)</span>
+<span class="token punctuation">)</span> ENGINE<span class="token operator">=</span>InnoDB DEFAULT CHARSET<span class="token operator">=</span>utf8
+<span class="token number">1</span> row <span class="token keyword">in</span> <span class="token builtin">set</span> <span class="token punctuation">(</span><span class="token number">0.00</span> sec<span class="token punctuation">)</span>
+</code></pre></div><h2 id="_4-关系定义"><a href="#_4-关系定义" class="header-anchor">#</a> 4. 关系定义</h2> <h3 id="_4-1-一对多关系"><a href="#_4-1-一对多关系" class="header-anchor">#</a> <strong>4.1 一对多关系</strong></h3> <hr> <p>一个普通的博客应用，用户和文章显然是一个一对多的关系，一篇文章属于一个用户，一个用户可以写很多篇文章，那么他们之间的关系可以这样定义：</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">class</span> <span class="token class-name">User</span><span class="token punctuation">(</span>Base<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    __tablename__ <span class="token operator">=</span> <span class="token string">'users'</span>
+
+    <span class="token builtin">id</span> <span class="token operator">=</span> Column<span class="token punctuation">(</span>Integer<span class="token punctuation">,</span> primary_key<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    username <span class="token operator">=</span> Column<span class="token punctuation">(</span>String<span class="token punctuation">(</span><span class="token number">64</span><span class="token punctuation">)</span><span class="token punctuation">,</span> nullable<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> index<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    password <span class="token operator">=</span> Column<span class="token punctuation">(</span>String<span class="token punctuation">(</span><span class="token number">64</span><span class="token punctuation">)</span><span class="token punctuation">,</span> nullable<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
+    email <span class="token operator">=</span> Column<span class="token punctuation">(</span>String<span class="token punctuation">(</span><span class="token number">64</span><span class="token punctuation">)</span><span class="token punctuation">,</span> nullable<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> index<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    articles <span class="token operator">=</span> relationship<span class="token punctuation">(</span><span class="token string">'Article'</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">__repr__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string">&quot;%s(%r)&quot;</span> <span class="token operator">%</span> <span class="token punctuation">(</span>self<span class="token punctuation">.</span>__class__<span class="token punctuation">.</span>__name__<span class="token punctuation">,</span> self<span class="token punctuation">.</span>username<span class="token punctuation">)</span>
+
+
+<span class="token keyword">class</span> <span class="token class-name">Article</span><span class="token punctuation">(</span>Base<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    __tablename__ <span class="token operator">=</span> <span class="token string">'articles'</span>
+
+    <span class="token builtin">id</span> <span class="token operator">=</span> Column<span class="token punctuation">(</span>Integer<span class="token punctuation">,</span> primary_key<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    title <span class="token operator">=</span> Column<span class="token punctuation">(</span>String<span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">)</span><span class="token punctuation">,</span> nullable<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> index<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> name<span class="token operator">=</span><span class="token string">&quot;标题&quot;</span><span class="token punctuation">)</span>
+    content <span class="token operator">=</span> Column<span class="token punctuation">(</span>Text<span class="token punctuation">)</span>
+    user_id <span class="token operator">=</span> Column<span class="token punctuation">(</span>Integer<span class="token punctuation">,</span> ForeignKey<span class="token punctuation">(</span><span class="token string">&quot;users.id&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    author <span class="token operator">=</span> relationship<span class="token punctuation">(</span><span class="token string">'User'</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">__repr__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string">&quot;%s(%r)&quot;</span> <span class="token operator">%</span> <span class="token punctuation">(</span>self<span class="token punctuation">.</span>__class__<span class="token punctuation">.</span>__name__<span class="token punctuation">,</span> self<span class="token punctuation">.</span>title<span class="token punctuation">)</span>
+</code></pre></div><p>每篇文章有一个外键指向 users 表中的主键 id， 而在 User 中使用 SQLAlchemy 提供的 relationship 描述 关系。而用户与文章的之间的这个关系是双向的，所以我们看到上面的两张表中都定义了 relationship。</p> <p>SQLAlchemy 提供了 backref 让我们可以只需要定义一个关系：
+<strong><code>articles = relationship('Article', backref='author')</code></strong>
+添加了这个就可以不用再在 Article 中定义 relationship 了！</p> <h3 id="_4-2-一对一关系"><a href="#_4-2-一对一关系" class="header-anchor">#</a> <strong>4.2 一对一关系</strong></h3> <hr> <p>在 User 中我们只定义了几个必须的字段， 但通常用户还有很多其他信息，但这些信息可能不是必须填写的，我们可以把它们放到另一张 UserInfo 表中，这样User 和 UserInfo 就形成了一对一的关系。你可能会奇怪一对一关系为什么不在一对多关系前面？那是因为一对一关系是基于一对多定义的：</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">class</span> <span class="token class-name">User</span><span class="token punctuation">(</span>Base<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    __tablename__ <span class="token operator">=</span> <span class="token string">'users'</span>
+
+    <span class="token builtin">id</span> <span class="token operator">=</span> Column<span class="token punctuation">(</span>Integer<span class="token punctuation">,</span> primary_key<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    username <span class="token operator">=</span> Column<span class="token punctuation">(</span>String<span class="token punctuation">(</span><span class="token number">64</span><span class="token punctuation">)</span><span class="token punctuation">,</span> nullable<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> index<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    password <span class="token operator">=</span> Column<span class="token punctuation">(</span>String<span class="token punctuation">(</span><span class="token number">64</span><span class="token punctuation">)</span><span class="token punctuation">,</span> nullable<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
+    email <span class="token operator">=</span> Column<span class="token punctuation">(</span>String<span class="token punctuation">(</span><span class="token number">64</span><span class="token punctuation">)</span><span class="token punctuation">,</span> nullable<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> index<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    articles <span class="token operator">=</span> relationship<span class="token punctuation">(</span><span class="token string">'Article'</span><span class="token punctuation">)</span>
+    userinfo <span class="token operator">=</span> relationship<span class="token punctuation">(</span><span class="token string">'UserInfo'</span><span class="token punctuation">,</span> backref<span class="token operator">=</span><span class="token string">'user'</span><span class="token punctuation">,</span> uselist<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">__repr__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string">&quot;%s(%r)&quot;</span> <span class="token operator">%</span> <span class="token punctuation">(</span>self<span class="token punctuation">.</span>__class__<span class="token punctuation">.</span>__name__<span class="token punctuation">,</span> self<span class="token punctuation">.</span>username<span class="token punctuation">)</span>
+
+
+<span class="token keyword">class</span> <span class="token class-name">UserInfo</span><span class="token punctuation">(</span>Base<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    __tablename__ <span class="token operator">=</span> <span class="token string">'userinfos'</span>
+
+    <span class="token builtin">id</span> <span class="token operator">=</span> Column<span class="token punctuation">(</span>Integer<span class="token punctuation">,</span> primary_key<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    name <span class="token operator">=</span> Column<span class="token punctuation">(</span>String<span class="token punctuation">(</span><span class="token number">64</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    qq <span class="token operator">=</span> Column<span class="token punctuation">(</span>String<span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    phone <span class="token operator">=</span> Column<span class="token punctuation">(</span>String<span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    link <span class="token operator">=</span> Column<span class="token punctuation">(</span>String<span class="token punctuation">(</span><span class="token number">64</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    user_id <span class="token operator">=</span> Column<span class="token punctuation">(</span>Integer<span class="token punctuation">,</span> ForeignKey<span class="token punctuation">(</span><span class="token string">'users.id'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre></div><p>定义方法和一对多相同，只是需要添加 userlist=False 。</p> <h3 id="_4-3-多对多关系"><a href="#_4-3-多对多关系" class="header-anchor">#</a> <strong>4.3 多对多关系</strong></h3> <p>一篇博客通常有一个分类，好几个标签。标签与博客之间就是一个多对多的关系。多对多关系不能直接定义，需要分解成俩个一对多的关系，为此，需要一张额外的表来协助完成：</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token triple-quoted-string string">&quot;&quot;&quot;
+# 这是创建表的另一种写法
+article_tag = Table(
+    'article_tag', Base.metadata,
+    Column('article_id', Integer, ForeignKey('articles.id')),
+    Column('tag_id', Integer, ForeignKey('tags.id'))
+)
+&quot;&quot;&quot;</span>
+
+
+<span class="token keyword">class</span> <span class="token class-name">ArticleTag</span><span class="token punctuation">(</span>Base<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    __tablename__ <span class="token operator">=</span> <span class="token string">'article_tag'</span>
+
+    <span class="token builtin">id</span> <span class="token operator">=</span> Column<span class="token punctuation">(</span>Integer<span class="token punctuation">,</span> primary_key<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    article_id <span class="token operator">=</span> Column<span class="token punctuation">(</span>Integer<span class="token punctuation">,</span> ForeignKey<span class="token punctuation">(</span><span class="token string">'articles.id'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    tag_id <span class="token operator">=</span> Column<span class="token punctuation">(</span>Integer<span class="token punctuation">,</span> ForeignKey<span class="token punctuation">(</span><span class="token string">'tags.id'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">class</span> <span class="token class-name">Tag</span><span class="token punctuation">(</span>Base<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    __tablename__ <span class="token operator">=</span> <span class="token string">'tags'</span>
+
+    <span class="token builtin">id</span> <span class="token operator">=</span> Column<span class="token punctuation">(</span>Integer<span class="token punctuation">,</span> primary_key<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    name <span class="token operator">=</span> Column<span class="token punctuation">(</span>String<span class="token punctuation">(</span><span class="token number">64</span><span class="token punctuation">)</span><span class="token punctuation">,</span> nullable<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> index<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">__repr__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string">&quot;%s(%r)&quot;</span> <span class="token operator">%</span> <span class="token punctuation">(</span>self<span class="token punctuation">.</span>__class__<span class="token punctuation">.</span>__name__<span class="token punctuation">,</span> self<span class="token punctuation">.</span>name<span class="token punctuation">)</span>
+</code></pre></div><h3 id="_4-4-映射到数据库"><a href="#_4-4-映射到数据库" class="header-anchor">#</a> <strong>4.4 映射到数据库</strong></h3> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment">#!/usr/bin/env python</span>
+<span class="token comment"># _*_ coding:utf-8 _*_</span>
+__author__ <span class="token operator">=</span> <span class="token string">'junxi'</span>
+
+<span class="token triple-quoted-string string">&quot;&quot;&quot;
+mysql://username:password@hostname/database
+postgresql://username:password@hostname/database
+sqlite:////absolute/path/to/database
+sqlite:///c:/absolute/path/to/database
+&quot;&quot;&quot;</span>
+
+<span class="token keyword">from</span> sqlalchemy <span class="token keyword">import</span> create_engine
+<span class="token keyword">from</span> sqlalchemy<span class="token punctuation">.</span>ext<span class="token punctuation">.</span>declarative <span class="token keyword">import</span> declarative_base
+<span class="token keyword">from</span> sqlalchemy <span class="token keyword">import</span> Column<span class="token punctuation">,</span> String<span class="token punctuation">,</span> Integer<span class="token punctuation">,</span> Text<span class="token punctuation">,</span> Boolean<span class="token punctuation">,</span> DateTime<span class="token punctuation">,</span> ForeignKey<span class="token punctuation">,</span> Table
+<span class="token keyword">from</span> sqlalchemy<span class="token punctuation">.</span>orm <span class="token keyword">import</span> relationship<span class="token punctuation">,</span> sessionmaker
+
+engine <span class="token operator">=</span> create_engine<span class="token punctuation">(</span><span class="token string">'mysql+pymysql://blog:123456@localhost:3306/blog?charset=utf8'</span><span class="token punctuation">)</span>
+Base <span class="token operator">=</span> declarative_base<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment"># print(engine)</span>
+
+
+<span class="token keyword">class</span> <span class="token class-name">User</span><span class="token punctuation">(</span>Base<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    __tablename__ <span class="token operator">=</span> <span class="token string">'users'</span>
+
+    <span class="token builtin">id</span> <span class="token operator">=</span> Column<span class="token punctuation">(</span>Integer<span class="token punctuation">,</span> primary_key<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    username <span class="token operator">=</span> Column<span class="token punctuation">(</span>String<span class="token punctuation">(</span><span class="token number">64</span><span class="token punctuation">)</span><span class="token punctuation">,</span> nullable<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> index<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    password <span class="token operator">=</span> Column<span class="token punctuation">(</span>String<span class="token punctuation">(</span><span class="token number">64</span><span class="token punctuation">)</span><span class="token punctuation">,</span> nullable<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
+    email <span class="token operator">=</span> Column<span class="token punctuation">(</span>String<span class="token punctuation">(</span><span class="token number">64</span><span class="token punctuation">)</span><span class="token punctuation">,</span> nullable<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> index<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    articles <span class="token operator">=</span> relationship<span class="token punctuation">(</span><span class="token string">'Article'</span><span class="token punctuation">)</span>
+    userinfo <span class="token operator">=</span> relationship<span class="token punctuation">(</span><span class="token string">'UserInfo'</span><span class="token punctuation">,</span> backref<span class="token operator">=</span><span class="token string">'user'</span><span class="token punctuation">,</span> uselist<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">__repr__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string">&quot;%s(%r)&quot;</span> <span class="token operator">%</span> <span class="token punctuation">(</span>self<span class="token punctuation">.</span>__class__<span class="token punctuation">.</span>__name__<span class="token punctuation">,</span> self<span class="token punctuation">.</span>username<span class="token punctuation">)</span>
+
+
+<span class="token keyword">class</span> <span class="token class-name">UserInfo</span><span class="token punctuation">(</span>Base<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    __tablename__ <span class="token operator">=</span> <span class="token string">'userinfos'</span>
+
+    <span class="token builtin">id</span> <span class="token operator">=</span> Column<span class="token punctuation">(</span>Integer<span class="token punctuation">,</span> primary_key<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    name <span class="token operator">=</span> Column<span class="token punctuation">(</span>String<span class="token punctuation">(</span><span class="token number">64</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    qq <span class="token operator">=</span> Column<span class="token punctuation">(</span>String<span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    phone <span class="token operator">=</span> Column<span class="token punctuation">(</span>String<span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    link <span class="token operator">=</span> Column<span class="token punctuation">(</span>String<span class="token punctuation">(</span><span class="token number">64</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    user_id <span class="token operator">=</span> Column<span class="token punctuation">(</span>Integer<span class="token punctuation">,</span> ForeignKey<span class="token punctuation">(</span><span class="token string">'users.id'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">class</span> <span class="token class-name">Article</span><span class="token punctuation">(</span>Base<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    __tablename__ <span class="token operator">=</span> <span class="token string">'articles'</span>
+
+    <span class="token builtin">id</span> <span class="token operator">=</span> Column<span class="token punctuation">(</span>Integer<span class="token punctuation">,</span> primary_key<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    title <span class="token operator">=</span> Column<span class="token punctuation">(</span>String<span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">)</span><span class="token punctuation">,</span> nullable<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> index<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    content <span class="token operator">=</span> Column<span class="token punctuation">(</span>Text<span class="token punctuation">)</span>
+    user_id <span class="token operator">=</span> Column<span class="token punctuation">(</span>Integer<span class="token punctuation">,</span> ForeignKey<span class="token punctuation">(</span><span class="token string">&quot;users.id&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    author <span class="token operator">=</span> relationship<span class="token punctuation">(</span><span class="token string">'User'</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">__repr__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string">&quot;%s(%r)&quot;</span> <span class="token operator">%</span> <span class="token punctuation">(</span>self<span class="token punctuation">.</span>__class__<span class="token punctuation">.</span>__name__<span class="token punctuation">,</span> self<span class="token punctuation">.</span>title<span class="token punctuation">)</span>
+
+
+<span class="token triple-quoted-string string">&quot;&quot;&quot;
+# 这是创建表的另一种写法
+article_tag = Table(
+    'article_tag', Base.metadata,
+    Column('article_id', Integer, ForeignKey('articles.id')),
+    Column('tag_id', Integer, ForeignKey('tags.id'))
+)
+&quot;&quot;&quot;</span>
+
+
+<span class="token keyword">class</span> <span class="token class-name">ArticleTag</span><span class="token punctuation">(</span>Base<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    __tablename__ <span class="token operator">=</span> <span class="token string">'article_tag'</span>
+
+    <span class="token builtin">id</span> <span class="token operator">=</span> Column<span class="token punctuation">(</span>Integer<span class="token punctuation">,</span> primary_key<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    article_id <span class="token operator">=</span> Column<span class="token punctuation">(</span>Integer<span class="token punctuation">,</span> ForeignKey<span class="token punctuation">(</span><span class="token string">'articles.id'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    tag_id <span class="token operator">=</span> Column<span class="token punctuation">(</span>Integer<span class="token punctuation">,</span> ForeignKey<span class="token punctuation">(</span><span class="token string">'tags.id'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">class</span> <span class="token class-name">Tag</span><span class="token punctuation">(</span>Base<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    __tablename__ <span class="token operator">=</span> <span class="token string">'tags'</span>
+
+    <span class="token builtin">id</span> <span class="token operator">=</span> Column<span class="token punctuation">(</span>Integer<span class="token punctuation">,</span> primary_key<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    name <span class="token operator">=</span> Column<span class="token punctuation">(</span>String<span class="token punctuation">(</span><span class="token number">64</span><span class="token punctuation">)</span><span class="token punctuation">,</span> nullable<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> index<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">__repr__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string">&quot;%s(%r)&quot;</span> <span class="token operator">%</span> <span class="token punctuation">(</span>self<span class="token punctuation">.</span>__class__<span class="token punctuation">.</span>__name__<span class="token punctuation">,</span> self<span class="token punctuation">.</span>name<span class="token punctuation">)</span>
+
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    Base<span class="token punctuation">.</span>metadata<span class="token punctuation">.</span>create_all<span class="token punctuation">(</span>engine<span class="token punctuation">)</span>
+</code></pre></div><p>进入MySQL查看:</p> <div class="language-python extra-class"><pre class="language-python"><code>mysql<span class="token operator">&gt;</span> use blog<span class="token punctuation">;</span>
+Database changed
+mysql<span class="token operator">&gt;</span> show tables<span class="token punctuation">;</span>
+<span class="token operator">+</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">+</span>
+<span class="token operator">|</span> Tables_in_blog <span class="token operator">|</span>
+<span class="token operator">+</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">+</span>
+<span class="token operator">|</span> article_tag    <span class="token operator">|</span>
+<span class="token operator">|</span> articles       <span class="token operator">|</span>
+<span class="token operator">|</span> tags           <span class="token operator">|</span>
+<span class="token operator">|</span> userinfos      <span class="token operator">|</span>
+<span class="token operator">|</span> users          <span class="token operator">|</span>
+<span class="token operator">+</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">+</span>
+<span class="token number">5</span> rows <span class="token keyword">in</span> <span class="token builtin">set</span> <span class="token punctuation">(</span><span class="token number">0.00</span> sec<span class="token punctuation">)</span>
+</code></pre></div><p>所有的表都已经创建好了！</p></div> <footer class="page-edit" style="display:none;"><!----> <!----></footer> <!----> <!----></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-44bd5a18 data-v-44bd5a18><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-44bd5a18><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-44bd5a18></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-44bd5a18></path></svg></div></div></div>
+    <script src="/assets/js/app.4c0f163f.js" defer></script><script src="/assets/js/3.5c161e77.js" defer></script><script src="/assets/js/1.b50dabeb.js" defer></script><script src="/assets/js/41.203d520e.js" defer></script>
+  </body>
+</html>

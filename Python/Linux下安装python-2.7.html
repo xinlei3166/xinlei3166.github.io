@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Linux下安装python-2.7 | 君惜の博客</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    
+    <meta name="description" content="">
+    <link rel="preload" href="/assets/css/0.styles.ff30c3b6.css" as="style"><link rel="preload" href="/assets/js/app.4c0f163f.js" as="script"><link rel="preload" href="/assets/js/3.5c161e77.js" as="script"><link rel="preload" href="/assets/js/1.b50dabeb.js" as="script"><link rel="preload" href="/assets/js/36.d71a14b1.js" as="script"><link rel="prefetch" href="/assets/js/10.7fffa9c4.js"><link rel="prefetch" href="/assets/js/11.a894a0a3.js"><link rel="prefetch" href="/assets/js/12.7c1460cd.js"><link rel="prefetch" href="/assets/js/13.dd983835.js"><link rel="prefetch" href="/assets/js/14.1487eb9d.js"><link rel="prefetch" href="/assets/js/15.4756daf1.js"><link rel="prefetch" href="/assets/js/16.a530f05a.js"><link rel="prefetch" href="/assets/js/17.29f6aa52.js"><link rel="prefetch" href="/assets/js/18.e4a9724e.js"><link rel="prefetch" href="/assets/js/19.5ed05463.js"><link rel="prefetch" href="/assets/js/20.0cce4e1a.js"><link rel="prefetch" href="/assets/js/21.83dfac32.js"><link rel="prefetch" href="/assets/js/22.ad29d758.js"><link rel="prefetch" href="/assets/js/23.18313ffe.js"><link rel="prefetch" href="/assets/js/24.665841c7.js"><link rel="prefetch" href="/assets/js/25.5e232809.js"><link rel="prefetch" href="/assets/js/26.af71fdca.js"><link rel="prefetch" href="/assets/js/27.8a2d98c2.js"><link rel="prefetch" href="/assets/js/28.1306b459.js"><link rel="prefetch" href="/assets/js/29.29630159.js"><link rel="prefetch" href="/assets/js/30.b89be015.js"><link rel="prefetch" href="/assets/js/31.6295dd91.js"><link rel="prefetch" href="/assets/js/32.b7becd12.js"><link rel="prefetch" href="/assets/js/33.8faf9a10.js"><link rel="prefetch" href="/assets/js/34.cd57f657.js"><link rel="prefetch" href="/assets/js/35.7e2b5a6f.js"><link rel="prefetch" href="/assets/js/37.959b4726.js"><link rel="prefetch" href="/assets/js/38.f931a68f.js"><link rel="prefetch" href="/assets/js/39.c3ea2b40.js"><link rel="prefetch" href="/assets/js/4.c1ea1bf1.js"><link rel="prefetch" href="/assets/js/40.4982c905.js"><link rel="prefetch" href="/assets/js/41.203d520e.js"><link rel="prefetch" href="/assets/js/42.7e5a0064.js"><link rel="prefetch" href="/assets/js/43.6b7dcc89.js"><link rel="prefetch" href="/assets/js/44.ace44d85.js"><link rel="prefetch" href="/assets/js/45.e7334ca4.js"><link rel="prefetch" href="/assets/js/46.2f73e550.js"><link rel="prefetch" href="/assets/js/47.bb851a3c.js"><link rel="prefetch" href="/assets/js/48.9ead4a3a.js"><link rel="prefetch" href="/assets/js/49.f6d187a3.js"><link rel="prefetch" href="/assets/js/5.4f3c9bb5.js"><link rel="prefetch" href="/assets/js/50.44513019.js"><link rel="prefetch" href="/assets/js/51.f92332ae.js"><link rel="prefetch" href="/assets/js/52.1a90855d.js"><link rel="prefetch" href="/assets/js/53.a6063052.js"><link rel="prefetch" href="/assets/js/54.5e4dc526.js"><link rel="prefetch" href="/assets/js/55.b4cf2cca.js"><link rel="prefetch" href="/assets/js/56.5afab6b8.js"><link rel="prefetch" href="/assets/js/57.13db934e.js"><link rel="prefetch" href="/assets/js/58.45393b85.js"><link rel="prefetch" href="/assets/js/59.312d0c74.js"><link rel="prefetch" href="/assets/js/6.0583317e.js"><link rel="prefetch" href="/assets/js/60.868da390.js"><link rel="prefetch" href="/assets/js/61.06d72270.js"><link rel="prefetch" href="/assets/js/62.95d65aff.js"><link rel="prefetch" href="/assets/js/63.36ccfb18.js"><link rel="prefetch" href="/assets/js/64.02290762.js"><link rel="prefetch" href="/assets/js/65.eac6abdc.js"><link rel="prefetch" href="/assets/js/66.5c7a3796.js"><link rel="prefetch" href="/assets/js/67.6d2a84e7.js"><link rel="prefetch" href="/assets/js/68.12b35d40.js"><link rel="prefetch" href="/assets/js/69.da3256da.js"><link rel="prefetch" href="/assets/js/7.60184b24.js"><link rel="prefetch" href="/assets/js/70.76e73b0c.js"><link rel="prefetch" href="/assets/js/71.99afbb77.js"><link rel="prefetch" href="/assets/js/72.19feaec4.js"><link rel="prefetch" href="/assets/js/73.ba5ee2ed.js"><link rel="prefetch" href="/assets/js/74.cef516f6.js"><link rel="prefetch" href="/assets/js/75.90f4a703.js"><link rel="prefetch" href="/assets/js/76.885ff289.js"><link rel="prefetch" href="/assets/js/77.823d6f1d.js"><link rel="prefetch" href="/assets/js/78.2c2736ff.js"><link rel="prefetch" href="/assets/js/79.cbfa5ae7.js"><link rel="prefetch" href="/assets/js/8.ccce47cf.js"><link rel="prefetch" href="/assets/js/80.431573aa.js"><link rel="prefetch" href="/assets/js/9.9160a89c.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.ff30c3b6.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-19557b78><div data-v-19557b78><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-19557b78 data-v-19557b78><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-64685f0e data-v-19557b78 data-v-19557b78><h3 class="title" style="display:none;" data-v-64685f0e data-v-64685f0e>君惜の博客</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-64685f0e data-v-64685f0e><input type="password" value="" data-v-64685f0e> <span data-v-64685f0e>Konck! Knock!</span> <button data-v-64685f0e>OK</button></label> <div class="footer" style="display:none;" data-v-64685f0e data-v-64685f0e><span data-v-64685f0e><i class="iconfont reco-theme" data-v-64685f0e></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-64685f0e>vuePress-theme-reco</a></span> <span data-v-64685f0e><i class="iconfont reco-copyright" data-v-64685f0e></i> <a data-v-64685f0e><span data-v-64685f0e>君惜</span>
+            
+          <!---->
+          2020
+        </a></span></div></div> <div class="hide" data-v-19557b78><header class="navbar" data-v-19557b78><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">君惜の博客</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/Docker/" class="nav-link"><i class="iconfont undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Git/" class="nav-link"><i class="iconfont undefined"></i>
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JavaScript/" class="nav-link"><i class="iconfont undefined"></i>
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Linux/" class="nav-link"><i class="iconfont undefined"></i>
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Mysql/" class="nav-link"><i class="iconfont undefined"></i>
+  Mysql
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Node.js/" class="nav-link"><i class="iconfont undefined"></i>
+  Node.js
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Python/" class="nav-link"><i class="iconfont undefined"></i>
+  Python
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Redis/" class="nav-link"><i class="iconfont undefined"></i>
+  Redis
+</a></li><li class="dropdown-item"><!----> <a href="/categories/并发测试/" class="nav-link"><i class="iconfont undefined"></i>
+  并发测试
+</a></li><li class="dropdown-item"><!----> <a href="/categories/随笔/" class="nav-link"><i class="iconfont undefined"></i>
+  随笔
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div> <a href="https://github.com/xinlei3166" target="_blank" rel="noopener noreferrer" class="repo-link"><i class="iconfont reco-github"></i>
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask" data-v-19557b78></div> <aside class="sidebar" data-v-19557b78><div class="personal-info-wrapper" data-v-b038cec6><img src="/img/avatar.jpg" alt="author-avatar" class="personal-img" data-v-b038cec6> <h3 class="name" data-v-b038cec6>
+    君惜
+  </h3> <div class="num" data-v-b038cec6><div data-v-b038cec6><h3 data-v-b038cec6>68</h3> <h6 data-v-b038cec6>Article</h6></div> <div data-v-b038cec6><h3 data-v-b038cec6>76</h3> <h6 data-v-b038cec6>Tag</h6></div></div> <hr data-v-b038cec6></div> <nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/Docker/" class="nav-link"><i class="iconfont undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Git/" class="nav-link"><i class="iconfont undefined"></i>
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JavaScript/" class="nav-link"><i class="iconfont undefined"></i>
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Linux/" class="nav-link"><i class="iconfont undefined"></i>
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Mysql/" class="nav-link"><i class="iconfont undefined"></i>
+  Mysql
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Node.js/" class="nav-link"><i class="iconfont undefined"></i>
+  Node.js
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Python/" class="nav-link"><i class="iconfont undefined"></i>
+  Python
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Redis/" class="nav-link"><i class="iconfont undefined"></i>
+  Redis
+</a></li><li class="dropdown-item"><!----> <a href="/categories/并发测试/" class="nav-link"><i class="iconfont undefined"></i>
+  并发测试
+</a></li><li class="dropdown-item"><!----> <a href="/categories/随笔/" class="nav-link"><i class="iconfont undefined"></i>
+  随笔
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div> <a href="https://github.com/xinlei3166" target="_blank" rel="noopener noreferrer" class="repo-link"><i class="iconfont reco-github"></i>
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Linux下安装python-2.7</span> <!----></p> <!----></section></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-64685f0e data-v-19557b78><h3 class="title" style="display:none;" data-v-64685f0e data-v-64685f0e>Linux下安装python-2.7</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-64685f0e data-v-64685f0e><input type="password" value="" data-v-64685f0e> <span data-v-64685f0e>Konck! Knock!</span> <button data-v-64685f0e>OK</button></label> <div class="footer" style="display:none;" data-v-64685f0e data-v-64685f0e><span data-v-64685f0e><i class="iconfont reco-theme" data-v-64685f0e></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-64685f0e>vuePress-theme-reco</a></span> <span data-v-64685f0e><i class="iconfont reco-copyright" data-v-64685f0e></i> <a data-v-64685f0e><span data-v-64685f0e>君惜</span>
+            
+          <!---->
+          2020
+        </a></span></div></div> <div data-v-19557b78><main class="page"><div class="page-title" style="display:none;"><h1>Linux下安装python-2.7</h1> <hr> <div data-v-cd8d63d2><i class="iconfont reco-account" data-v-cd8d63d2><span data-v-cd8d63d2>君惜</span></i> <!----> <!----> <i class="iconfont reco-tag tags" data-v-cd8d63d2><span class="tag-item" data-v-cd8d63d2>
+      Python
+    </span><span class="tag-item" data-v-cd8d63d2>
+      Linux
+    </span></i></div></div> <div class="theme-reco-content content__default" style="display:none;"><h3 id="安装依赖的库"><a href="#安装依赖的库" class="header-anchor">#</a> 安装依赖的库</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>yum -y <span class="token function">install</span> python-devel openssl openssl-devel gcc sqlite sqlite-devel mysql-devel libxml2-devel libxslt-devel
+</code></pre></div><h4 id="python"><a href="#python" class="header-anchor">#</a> Python</h4> <p>**================================================= **</p> <h3 id="下载python-2-7-13"><a href="#下载python-2-7-13" class="header-anchor">#</a> 下载python 2.7.13</h3> <p><a href="http://www.python.org/" target="_blank" rel="noopener noreferrer">www.python.org<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token punctuation">[</span>root@server2 ~<span class="token punctuation">]</span><span class="token comment"># mkdir /software</span>
+<span class="token punctuation">[</span>root@server2 ~<span class="token punctuation">]</span><span class="token comment"># cd /software/</span>
+<span class="token punctuation">[</span>root@server2 software<span class="token punctuation">]</span><span class="token comment"># wget https://www.python.org/ftp/python/2.7.13/Python-2.7.13.tgz</span>
+<span class="token punctuation">[</span>root@server2 software<span class="token punctuation">]</span><span class="token comment"># ll</span>
+总用量 <span class="token number">36852</span>
+-rw-r--r-- <span class="token number">1</span> root root <span class="token number">17076672</span> <span class="token number">12</span>月 <span class="token number">18</span> 04:21 Python-2.7.13.tgz
+-rw-r--r-- <span class="token number">1</span> root root <span class="token number">20656090</span> <span class="token number">1</span>月  <span class="token number">17</span> <span class="token number">16</span>:07 Python-3.5.3.tgz
+</code></pre></div><h3 id="解压文件"><a href="#解压文件" class="header-anchor">#</a> 解压文件</h3> <div class="language- extra-class"><pre class="language-text"><code>[root@server2 software]# tar -zxf Python-2.7.13.tgz 
+</code></pre></div><h3 id="进入目录"><a href="#进入目录" class="header-anchor">#</a> 进入目录</h3> <div class="language- extra-class"><pre class="language-text"><code>[root@server2 software]# cd Python-2.7.13
+</code></pre></div><h3 id="编译安装"><a href="#编译安装" class="header-anchor">#</a> 编译安装</h3> <div class="language- extra-class"><pre class="language-text"><code>[root@server2 Python-2.7.13]# ./configure --prefix=/usr/local/python2.7 --with-threads --enable-shared
+[root@server2 Python-2.7.13]# make &amp;&amp; make altinstall
+</code></pre></div><h3 id="备份旧python相关命令"><a href="#备份旧python相关命令" class="header-anchor">#</a> 备份旧python相关命令</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token operator">==</span><span class="token operator">=</span><span class="token operator">&gt;</span> 有些版本/usr/bin/目录下不存在pip 忽略下面第一行命令即可
+<span class="token punctuation">[</span>root@server2 Python-2.7.13<span class="token punctuation">]</span><span class="token comment"># mv /usr/bin/pip /usr/bin/pip_old  </span>
+<span class="token punctuation">[</span>root@server2 Python-2.7.13<span class="token punctuation">]</span><span class="token comment"># mv /usr/bin/easy_install /usr/bin/easy_install_old</span>
+<span class="token punctuation">[</span>root@server2 Python-2.7.13<span class="token punctuation">]</span><span class="token comment"># mv /usr/bin/python /usr/bin/python_old</span>
+</code></pre></div><h3 id="新版本python命令做软连接，快捷使用"><a href="#新版本python命令做软连接，快捷使用" class="header-anchor">#</a> 新版本python命令做软连接，快捷使用</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token punctuation">[</span>root@server2 Python-2.7.13<span class="token punctuation">]</span><span class="token comment"># ln -s /usr/local/python2.7/lib/libpython2.7.so /usr/lib</span>
+<span class="token punctuation">[</span>root@server2 Python-2.7.13<span class="token punctuation">]</span><span class="token comment"># ln -s /usr/local/python2.7/lib/libpython2.7.so.1.0 /usr/lib</span>
+<span class="token punctuation">[</span>root@server2 Python-2.7.13<span class="token punctuation">]</span><span class="token comment"># ln -s /usr/local/python2.7/bin/python2.7 /usr/bin/python</span>
+<span class="token punctuation">[</span>root@server2 Python-2.7.13<span class="token punctuation">]</span><span class="token comment"># ln -s /usr/local/python2.7/lib/libpython2.7.so /usr/lib64</span>
+<span class="token punctuation">[</span>root@server2 Python-2.7.13<span class="token punctuation">]</span><span class="token comment"># ln -s /usr/local/python2.7/lib/libpython2.7.so.1.0 /usr/lib64</span>
+</code></pre></div><h3 id="测试python是否可以正常使用"><a href="#测试python是否可以正常使用" class="header-anchor">#</a> 测试python是否可以正常使用</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token punctuation">[</span>root@server2 ~<span class="token punctuation">]</span><span class="token comment"># python</span>
+Python <span class="token number">2.7</span>.13 <span class="token punctuation">(</span>default, Apr <span class="token number">11</span> <span class="token number">2017</span>, <span class="token number">11</span>:14:36<span class="token punctuation">)</span> 
+<span class="token punctuation">[</span>GCC <span class="token number">4.4</span>.7 <span class="token number">20120313</span> <span class="token punctuation">(</span>Red Hat <span class="token number">4.4</span>.7-18<span class="token punctuation">)</span><span class="token punctuation">]</span> on linux2
+Type <span class="token string">&quot;help&quot;</span>, <span class="token string">&quot;copyright&quot;</span>, <span class="token string">&quot;credits&quot;</span> or <span class="token string">&quot;license&quot;</span> <span class="token keyword">for</span> <span class="token function">more</span> information.
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> 
+</code></pre></div><h3 id="安装pip"><a href="#安装pip" class="header-anchor">#</a> 安装pip</h3> <p>下载最新版的pip，然后安装</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token punctuation">[</span>root@server2 Python-2.7.13<span class="token punctuation">]</span><span class="token comment"># cd /software/</span>
+<span class="token punctuation">[</span>root@server2 software<span class="token punctuation">]</span><span class="token comment"># wget https://bootstrap.pypa.io/get-pip.py</span>
+<span class="token punctuation">[</span>root@server2 software<span class="token punctuation">]</span><span class="token comment"># python get-pip.py </span>
+</code></pre></div><p>查找pip的位置</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token punctuation">[</span>root@server2 software<span class="token punctuation">]</span><span class="token comment"># find / -name pip</span>
+/usr/local/python2.7/bin/pip
+</code></pre></div><p>找到pip2.7的路径，为其创建软链作为系统默认的启动版本</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token punctuation">[</span>root@server2 software<span class="token punctuation">]</span><span class="token comment"># ln -s /usr/local/python2.7/bin/pip /usr/bin/pip</span>
+</code></pre></div><p>测试pip是否可用</p> <div class="language- extra-class"><pre class="language-text"><code>[root@server2 software]# pip install Pillow
+Collecting Pillow
+  Downloading Pillow-4.1.0-cp27-cp27m-manylinux1_x86_64.whl (5.7MB)
+    100% |████████████████████████████████| 5.7MB 129kB/s 
+Collecting olefile (from Pillow)
+  Downloading olefile-0.44.zip (74kB)
+    100% |████████████████████████████████| 81kB 541kB/s 
+Building wheels for collected packages: olefile
+  Running setup.py bdist_wheel for olefile ... done
+  Stored in directory: /root/.cache/pip/wheels/20/58/49/cc7bd00345397059149a10b0259ef38b867935ea2ecff99a9b
+Successfully built olefile
+Installing collected packages: olefile, Pillow
+Successfully installed Pillow-4.1.0 olefile-0.44
+</code></pre></div><h3 id="安装easy-install"><a href="#安装easy-install" class="header-anchor">#</a> 安装easy_install</h3> <p>下载最新版的easy_install，然后安装</p> <div class="language- extra-class"><pre class="language-text"><code>[root@server2 software]# wget https://bootstrap.pypa.io/ez_setup.py
+[root@server2 software]# python ez_setup.py 
+</code></pre></div><p>找到easy_install的路径，为其创建软链作为系统默认的启动版本</p> <div class="language- extra-class"><pre class="language-text"><code>[root@server2 software]# ln -s /usr/local/python2.7/bin/easy_install /usr/bin/easy_install
+</code></pre></div><p>测试easy_install是否可用</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token punctuation">[</span>root@server2 software<span class="token punctuation">]</span><span class="token comment"># easy_install beautifulsoup4</span>
+Searching <span class="token keyword">for</span> beautifulsoup4
+Reading https://pypi.python.org/simple/beautifulsoup4/
+Downloading https://pypi.python.org/packages/9b/a5/c6fa2d08e6c671103f9508816588e0fb9cec40444e8e72993f3d4c325936/beautifulsoup4-4.5.3.tar.gz<span class="token comment">#md5=937e0df0d699a1237646f38fd567f0c6</span>
+Best match: beautifulsoup4 <span class="token number">4.5</span>.3
+Processing beautifulsoup4-4.5.3.tar.gz
+Writing /tmp/easy_install-OSpCW5/beautifulsoup4-4.5.3/setup.cfg
+Running beautifulsoup4-4.5.3/setup.py -q bdist_egg --dist-dir /tmp/easy_install-OSpCW5/beautifulsoup4-4.5.3/egg-dist-tmp-m3PXo5
+zip_safe flag not <span class="token builtin class-name">set</span><span class="token punctuation">;</span> analyzing archive contents<span class="token punctuation">..</span>.
+Moving beautifulsoup4-4.5.3-py2.7.egg to /usr/local/python2.7/lib/python2.7/site-packages
+Adding beautifulsoup4 <span class="token number">4.5</span>.3 to easy-install.pth <span class="token function">file</span>
+
+Installed /usr/local/python2.7/lib/python2.7/site-packages/beautifulsoup4-4.5.3-py2.7.egg
+Processing dependencies <span class="token keyword">for</span> beautifulsoup4
+Finished processing dependencies <span class="token keyword">for</span> beautifulsoup4
+</code></pre></div><h3 id="yum-安装工具只支持系统自带的python版本，-修改配置文件使其可正常使用"><a href="#yum-安装工具只支持系统自带的python版本，-修改配置文件使其可正常使用" class="header-anchor">#</a> yum 安装工具只支持系统自带的python版本， 修改配置文件使其可正常使用</h3> <p>查看原版本python</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token punctuation">[</span>root@server2 software<span class="token punctuation">]</span><span class="token comment"># ll /usr/bin/python*</span>
+lrwxrwxrwx <span class="token number">1</span> root root   <span class="token number">34</span> <span class="token number">4</span>月  <span class="token number">11</span> <span class="token number">11</span>:20 /usr/bin/python -<span class="token operator">&gt;</span> /usr/local/python2.7/bin/python2.7
+lrwxrwxrwx <span class="token number">1</span> root root    <span class="token number">6</span> <span class="token number">2</span>月  <span class="token number">15</span> <span class="token number">14</span>:33 /usr/bin/python2 -<span class="token operator">&gt;</span> python
+-rwxr-xr-x <span class="token number">2</span> root root <span class="token number">9032</span> <span class="token number">8</span>月  <span class="token number">18</span> <span class="token number">2016</span> /usr/bin/python2.6  <span class="token operator">==</span><span class="token operator">&gt;</span> 这个就是系统自带的python 
+-rwxr-xr-x <span class="token number">1</span> root root <span class="token number">1418</span> <span class="token number">8</span>月  <span class="token number">18</span> <span class="token number">2016</span> /usr/bin/python2.6-config
+lrwxrwxrwx <span class="token number">1</span> root root   <span class="token number">16</span> <span class="token number">4</span>月  <span class="token number">11</span> <span class="token number">10</span>:47 /usr/bin/python-config -<span class="token operator">&gt;</span> python2.6-config
+-rwxr-xr-x <span class="token number">2</span> root root <span class="token number">9032</span> <span class="token number">8</span>月  <span class="token number">18</span> <span class="token number">2016</span> /usr/bin/python_old
+</code></pre></div><p>修改配置文件 /usr/bin/yum</p> <div class="language- extra-class"><pre class="language-text"><code>#!/usr/bin/python  ===&gt;  修改为  #!/usr/bin/python2.6
+</code></pre></div><p>测试yum是否可用</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token punctuation">[</span>root@server2 software<span class="token punctuation">]</span><span class="token comment"># yum -y install python-devel</span>
+已加载插件：fastestmirror, security
+设置安装进程
+Loading mirror speeds from cached hostfile
+ * epel: mirrors.aliyun.com
+包 python-devel-2.6.6-66.el6_8.x86_64 已安装并且是最新版本
+无须任何处理
+</code></pre></div><p>好了，大功告成。
+<br></p> <h3 id="优化：编写一键安装python2-7的脚本"><a href="#优化：编写一键安装python2-7的脚本" class="header-anchor">#</a> 优化：编写一键安装python2.7的脚本</h3> <p>由于Centos 6.x的系统默认都是python2.6 ，如果服务器需要用2.7环境的话每台都得手动操作升级，工作量比较大， 编写脚本提升效率。（Centos 7.x版本的默认的python都是2.7.5版本）</p> <p>创建用于存放python脚本的目录</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token punctuation">[</span>root@server2 software<span class="token punctuation">]</span><span class="token comment"># mkdir /script/python/</span>
+<span class="token punctuation">[</span>root@server2 software<span class="token punctuation">]</span><span class="token comment"># cd /script/python/</span>
+</code></pre></div><p>由于国外python网站下载python安装包缓慢，可以提前下载下来，和install_py27.sh放在一起，在脚本中直接解压本地文件进行安装，我已经上传到网盘
+<a href="http://url.cn/47PjiDY" target="_blank" rel="noopener noreferrer">点击我下载<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <p>开始编写脚本 install_py27.sh</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token shebang important">#!/bin/sh </span>
+<span class="token comment"># __author__ = 'junxi'</span>
+
+<span class="token comment"># This script is used by fast installed python2.7 ......</span>
+<span class="token comment"># write by 2017/04/11</span>
+
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;##############start run install for python2.7 script############&quot;</span>
+yum -y <span class="token function">install</span> python-devel openssl openssl-devel gcc sqlite sqlite-devel mysql-devel libxml2-devel libxslt-devel
+<span class="token function">mkdir</span> /software
+<span class="token function">mv</span> Python-2.7.13.tgz /software
+<span class="token builtin class-name">cd</span> /software
+<span class="token function">tar</span> -zxf Python-2.7.13.tgz
+<span class="token builtin class-name">cd</span> Python-2.7.13/
+./configure --prefix<span class="token operator">=</span>/usr/local/python2.7 --with-threads --enable-shared
+<span class="token function">make</span>
+<span class="token function">make</span> altinstall
+<span class="token function">mv</span> /usr/bin/pip /usr/bin/pip_old
+<span class="token function">mv</span> /usr/bin/easy_install /usr/bin/easy_install_old
+<span class="token function">mv</span> /usr/bin/python /usr/bin/python_old
+<span class="token function">ln</span> -s /usr/local/python2.7/lib/libpython2.7.so /usr/lib
+<span class="token function">ln</span> -s /usr/local/python2.7/lib/libpython2.7.so.1.0 /usr/lib
+<span class="token function">ln</span> -s /usr/local/python2.7/bin/python2.7 /usr/bin/python
+<span class="token function">ln</span> -s /usr/local/python2.7/lib/libpython2.7.so /usr/lib64
+<span class="token function">ln</span> -s /usr/local/python2.7/lib/libpython2.7.so.1.0 /usr/lib64
+<span class="token builtin class-name">cd</span> /software
+<span class="token function">wget</span> https://bootstrap.pypa.io/get-pip.py
+python get-pip.py
+<span class="token function">ln</span> -s /usr/local/python2.7/bin/pip /usr/bin/pip
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;############更换pip源为国内淘宝源##########&quot;</span>
+<span class="token function">mkdir</span> /root/.pip/
+<span class="token function">touch</span> /root/.pip/pip.conf
+<span class="token function">cat</span> <span class="token operator">&gt;&gt;</span> /root/.pip/pip.conf <span class="token operator">&lt;&lt;</span> <span class="token string">EOF
+[global]
+index-url=http://mirrors.aliyun.com/pypi/simple/ 
+
+[install]
+trusted-host=mirrors.aliyun.com
+EOF</span>
+
+pip <span class="token function">install</span> Pillow
+<span class="token function">sed</span> -i <span class="token string">'s#\/usr/bin/python#\/usr/bin/python2.6#g'</span> /usr/bin/yum
+yum -y <span class="token function">install</span> python-devel
+<span class="token builtin class-name">echo</span> <span class="token string">'the install script is the end......'</span>
+</code></pre></div><p>把Python-2.7.13.tgz文件和install_py27.sh脚本下载下来，放在同一个目录下：
+运行下面命令进行安装</p> <div class="language-bash extra-class"><pre class="language-bash"><code>/bin/sh install_py27.sh
+</code></pre></div><p>安装完成后执行python查看版本</p> <p><img src="http://upload-images.jianshu.io/upload_images/4262139-1e50ce5fc53a6e3e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p></div> <footer class="page-edit" style="display:none;"><!----> <!----></footer> <!----> <!----></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-44bd5a18 data-v-44bd5a18><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-44bd5a18><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-44bd5a18></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-44bd5a18></path></svg></div></div></div>
+    <script src="/assets/js/app.4c0f163f.js" defer></script><script src="/assets/js/3.5c161e77.js" defer></script><script src="/assets/js/1.b50dabeb.js" defer></script><script src="/assets/js/36.d71a14b1.js" defer></script>
+  </body>
+</html>
