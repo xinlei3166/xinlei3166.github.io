@@ -34,7 +34,8 @@
 
     .name-text {
       display: inline-block;
-      width: 100px;
+      width: 200px;
+      word-break: break-word;
       margin-right: 8px;
     }
   </style>
@@ -49,7 +50,7 @@
         <button class="text-red-500 text-sm px-2.5 py-1 rounded-sm border border-red-500" @click="genColor">生成</button>
     </div>
     <ul class="names ml-1">
-      <li v-for="item in names" class="name" :style="{color: '#' + item.color}"><span class="name-text">{{item.name}}</span><span>#{{item.color}}</span></li>
+      <li v-for="item in names" class="name" :style="{color: '#' + item.color}"><span class="name-text">{{item.name}}</span><span class="inline-block">#{{item.color}}</span></li>
     </ul>
   </div>
 </div>
