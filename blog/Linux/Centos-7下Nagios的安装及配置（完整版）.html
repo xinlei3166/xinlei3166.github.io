@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Centos-7下Nagios的安装及配置（完整版） | 君惜</title>
+    <meta name="description" content="欢迎来到君惜的网站。">
+    <meta name="generator" content="VitePress v1.5.0">
+    <link rel="preload stylesheet" href="/assets/style.CXFzMf3B.css" as="style">
+    <link rel="preload stylesheet" href="/vp-icons.css" as="style">
+    
+    <script type="module" src="/assets/app.BJTPMMmj.js"></script>
+    <link rel="preload" href="/assets/inter-roman-latin.Di8DUHzh.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="modulepreload" href="/assets/chunks/theme.BUW-g3vW.js">
+    <link rel="modulepreload" href="/assets/chunks/framework.CgtRPpXH.js">
+    <link rel="modulepreload" href="/assets/blog_Linux_Centos-7下Nagios的安装及配置（完整版）.md.ANQRIzG0.lean.js">
+    <script src="/live2d.js"></script>
+    <link rel="icon" type="image/png" href="/logo.png">
+    <script id="check-dark-mode">(()=>{const e=localStorage.getItem("vitepress-theme-appearance")||"auto",a=window.matchMedia("(prefers-color-scheme: dark)").matches;(!e||e==="auto"?a:e==="dark")&&document.documentElement.classList.add("dark")})();</script>
+    <script id="check-mac-os">document.documentElement.classList.toggle("mac",/Mac|iPhone|iPod|iPad/i.test(navigator.platform));</script>
+  </head>
+  <body>
+    <div id="app"><div class="Layout" data-v-d1264ba6><!--[--><!--]--><!--[--><span tabindex="-1" data-v-16212434></span><a href="#VPContent" class="VPSkipLink visually-hidden" data-v-16212434> Skip to content </a><!--]--><!----><header class="VPNav" data-v-d1264ba6 data-v-496b2837><div class="VPNavBar has-sidebar top" data-v-496b2837 data-v-cac52d05><div class="wrapper" data-v-cac52d05><div class="container" data-v-cac52d05><div class="title" data-v-cac52d05><div class="VPNavBarTitle has-sidebar" data-v-cac52d05 data-v-f3edda9c><a class="title" href="/" data-v-f3edda9c><!--[--><!--]--><!--[--><img class="VPImage logo" src="/logo.png" alt data-v-4a1699af><!--]--><span data-v-f3edda9c>君惜</span><!--[--><!--]--></a></div></div><div class="content" data-v-cac52d05><div class="content-body" data-v-cac52d05><!--[--><!--]--><div class="VPNavBarSearch search" data-v-cac52d05><!--[--><!----><div id="local-search"><button type="button" class="DocSearch DocSearch-Button" aria-label="Search"><span class="DocSearch-Button-Container"><span class="vp-icon DocSearch-Search-Icon"></span><span class="DocSearch-Button-Placeholder">Search</span></span><span class="DocSearch-Button-Keys"><kbd class="DocSearch-Button-Key"></kbd><kbd class="DocSearch-Button-Key">K</kbd></span></button></div><!--]--></div><nav aria-labelledby="main-nav-aria-label" class="VPNavBarMenu menu" data-v-cac52d05 data-v-4724067d><span id="main-nav-aria-label" class="visually-hidden" data-v-4724067d> Main Navigation </span><!--[--><!--[--><a class="VPLink link VPNavBarMenuLink" href="/" tabindex="0" data-v-4724067d data-v-1d8e9418><!--[--><span data-v-1d8e9418>主页</span><!--]--></a><!--]--><!--[--><a class="VPLink link VPNavBarMenuLink" href="/softwareCustom/" tabindex="0" data-v-4724067d data-v-1d8e9418><!--[--><span data-v-1d8e9418>软件定制</span><!--]--></a><!--]--><!--[--><div class="VPFlyout VPNavBarMenuGroup" data-v-4724067d data-v-d16fee32><button type="button" class="button" aria-haspopup="true" aria-expanded="false" data-v-d16fee32><span class="text" data-v-d16fee32><!----><span data-v-d16fee32>博客</span><span class="vpi-chevron-down text-icon" data-v-d16fee32></span></span></button><div class="menu" data-v-d16fee32><div class="VPMenu" data-v-d16fee32 data-v-932e1d2d><div class="items" data-v-932e1d2d><!--[--><!--[--><div class="VPMenuLink" data-v-932e1d2d data-v-56977bff><a class="VPLink link" href="/blog/Docker/Docker文档.html" data-v-56977bff><!--[--><span data-v-56977bff>Docker</span><!--]--></a></div><!--]--><!--[--><div class="VPMenuLink" data-v-932e1d2d data-v-56977bff><a class="VPLink link" href="/blog/Git/Git学习笔记.html" data-v-56977bff><!--[--><span data-v-56977bff>Git</span><!--]--></a></div><!--]--><!--[--><div class="VPMenuLink" data-v-932e1d2d data-v-56977bff><a class="VPLink link" href="/blog/JavaScript/JavaScript原型继承.html" data-v-56977bff><!--[--><span data-v-56977bff>JavaScript</span><!--]--></a></div><!--]--><!--[--><div class="VPMenuLink" data-v-932e1d2d data-v-56977bff><a class="VPLink link active" href="/blog/Linux/Centos-7-下安装LNMP官方最新版（yum安装nginx和mysql，php7源码安装）.html" data-v-56977bff><!--[--><span data-v-56977bff>Linux</span><!--]--></a></div><!--]--><!--[--><div class="VPMenuLink" data-v-932e1d2d data-v-56977bff><a class="VPLink link" href="/blog/MySQL/MySQL中常用SQL语句的编写.html" data-v-56977bff><!--[--><span data-v-56977bff>MySQL</span><!--]--></a></div><!--]--><!--[--><div class="VPMenuLink" data-v-932e1d2d data-v-56977bff><a class="VPLink link" href="/blog/Node.js/Node.js - 使用pm2部署项目.html" data-v-56977bff><!--[--><span data-v-56977bff>Node.js</span><!--]--></a></div><!--]--><!--[--><div class="VPMenuLink" data-v-932e1d2d data-v-56977bff><a class="VPLink link" href="/blog/Python/Django-2-0-发布，都有哪些新特性要注意？.html" data-v-56977bff><!--[--><span data-v-56977bff>Python</span><!--]--></a></div><!--]--><!--[--><div class="VPMenuLink" data-v-932e1d2d data-v-56977bff><a class="VPLink link" href="/blog/Redis/使用python来操作redis用法详解.html" data-v-56977bff><!--[--><span data-v-56977bff>Redis</span><!--]--></a></div><!--]--><!--[--><div class="VPMenuLink" data-v-932e1d2d data-v-56977bff><a class="VPLink link" href="/blog/并发测试/ab安装及使用.html" data-v-56977bff><!--[--><span data-v-56977bff>并发测试</span><!--]--></a></div><!--]--><!--[--><div class="VPMenuLink" data-v-932e1d2d data-v-56977bff><a class="VPLink link" href="/blog/随笔/代码编写前需要准备的事情.html" data-v-56977bff><!--[--><span data-v-56977bff>随笔</span><!--]--></a></div><!--]--><!--]--></div><!--[--><!--]--></div></div></div><!--]--><!--[--><a class="VPLink link VPNavBarMenuLink" href="/package/" tabindex="0" data-v-4724067d data-v-1d8e9418><!--[--><span data-v-1d8e9418>开源项目</span><!--]--></a><!--]--><!--[--><a class="VPLink link VPNavBarMenuLink" href="/about/" tabindex="0" data-v-4724067d data-v-1d8e9418><!--[--><span data-v-1d8e9418>关于我</span><!--]--></a><!--]--><!--]--></nav><!----><div class="VPNavBarAppearance appearance" data-v-cac52d05 data-v-264bc36b><button class="VPSwitch VPSwitchAppearance" type="button" role="switch" title="Switch to dark theme" aria-checked="false" data-v-264bc36b data-v-9b1c1f8c data-v-470083d2><span class="check" data-v-470083d2><span class="icon" data-v-470083d2><!--[--><span class="vpi-sun sun" data-v-9b1c1f8c></span><span class="vpi-moon moon" data-v-9b1c1f8c></span><!--]--></span></span></button></div><div class="VPSocialLinks VPNavBarSocialLinks social-links" data-v-cac52d05 data-v-f7eb2e59 data-v-448c5e6f><!--[--><a class="VPSocialLink no-icon" href="https://github.com/xinlei3166/xinlei3166.github.io" aria-label="github" target="_blank" rel="noopener" data-v-448c5e6f data-v-ca0ec1b5><span class="vpi-social-github"></span></a><!--]--></div><div class="VPFlyout VPNavBarExtra extra" data-v-cac52d05 data-v-f8dea7aa data-v-d16fee32><button type="button" class="button" aria-haspopup="true" aria-expanded="false" aria-label="extra navigation" data-v-d16fee32><span class="vpi-more-horizontal icon" data-v-d16fee32></span></button><div class="menu" data-v-d16fee32><div class="VPMenu" data-v-d16fee32 data-v-932e1d2d><!----><!--[--><!--[--><!----><div class="group" data-v-f8dea7aa><div class="item appearance" data-v-f8dea7aa><p class="label" data-v-f8dea7aa>Appearance</p><div class="appearance-action" data-v-f8dea7aa><button class="VPSwitch VPSwitchAppearance" type="button" role="switch" title="Switch to dark theme" aria-checked="false" data-v-f8dea7aa data-v-9b1c1f8c data-v-470083d2><span class="check" data-v-470083d2><span class="icon" data-v-470083d2><!--[--><span class="vpi-sun sun" data-v-9b1c1f8c></span><span class="vpi-moon moon" data-v-9b1c1f8c></span><!--]--></span></span></button></div></div></div><div class="group" data-v-f8dea7aa><div class="item social-links" data-v-f8dea7aa><div class="VPSocialLinks social-links-list" data-v-f8dea7aa data-v-448c5e6f><!--[--><a class="VPSocialLink no-icon" href="https://github.com/xinlei3166/xinlei3166.github.io" aria-label="github" target="_blank" rel="noopener" data-v-448c5e6f data-v-ca0ec1b5><span class="vpi-social-github"></span></a><!--]--></div></div></div><!--]--><!--]--></div></div></div><!--[--><!--]--><button type="button" class="VPNavBarHamburger hamburger" aria-label="mobile navigation" aria-expanded="false" aria-controls="VPNavScreen" data-v-cac52d05 data-v-9b1c3370><span class="container" data-v-9b1c3370><span class="top" data-v-9b1c3370></span><span class="middle" data-v-9b1c3370></span><span class="bottom" data-v-9b1c3370></span></span></button></div></div></div></div><div class="divider" data-v-cac52d05><div class="divider-line" data-v-cac52d05></div></div></div><!----></header><div class="VPLocalNav has-sidebar empty" data-v-d1264ba6 data-v-aa3d1490><div class="container" data-v-aa3d1490><button class="menu" aria-expanded="false" aria-controls="VPSidebarNav" data-v-aa3d1490><span class="vpi-align-left menu-icon" data-v-aa3d1490></span><span class="menu-text" data-v-aa3d1490>Menu</span></button><div class="VPLocalNavOutlineDropdown" style="--vp-vh:0px;" data-v-aa3d1490 data-v-e13db851><button data-v-e13db851>Return to top</button><!----></div></div></div><aside class="VPSidebar" data-v-d1264ba6 data-v-91d5fd9c><div class="curtain" data-v-91d5fd9c></div><nav class="nav" id="VPSidebarNav" aria-labelledby="sidebar-aria-label" tabindex="-1" data-v-91d5fd9c><span class="visually-hidden" id="sidebar-aria-label" data-v-91d5fd9c> Sidebar Navigation </span><!--[--><!--]--><!--[--><div class="no-transition group" data-v-0611b7b4><section class="VPSidebarItem level-0 has-active" data-v-0611b7b4 data-v-392721ee><div class="item" role="button" tabindex="0" data-v-392721ee><div class="indicator" data-v-392721ee></div><h2 class="text" data-v-392721ee>Linux</h2><!----></div><div class="items" data-v-392721ee><!--[--><div class="VPSidebarItem level-1 is-link" data-v-392721ee data-v-392721ee><div class="item" data-v-392721ee><div class="indicator" data-v-392721ee></div><a class="VPLink link link" href="/blog/Linux/Centos-7-%E4%B8%8B%E5%AE%89%E8%A3%85LNMP%E5%AE%98%E6%96%B9%E6%9C%80%E6%96%B0%E7%89%88%EF%BC%88yum%E5%AE%89%E8%A3%85nginx%E5%92%8Cmysql%EF%BC%8Cphp7%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85%EF%BC%89" data-v-392721ee><!--[--><p class="text" data-v-392721ee>Centos-7-下安装LNMP官方最新版（yum安装nginx和mysql，php7源码安装）</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-392721ee data-v-392721ee><div class="item" data-v-392721ee><div class="indicator" data-v-392721ee></div><a class="VPLink link link" href="/blog/Linux/Centos-7%E4%B8%8BNagios%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E9%85%8D%E7%BD%AE%EF%BC%88%E5%AE%8C%E6%95%B4%E7%89%88%EF%BC%89" data-v-392721ee><!--[--><p class="text" data-v-392721ee>Centos-7下Nagios的安装及配置（完整版）</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-392721ee data-v-392721ee><div class="item" data-v-392721ee><div class="indicator" data-v-392721ee></div><a class="VPLink link link" href="/blog/Linux/Centos-7%E4%B8%8Bsaltstack%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3" data-v-392721ee><!--[--><p class="text" data-v-392721ee>Centos-7下saltstack安装配置详解</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-392721ee data-v-392721ee><div class="item" data-v-392721ee><div class="indicator" data-v-392721ee></div><a class="VPLink link link" href="/blog/Linux/Centos-7%E5%AE%89%E8%A3%85zabbix" data-v-392721ee><!--[--><p class="text" data-v-392721ee>Centos-7安装zabbix</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-392721ee data-v-392721ee><div class="item" data-v-392721ee><div class="indicator" data-v-392721ee></div><a class="VPLink link link" href="/blog/Linux/Centos-7%E7%B3%BB%E7%BB%9F%E4%BC%98%E5%8C%96%E8%84%9A%E6%9C%AC" data-v-392721ee><!--[--><p class="text" data-v-392721ee>Centos-7系统优化脚本</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-392721ee data-v-392721ee><div class="item" data-v-392721ee><div class="indicator" data-v-392721ee></div><a class="VPLink link link" href="/blog/Linux/Centos7%E4%B8%8B%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85Nginx%E3%80%81Mysql%E3%80%81PHP%EF%BC%88%E6%96%87%E7%AB%A0%E5%BA%95%E9%83%A8%E5%8C%85%E5%90%AB%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC%EF%BC%89" data-v-392721ee><!--[--><p class="text" data-v-392721ee>Centos7下编译安装Nginx、Mysql、PHP（文章底部包含一键安装脚本）</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-392721ee data-v-392721ee><div class="item" data-v-392721ee><div class="indicator" data-v-392721ee></div><a class="VPLink link link" href="/blog/Linux/Centos%E4%B8%8B%E5%AE%89%E8%A3%85Ansible" data-v-392721ee><!--[--><p class="text" data-v-392721ee>Centos下安装Ansible</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-392721ee data-v-392721ee><div class="item" data-v-392721ee><div class="indicator" data-v-392721ee></div><a class="VPLink link link" href="/blog/Linux/curl%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3" data-v-392721ee><!--[--><p class="text" data-v-392721ee>curl使用文档</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-392721ee data-v-392721ee><div class="item" data-v-392721ee><div class="indicator" data-v-392721ee></div><a class="VPLink link link" href="/blog/Linux/php%E6%B7%BB%E5%8A%A0%E6%89%A9%E5%B1%95%E5%BA%93" data-v-392721ee><!--[--><p class="text" data-v-392721ee>php添加扩展库</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-392721ee data-v-392721ee><div class="item" data-v-392721ee><div class="indicator" data-v-392721ee></div><a class="VPLink link link" href="/blog/Linux/saltstack-api%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3" data-v-392721ee><!--[--><p class="text" data-v-392721ee>saltstack-api使用详解</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-392721ee data-v-392721ee><div class="item" data-v-392721ee><div class="indicator" data-v-392721ee></div><a class="VPLink link link" href="/blog/Linux/supervisor%E7%94%A8%E6%B3%95" data-v-392721ee><!--[--><p class="text" data-v-392721ee>supervisor用法</p><!--]--></a><!----></div><!----></div><!--]--></div></section></div><!--]--><!--[--><!--]--></nav></aside><div class="VPContent has-sidebar" id="VPContent" data-v-d1264ba6 data-v-cb39b595><div class="VPDoc has-sidebar has-aside" data-v-cb39b595 data-v-717456d7><!--[--><!--]--><div class="container" data-v-717456d7><div class="aside" data-v-717456d7><div class="aside-curtain" data-v-717456d7></div><div class="aside-container" data-v-717456d7><div class="aside-content" data-v-717456d7><div class="VPDocAside" data-v-717456d7 data-v-e8d46413><!--[--><!--]--><!--[--><!--]--><nav aria-labelledby="doc-outline-aria-label" class="VPDocAsideOutline" data-v-e8d46413 data-v-57eda6b0><div class="content" data-v-57eda6b0><div class="outline-marker" data-v-57eda6b0></div><div aria-level="2" class="outline-title" id="doc-outline-aria-label" role="heading" data-v-57eda6b0>本页目录</div><ul class="VPDocOutlineItem root" data-v-57eda6b0 data-v-9e09e3dd><!--[--><!--]--></ul></div></nav><!--[--><!--]--><div class="spacer" data-v-e8d46413></div><!--[--><!--]--><!----><!--[--><!--]--><!--[--><!--]--></div></div></div></div><div class="content" data-v-717456d7><div class="content-container" data-v-717456d7><!--[--><!--]--><main class="main" data-v-717456d7><div style="position:relative;" class="vp-doc _blog_Linux_Centos-7%E4%B8%8BNagios%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E9%85%8D%E7%BD%AE%EF%BC%88%E5%AE%8C%E6%95%B4%E7%89%88%EF%BC%89" data-v-717456d7><div><h2 id="简介" tabindex="-1">简介 <a class="header-anchor" href="#简介" aria-label="Permalink to &quot;简介&quot;">​</a></h2><p>Nagios 是一款自动化运维工具，可以协助运维人员监控服务器的运行状况，并且拥有报警功能。本文章将介绍其安装方法和详细的配置方法。</p><p>nagios 监控服务应用指南</p><ul><li>本地资源：负载，CPU，磁盘，内存。IO，RAID，温度，passwd文件变化，本地所有文件指纹识别</li><li>网络服务：端口，URL，丢包，进程，网络流量</li><li>其他设备：交换机，打印机，windows等。</li><li>业务数据：用户登录失败次数，用户登录网站次数，输入验证码失败的次数，某个API接口流量并发，电商网站订单，支付交易的数量</li></ul><p>nagios成员：主程序nagios，插件nagios-plugins，和一些可选的客户端nrpe，NSClient++,NSCA和NDOUtils</p><ul><li><p>NRPE--半被动模式 存放位置：安装在客户端 NRPE作用：在客户端执行相关的脚本插件来获取数据，实现对客户端主机资源的监控。 存在形式：守护进程(agent)模式，开启的端口5666</p></li><li><p>NSClient++：半被动模式，相当于linux系统的nrpe</p></li><li><p>NDOUtils（不推荐用） 存在位置：服务端 作用：用于将nagios的配置信息和各event产生的数据存入数据库中，以实现对这些数据的检索和处理。</p></li><li><p>NSCA：纯被动模式---&gt;用在分布式监控环境中 位置：NSCA需要同时安装在nagios的服务器端和客户端</p></li></ul><h2 id="软件版本" tabindex="-1">软件版本 <a class="header-anchor" href="#软件版本" aria-label="Permalink to &quot;软件版本&quot;">​</a></h2><blockquote><p>nagios版本：4.3.1 nagios-plugins版本：2.2.1 nrpe版本：3.1.0</p></blockquote><h2 id="实现环境" tabindex="-1">实现环境 <a class="header-anchor" href="#实现环境" aria-label="Permalink to &quot;实现环境&quot;">​</a></h2><p>nagios运行在LAMP环境下（如果还没有安装LAMP环境，可以参考下我的<a href="http://www.jianshu.com/p/b25afb669337" target="_blank" rel="noreferrer">安装LNMP文章</a>，因为我已经编译安装了php和Mysql，本文直接采取yum 方式安装apache，当然也可以采取编译方式安装apache。看个人喜好和公司需求）</p><blockquote><p>Centos版本：CentOS Linux release 7.3.1611 (Core) 64位 Apache版本：Apache/2.4.6 Nginx版本: nginx 1.12.0 Mysql版本：mysql 5.7.18 PHP版本：php 7.1.4</p></blockquote><h2 id="下载nagios软件及插件包" tabindex="-1">下载nagios软件及插件包 <a class="header-anchor" href="#下载nagios软件及插件包" aria-label="Permalink to &quot;下载nagios软件及插件包&quot;">​</a></h2><p>下载慢的话可以去我的<a href="https://share.weiyun.com/d0e448b40b29665a47f3af9a88c68d87" target="_blank" rel="noreferrer">网盘下载</a></p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@nagios ~]# cd /software/</span></span>
+<span class="line"><span>[root@nagios software]# wget https://assets.nagios.com/downloads/nagioscore/releases/nagios-4.3.1.tar.gz</span></span>
+<span class="line"><span>[root@nagios software]# wget https://nagios-plugins.org/download/nagios-plugins-2.2.1.tar.gz</span></span>
+<span class="line"><span>[root@nagios software]# wget https://sourceforge.net/projects/nagios/files/nrpe-3.x/nrpe-3.1.0.tar.gz</span></span>
+<span class="line"><span>[root@nagios software]# ll</span></span>
+<span class="line"><span>-rw-r--r--   1 root  root  11095797 4月  21 15:57 nagios-4.3.1.tar.gz</span></span>
+<span class="line"><span>-rw-r--r--   1 root  root   2728818 4月  20 00:04 nagios-plugins-2.2.1.tar.gz</span></span>
+<span class="line"><span>-rw-r--r--   1 root  root    501028 4月  17 22:36 nrpe-3.1.0.tar.gz</span></span></code></pre></div><h2 id="安装nagios-server服务端" tabindex="-1">安装nagios-server服务端 <a class="header-anchor" href="#安装nagios-server服务端" aria-label="Permalink to &quot;安装nagios-server服务端&quot;">​</a></h2><h3 id="安装依赖包" tabindex="-1">安装依赖包 <a class="header-anchor" href="#安装依赖包" aria-label="Permalink to &quot;安装依赖包&quot;">​</a></h3><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@nagios software]# yum -y install httpd httpd-devel gcc glibc glibc-common gd gd-devel perl-devel perl-CPAN fcgi perl-FCGI perl-FCGI-ProcManager</span></span></code></pre></div><h3 id="解压nagios源码包" tabindex="-1">解压nagios源码包 <a class="header-anchor" href="#解压nagios源码包" aria-label="Permalink to &quot;解压nagios源码包&quot;">​</a></h3><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@nagios software]# tar zxvf nagios-4.3.1.tar.gz</span></span></code></pre></div><h3 id="进入解压后的目录" tabindex="-1">进入解压后的目录 <a class="header-anchor" href="#进入解压后的目录" aria-label="Permalink to &quot;进入解压后的目录&quot;">​</a></h3><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@nagios software]# cd nagios-4.3.1/</span></span></code></pre></div><h3 id="创建ngaios用户和组-把nginx启动用户www加入到nagios相关组" tabindex="-1">创建ngaios用户和组（把nginx启动用户www加入到nagios相关组） <a class="header-anchor" href="#创建ngaios用户和组-把nginx启动用户www加入到nagios相关组" aria-label="Permalink to &quot;创建ngaios用户和组（把nginx启动用户www加入到nagios相关组）&quot;">​</a></h3><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@nagios nagios-4.3.1]# useradd nagios -s /sbin/nologin </span></span>
+<span class="line"><span>[root@nagios nagios-4.3.1]# id www</span></span>
+<span class="line"><span>[root@nagios nagios-4.3.1]# groupadd nagcmd</span></span>
+<span class="line"><span>[root@nagios nagios-4.3.1]# usermod -a -G nagcmd nagios </span></span>
+<span class="line"><span>[root@nagios nagios-4.3.1]# usermod -a -G nagcmd www</span></span>
+<span class="line"><span>[root@nagios nagios-4.3.1]# id -n -G nagios</span></span>
+<span class="line"><span>[root@nagios nagios-4.3.1]# id -n -G www</span></span></code></pre></div><h3 id="配置nagios" tabindex="-1">配置nagios <a class="header-anchor" href="#配置nagios" aria-label="Permalink to &quot;配置nagios&quot;">​</a></h3><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@client1 nagios-4.3.1]# ./configure --with-command-group=nagcmd</span></span></code></pre></div><h3 id="编译和安装" tabindex="-1">编译和安装 <a class="header-anchor" href="#编译和安装" aria-label="Permalink to &quot;编译和安装&quot;">​</a></h3><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@nagios nagios-4.3.1]# make all</span></span>
+<span class="line"><span>[root@nagios nagios-4.3.1]# make install-init</span></span>
+<span class="line"><span>[root@nagios nagios-4.3.1]# make install-commandmode</span></span>
+<span class="line"><span>[root@nagios nagios-4.3.1]# make install-config</span></span>
+<span class="line"><span>[root@nagios nagios-4.3.1]# make install	</span></span>
+<span class="line"><span>[root@nagios nagios-4.3.1]# cp -R contrib/eventhandlers/ /usr/local/nagios/libexec/</span></span>
+<span class="line"><span>[root@nagios nagios-4.3.1]# chown -R nagios:nagios /usr/local/nagios/libexec/eventhandlers</span></span>
+<span class="line"><span>[root@nagios nagios-4.3.1]# /usr/local/nagios/bin/nagios -v /usr/local/nagios/etc/nagios.cfg</span></span></code></pre></div><h3 id="生成apache配置文件" tabindex="-1">生成apache配置文件 <a class="header-anchor" href="#生成apache配置文件" aria-label="Permalink to &quot;生成apache配置文件&quot;">​</a></h3><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@nagios nagios-4.3.1]# make install-webconf</span></span>
+<span class="line"><span>/usr/bin/install -c -m 644 sample-config/httpd.conf /etc/httpd/conf.d/nagios.conf</span></span>
+<span class="line"><span>if [ 0 -eq 1 ]; then \</span></span>
+<span class="line"><span>	ln -s /etc/httpd/conf.d/nagios.conf /etc/apache2/sites-enabled/nagios.conf; \</span></span>
+<span class="line"><span>fi</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>*** Nagios/Apache conf file installed ***</span></span></code></pre></div><h3 id="生成nagios-web界面的验证信息" tabindex="-1">生成nagios web界面的验证信息 <a class="header-anchor" href="#生成nagios-web界面的验证信息" aria-label="Permalink to &quot;生成nagios web界面的验证信息&quot;">​</a></h3><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@nagios nagios-4.3.1]# htpasswd -c /usr/local/nagios/etc/htpasswd.users nagios</span></span>
+<span class="line"><span>New password:   ==&gt; 输入密码，这里我输入的密码是nagios，记住这个密码</span></span>
+<span class="line"><span>Re-type new password:  ==&gt; 确认密码</span></span>
+<span class="line"><span>Adding password for user nagios</span></span></code></pre></div><h3 id="修改apache配置文件" tabindex="-1">修改apache配置文件 <a class="header-anchor" href="#修改apache配置文件" aria-label="Permalink to &quot;修改apache配置文件&quot;">​</a></h3><p>vi /etc/httpd/conf/httpd.conf</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>Listen 80    ===&gt;    修改为    Listen 8080</span></span>
+<span class="line"><span>User apache    ===&gt;    修改为    User www</span></span>
+<span class="line"><span>Group apache    ===&gt;    修改为    Group www</span></span>
+<span class="line"><span>DirectoryIndex index.html    ===&gt;    修改为    DirectoryIndex index.php index.html</span></span>
+<span class="line"><span>AddType application/x-gzip .gz .tgz    ===&gt;    下面添加一行内容  AddHandler application/x-httpd-php .php</span></span>
+<span class="line"><span># LoadModule foo_module modules/mod_foo.so    ===&gt;    下面添加一行内容   </span></span>
+<span class="line"><span> LoadModule php7_module        modules/libphp7.so</span></span></code></pre></div><h3 id="apache配置文件参考" tabindex="-1">apache配置文件参考 <a class="header-anchor" href="#apache配置文件参考" aria-label="Permalink to &quot;apache配置文件参考&quot;">​</a></h3><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@nagios httpd]# grep -v &#39;^$&#39; /etc/httpd/conf/httpd.conf|grep -v &#39;#&#39;</span></span>
+<span class="line"><span>ServerRoot &quot;/etc/httpd&quot;</span></span>
+<span class="line"><span>Listen 8080</span></span>
+<span class="line"><span>LoadModule php7_module        modules/libphp7.so</span></span>
+<span class="line"><span>Include conf.modules.d/*.conf</span></span>
+<span class="line"><span>User www</span></span>
+<span class="line"><span>Group www</span></span>
+<span class="line"><span>ServerAdmin root@localhost</span></span>
+<span class="line"><span>&lt;Directory /&gt;</span></span>
+<span class="line"><span>    AllowOverride none</span></span>
+<span class="line"><span>    Require all denied</span></span>
+<span class="line"><span>&lt;/Directory&gt;</span></span>
+<span class="line"><span>DocumentRoot &quot;/var/www/html&quot;</span></span>
+<span class="line"><span>&lt;Directory &quot;/var/www&quot;&gt;</span></span>
+<span class="line"><span>    AllowOverride None</span></span>
+<span class="line"><span>    Require all granted</span></span>
+<span class="line"><span>&lt;/Directory&gt;</span></span>
+<span class="line"><span>&lt;Directory &quot;/var/www/html&quot;&gt;</span></span>
+<span class="line"><span>    Options Indexes FollowSymLinks</span></span>
+<span class="line"><span>    AllowOverride None</span></span>
+<span class="line"><span>    Require all granted</span></span>
+<span class="line"><span>&lt;/Directory&gt;</span></span>
+<span class="line"><span>&lt;IfModule dir_module&gt;</span></span>
+<span class="line"><span>    DirectoryIndex index.php index.html</span></span>
+<span class="line"><span>&lt;/IfModule&gt;</span></span>
+<span class="line"><span>&lt;Files &quot;.ht*&quot;&gt;</span></span>
+<span class="line"><span>    Require all denied</span></span>
+<span class="line"><span>&lt;/Files&gt;</span></span>
+<span class="line"><span>ErrorLog &quot;logs/error_log&quot;</span></span>
+<span class="line"><span>LogLevel warn</span></span>
+<span class="line"><span>&lt;IfModule log_config_module&gt;</span></span>
+<span class="line"><span>    LogFormat &quot;%h %l %u %t \&quot;%r\&quot; %&gt;s %b \&quot;%{Referer}i\&quot; \&quot;%{User-Agent}i\&quot;&quot; combined</span></span>
+<span class="line"><span>    LogFormat &quot;%h %l %u %t \&quot;%r\&quot; %&gt;s %b&quot; common</span></span>
+<span class="line"><span>    &lt;IfModule logio_module&gt;</span></span>
+<span class="line"><span>      LogFormat &quot;%h %l %u %t \&quot;%r\&quot; %&gt;s %b \&quot;%{Referer}i\&quot; \&quot;%{User-Agent}i\&quot; %I %O&quot; combinedio</span></span>
+<span class="line"><span>    &lt;/IfModule&gt;</span></span>
+<span class="line"><span>    CustomLog &quot;logs/access_log&quot; combined</span></span>
+<span class="line"><span>&lt;/IfModule&gt;</span></span>
+<span class="line"><span>&lt;IfModule alias_module&gt;</span></span>
+<span class="line"><span>    ScriptAlias /cgi-bin/ &quot;/var/www/cgi-bin/&quot;</span></span>
+<span class="line"><span>&lt;/IfModule&gt;</span></span>
+<span class="line"><span>&lt;Directory &quot;/var/www/cgi-bin&quot;&gt;</span></span>
+<span class="line"><span>    AllowOverride None</span></span>
+<span class="line"><span>    Options None</span></span>
+<span class="line"><span>    Require all granted</span></span>
+<span class="line"><span>&lt;/Directory&gt;</span></span>
+<span class="line"><span>&lt;IfModule mime_module&gt;</span></span>
+<span class="line"><span>    TypesConfig /etc/mime.types</span></span>
+<span class="line"><span>    AddType application/x-compress .Z</span></span>
+<span class="line"><span>    AddType application/x-gzip .gz .tgz</span></span>
+<span class="line"><span>    AddHandler application/x-httpd-php .php</span></span>
+<span class="line"><span>    AddType text/html .shtml</span></span>
+<span class="line"><span>    AddOutputFilter INCLUDES .shtml</span></span>
+<span class="line"><span>&lt;/IfModule&gt;</span></span>
+<span class="line"><span>AddDefaultCharset UTF-8</span></span>
+<span class="line"><span>&lt;IfModule mime_magic_module&gt;</span></span>
+<span class="line"><span>    MIMEMagicFile conf/magic</span></span>
+<span class="line"><span>&lt;/IfModule&gt;</span></span>
+<span class="line"><span>EnableSendfile on</span></span>
+<span class="line"><span>IncludeOptional conf.d/*.conf</span></span></code></pre></div><h3 id="重新编译一下php-使其直接apache-也就是编译参数加上-with-apxs2" tabindex="-1">重新编译一下php，使其直接apache（也就是编译参数加上--with-apxs2） <a class="header-anchor" href="#重新编译一下php-使其直接apache-也就是编译参数加上-with-apxs2" aria-label="Permalink to &quot;重新编译一下php，使其直接apache（也就是编译参数加上--with-apxs2）&quot;">​</a></h3><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@nagios nagios-4.3.1]# cd /software/php-7.1.4/</span></span>
+<span class="line"><span>[root@nagios php-7.1.4]# ./configure --prefix=/usr/local/php --enable-fpm --with-fpm-user=nginx --with-fpm-group=nginx --with-mysqli --with-zlib --with-curl --with-gd --with-jpeg-dir --with-png-dir --with-freetype-dir --with-openssl --enable-mbstring --enable-xml --enable-session --enable-ftp --enable-pdo -enable-tokenizer --enable-zip --with-apxs2</span></span>
+<span class="line"><span>[root@nagios php-7.1.4]# make &amp;&amp; make install</span></span>
+<span class="line"><span>[root@nagios php-7.1.4]# cd /etc/httpd/</span></span>
+<span class="line"><span>[root@nagios httpd]# ll /etc/httpd/modules/libphp7.so </span></span>
+<span class="line"><span>-rwxr-xr-x 1 root root 38908880 4月  24 10:34 /etc/httpd/modules/libphp7.so    ===&gt;    可以看到这个模块已经生成</span></span></code></pre></div><h3 id="启动apache" tabindex="-1">启动apache <a class="header-anchor" href="#启动apache" aria-label="Permalink to &quot;启动apache&quot;">​</a></h3><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@nagios httpd]# systemctl start httpd</span></span>
+<span class="line"><span>[root@nagios httpd]# systemctl enable httpd</span></span></code></pre></div><h3 id="启动nagios" tabindex="-1">启动nagios <a class="header-anchor" href="#启动nagios" aria-label="Permalink to &quot;启动nagios&quot;">​</a></h3><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>chkconfig nagios on</span></span>
+<span class="line"><span>/etc/init.d/nagios start</span></span></code></pre></div><h3 id="在浏览器输入ip-8080-nagios测试nagios-web页面是否可以打开" tabindex="-1">在浏览器输入ip:8080/nagios测试nagios-web页面是否可以打开 <a class="header-anchor" href="#在浏览器输入ip-8080-nagios测试nagios-web页面是否可以打开" aria-label="Permalink to &quot;在浏览器输入ip:8080/nagios测试nagios-web页面是否可以打开&quot;">​</a></h3><p><img src="http://upload-images.jianshu.io/upload_images/4262139-9928ac01cfdf8142.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p><p><img src="http://upload-images.jianshu.io/upload_images/4262139-55e6ef5cb388a862.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p><p><img src="http://upload-images.jianshu.io/upload_images/4262139-9ba83971133bb8df.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p><br><h2 id="安装nagios-plugins插件" tabindex="-1">安装nagios-plugins插件 <a class="header-anchor" href="#安装nagios-plugins插件" aria-label="Permalink to &quot;安装nagios-plugins插件&quot;">​</a></h2><h3 id="解压nagios-plugins源码包" tabindex="-1">解压nagios-plugins源码包 <a class="header-anchor" href="#解压nagios-plugins源码包" aria-label="Permalink to &quot;解压nagios-plugins源码包&quot;">​</a></h3><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@nagios httpd]# cd /software/</span></span>
+<span class="line"><span>[root@nagios software]# tar zxvf nagios-plugins-2.2.1.tar.gz</span></span></code></pre></div><h3 id="进入解压后的目录进行配置" tabindex="-1">进入解压后的目录进行配置 <a class="header-anchor" href="#进入解压后的目录进行配置" aria-label="Permalink to &quot;进入解压后的目录进行配置&quot;">​</a></h3><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@nagios software]# cd nagios-plugins-2.2.1/</span></span>
+<span class="line"><span>[root@nagios nagios-plugins-2.2.1]# ./configure --with-nagios-user=nagios --with-nagios-group=nagcmd --enable-perl-modules</span></span></code></pre></div><h3 id="编译及安装" tabindex="-1">编译及安装 <a class="header-anchor" href="#编译及安装" aria-label="Permalink to &quot;编译及安装&quot;">​</a></h3><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@nagios nagios-plugins-2.2.1]# make &amp;&amp; make install</span></span></code></pre></div><br><h2 id="安装nrpe" tabindex="-1">安装nrpe <a class="header-anchor" href="#安装nrpe" aria-label="Permalink to &quot;安装nrpe&quot;">​</a></h2><h3 id="解压nrpe源码包" tabindex="-1">解压nrpe源码包 <a class="header-anchor" href="#解压nrpe源码包" aria-label="Permalink to &quot;解压nrpe源码包&quot;">​</a></h3><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@nagios nagios-plugins-2.2.1]# cd /software/</span></span>
+<span class="line"><span>[root@nagios software]# tar zxvf nrpe-3.1.0.tar.gz</span></span></code></pre></div><h3 id="进去解压后的目录进行配置" tabindex="-1">进去解压后的目录进行配置 <a class="header-anchor" href="#进去解压后的目录进行配置" aria-label="Permalink to &quot;进去解压后的目录进行配置&quot;">​</a></h3><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@nagios software]# cd nrpe-3.1.0/</span></span>
+<span class="line"><span>[root@nagios nrpe-3.1.0]# ./configure</span></span></code></pre></div><h3 id="编译及安装-1" tabindex="-1">编译及安装 <a class="header-anchor" href="#编译及安装-1" aria-label="Permalink to &quot;编译及安装&quot;">​</a></h3><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@nagios nrpe-3.1.0]# make all</span></span>
+<span class="line"><span>[root@nagios nrpe-3.1.0]# make install-plugin</span></span>
+<span class="line"><span>[root@nagios nrpe-3.1.0]# make install-daemon</span></span>
+<span class="line"><span>[root@nagios nrpe-3.1.0]# make install-daemon-config</span></span>
+<span class="line"><span>[root@nagios nrpe-3.1.0]# cp sample-config/nrpe.cfg /usr/local/nagios/etc/nrpe.cfg</span></span></code></pre></div><h3 id="安装完成后-查看下libexec下面是否有插件" tabindex="-1">安装完成后，查看下libexec下面是否有插件 <a class="header-anchor" href="#安装完成后-查看下libexec下面是否有插件" aria-label="Permalink to &quot;安装完成后，查看下libexec下面是否有插件&quot;">​</a></h3><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@nagios nrpe-3.1.0]# ls /usr/local/nagios/libexec/</span></span>
+<span class="line"><span>check_apt       check_flexlm        check_log          check_ntp_peer  check_smtp    disable_active_service_checks</span></span>
+<span class="line"><span>check_breeze    check_fping         check_mailq        check_ntp_time  check_spop    disable_notifications</span></span>
+<span class="line"><span>check_by_ssh    check_ftp           check_mrtg         check_nwstat    check_ssh     distributed-monitoring</span></span>
+<span class="line"><span>check_clamd     check_http          check_mrtgtraf     check_oracle    check_ssmtp   enable_active_service_checks</span></span>
+<span class="line"><span>check_cluster   check_icmp          check_mysql        check_overcr    check_swap    enable_notifications</span></span>
+<span class="line"><span>check_dhcp      check_ide_smart     check_mysql_query  check_ping      check_tcp     eventhandlers</span></span>
+<span class="line"><span>check_dig       check_ifoperstatus  check_nagios       check_pop       check_time    negate</span></span>
+<span class="line"><span>check_disk      check_ifstatus      check_nntp         check_procs     check_udp     redundancy-scenario1</span></span>
+<span class="line"><span>check_disk_smb  check_imap          check_nntps        check_real      check_ups     submit_check_result</span></span>
+<span class="line"><span>check_dns       check_ircd          check_nrpe         check_rpc       check_uptime  urlize</span></span>
+<span class="line"><span>check_dummy     check_jabber        check_nt           check_sensors   check_users   utils.pm</span></span>
+<span class="line"><span>check_file_age  check_load          check_ntp          check_simap     check_wave    utils.sh</span></span></code></pre></div><h3 id="启动nrpe-并测试服务端本地是否可以连通" tabindex="-1">启动nrpe，并测试服务端本地是否可以连通 <a class="header-anchor" href="#启动nrpe-并测试服务端本地是否可以连通" aria-label="Permalink to &quot;启动nrpe，并测试服务端本地是否可以连通&quot;">​</a></h3><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@nagios nrpe-3.1.0]# /usr/local/nagios/bin/nrpe -d -c /usr/local/nagios/etc/nrpe.cfg </span></span>
+<span class="line"><span>[root@nagios nrpe-3.1.0]# echo &quot;/usr/local/nagios/bin/nrpe -d -c /usr/local/nagios/etc/nrpe.cfg&quot; &gt;&gt; /etc/rc.local</span></span>
+<span class="line"><span>[root@nagios nrpe-3.1.0]# chmod +x /etc/rc.d/rc.local           # centos 7下需要这一步， 不然/etc/rc.local中的内容开机可能不执行</span></span>
+<span class="line"><span>[root@nagios nrpe-3.1.0]# netstat -lnput|grep 5666</span></span>
+<span class="line"><span>tcp        0      0 0.0.0.0:5666            0.0.0.0:*               LISTEN      67176/nrpe          </span></span>
+<span class="line"><span>tcp6       0      0 :::5666                 :::*                    LISTEN      67176/nrpe    </span></span>
+<span class="line"><span>[root@nagios nrpe-3.1.0]# /usr/local/nagios/libexec/check_nrpe -H localhost </span></span>
+<span class="line"><span>NRPE v3.1.0-rc1</span></span></code></pre></div><br> *** ## nagios客户端的安装 ### 下载nagios-plugin和nrpe插件 <div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@client1 ~]# mkdir /software/</span></span>
+<span class="line"><span>[root@client1 ~]# cd /software/</span></span>
+<span class="line"><span>[root@client1 software]# wget https://nagios-plugins.org/download/nagios-plugins-2.2.1.tar.gz</span></span>
+<span class="line"><span>[root@client1 software]# wget https://sourceforge.net/projects/nagios/files/nrpe-3.x/nrpe-3.1.0.tar.gz</span></span></code></pre></div><h3 id="安装nagios-plugin" tabindex="-1">安装nagios-plugin <a class="header-anchor" href="#安装nagios-plugin" aria-label="Permalink to &quot;安装nagios-plugin&quot;">​</a></h3><p>安装依赖包</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@client1 software]# yum install perl-devel perl-CPAN -y</span></span></code></pre></div><p>创建用户</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@client1 software]# useradd nagios -M -s /sbin/nologin</span></span></code></pre></div><p>解压nagios-plugin源码包</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@client1 software]# tar zxvf nagios-plugins-2.2.1.tar.gz</span></span></code></pre></div><p>进入解压后的目录进行配置</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@client1 software]# cd nagios-plugins-2.2.1/</span></span>
+<span class="line"><span>[root@client1 nagios-plugins-2.2.1]# ./configure --with-nagios-user=nagios --with-nagios-group=nagios --enable-perl-modules</span></span></code></pre></div><p>编译及安装</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@client1 nagios-plugins-2.2.1]# make &amp;&amp; make install</span></span></code></pre></div><br><h3 id="安装nrpe插件" tabindex="-1">安装nrpe插件 <a class="header-anchor" href="#安装nrpe插件" aria-label="Permalink to &quot;安装nrpe插件&quot;">​</a></h3><p>解压nrpe源码包</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@client1 nagios-plugins-2.2.1]# cd ..</span></span>
+<span class="line"><span>[root@client1 software]# tar zxvf nrpe-3.1.0.tar.gz</span></span></code></pre></div><p>进入解压后的目录进行配置</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@client1 software]# cd nrpe-3.1.0/</span></span>
+<span class="line"><span>[root@client1 nrpe-3.1.0]# ./configure</span></span></code></pre></div><p>编译及安装</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@client1 nrpe-3.1.0]# make all</span></span>
+<span class="line"><span>[root@client1 nrpe-3.1.0]# make install-plugin</span></span>
+<span class="line"><span>[root@client1 nrpe-3.1.0]# make install-daemon</span></span>
+<span class="line"><span>[root@client1 nrpe-3.1.0]# make install-daemon-config</span></span>
+<span class="line"><span>[root@client1 nrpe-3.1.0]# mkdir /usr/local/nagios/etc/</span></span>
+<span class="line"><span>[root@client1 nrpe-3.1.0]# cp sample-config/nrpe.cfg /usr/local/nagios/etc/nrpe.cfg</span></span></code></pre></div><p>安装完成后，查看下libexec下面是否有插件</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@client1 nrpe-3.1.0]# ls /usr/local/nagios/libexec/</span></span>
+<span class="line"><span>check_apt       check_dummy         check_imap         check_nagios    check_overcr   check_ssh     negate</span></span>
+<span class="line"><span>check_breeze    check_file_age      check_ircd         check_nntp      check_ping     check_ssmtp   urlize</span></span>
+<span class="line"><span>check_by_ssh    check_flexlm        check_jabber       check_nntps     check_pop      check_swap    utils.pm</span></span>
+<span class="line"><span>check_clamd     check_fping         check_load         check_nrpe      check_procs    check_tcp     utils.sh</span></span>
+<span class="line"><span>check_cluster   check_ftp           check_log          check_nt        check_real     check_time</span></span>
+<span class="line"><span>check_dhcp      check_http          check_mailq        check_ntp       check_rpc      check_udp</span></span>
+<span class="line"><span>check_dig       check_icmp          check_mrtg         check_ntp_peer  check_sensors  check_ups</span></span>
+<span class="line"><span>check_disk      check_ide_smart     check_mrtgtraf     check_ntp_time  check_simap    check_uptime</span></span>
+<span class="line"><span>check_disk_smb  check_ifoperstatus  check_mysql        check_nwstat    check_smtp     check_users</span></span>
+<span class="line"><span>check_dns       check_ifstatus      check_mysql_query  check_oracle    check_spop     check_wave</span></span></code></pre></div><p>启动nrpe，并测试服务端本地是否可以连通</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@client1 nrpe-3.1.0]# /usr/local/nagios/bin/nrpe -d -c /usr/local/nagios/etc/nrpe.cfg </span></span>
+<span class="line"><span>[root@client1 nrpe-3.1.0]# echo &quot;/usr/local/nagios/bin/nrpe -d -c /usr/local/nagios/etc/nrpe.cfg&quot; &gt;&gt; /etc/rc.local</span></span>
+<span class="line"><span>[root@client1 nrpe-3.1.0]# chmod +x /etc/rc.d/rc.local           # centos 7下需要这一步， 不然/etc/rc.local中的内容开机可能不执行</span></span>
+<span class="line"><span>[root@client1 nrpe-3.1.0]# netstat -lnput|grep 5666</span></span>
+<span class="line"><span>tcp        0      0 0.0.0.0:5666            0.0.0.0:*               LISTEN      28296/nrpe          </span></span>
+<span class="line"><span>tcp6       0      0 :::5666                 :::*                    LISTEN      28296/nrpe </span></span>
+<span class="line"><span>[root@client1 nrpe-3.1.0]# /usr/local/nagios/libexec/check_nrpe -H localhost</span></span>
+<span class="line"><span>NRPE v3.1.0-rc1</span></span></code></pre></div><p>修改配置文件</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@client1 nrpe-3.1.0]# cd /usr/local/nagios/etc/</span></span></code></pre></div><p>vi nrpe.cfg</p><p>允许服务端IP和本机访问，172.16.0.18是nagios服务端IP地址</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>allowed_hosts=127.0.0.1,::1    ===&gt;    修改为    allowed_hosts=127.0.0.1,::1,172.16.0.18</span></span></code></pre></div><p>注释下面几行内容</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>command[check_users]=/usr/local/nagios/libexec/check_users -w 5 -c 10</span></span>
+<span class="line"><span>command[check_load]=/usr/local/nagios/libexec/check_load -r -w .15,.10,.05 -c .30,.25,.20</span></span>
+<span class="line"><span>command[check_hda1]=/usr/local/nagios/libexec/check_disk -w 20% -c 10% -p /dev/hda1</span></span>
+<span class="line"><span>command[check_zombie_procs]=/usr/local/nagios/libexec/check_procs -w 5 -c 10 -s Z</span></span>
+<span class="line"><span>command[check_total_procs]=/usr/local/nagios/libexec/check_procs -w 150 -c 200</span></span></code></pre></div><p>在nrpe.cfg文件末尾增加下面几行内容</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span># my custom monitor items</span></span>
+<span class="line"><span>command[check_users]=/usr/local/nagios/libexec/check_users -w 5 -c 10</span></span>
+<span class="line"><span>command[check_load]=/usr/local/nagios/libexec/check_load -r -w .15,.10,.05 -c .30,.25,.20</span></span>
+<span class="line"><span>command[check_disk]=/usr/local/nagios/libexec/check_disk -w 20% -c 10% -p /</span></span>
+<span class="line"><span>command[check_mem]=/usr/local/nagios/libexec/check_mem.pl -w 90% -c 95%</span></span>
+<span class="line"><span>command[check_swap]=/usr/local/nagios/libexec/check_swap -w 20% -c 10%</span></span></code></pre></div><p>创建一个监控内存的perl脚本</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@client1 etc]# vi /usr/local/nagios/libexec/check_mem.pl</span></span></code></pre></div><p>添加下面内容</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>#! /usr/bin/perl -w</span></span>
+<span class="line"><span>#</span></span>
+<span class="line"><span># $Id: check_mem.pl 8 2008-08-23 08:59:52Z rhomann $</span></span>
+<span class="line"><span>#</span></span>
+<span class="line"><span># check_mem v1.7 plugin for nagios</span></span>
+<span class="line"><span>#</span></span>
+<span class="line"><span># uses the output of `free` to find the percentage of memory used</span></span>
+<span class="line"><span>#</span></span>
+<span class="line"><span># Copyright Notice: GPL</span></span>
+<span class="line"><span>#</span></span>
+<span class="line"><span># History:</span></span>
+<span class="line"><span># v1.8 Rouven Homann - rouven.homann@cimt.de</span></span>
+<span class="line"><span># + added findbin patch from Duane Toler</span></span>
+<span class="line"><span># + added backward compatibility patch from Timour Ezeev</span></span>
+<span class="line"><span>#</span></span>
+<span class="line"><span># v1.7 Ingo Lantschner - ingo AT boxbe DOT com</span></span>
+<span class="line"><span># + adapted for systems with no swap (avoiding divison through 0)</span></span>
+<span class="line"><span>#</span></span>
+<span class="line"><span># v1.6 Cedric Temple - cedric DOT temple AT cedrictemple DOT info</span></span>
+<span class="line"><span># + add swap monitoring</span></span>
+<span class="line"><span>#       + if warning and critical threshold are 0, exit with OK</span></span>
+<span class="line"><span>#       + add a directive to exclude/include buffers</span></span>
+<span class="line"><span>#</span></span>
+<span class="line"><span># v1.5 Rouven Homann - rouven.homann@cimt.de</span></span>
+<span class="line"><span># + perfomance tweak with free -mt (just one sub process started instead of 7)</span></span>
+<span class="line"><span># + more code cleanup</span></span>
+<span class="line"><span>#</span></span>
+<span class="line"><span># v1.4 Garrett Honeycutt - gh@3gupload.com</span></span>
+<span class="line"><span># + Fixed PerfData output to adhere to standards and show crit/warn values</span></span>
+<span class="line"><span>#</span></span>
+<span class="line"><span># v1.3 Rouven Homann - rouven.homann@cimt.de</span></span>
+<span class="line"><span>#   + Memory installed, used and free displayed in verbose mode</span></span>
+<span class="line"><span># + Bit Code Cleanup</span></span>
+<span class="line"><span>#</span></span>
+<span class="line"><span># v1.2 Rouven Homann - rouven.homann@cimt.de</span></span>
+<span class="line"><span># + Bug fixed where verbose output was required (nrpe2)</span></span>
+<span class="line"><span>#       + Bug fixed where perfomance data was not displayed at verbose output</span></span>
+<span class="line"><span># + FindBin Module used for the nagios plugin path of the utils.pm</span></span>
+<span class="line"><span>#</span></span>
+<span class="line"><span># v1.1 Rouven Homann - rouven.homann@cimt.de</span></span>
+<span class="line"><span>#     + Status Support (-c, -w)</span></span>
+<span class="line"><span># + Syntax Help Informations (-h)</span></span>
+<span class="line"><span>#       + Version Informations Output (-V)</span></span>
+<span class="line"><span># + Verbose Output (-v)</span></span>
+<span class="line"><span>#       + Better Error Code Output (as described in plugin guideline)</span></span>
+<span class="line"><span>#</span></span>
+<span class="line"><span># v1.0 Garrett Honeycutt - gh@3gupload.com</span></span>
+<span class="line"><span>#   + Initial Release</span></span>
+<span class="line"><span>#</span></span>
+<span class="line"><span>use strict;</span></span>
+<span class="line"><span>use FindBin;</span></span>
+<span class="line"><span>FindBin::again();</span></span>
+<span class="line"><span>use lib $FindBin::Bin;</span></span>
+<span class="line"><span>use utils qw($TIMEOUT %ERRORS &amp;print_revision &amp;support);</span></span>
+<span class="line"><span>use vars qw($PROGNAME $PROGVER);</span></span>
+<span class="line"><span>use Getopt::Long;</span></span>
+<span class="line"><span>use vars qw($opt_V $opt_h $verbose $opt_w $opt_c);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>$PROGNAME = &quot;check_mem&quot;;</span></span>
+<span class="line"><span>$PROGVER = &quot;1.8&quot;;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># add a directive to exclude buffers:</span></span>
+<span class="line"><span>my $DONT_INCLUDE_BUFFERS = 0;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>sub print_help ();</span></span>
+<span class="line"><span>sub print_usage ();</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Getopt::Long::Configure(&#39;bundling&#39;);</span></span>
+<span class="line"><span>GetOptions (&quot;V&quot;   =&gt; \$opt_V, &quot;version&quot;    =&gt; \$opt_V,</span></span>
+<span class="line"><span>  &quot;h&quot;   =&gt; \$opt_h, &quot;help&quot;       =&gt; \$opt_h,</span></span>
+<span class="line"><span>        &quot;v&quot; =&gt; \$verbose, &quot;verbose&quot;  =&gt; \$verbose,</span></span>
+<span class="line"><span>  &quot;w=s&quot; =&gt; \$opt_w, &quot;warning=s&quot;  =&gt; \$opt_w,</span></span>
+<span class="line"><span>  &quot;c=s&quot; =&gt; \$opt_c, &quot;critical=s&quot; =&gt; \$opt_c);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>if ($opt_V) {</span></span>
+<span class="line"><span>  print_revision($PROGNAME,&#39;$Revision: &#39;.$PROGVER.&#39; $&#39;);</span></span>
+<span class="line"><span>  exit $ERRORS{&#39;UNKNOWN&#39;};</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>if ($opt_h) {</span></span>
+<span class="line"><span>  print_help();</span></span>
+<span class="line"><span>  exit $ERRORS{&#39;UNKNOWN&#39;};</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>print_usage() unless (($opt_c) &amp;&amp; ($opt_w));</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>my ($mem_critical, $swap_critical);</span></span>
+<span class="line"><span>my ($mem_warning, $swap_warning);</span></span>
+<span class="line"><span>($mem_critical, $swap_critical) = ($1,$2) if ($opt_c =~ /([0-9]+)[%]?(?:,([0-9]+)[%]?)?/);</span></span>
+<span class="line"><span>($mem_warning, $swap_warning)   = ($1,$2) if ($opt_w =~ /([0-9]+)[%]?(?:,([0-9]+)[%]?)?/);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># Check if swap params were supplied</span></span>
+<span class="line"><span>$swap_critical ||= 100;</span></span>
+<span class="line"><span>$swap_warning  ||= 100;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># print threshold in output message</span></span>
+<span class="line"><span>my $mem_threshold_output = &quot; (&quot;;</span></span>
+<span class="line"><span>my $swap_threshold_output = &quot; (&quot;;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>if ( $mem_warning &gt; 0 &amp;&amp; $mem_critical &gt; 0) {</span></span>
+<span class="line"><span>  $mem_threshold_output .= &quot;W&gt; $mem_warning, C&gt; $mem_critical&quot;;</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span>elsif ( $mem_warning &gt; 0 ) {</span></span>
+<span class="line"><span>  $mem_threshold_output .= &quot;W&gt; $mem_warning&quot;;</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span>elsif ( $mem_critical &gt; 0 ) {</span></span>
+<span class="line"><span>  $mem_threshold_output .= &quot;C&gt; $mem_critical&quot;;</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>if ( $swap_warning &gt; 0 &amp;&amp; $swap_critical &gt; 0) {</span></span>
+<span class="line"><span>  $swap_threshold_output .= &quot;W&gt; $swap_warning, C&gt; $swap_critical&quot;;</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span>elsif ( $swap_warning &gt; 0 ) {</span></span>
+<span class="line"><span>  $swap_threshold_output .= &quot;W&gt; $swap_warning&quot;;</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span>elsif ( $swap_critical &gt; 0 )  {</span></span>
+<span class="line"><span>  $swap_threshold_output .= &quot;C&gt; $swap_critical&quot;;</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>$mem_threshold_output .= &quot;)&quot;;</span></span>
+<span class="line"><span>$swap_threshold_output .= &quot;)&quot;;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>my $verbose = $verbose;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>my ($mem_percent, $mem_total, $mem_used, $swap_percent, $swap_total, $swap_used) = &amp;sys_stats();</span></span>
+<span class="line"><span>my $free_mem = $mem_total - $mem_used;</span></span>
+<span class="line"><span>my $free_swap = $swap_total - $swap_used;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># set output message</span></span>
+<span class="line"><span>my $output = &quot;Memory Usage&quot;.$mem_threshold_output.&quot;: &quot;. $mem_percent.&#39;% &lt;br&gt;&#39;;</span></span>
+<span class="line"><span>$output .= &quot;Swap Usage&quot;.$swap_threshold_output.&quot;: &quot;. $swap_percent.&#39;%&#39;;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># set verbose output message</span></span>
+<span class="line"><span>my $verbose_output = &quot;Memory Usage:&quot;.$mem_threshold_output.&quot;: &quot;. $mem_percent.&#39;% &#39;.&quot;- Total: $mem_total MB, used: $mem_used MB, free: $free_mem MB&lt;br&gt;&quot;;</span></span>
+<span class="line"><span>$verbose_output .= &quot;Swap Usage:&quot;.$swap_threshold_output.&quot;: &quot;. $swap_percent.&#39;% &#39;.&quot;- Total: $swap_total MB, used: $swap_used MB, free: $free_swap MB&lt;br&gt;&quot;;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># set perfdata message</span></span>
+<span class="line"><span>my $perfdata_output = &quot;MemUsed=$mem_percent\%;$mem_warning;$mem_critical&quot;;</span></span>
+<span class="line"><span>$perfdata_output .= &quot; SwapUsed=$swap_percent\%;$swap_warning;$swap_critical&quot;;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># if threshold are 0, exit with OK</span></span>
+<span class="line"><span>if ( $mem_warning == 0 ) { $mem_warning = 101 };</span></span>
+<span class="line"><span>if ( $swap_warning == 0 ) { $swap_warning = 101 };</span></span>
+<span class="line"><span>if ( $mem_critical == 0 ) { $mem_critical = 101 };</span></span>
+<span class="line"><span>if ( $swap_critical == 0 ) { $swap_critical = 101 };</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>if ($mem_percent&gt;$mem_critical || $swap_percent&gt;$swap_critical) {</span></span>
+<span class="line"><span>    if ($verbose) { print &quot;&lt;b&gt;CRITICAL: &quot;.$verbose_output.&quot;&lt;/b&gt;|&quot;.$perfdata_output.&quot;\n&quot;;}</span></span>
+<span class="line"><span>    else { print &quot;&lt;b&gt;CRITICAL: &quot;.$output.&quot;&lt;/b&gt;|&quot;.$perfdata_output.&quot;\n&quot;;}</span></span>
+<span class="line"><span>    exit $ERRORS{&#39;CRITICAL&#39;};</span></span>
+<span class="line"><span>} elsif ($mem_percent&gt;$mem_warning || $swap_percent&gt;$swap_warning) {</span></span>
+<span class="line"><span>    if ($verbose) { print &quot;&lt;b&gt;WARNING: &quot;.$verbose_output.&quot;&lt;/b&gt;|&quot;.$perfdata_output.&quot;\n&quot;;}</span></span>
+<span class="line"><span>    else { print &quot;&lt;b&gt;WARNING: &quot;.$output.&quot;&lt;/b&gt;|&quot;.$perfdata_output.&quot;\n&quot;;}</span></span>
+<span class="line"><span>    exit $ERRORS{&#39;WARNING&#39;};</span></span>
+<span class="line"><span>} else {</span></span>
+<span class="line"><span>    if ($verbose) { print &quot;OK: &quot;.$verbose_output.&quot;|&quot;.$perfdata_output.&quot;\n&quot;;}</span></span>
+<span class="line"><span>    else { print &quot;OK: &quot;.$output.&quot;|&quot;.$perfdata_output.&quot;\n&quot;;}</span></span>
+<span class="line"><span>    exit $ERRORS{&#39;OK&#39;};</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>sub sys_stats {</span></span>
+<span class="line"><span>    my @memory = split(&quot; &quot;, `free -mt`);</span></span>
+<span class="line"><span>    my $mem_total = $memory[7];</span></span>
+<span class="line"><span>    my $mem_used;</span></span>
+<span class="line"><span>    if ( $DONT_INCLUDE_BUFFERS) { $mem_used = $memory[15]; }</span></span>
+<span class="line"><span>    else { $mem_used = $memory[8];}</span></span>
+<span class="line"><span>    my $swap_total = $memory[18];</span></span>
+<span class="line"><span>    my $swap_used = $memory[19];</span></span>
+<span class="line"><span>    my $mem_percent = ($mem_used / $mem_total) * 100;</span></span>
+<span class="line"><span>    my $swap_percent;</span></span>
+<span class="line"><span>    if ($swap_total == 0) {</span></span>
+<span class="line"><span>  $swap_percent = 0;</span></span>
+<span class="line"><span>    } else {</span></span>
+<span class="line"><span>  $swap_percent = ($swap_used / $swap_total) * 100;</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>    return (sprintf(&quot;%.0f&quot;,$mem_percent),$mem_total,$mem_used, sprintf(&quot;%.0f&quot;,$swap_percent),$swap_total,$swap_used);</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>sub print_usage () {</span></span>
+<span class="line"><span>    print &quot;Usage: $PROGNAME -w &lt;warn&gt; -c &lt;crit&gt; [-v] [-h]\n&quot;;</span></span>
+<span class="line"><span>    exit $ERRORS{&#39;UNKNOWN&#39;} unless ($opt_h);</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>sub print_help () {</span></span>
+<span class="line"><span>    print_revision($PROGNAME,&#39;$Revision: &#39;.$PROGVER.&#39; $&#39;);</span></span>
+<span class="line"><span>    print &quot;Copyright (c) 2005 Garrett Honeycutt/Rouven Homann/Cedric Temple\n&quot;;</span></span>
+<span class="line"><span>    print &quot;\n&quot;;</span></span>
+<span class="line"><span>    print_usage();</span></span>
+<span class="line"><span>    print &quot;\n&quot;;</span></span>
+<span class="line"><span>    print &quot;-w &lt;MemoryWarn&gt;,&lt;SwapWarn&gt; = Memory and Swap usage to activate a warning message (eg: -w 90,25 ) .\n&quot;;</span></span>
+<span class="line"><span>    print &quot;-c &lt;MemoryCrit&gt;,&lt;SwapCrit&gt; = Memory and Swap usage to activate a critical message (eg: -c 95,50 ).\n&quot;;</span></span>
+<span class="line"><span>    print &quot;-v = Verbose Output.\n&quot;;</span></span>
+<span class="line"><span>    print &quot;-h = This screen.\n\n&quot;;</span></span>
+<span class="line"><span>    support();</span></span>
+<span class="line"><span>}</span></span></code></pre></div><p>给脚本增加执行权限</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@client1 etc]# chmod 755 /usr/local/nagios/libexec/check_mem.pl</span></span></code></pre></div><p>重启nrpe服务</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span># 方法一</span></span>
+<span class="line"><span>[root@client1 etc]# killall nrpe               </span></span>
+<span class="line"><span>[root@client1 etc]# /usr/local/nagios/bin/nrpe -d -c /usr/local/nagios/etc/nrpe.cfg</span></span>
+<span class="line"><span># 方法二</span></span>
+<span class="line"><span>[root@client1 etc]# kill -HUP `ps -ef|grep nrpe|awk &#39;NR==1{print $2}&#39;`</span></span></code></pre></div><p>在本机执行两个命令看下效果</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@client1 etc]# /usr/local/nagios/libexec/check_nrpe -H localhost -c check_mem</span></span>
+<span class="line"><span>&lt;b&gt;CRITICAL: Memory Usage (W&gt; 10, C&gt; 3): 29% &lt;br&gt;Swap Usage (W&gt; 100, C&gt; 100): 12%&lt;/b&gt;|MemUsed=29%;10;3 SwapUsed=12%;100;100</span></span>
+<span class="line"><span>[root@client1 etc]# /usr/local/nagios/libexec/check_nrpe -H localhost -c check_disk</span></span>
+<span class="line"><span>DISK OK - free space: / 4201 MB (24.15% inode=97%);| /=13192MB;13915;15654;0;17394</span></span></code></pre></div><br><h2 id="服务端配置" tabindex="-1">服务端配置 <a class="header-anchor" href="#服务端配置" aria-label="Permalink to &quot;服务端配置&quot;">​</a></h2><p>nrpe连接客户端机器测试是否可以连通，然后执行一个监控命令（如果不通的话可能是因为selinux和防火墙没关闭而造成的）</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@nagios nrpe-3.1.0]# /usr/local/nagios/libexec/check_nrpe -H 172.16.0.20</span></span>
+<span class="line"><span>NRPE v3.1.0-rc1</span></span>
+<span class="line"><span>[root@nagios nrpe-3.1.0]# /usr/local/nagios/libexec/check_nrpe -H 172.16.0.20 -c check_disk</span></span>
+<span class="line"><span>DISK OK - free space: / 4201 MB (24.15% inode=97%);| /=13192MB;13915;15654;0;17394</span></span></code></pre></div><p>因为nagios默认把全部的权限给nagiosadmin，所以可以通过修改cgi.cfg文件赋予nagios权限，切换到/usr/local/nagios/etc目录下</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@nagios nrpe-3.1.0]# cd /usr/local/nagios/etc</span></span>
+<span class="line"><span>[root@nagios etc]# ll</span></span>
+<span class="line"><span>总用量 144</span></span>
+<span class="line"><span>-rw-rw-r-- 1 nagios nagios 12999 4月  21 17:00 cgi.cfg</span></span>
+<span class="line"><span>-rw-r--r-- 1 root   root      45 4月  24 09:28 htpasswd.users</span></span>
+<span class="line"><span>-rw-rw-r-- 1 nagios nagios 44831 4月  21 17:00 nagios.cfg</span></span>
+<span class="line"><span>-rw-r--r-- 1 root   root   10765 4月  24 12:32 nrpe.cfg</span></span>
+<span class="line"><span>drwxrwxr-x 2 nagios nagios   336 4月  21 17:00 objects</span></span>
+<span class="line"><span>-rw-rw---- 1 nagios nagios  1312 4月  21 17:00 resource.cfg</span></span>
+<span class="line"><span>[root@nagios etc]# grep nagiosadmin cgi.cfg</span></span>
+<span class="line"><span>authorized_for_system_information=nagiosadmin</span></span>
+<span class="line"><span>authorized_for_configuration_information=nagiosadmin</span></span>
+<span class="line"><span>authorized_for_system_commands=nagiosadmin</span></span>
+<span class="line"><span>authorized_for_all_services=nagiosadmin</span></span>
+<span class="line"><span>authorized_for_all_hosts=nagiosadmin</span></span>
+<span class="line"><span>authorized_for_all_service_commands=nagiosadmin</span></span>
+<span class="line"><span>authorized_for_all_host_commands=nagiosadmin</span></span>
+<span class="line"><span>[root@nagios etc]# sed -i &#39;s/nagiosadmin/nagiosadmin,nagios/g&#39; cgi.cfg</span></span>
+<span class="line"><span>[root@nagios etc]# grep nagiosadmin cgi.cfg</span></span>
+<span class="line"><span>authorized_for_system_information=nagiosadmin,nagios</span></span>
+<span class="line"><span>authorized_for_configuration_information=nagiosadmin,nagios</span></span>
+<span class="line"><span>authorized_for_system_commands=nagiosadmin,nagios</span></span>
+<span class="line"><span>authorized_for_all_services=nagiosadmin,nagios</span></span>
+<span class="line"><span>authorized_for_all_hosts=nagiosadmin,nagios</span></span>
+<span class="line"><span>authorized_for_all_service_commands=nagiosadmin,nagios</span></span>
+<span class="line"><span>authorized_for_all_host_commands=nagiosadmin,nagios</span></span></code></pre></div><h3 id="修改nagios-cfg-自定义一些配置" tabindex="-1">修改nagios.cfg（自定义一些配置） <a class="header-anchor" href="#修改nagios-cfg-自定义一些配置" aria-label="Permalink to &quot;修改nagios.cfg（自定义一些配置）&quot;">​</a></h3><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@nagios etc]# vi nagios.cfg +34</span></span>
+<span class="line"><span>#注释掉下面这行</span></span>
+<span class="line"><span>#cfg_file=/usr/local/nagios/etc/objects/localhost.cfg</span></span>
+<span class="line"><span>#添加下面两行内容</span></span>
+<span class="line"><span>cfg_file=/usr/local/nagios/etc/objects/services.cfg</span></span>
+<span class="line"><span>cfg_file=/usr/local/nagios/etc/objects/hosts.cfg</span></span></code></pre></div><p>创建hosts.cfg和services.cfg这两个文件</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@nagios etc]# cd objects/</span></span>
+<span class="line"><span>[root@nagios objects]# pwd</span></span>
+<span class="line"><span>/usr/local/nagios/etc/objects</span></span>
+<span class="line"><span>[root@nagios objects]# touch services.cfg</span></span>
+<span class="line"><span>[root@nagios objects]# head -51 localhost.cfg  &gt; hosts.cfg</span></span>
+<span class="line"><span>[root@nagios objects]# chown -R nagios.nagios *</span></span></code></pre></div><p>修改nagios检查语法脚本</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@nagios objects]# vim /etc/init.d/nagios +181</span></span>
+<span class="line"><span>#check_config</span></span>
+<span class="line"><span>$NagiosBin -v $NagiosCfgFile;</span></span></code></pre></div><p>vi commands.cfg 进入后按shift+g切到结尾加入下面内容。</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span># &#39;check_nrpe&#39; command definition</span></span>
+<span class="line"><span>define command{</span></span>
+<span class="line"><span>        command_name    check_nrpe</span></span>
+<span class="line"><span>        command_line    $USER1$/check_nrpe -H $HOSTADDRESS$ -c $ARG1$</span></span>
+<span class="line"><span>        }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># &#39;check_ping&#39; command definition</span></span>
+<span class="line"><span>define command{</span></span>
+<span class="line"><span>        command_name    check-ping</span></span>
+<span class="line"><span>        command_line    $USER1$/check_ping -H $HOSTADDRESS$ -w 100.0,20% -c 200.0,50% -p 3 -t 2</span></span>
+<span class="line"><span>        }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># &#39;check_http&#39; command definition</span></span>
+<span class="line"><span>define command{</span></span>
+<span class="line"><span>        command_name    check-weburl</span></span>
+<span class="line"><span>        command_line    $USER1$/check_http -H $HOSTADDRESS$ $ARG1$ -w 5 -c 10</span></span>
+<span class="line"><span>        }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># &#39;check_tcp&#39; command definition</span></span>
+<span class="line"><span>define command{</span></span>
+<span class="line"><span>        command_name    check-tcp</span></span>
+<span class="line"><span>        command_line    $USER1$/check_tcp -H $HOSTADDRESS$ -p $ARG1$ -w 0.02 -c 0.1</span></span>
+<span class="line"><span>        }</span></span></code></pre></div><p>查看有哪些cfg文件</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@nagios objects]# pwd</span></span>
+<span class="line"><span>/usr/local/nagios/etc/objects</span></span>
+<span class="line"><span>[root@nagios objects]# ll</span></span>
+<span class="line"><span>总用量 100</span></span>
+<span class="line"><span>-rw-rw-r-- 1 nagios nagios  7860 4月  24 16:53 commands.cfg</span></span>
+<span class="line"><span>-rw-rw-r-- 1 nagios nagios  2138 4月  21 17:00 contacts.cfg</span></span>
+<span class="line"><span>-rw-r--r-- 1 nagios nagios  1843 4月  24 16:46 hosts.cfg</span></span>
+<span class="line"><span>-rw-rw-r-- 1 nagios nagios  5379 4月  21 17:00 localhost.cfg</span></span>
+<span class="line"><span>-rw-rw-r-- 1 nagios nagios  3070 4月  21 17:00 printer.cfg</span></span>
+<span class="line"><span>-rw-r--r-- 1 nagios nagios     0 4月  24 16:46 services.cfg</span></span>
+<span class="line"><span>-rw-rw-r-- 1 nagios nagios  3252 4月  21 17:00 switch.cfg</span></span>
+<span class="line"><span>-rw-rw-r-- 1 nagios nagios 10595 4月  21 17:00 templates.cfg</span></span>
+<span class="line"><span>-rw-rw-r-- 1 nagios nagios  3180 4月  21 17:00 timeperiods.cfg</span></span>
+<span class="line"><span>-rw-rw-r-- 1 nagios nagios  3991 4月  21 17:00 windows.cfg</span></span></code></pre></div><h3 id="常用对象介绍" tabindex="-1">常用对象介绍 <a class="header-anchor" href="#常用对象介绍" aria-label="Permalink to &quot;常用对象介绍&quot;">​</a></h3><blockquote><ul><li>联系人 contact 出了问题像谁报告?一般当然是系统管理员了</li></ul></blockquote><blockquote><ul><li>监控时间段 timeperiod 7X24小时不间断还是周一至周五,或是自定义的其他时间段</li></ul></blockquote><blockquote><ul><li>被监控主机 host 所需要监控的服务器,当然可以是监控机自己</li></ul></blockquote><blockquote><ul><li>监控命令 command nagios发出的哪个指令来执行某个监控,这也是自己定义的</li></ul></blockquote><blockquote><ul><li>被监控的服务 service 例如主机是否存活,80端口是否开,磁盘使用情况或者自定义的服务等</li></ul></blockquote><p>contacts.cfg文件介绍</p><blockquote><ul><li>service_notification_period     24x7 服务出了状况通知的时间段,这个时间段就是上面在timeperiods.cfg中定义的.</li></ul></blockquote><blockquote><ul><li>host_notification_period        24x7 主机出了状况通知的时间段, 这个时间段就是上面在timeperiods.cfg中定义的</li></ul></blockquote><blockquote><ul><li>service_notification_options    w,u,c,r 当服务出现w—报警(warning),u—未知(unkown),c—严重(critical),或者r—从异常情况恢复正常,在这四种情况下通知联系人.</li></ul></blockquote><blockquote><ul><li>host_notification_options       d,u,r 当主机出现d­­­­—当机(down),u—返回不可达(unreachable),r—从异常情况恢复正常,在这3种情况下通知联系人</li></ul></blockquote><blockquote><ul><li>service_notification_commands   notify- service -by-email 服务出问题通知采用的命令notify-by-email,这个命令是在commands.cfg中定义的,作用是给联系人发邮件.至于commands.cfg之后将专门介绍</li></ul></blockquote><blockquote><ul><li>host_notification_commands      host-notify-by-email notify- host--by-email 同上,主机出问题时采用的也是发邮件的方式通知联系人</li></ul></blockquote><blockquote><ul><li>email                           <a href="mailto:123456@qqcom" target="_blank" rel="noreferrer">123456@qq.com</a> 很明显,联系的人email地址</li></ul></blockquote><blockquote><ul><li>pager                           1338757xxxx 联系人的手机,如果支持短信的通知的话,这个就很有用了.</li></ul></blockquote><blockquote><ul><li>alias是联系人别名,address是地址 .</li></ul></blockquote><p>contactgroups.cfg文件介绍</p><blockquote><div class="language-# vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">#</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>define contactgroup{</span></span>
+<span class="line"><span>    contactgroup_name               组名  //联系人组的名称</span></span>
+<span class="line"><span>    alias                   别名        //别名</span></span>
+<span class="line"><span>    members                 用户名  //组的成员,来自于上面定义的contacts.cfg,如果有多个联系人则以逗号相隔</span></span>
+<span class="line"><span>    }</span></span></code></pre></div></blockquote><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span></span></span>
+<span class="line"><span>主机模板介绍（hosts.cfg）</span></span>
+<span class="line"><span>&gt; ```# host </span></span>
+<span class="line"><span>define host{</span></span>
+<span class="line"><span>       host_name                       主机名  //被监控主机的名称,最好别带空格nagios-server</span></span>
+<span class="line"><span>       alias                           别名</span></span>
+<span class="line"><span>       address                         IP  //被监控主机的IP地址</span></span>
+<span class="line"><span>       check_command                   check-host-alive  //监控的命令check-host-alive,这个命令来自commands.cfg,用来监控主机是否存活</span></span>
+<span class="line"><span>       max_check_attempts              5  //检查失败后重试的次数</span></span>
+<span class="line"><span>       check_period                    24x7  //检查的时间段24x7,同样来自于我们之前在    timeperiods.cfg中定义的</span></span>
+<span class="line"><span>       contact_groups                  组名  //联系人组,上面在contactgroups.cfg中定义的组名</span></span>
+<span class="line"><span>       notification_interval           10  //提醒的间隔,每隔10秒提醒一次</span></span>
+<span class="line"><span>       notification_period             24x7  //提醒的周期, 24x7,同样来自于我们之前在timeperiods.cfg中定义的</span></span>
+<span class="line"><span>       notification_options            d,u,r  //指定什么情况下提醒,具体含义见之前contacts.cfg部分的介绍</span></span>
+<span class="line"><span>       }</span></span></code></pre></div><p>主机组模板介绍（hosts.cfg）</p><blockquote><div class="language-# vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">#</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>define hostgroup{</span></span>
+<span class="line"><span>     hostgroup_name          主机组名  </span></span>
+<span class="line"><span>     alias                   别名  </span></span>
+<span class="line"><span>     members                 主机名  //组的成员主机,多个主机以逗号相隔,必须是上面hosts.cfg中定义的</span></span>
+<span class="line"><span>     }</span></span></code></pre></div></blockquote><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span></span></span>
+<span class="line"><span>服务模板介绍（services.cfg）</span></span>
+<span class="line"><span>&gt; ```# service definition</span></span>
+<span class="line"><span>define service{</span></span>
+<span class="line"><span>       host_name               主机名  //被监控的主机,hosts.cfg中定义的</span></span>
+<span class="line"><span>       service_description     check-host-alive  //这个监控项目的描述(也可以说是这个项目的名称),可以空格,我们这里定义的是监控这个主机是不是存活</span></span>
+<span class="line"><span>       check_command           check-host-alive  //所用的命令,是commands.cfg中定义的</span></span>
+<span class="line"><span>       max_check_attempts      5</span></span>
+<span class="line"><span>       normal_check_interval   3</span></span>
+<span class="line"><span>       retry_check_interval    2</span></span>
+<span class="line"><span>       check_period            24x7  //监控的时间段,是timeperiods.cfg中定义的</span></span>
+<span class="line"><span>       notification_interval   10</span></span>
+<span class="line"><span>       notification_period     24x7  //通知的时间段, ,是timeperiods.cfg中定义的</span></span>
+<span class="line"><span>       notification_options    w,u,c,r  //在监控的结果是wucr时通知联系人,具体含义看前文.</span></span>
+<span class="line"><span>       contact_groups          组名  //联系人组,是contactgroups.cfg中定义的</span></span>
+<span class="line"><span>       }</span></span></code></pre></div><p>主机模板配置</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@nagios objects]# vi hosts.cfg +21</span></span>
+<span class="line"><span>删除下面11行内容</span></span>
+<span class="line"><span>添加下面内容</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># Define some hosts</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>###########172.16.0.18##################</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>define host {</span></span>
+<span class="line"><span>        use                      linux-server</span></span>
+<span class="line"><span>        host_name                nagios</span></span>
+<span class="line"><span>        alias                    nagios</span></span>
+<span class="line"><span>        address                  172.16.0.18</span></span>
+<span class="line"><span>        check_command            check-host-alive</span></span>
+<span class="line"><span>        max_check_attempts        3</span></span>
+<span class="line"><span>        normal_check_interval     2</span></span>
+<span class="line"><span>        retry_check_interval      2</span></span>
+<span class="line"><span>        check_period              24x7</span></span>
+<span class="line"><span>        notification_interval     300</span></span>
+<span class="line"><span>        notification_period       24x7</span></span>
+<span class="line"><span>        notification_options      d,u,r</span></span>
+<span class="line"><span>        contact_groups            admins</span></span>
+<span class="line"><span>        process_perf_data         1</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>###########172.16.0.18##################</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>define host {</span></span>
+<span class="line"><span>        use                      linux-server</span></span>
+<span class="line"><span>        host_name                client1</span></span>
+<span class="line"><span>        alias                    client1</span></span>
+<span class="line"><span>        address                  172.16.0.20</span></span>
+<span class="line"><span>        check_command            check-host-alive</span></span>
+<span class="line"><span>        max_check_attempts        3</span></span>
+<span class="line"><span>        normal_check_interval     2</span></span>
+<span class="line"><span>        retry_check_interval      2</span></span>
+<span class="line"><span>        check_period              24x7</span></span>
+<span class="line"><span>        notification_interval     300</span></span>
+<span class="line"><span>        notification_period       24x7</span></span>
+<span class="line"><span>        notification_options      d,u,r</span></span>
+<span class="line"><span>        contact_groups            admins</span></span>
+<span class="line"><span>        process_perf_data         1</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>把监控的主机添加到主机组里面</span></span>
+<span class="line"><span>[root@nagios objects]# vi hosts.cfg +76</span></span>
+<span class="line"><span>define hostgroup{</span></span>
+<span class="line"><span>        hostgroup_name  linux-servers ; The name of the hostgroup</span></span>
+<span class="line"><span>        alias           Linux Servers ; Long name of the group</span></span>
+<span class="line"><span>        members         nagios,client1     ; Comma separated list of hosts that belong to this group</span></span>
+<span class="line"><span>        }</span></span></code></pre></div><p>服务模板配置</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@nagios objects]# pwd</span></span>
+<span class="line"><span>/usr/local/nagios/etc/objects</span></span>
+<span class="line"><span>[root@nagios objects]# vi services.cfg </span></span>
+<span class="line"><span>添加下面内容</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>###########172.16.0.18##################</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>define service{</span></span>
+<span class="line"><span>        use                     generic-service</span></span>
+<span class="line"><span>        host_name               nagios</span></span>
+<span class="line"><span>        service_description     Load</span></span>
+<span class="line"><span>        check_command           check_nrpe!check_load		#这里的check_nrpe不是服务端/usr/local/nagios/libexec/check_nrpe,而是command.cfg里定义的命令</span></span>
+<span class="line"><span>        }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>define service{</span></span>
+<span class="line"><span>        use                     generic-service</span></span>
+<span class="line"><span>        host_name               nagios</span></span>
+<span class="line"><span>        service_description     Disk</span></span>
+<span class="line"><span>        check_command           check_nrpe!check_disk</span></span>
+<span class="line"><span>        }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>define service{</span></span>
+<span class="line"><span>        use                     generic-service</span></span>
+<span class="line"><span>        host_name               nagios</span></span>
+<span class="line"><span>        service_description     memory</span></span>
+<span class="line"><span>        check_command           check_nrpe!check_mem</span></span>
+<span class="line"><span>        }</span></span>
+<span class="line"><span>define service{</span></span>
+<span class="line"><span>        use                 	generic-service</span></span>
+<span class="line"><span>        host_name               nagios</span></span>
+<span class="line"><span>        service_description     Ping</span></span>
+<span class="line"><span>        check_command           check-ping!172.16.0.18</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>define service{</span></span>
+<span class="line"><span>        use                     generic-service</span></span>
+<span class="line"><span>        host_name               nagios</span></span>
+<span class="line"><span>        service_description     port_3306</span></span>
+<span class="line"><span>        check_command           check-tcp!3306</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>###########172.16.0.20##################</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>define service{</span></span>
+<span class="line"><span>        use                     generic-service</span></span>
+<span class="line"><span>        host_name               client1</span></span>
+<span class="line"><span>        service_description     Load</span></span>
+<span class="line"><span>        check_command           check_nrpe!check_load</span></span>
+<span class="line"><span>        }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>define service{</span></span>
+<span class="line"><span>        use                     generic-service</span></span>
+<span class="line"><span>        host_name               client1</span></span>
+<span class="line"><span>        service_description     Disk</span></span>
+<span class="line"><span>        check_command           check_nrpe!check_disk</span></span>
+<span class="line"><span>        }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>define service{</span></span>
+<span class="line"><span>        use                     generic-service</span></span>
+<span class="line"><span>        host_name               client1</span></span>
+<span class="line"><span>        service_description     memory</span></span>
+<span class="line"><span>        check_command           check_nrpe!check_mem</span></span>
+<span class="line"><span>        }</span></span>
+<span class="line"><span>define service{</span></span>
+<span class="line"><span>	use             generic-service</span></span>
+<span class="line"><span>        host_name               client1</span></span>
+<span class="line"><span>        service_description     Ping</span></span>
+<span class="line"><span>        check_command           check-ping!172.16.0.20</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span>define service{</span></span>
+<span class="line"><span>        use                     generic-service</span></span>
+<span class="line"><span>        host_name               client1</span></span>
+<span class="line"><span>        service_description     port_3306</span></span>
+<span class="line"><span>        check_command           check-tcp!3306</span></span>
+<span class="line"><span>}</span></span></code></pre></div><p>重启nagios服务</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@nagios objects]# /etc/init.d/nagios restart</span></span></code></pre></div><p>打开浏览器访问</p><p><img src="http://upload-images.jianshu.io/upload_images/4262139-48c6bd44d83c8c77.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""> 点击hosts <img src="http://upload-images.jianshu.io/upload_images/4262139-2215ddfaeae967bb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""> 点击services <img src="http://upload-images.jianshu.io/upload_images/4262139-744a741ccb47de2f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p><p>ok，我们的配置告一段落了。</p><h3 id="出图部分" tabindex="-1">出图部分 <a class="header-anchor" href="#出图部分" aria-label="Permalink to &quot;出图部分&quot;">​</a></h3><p>下载pnp4nagios源码包</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@nagios objects]# cd /software/</span></span>
+<span class="line"><span>[root@nagios software]# wget https://jaist.dl.sourceforge.net/project/pnp4nagios/PNP-0.6/pnp4nagios-0.6.25.tar.gz</span></span></code></pre></div><p>安装依赖包</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@nagios software]# yum install cairo pango perl-rrdtool rrdtool librrds-perl zlib zlib-devel freetype freetype-devel gd gd-devel -y</span></span></code></pre></div><p>解压pnp4nagios源码包</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@nagios software]# tar zxf pnp4nagios-0.6.25.tar.gz</span></span></code></pre></div><p>进入解压后的目录配置png</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@nagios pnp4nagios-0.6.25]# ./configure --with-nagios-user=nagios --with-nagios-group=nagios</span></span></code></pre></div><p>编译及安装</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@nagios pnp4nagios-0.6.25]# make all</span></span>
+<span class="line"><span>[root@nagios pnp4nagios-0.6.25]# make install</span></span>
+<span class="line"><span>[root@nagios pnp4nagios-0.6.25]# make install-webconf</span></span>
+<span class="line"><span>[root@nagios pnp4nagios-0.6.25]# make install-config</span></span>
+<span class="line"><span>[root@nagios pnp4nagios-0.6.25]# make install-init</span></span>
+<span class="line"><span>[root@nagios pnp4nagios-0.6.25]# cd sample-config/</span></span>
+<span class="line"><span>[root@nagios sample-config]# make install-webconf</span></span></code></pre></div><p>配置pnp4nagios</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@nagios sample-config]# cd /usr/local/pnp4nagios/etc/</span></span>
+<span class="line"><span>[root@nagios etc]# mv misccommands.cfg-sample misccommands.cfg</span></span>
+<span class="line"><span>[root@nagios etc]#  mv rra.cfg-sample rra.cfg</span></span>
+<span class="line"><span>[root@nagios etc]# mv nagios.cfg-sample nagios.cfg</span></span>
+<span class="line"><span>[root@nagios etc]# cd pages/</span></span>
+<span class="line"><span>[root@nagios pages]# mv web_traffic.cfg-sample web_traffic.cfg</span></span>
+<span class="line"><span>[root@nagios pages]#  cd ../check_commands/</span></span>
+<span class="line"><span>[root@nagios check_commands]# mv check_all_local_disks.cfg-sample check_all_local_disks.cfg</span></span>
+<span class="line"><span>[root@nagios check_commands]#  mv check_nrpe.cfg-sample check_nrpe.cfg</span></span>
+<span class="line"><span>[root@nagios check_commands]# mv check_nwstat.cfg-sample check_nwstat.cfg</span></span>
+<span class="line"><span>[root@nagios check_commands]# systemctl enable npcd</span></span>
+<span class="line"><span>[root@nagios check_commands]# systemctl start npcd</span></span></code></pre></div><p>配置Nagios数据输出接口(以BULK模式运行)详情参考官网<a href="https://docs.pnp4nagios.org/pnp-0.6/config#bulk_mode" target="_blank" rel="noreferrer">https://docs.pnp4nagios.org/pnp-0.6/config#bulk_mode</a>：</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@nagios check_commands]# vi /usr/local/nagios/etc/nagios.cfg</span></span>
+<span class="line"><span>process_performance_data=1 #默认为0，修改为1</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>并在该文件中添加下面的内容</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>#</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># service performance data</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>#</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>service_perfdata_file=/usr/local/pnp4nagios/var/service-perfdata</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>service_perfdata_file_template=DATATYPE::SERVICEPERFDATA\tTIMET::$TIMET$\tHOSTNAME::$HOSTNAME$\tSERVICEDESC::$SERVICEDESC$\tSERVICEPERFDATA::$SERVICEPERFDATA$\tSERVICECHECKCOMMAND::$SERVICECHECKCOMMAND$\tHOSTSTATE::$HOSTSTATE$\tHOSTSTATETYPE::$HOSTSTATETYPE$\tSERVICESTATE::$SERVICESTATE$\tSERVICESTATETYPE::$SERVICESTATETYPE$</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>service_perfdata_file_mode=a</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>service_perfdata_file_processing_interval=15</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>service_perfdata_file_processing_command=process-service-perfdata-file</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>#</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># host performance data starting with Nagios </span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>#</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>host_perfdata_file=/usr/local/pnp4nagios/var/host-perfdata</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>host_perfdata_file_template=DATATYPE::HOSTPERFDATA\tTIMET::$TIMET$\tHOSTNAME::$HOSTNAME$\tHOSTPERFDATA::$HOSTPERFDATA$\tHOSTCHECKCOMMAND::$HOSTCHECKCOMMAND$\tHOSTSTATE::$HOSTSTATE$\tHOSTSTATETYPE::$HOSTSTATETYPE$</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>host_perfdata_file_mode=a</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>host_perfdata_file_processing_interval=15</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>host_perfdata_file_processing_command=process-host-perfdata-file</span></span></code></pre></div><p>配置command.cfg</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@nagios check_commands]#  vi /usr/local/nagios/etc/objects/commands.cfg</span></span>
+<span class="line"><span>在该文件中添加下面的内容</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>define command{</span></span>
+<span class="line"><span>      command_name    process-service-perfdata-file</span></span>
+<span class="line"><span>      command_line    /usr/local/pnp4nagios/libexec/process_perfdata.pl --bulk=/usr/local/pnp4nagios/var/service-perfdata</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>define command{</span></span>
+<span class="line"><span>      command_name    process-host-perfdata-file</span></span>
+<span class="line"><span>      command_line    /usr/local/pnp4nagios/libexec/process_perfdata.pl --bulk=/usr/local/pnp4nagios/var/host-perfdata</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>}</span></span></code></pre></div><p>在模板配置文件中添加图表图标模板：</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@nagios check_commands]# vi /usr/local/nagios/etc/objects/templates.cfg</span></span>
+<span class="line"><span>在该文件中添加下面的内容</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>define host {</span></span>
+<span class="line"><span>  name      host-pnp</span></span>
+<span class="line"><span>  action_url /pnp4nagios/index.php/graph?host=$HOSTNAME$&amp;srv=_HOST_</span></span>
+<span class="line"><span>  register  0</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>define service {</span></span>
+<span class="line"><span>  name      service-pnp</span></span>
+<span class="line"><span>  action_url /pnp4nagios/index.php/graph?host=$HOSTNAME$&amp;srv=$SERVICEDESC$</span></span>
+<span class="line"><span>  register  0</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>}</span></span></code></pre></div><p>在监控主机和服务中调用图表模板（在主机和服务后面添加新的模板）：</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@nagios check_commands]# vi /usr/local/nagios/etc/objects/hosts.cfg </span></span>
+<span class="line"><span>主机内容修改如下</span></span>
+<span class="line"><span>###########172.16.0.18##################</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>define host {</span></span>
+<span class="line"><span>        use                      linux-server,host-pnp</span></span>
+<span class="line"><span>        host_name                nagios</span></span>
+<span class="line"><span>        alias                    nagios</span></span>
+<span class="line"><span>        address                  172.16.0.18</span></span>
+<span class="line"><span>        check_command            check-host-alive</span></span>
+<span class="line"><span>        max_check_attempts        3</span></span>
+<span class="line"><span>        normal_check_interval     2</span></span>
+<span class="line"><span>        retry_check_interval      2</span></span>
+<span class="line"><span>        check_period              24x7</span></span>
+<span class="line"><span>        notification_interval     300</span></span>
+<span class="line"><span>        notification_period       24x7</span></span>
+<span class="line"><span>        notification_options      d,u,r</span></span>
+<span class="line"><span>        contact_groups            admins</span></span>
+<span class="line"><span>        process_perf_data         1</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>###########172.16.0.18##################</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>define host {</span></span>
+<span class="line"><span>        use                      linux-server,host-pnp</span></span>
+<span class="line"><span>        host_name                client1</span></span>
+<span class="line"><span>        alias                    client1</span></span>
+<span class="line"><span>        address                  172.16.0.20</span></span>
+<span class="line"><span>        check_command            check-host-alive</span></span>
+<span class="line"><span>        max_check_attempts        3</span></span>
+<span class="line"><span>        normal_check_interval     2</span></span>
+<span class="line"><span>        retry_check_interval      2</span></span>
+<span class="line"><span>        check_period              24x7</span></span>
+<span class="line"><span>        notification_interval     300</span></span>
+<span class="line"><span>        notification_period       24x7</span></span>
+<span class="line"><span>        notification_options      d,u,r</span></span>
+<span class="line"><span>        contact_groups            admins</span></span>
+<span class="line"><span>        process_perf_data         1</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>[root@nagios check_commands]# vi /usr/local/nagios/etc/objects/services.cfg </span></span>
+<span class="line"><span>服务内容修改如下</span></span>
+<span class="line"><span>###########172.16.0.18##################</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>define service{</span></span>
+<span class="line"><span>        use                     generic-service,service-pnp</span></span>
+<span class="line"><span>        host_name               nagios</span></span>
+<span class="line"><span>        service_description     Load</span></span>
+<span class="line"><span>        check_command           check_nrpe!check_load		#这里的check_nrpe不是服务端/usr/local/nagios/libexec/check_nrpe,而是command.cfg里定义的命令</span></span>
+<span class="line"><span>        }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>define service{</span></span>
+<span class="line"><span>        use                     generic-service,service-pnp</span></span>
+<span class="line"><span>        host_name               nagios</span></span>
+<span class="line"><span>        service_description     Disk</span></span>
+<span class="line"><span>        check_command           check_nrpe!check_disk</span></span>
+<span class="line"><span>        }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>define service{</span></span>
+<span class="line"><span>        use                     generic-service,service-pnp</span></span>
+<span class="line"><span>        host_name               nagios</span></span>
+<span class="line"><span>        service_description     memory</span></span>
+<span class="line"><span>        check_command           check_nrpe!check_mem</span></span>
+<span class="line"><span>        }</span></span>
+<span class="line"><span>define service{</span></span>
+<span class="line"><span>        use                 	generic-service,service-pnp</span></span>
+<span class="line"><span>        host_name               nagios</span></span>
+<span class="line"><span>        service_description     Ping</span></span>
+<span class="line"><span>        check_command           check-ping!172.16.0.18</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>define service{</span></span>
+<span class="line"><span>        use                     generic-service,service-pnp</span></span>
+<span class="line"><span>        host_name               nagios</span></span>
+<span class="line"><span>        service_description     port_3306</span></span>
+<span class="line"><span>        check_command           check-tcp!3306</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>###########172.16.0.20##################</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>define service{</span></span>
+<span class="line"><span>        use                     generic-service,service-pnp</span></span>
+<span class="line"><span>        host_name               client1</span></span>
+<span class="line"><span>        service_description     Load</span></span>
+<span class="line"><span>        check_command           check_nrpe!check_load</span></span>
+<span class="line"><span>        }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>define service{</span></span>
+<span class="line"><span>        use                     generic-service,service-pnp</span></span>
+<span class="line"><span>        host_name               client1</span></span>
+<span class="line"><span>        service_description     Disk</span></span>
+<span class="line"><span>        check_command           check_nrpe!check_disk</span></span>
+<span class="line"><span>        }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>define service{</span></span>
+<span class="line"><span>        use                     generic-service,service-pnp</span></span>
+<span class="line"><span>        host_name               client1</span></span>
+<span class="line"><span>        service_description     memory</span></span>
+<span class="line"><span>        check_command           check_nrpe!check_mem</span></span>
+<span class="line"><span>        }</span></span>
+<span class="line"><span>define service{</span></span>
+<span class="line"><span>	use                     generic-service,service-pnp</span></span>
+<span class="line"><span>        host_name               client1</span></span>
+<span class="line"><span>        service_description     Ping</span></span>
+<span class="line"><span>        check_command           check-ping!172.16.0.20</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span>define service{</span></span>
+<span class="line"><span>        use                     generic-service,service-pnp</span></span>
+<span class="line"><span>        host_name               client1</span></span>
+<span class="line"><span>        service_description     port_3306</span></span>
+<span class="line"><span>        check_command           check-tcp!3306</span></span>
+<span class="line"><span>}</span></span></code></pre></div><p>图表展示 重启nagios和apache</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@nagios check_commands]# /etc/init.d/nagios checkconfig </span></span>
+<span class="line"><span>[root@nagios check_commands]# /etc/init.d/nagios restart</span></span>
+<span class="line"><span>[root@nagios check_commands]# systemctl restart httpd</span></span></code></pre></div><p>访问nagios界面即可看到图表小图标： <img src="http://upload-images.jianshu.io/upload_images/4262139-8fbb2305b200d1e1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p><p>点击图标会显示pnp4nagios测试页面： <img src="http://upload-images.jianshu.io/upload_images/4262139-379c19ab095d7158.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""> 全是绿色代表配置正常，如果不是全绿，要逐个解决错误。然后移除或修改install.php文件：</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@nagios ~]# rm -rf /usr/local/pnp4nagios/share/install.php</span></span></code></pre></div><p>再次点击图标就会显示当前监控服务由pnp4nagios生成的图表了 <img src="http://upload-images.jianshu.io/upload_images/4262139-fc64d86803601200.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p><h3 id="邮件报警配置" tabindex="-1">邮件报警配置 <a class="header-anchor" href="#邮件报警配置" aria-label="Permalink to &quot;邮件报警配置&quot;">​</a></h3><p>查看sendmail邮件系统是否安装</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@nagios ~]# rpm -qa|grep sendmail</span></span></code></pre></div><p>如果没有安装，可以yum安装一下</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@nagios ~]# yum -y install sendmail</span></span></code></pre></div><p>启动sendmail</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@nagios ~]# systemctl enable sendmail</span></span>
+<span class="line"><span>[root@nagios ~]# systemctl start sendmail</span></span></code></pre></div><p>测试发送邮件：</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@nagios ~]# echo &quot;test&quot; | mail zhengxinlei@test.com.cn</span></span></code></pre></div><p><img src="http://upload-images.jianshu.io/upload_images/4262139-0ccf4d2004d88b80.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p><p>发送外部邮件的时候，这种本地形式的发件人和发件地址容易被误认为垃圾邮件而拒收。 我们这里定义邮件发送smtp信息。 首先安装mailx12.5</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>wget http://fossies.org/linux/misc/old/mailx-12.5.tar.gz</span></span>
+<span class="line"><span>tar zxf mailx-12.5.tar.gz</span></span>
+<span class="line"><span>cd mailx-12.5</span></span>
+<span class="line"><span>make</span></span>
+<span class="line"><span>make install UCBINSTALL=/usr/bin/install</span></span>
+<span class="line"><span>mv /bin/mail /bin/mail_old</span></span>
+<span class="line"><span>ln -s /usr/local/bin/mailx /bin/mail</span></span>
+<span class="line"><span>mail -V</span></span></code></pre></div><p>接下来配置外部smtp发件信息</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>vi /etc/nail.rc </span></span>
+<span class="line"><span>添加如下内容：</span></span>
+<span class="line"><span>set bsdcompat</span></span>
+<span class="line"><span>set from=yunwei@yasn.com.cn</span></span>
+<span class="line"><span>set smtp=smtp.yasn.com.cn</span></span>
+<span class="line"><span>set smtp-auth-user=yunwei@yasn.com.cn</span></span>
+<span class="line"><span>set smtp-auth-password=123456</span></span>
+<span class="line"><span>set smtp-auth=login</span></span></code></pre></div><p>测试邮件发送</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>echo &#39;mail content&#39;|mail -s test zhengxinlei@test.com.cn</span></span></code></pre></div><p>发送邮件测试，可以看到发件人是我们设定的外部邮件发件人 <img src="http://upload-images.jianshu.io/upload_images/4262139-15e57a5da967985f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p><p>编辑contacts.cfg，定义邮件联系人和组</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@nagios ~]# cd /usr/local/nagios/etc/objects/</span></span>
+<span class="line"><span>[root@nagios objects]# ls</span></span>
+<span class="line"><span>commands.cfg  localhost.cfg~  services.cfg  templates.cfg    hosts.cfg    printer.cfg     </span></span>
+<span class="line"><span>switch.cfg   windows.cfg contacts.cfg   localhost.cfg  timeperiods.cfg  </span></span>
+<span class="line"><span>[root@nagios objects]# vi contacts.cfg              // 修改内容如下</span></span>
+<span class="line"><span>define contact{</span></span>
+<span class="line"><span>        contact_name                    nagiosadmin             ; Short name of user</span></span>
+<span class="line"><span>        use                             generic-contact         ; Inherit default values from generic-contact template (defined above)</span></span>
+<span class="line"><span>        alias                           Nagios Admin            ; Full name of user</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>        #email                           nagios@localhost       ; &lt;&lt;***** CHANGE THIS TO YOUR EMAIL ADDRESS ******</span></span>
+<span class="line"><span>        email                           3166@vip.qq.com,xinlei@126.com</span></span>
+<span class="line"><span>        }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>define contactgroup{</span></span>
+<span class="line"><span>        contactgroup_name       admins</span></span>
+<span class="line"><span>        alias                   Nagios Administrators</span></span>
+<span class="line"><span>        members                 nagiosadmin</span></span>
+<span class="line"><span>        }</span></span></code></pre></div><p>编辑commands.cfg文件，定义邮件发送命令</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@nagios objects]# vi commands.cfg                // 查看下面内容是否存在，不存在则添加</span></span>
+<span class="line"><span># &#39;notify-host-by-email&#39; command definition</span></span>
+<span class="line"><span>define command{</span></span>
+<span class="line"><span>　　command_name    notify-host-by-email</span></span>
+<span class="line"><span>　　command_line    /usr/bin/printf &quot;%b&quot; &quot;***** Nagios ***** Notification Type: $NOTIFICATIONTYPE$ Host: $HOSTNAME$ State: $HOSTSTATE$ Address: $HOSTADDRESS$ Info: $HOSTOUTPUT$ Date/Time: $LONGDATETIME$ &quot; | /bin/mail -s &quot;** $NOTIFICATIONTYPE$ Host Alert: $HOSTNAME$ is $HOSTSTATE$ **&quot; $CONTACTEMAIL$</span></span>
+<span class="line"><span>　　}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># &#39;notify-service-by-email&#39; command definition</span></span>
+<span class="line"><span>define command{</span></span>
+<span class="line"><span>　　command_name    notify-service-by-email</span></span>
+<span class="line"><span>　　command_line    /usr/bin/printf &quot;%b&quot; &quot;***** Nagios ***** Notification Type: $NOTIFICATIONTYPE$ Service: $SERVICEDESC$ Host: $HOSTALIAS$ Address: $HOSTADDRESS$ State: $SERVICESTATE$ Date/Time: $LONGDATETIME$ Additional Info: $SERVICEOUTPUT$ &quot; | /bin/mail -s &quot;** $NOTIFICATIONTYPE$ Service Alert: $HOSTALIAS$/$SERVICEDESC$ is $SERVICESTATE$ **&quot; $CONTACTEMAIL$</span></span>
+<span class="line"><span>　　}</span></span></code></pre></div><p>修改一下监控的阀值，模拟报警。 <img src="http://upload-images.jianshu.io/upload_images/4262139-0f50ab0e3ef5c1ac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""> 重启nagios服务和sendmail服务</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@nagios ~]# systemctl restart nagios</span></span>
+<span class="line"><span>[root@nagios ~]# systemctl stop sendmail</span></span>
+<span class="line"><span>[root@nagios ~]# ps -ef|grep sendmail</span></span>
+<span class="line"><span>[root@nagios ~]# systemctl start sendmail</span></span>
+<span class="line"><span>[root@nagios ~]# ps -ef|grep sendmail</span></span></code></pre></div><p>查看报警的邮件，来几张图吧： <img src="http://upload-images.jianshu.io/upload_images/4262139-8c34c7c6b661ce8e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><img src="http://upload-images.jianshu.io/upload_images/4262139-5cb29a4f3818f23a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p><p>这是报警恢复后的邮件：</p><p><img src="http://upload-images.jianshu.io/upload_images/4262139-adee89b6ad4fc5ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><img src="http://upload-images.jianshu.io/upload_images/4262139-b958e9caca4d31c6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p><p>ok，搞定了。 <br></p><p>常见邮件发送报错：</p><p>报错1 <img src="http://upload-images.jianshu.io/upload_images/4262139-7d3c745edc814e95.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""> 解决方法： 修改hosts为域名形式 <img src="http://upload-images.jianshu.io/upload_images/4262139-38cc5189220dd970.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>[root@nagios objects]# cat /etc/hosts</span></span>
+<span class="line"><span>172.16.0.18 nagios nagios.com</span></span></code></pre></div><br> *** 报错2（发送外部邮件的时候，这种本地形式的发件人和发件地址容易被误认为垃圾邮件而拒收。） ![](http://upload-images.jianshu.io/upload_images/4262139-60dbb010c9f05c1d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) 解决方法，见上面配置mail发件人smtp信息。 <br><p>监视物理组件的高级 Linux 命令（仅供参考）</p><blockquote><p>内存：top free、vmstat、mpstat、iostat、sar CPU：top vmstat、mpstat、iostat、sar I/O：vmstat、mpstat、iostat、sar 进程：ipcs、ipcrm 负载：uptime</p></blockquote><hr><br><h2 id="一键安装nagios命令参考" tabindex="-1">一键安装nagios命令参考 <a class="header-anchor" href="#一键安装nagios命令参考" aria-label="Permalink to &quot;一键安装nagios命令参考&quot;">​</a></h2><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>#############nagios-server-install########################</span></span>
+<span class="line"><span>mkdir /software/</span></span>
+<span class="line"><span># mv nagios-4.3.1.tar.gz nagios-plugins-2.2.1.tar.gz nrpe-3.1.0.tar.gz pnp4nagios-0.6.25.tar.gz /software/</span></span>
+<span class="line"><span>cd /software/</span></span>
+<span class="line"><span>wget https://assets.nagios.com/downloads/nagioscore/releases/nagios-4.3.1.tar.gz</span></span>
+<span class="line"><span>wget https://nagios-plugins.org/download/nagios-plugins-2.2.1.tar.gz</span></span>
+<span class="line"><span>wget https://sourceforge.net/projects/nagios/files/nrpe-3.x/nrpe-3.1.0.tar.gz</span></span>
+<span class="line"><span>wget https://jaist.dl.sourceforge.net/project/pnp4nagios/PNP-0.6/pnp4nagios-0.6.25.tar.gz</span></span>
+<span class="line"><span>yum -y install httpd httpd-devel gcc glibc glibc-common gd gd-devel perl-devel perl-CPAN fcgi perl-FCGI perl-FCGI-ProcManager</span></span>
+<span class="line"><span>tar zxvf nagios-4.3.1.tar.gz</span></span>
+<span class="line"><span>cd nagios-4.3.1/</span></span>
+<span class="line"><span>useradd nagios -s /sbin/nologin </span></span>
+<span class="line"><span>id www</span></span>
+<span class="line"><span>groupadd nagcmd</span></span>
+<span class="line"><span>usermod -a -G nagcmd nagios </span></span>
+<span class="line"><span>usermod -a -G nagcmd www</span></span>
+<span class="line"><span>id -n -G nagios</span></span>
+<span class="line"><span>id -n -G www</span></span>
+<span class="line"><span>./configure --with-command-group=nagcmd</span></span>
+<span class="line"><span>make all</span></span>
+<span class="line"><span>make install-init</span></span>
+<span class="line"><span>make install-commandmode</span></span>
+<span class="line"><span>make install-config</span></span>
+<span class="line"><span>make install</span></span>
+<span class="line"><span>sleep 2    </span></span>
+<span class="line"><span>cp -R contrib/eventhandlers/ /usr/local/nagios/libexec/</span></span>
+<span class="line"><span>chown -R nagios:nagios /usr/local/nagios/libexec/eventhandlers</span></span>
+<span class="line"><span>/usr/local/nagios/bin/nagios -v /usr/local/nagios/etc/nagios.cfg</span></span>
+<span class="line"><span>make install-webconf</span></span>
+<span class="line"><span>echo &#39;nagios:$apr1$UigX6LG0$29RugFJZTSxRjnX4NIH3E0&#39; &gt; /usr/local/nagios/etc/htpasswd.users</span></span>
+<span class="line"><span>sed -i &#39;s/Listen 80/Listen 8080/g&#39; /etc/httpd/conf/httpd.conf</span></span>
+<span class="line"><span>sed -i &#39;s/User apache/User www/g&#39; /etc/httpd/conf/httpd.conf</span></span>
+<span class="line"><span>sed -i &#39;s/Group apache/Group www/g&#39; /etc/httpd/conf/httpd.conf</span></span>
+<span class="line"><span>sed -i &#39;s/DirectoryIndex index.html/DirectoryIndex index.php index.html/g&#39; /etc/httpd/conf/httpd.conf</span></span>
+<span class="line"><span>grep &#39;Listen&#39; /etc/httpd/conf/httpd.conf</span></span>
+<span class="line"><span>grep &#39;User&#39; /etc/httpd/conf/httpd.conf </span></span>
+<span class="line"><span>grep &#39;Group&#39; /etc/httpd/conf/httpd.conf </span></span>
+<span class="line"><span>grep &#39;DirectoryIndex&#39; /etc/httpd/conf/httpd.conf</span></span>
+<span class="line"><span>cd /software/php-7.1.4/</span></span>
+<span class="line"><span>./configure --prefix=/usr/local/php --enable-fpm --with-fpm-user=www --with-fpm-group=www --with-mysqli --with-zlib --with-curl --with-gd --with-jpeg-dir --with-png-dir --with-freetype-dir --with-openssl --enable-mbstring --enable-xml --enable-session --enable-ftp --enable-pdo -enable-tokenizer --enable-zip --with-apxs2</span></span>
+<span class="line"><span>make &amp;&amp; make install</span></span>
+<span class="line"><span>sleep 1</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>cd /etc/httpd/</span></span>
+<span class="line"><span>ll /etc/httpd/modules/libphp7.so</span></span>
+<span class="line"><span>systemctl start httpd</span></span>
+<span class="line"><span>systemctl enable httpd</span></span>
+<span class="line"><span>chkconfig nagios on</span></span>
+<span class="line"><span>/etc/init.d/nagios start</span></span>
+<span class="line"><span>cd /software/</span></span>
+<span class="line"><span>tar zxvf nagios-plugins-2.2.1.tar.gz</span></span>
+<span class="line"><span>cd nagios-plugins-2.2.1/</span></span>
+<span class="line"><span>./configure --with-nagios-user=nagios --with-nagios-group=nagcmd --enable-perl-modules</span></span>
+<span class="line"><span>make &amp;&amp; make install</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>cd /software/</span></span>
+<span class="line"><span>tar zxvf nrpe-3.1.0.tar.gz</span></span>
+<span class="line"><span>cd nrpe-3.1.0/</span></span>
+<span class="line"><span>./configure</span></span>
+<span class="line"><span>make all</span></span>
+<span class="line"><span>make install-plugin</span></span>
+<span class="line"><span>make install-daemon</span></span>
+<span class="line"><span>make install-daemon-config</span></span>
+<span class="line"><span>cp sample-config/nrpe.cfg /usr/local/nagios/etc/nrpe.cfg</span></span>
+<span class="line"><span>ls /usr/local/nagios/libexec/</span></span>
+<span class="line"><span>/usr/local/nagios/bin/nrpe -d -c /usr/local/nagios/etc/nrpe.cfg </span></span>
+<span class="line"><span>echo &quot;/usr/local/nagios/bin/nrpe -d -c /usr/local/nagios/etc/nrpe.cfg&quot; &gt;&gt; /etc/rc.local</span></span>
+<span class="line"><span>chmod +x /etc/rc.d/rc.local </span></span>
+<span class="line"><span>netstat -lnput|grep 5666</span></span>
+<span class="line"><span>/usr/local/nagios/libexec/check_nrpe -H localhost</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>#######################nagios-client-install###########################</span></span>
+<span class="line"><span>mkdir /software/</span></span>
+<span class="line"><span># mv nagios-plugins-2.2.1.tar.gz nrpe-3.1.0.tar.gz /software/</span></span>
+<span class="line"><span>cd /software/</span></span>
+<span class="line"><span>wget https://nagios-plugins.org/download/nagios-plugins-2.2.1.tar.gz</span></span>
+<span class="line"><span>wget https://sourceforge.net/projects/nagios/files/nrpe-3.x/nrpe-3.1.0.tar.gz</span></span>
+<span class="line"><span>yum install perl-devel perl-CPAN -y</span></span>
+<span class="line"><span>useradd nagios -M -s /sbin/nologin</span></span>
+<span class="line"><span>tar zxvf nagios-plugins-2.2.1.tar.gz</span></span>
+<span class="line"><span>cd nagios-plugins-2.2.1/</span></span>
+<span class="line"><span>./configure --with-nagios-user=nagios --with-nagios-group=nagios --enable-perl-modules</span></span>
+<span class="line"><span>make &amp;&amp; make install</span></span>
+<span class="line"><span>sleep 1</span></span>
+<span class="line"><span>cd ..</span></span>
+<span class="line"><span>tar zxvf nrpe-3.1.0.tar.gz</span></span>
+<span class="line"><span>cd nrpe-3.1.0/</span></span>
+<span class="line"><span>./configure</span></span>
+<span class="line"><span>make all</span></span>
+<span class="line"><span>make install-plugin</span></span>
+<span class="line"><span>make install-daemon</span></span>
+<span class="line"><span>make install-daemon-config</span></span>
+<span class="line"><span>mkdir /usr/local/nagios/etc/</span></span>
+<span class="line"><span>cp sample-config/nrpe.cfg /usr/local/nagios/etc/nrpe.cfg</span></span>
+<span class="line"><span>ls /usr/local/nagios/libexec/</span></span>
+<span class="line"><span>/usr/local/nagios/bin/nrpe -d -c /usr/local/nagios/etc/nrpe.cfg </span></span>
+<span class="line"><span>echo &quot;/usr/local/nagios/bin/nrpe -d -c /usr/local/nagios/etc/nrpe.cfg&quot; &gt;&gt; /etc/rc.local</span></span>
+<span class="line"><span>chmod +x /etc/rc.d/rc.local           </span></span>
+<span class="line"><span>netstat -lnput|grep 5666</span></span>
+<span class="line"><span>sed -i &#39;s/allowed_hosts=127.0.0.1,::1/allowed_hosts=127.0.0.1,::1,172.16.0.1/g&#39; /usr/local/nagios/etc/nrpe.cfg</span></span>
+<span class="line"><span>sed -i &#39;s/^command\[check/\#command\[check/g&#39; /usr/local/nagios/etc/nrpe.cfg</span></span>
+<span class="line"><span>cat &gt;&gt; /usr/local/nagios/etc/nrpe.cfg &lt;&lt; EOF</span></span>
+<span class="line"><span># my custom monitor items</span></span>
+<span class="line"><span>command[check_users]=/usr/local/nagios/libexec/check_users -w 5 -c 10</span></span>
+<span class="line"><span>command[check_load]=/usr/local/nagios/libexec/check_load -r -w .15,.10,.05 -c .30,.25,.20</span></span>
+<span class="line"><span>command[check_disk]=/usr/local/nagios/libexec/check_disk -w 20% -c 10% -p /</span></span>
+<span class="line"><span>command[check_mem]=/usr/local/nagios/libexec/check_mem.pl -w 90% -c 95%</span></span>
+<span class="line"><span>command[check_swap]=/usr/local/nagios/libexec/check_swap -w 20% -c 10%</span></span>
+<span class="line"><span>EOF</span></span>
+<span class="line"><span>/usr/local/nagios/libexec/check_nrpe -H localhost -c check_disk</span></span></code></pre></div><p><strong>总结：</strong> 多多查看nagios日志和mail日志，进行排错。</p></div></div></main><footer class="VPDocFooter" data-v-717456d7 data-v-8bd944f9><!--[--><!--]--><div class="edit-info" data-v-8bd944f9><!----><div class="last-updated" data-v-8bd944f9><p class="VPLastUpdated" data-v-8bd944f9 data-v-3d3da6d7>上次更新: <time datetime="2024-12-04T17:56:55.000Z" data-v-3d3da6d7></time></p></div></div><nav class="prev-next" aria-labelledby="doc-footer-aria-label" data-v-8bd944f9><span class="visually-hidden" id="doc-footer-aria-label" data-v-8bd944f9>Pager</span><div class="pager" data-v-8bd944f9><a class="VPLink link pager-link prev" href="/blog/Linux/Centos-7-%E4%B8%8B%E5%AE%89%E8%A3%85LNMP%E5%AE%98%E6%96%B9%E6%9C%80%E6%96%B0%E7%89%88%EF%BC%88yum%E5%AE%89%E8%A3%85nginx%E5%92%8Cmysql%EF%BC%8Cphp7%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85%EF%BC%89" data-v-8bd944f9><!--[--><span class="desc" data-v-8bd944f9>Previous page</span><span class="title" data-v-8bd944f9>Centos-7-下安装LNMP官方最新版（yum安装nginx和mysql，php7源码安装）</span><!--]--></a></div><div class="pager" data-v-8bd944f9><a class="VPLink link pager-link next" href="/blog/Linux/Centos-7%E4%B8%8Bsaltstack%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3" data-v-8bd944f9><!--[--><span class="desc" data-v-8bd944f9>Next page</span><span class="title" data-v-8bd944f9>Centos-7下saltstack安装配置详解</span><!--]--></a></div></nav></footer><!--[--><!--]--></div></div></div><!--[--><!--]--></div></div><footer class="VPFooter has-sidebar" data-v-d1264ba6 data-v-b8974312><div class="container" data-v-b8974312><!----><p class="copyright" data-v-b8974312><a class="href" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a><span style="margin-left: 8px">Copyright © 2021-present 君惜</span></p></div></footer><!--[--><!--]--></div></div>
+    <script>window.__VP_HASH_MAP__=JSON.parse("{\"about_index.md\":\"DqCC4YXw\",\"blog_docker_docker文档.md\":\"CIFOAe5D\",\"blog_git_git学习笔记.md\":\"D5ATJPzH\",\"blog_javascript_element-ui 日期选择器-自定义前缀文本信息.md\":\"WaJkn1Be\",\"blog_javascript_iview组件tabs嵌套使用.md\":\"89dXIMoA\",\"blog_javascript_javascript原型继承.md\":\"DUYhKJlN\",\"blog_javascript_vue中使用jsx.md\":\"Bmubz_oN\",\"blog_javascript_web常用颜色值.md\":\"DsZostio\",\"blog_javascript_前端人员必看css命名规范.md\":\"BB5WYUNQ\",\"blog_javascript_探索vue高阶组件.md\":\"Bqs2NiBz\",\"blog_linux_centos-7-下安装lnmp官方最新版（yum安装nginx和mysql，php7源码安装）.md\":\"CwMQoDn1\",\"blog_linux_centos-7下nagios的安装及配置（完整版）.md\":\"ANQRIzG0\",\"blog_linux_centos-7下saltstack安装配置详解.md\":\"BAztFH1E\",\"blog_linux_centos-7安装zabbix.md\":\"DlATsTfX\",\"blog_linux_centos-7系统优化脚本.md\":\"Bns3skJK\",\"blog_linux_centos7下编译安装nginx、mysql、php（文章底部包含一键安装脚本）.md\":\"Dm3sfmE-\",\"blog_linux_centos下安装ansible.md\":\"OWRFKt5n\",\"blog_linux_curl使用文档.md\":\"Cythek35\",\"blog_linux_php添加扩展库.md\":\"BrlybZvO\",\"blog_linux_saltstack-api使用详解.md\":\"DukkCH2k\",\"blog_linux_supervisor用法.md\":\"BpDVzP6M\",\"blog_mysql_mysql中常用sql语句的编写.md\":\"DJrwsyxQ\",\"blog_mysql_mysql多表联合查询语句的编写及效率分析、优化.md\":\"b4LKPj5d\",\"blog_node.js_node.js - 使用pm2部署项目.md\":\"Cmi7YL-X\",\"blog_python_django-2-0-发布，都有哪些新特性要注意？.md\":\"BXv3ZAze\",\"blog_python_django-nginx-uwsgi.md\":\"BCkvZMvn\",\"blog_python_django增加qq第三方登录.md\":\"nlxnZqWW\",\"blog_python_linux下安装python-2.7.md\":\"DC6lIZ5f\",\"blog_python_linux安装python-3-5-2.md\":\"BsNN66h1\",\"blog_python_peewee-orm用法.md\":\"BONnuvsc\",\"blog_python_python-tab补全模块.md\":\"BJHiFMN6\",\"blog_python_python-八大算法.md\":\"SEDypzHG\",\"blog_python_python-解析配置模块之configparser详解.md\":\"jIJEkZqj\",\"blog_python_python中hashlib加密模块的使用.md\":\"CBMWZqd3\",\"blog_python_python中logging生成日志模块的使用.md\":\"CXs6Hze2\",\"blog_python_python中paramiko模块的使用.md\":\"DSaL15RR\",\"blog_python_python中shutil文件操作模块的使用.md\":\"C6SjS4CH\",\"blog_python_python中sys，os，time模块的使用（包括时间格式的各种转换）.md\":\"Bz469iFZ\",\"blog_python_python中yaml配置文件模块的使用.md\":\"SCKZfmMm\",\"blog_python_python中zipfile、tarfile压缩文件模块的使用.md\":\"Cvh-9YWn\",\"blog_python_python中使用subprocess批量执行linux下命令.md\":\"DwDlaob7\",\"blog_python_python中利用random模块生成随机验证码.md\":\"S7Zsye7T\",\"blog_python_python中操作mysql的pymysql模块详解.md\":\"BLx8s6VL\",\"blog_python_python中的单例模式.md\":\"CJuwqUtZ\",\"blog_python_python使用pickle和json模拟一个购物车.md\":\"Dx4ZQxuz\",\"blog_python_python使用requests模块模拟登录知乎.md\":\"CCRIE7Vn\",\"blog_python_python写一个简单的图形化记事本.md\":\"DqjeOldB\",\"blog_python_python多线程、锁、event事件机制的简单使用.md\":\"Dy9jUTWK\",\"blog_python_python更换pip和easy_install源.md\":\"CFYJVkfK\",\"blog_python_python终端输出带颜色.md\":\"D8XZ1HL-\",\"blog_python_python面试题.md\":\"CqQkYWjW\",\"blog_python_qqbot：基于smartqq协议的qq机器人的简单使用.md\":\"cvS8RpGa\",\"blog_python_sanic-jinja2模版用法.md\":\"DcnJwEnp\",\"blog_python_sanic异步框架之中文文档.md\":\"5PPuYRxS\",\"blog_python_sqlalchemy的简单使用.md\":\"J6Toe_YQ\",\"blog_python_virtualenv加django加uwsgi加nginx多站点部署.md\":\"DKD7yEWs\",\"blog_python_webapi的设计规范.md\":\"iQBcI9xC\",\"blog_python_xlcmdb.md\":\"CwDoPoRs\",\"blog_python_不可不知的python模块--collections.md\":\"B5hit2vN\",\"blog_python_使用python--发送邮件.md\":\"CTVkhyGF\",\"blog_python_使用sanic-openapi来构建api.md\":\"BS6A9IAO\",\"blog_python_初识aiohttp之服务端用法.md\":\"Cbux2uJS\",\"blog_python_更好的编写python代码的方式.md\":\"BE8slca_\",\"blog_python_用pyinotify监控linux文件系统.md\":\"DdE9rYVy\",\"blog_redis_使用python来操作redis用法详解.md\":\"BgVBiDLn\",\"blog_并发测试_ab安装及使用.md\":\"TMLEz42N\",\"blog_并发测试_webbrech安装及使用.md\":\"CKlqGDmn\",\"blog_并发测试_wrk安装及使用.md\":\"CTFFFX4c\",\"blog_随笔_代码编写前需要准备的事情.md\":\"Cz-bVVR9\",\"blog_随笔_优秀程序员的10个习惯.md\":\"B6HBWs2g\",\"index.md\":\"C145LPJ-\",\"package_index.md\":\"DIqHG-bK\",\"softwarecustom_index.md\":\"CbRwkRvX\"}");window.__VP_SITE_DATA__=JSON.parse("{\"lang\":\"en-US\",\"dir\":\"ltr\",\"title\":\"君惜\",\"description\":\"欢迎来到君惜的网站。\",\"base\":\"/\",\"head\":[],\"router\":{\"prefetchLinks\":true},\"appearance\":true,\"themeConfig\":{\"outline\":{\"level\":[2,4]},\"outlineTitle\":\"本页目录\",\"lastUpdatedText\":\"上次更新\",\"logo\":\"/logo.png\",\"search\":{\"provider\":\"local\"},\"nav\":[{\"text\":\"主页\",\"link\":\"/\"},{\"text\":\"软件定制\",\"link\":\"/softwareCustom/\"},{\"text\":\"博客\",\"items\":[{\"text\":\"Docker\",\"link\":\"/blog/Docker/Docker文档.html\",\"activeMatch\":\"/blog/Docker\"},{\"text\":\"Git\",\"link\":\"/blog/Git/Git学习笔记.html\",\"activeMatch\":\"/blog/Git\"},{\"text\":\"JavaScript\",\"link\":\"/blog/JavaScript/JavaScript原型继承.html\",\"activeMatch\":\"/blog/JavaScript\"},{\"text\":\"Linux\",\"link\":\"/blog/Linux/Centos-7-下安装LNMP官方最新版（yum安装nginx和mysql，php7源码安装）.html\",\"activeMatch\":\"/blog/Linux\"},{\"text\":\"MySQL\",\"link\":\"/blog/MySQL/MySQL中常用SQL语句的编写.html\",\"activeMatch\":\"/blog/MySQL\"},{\"text\":\"Node.js\",\"link\":\"/blog/Node.js/Node.js - 使用pm2部署项目.html\",\"activeMatch\":\"/blog/Node.js\"},{\"text\":\"Python\",\"link\":\"/blog/Python/Django-2-0-发布，都有哪些新特性要注意？.html\",\"activeMatch\":\"/blog/Python\"},{\"text\":\"Redis\",\"link\":\"/blog/Redis/使用python来操作redis用法详解.html\",\"activeMatch\":\"/blog/Redis\"},{\"text\":\"并发测试\",\"link\":\"/blog/并发测试/ab安装及使用.html\",\"activeMatch\":\"/blog/并发测试\"},{\"text\":\"随笔\",\"link\":\"/blog/随笔/代码编写前需要准备的事情.html\",\"activeMatch\":\"/blog/随笔\"}]},{\"text\":\"开源项目\",\"link\":\"/package/\"},{\"text\":\"关于我\",\"link\":\"/about/\"}],\"sidebar\":{\"/blog/Docker/\":[{\"text\":\"Docker\",\"collapsible\":true,\"items\":[{\"text\":\"Docker文档\",\"link\":\"/blog/Docker/Docker文档.md\"}]}],\"/blog/Git/\":[{\"text\":\"Git\",\"collapsible\":true,\"items\":[{\"text\":\"Git学习笔记\",\"link\":\"/blog/Git/Git学习笔记.md\"}]}],\"/blog/JavaScript/\":[{\"text\":\"JavaScript\",\"collapsible\":true,\"items\":[{\"text\":\"JavaScript原型继承\",\"link\":\"/blog/JavaScript/JavaScript原型继承.md\"},{\"text\":\"element-ui 日期选择器-自定义前缀文本信息\",\"link\":\"/blog/JavaScript/element-ui 日期选择器-自定义前缀文本信息.md\"},{\"text\":\"iView组件Tabs嵌套使用\",\"link\":\"/blog/JavaScript/iView组件Tabs嵌套使用.md\"},{\"text\":\"vue中使用jsx\",\"link\":\"/blog/JavaScript/vue中使用jsx.md\"},{\"text\":\"web常用颜色值\",\"link\":\"/blog/JavaScript/web常用颜色值.md\"},{\"text\":\"前端人员必看CSS命名规范\",\"link\":\"/blog/JavaScript/前端人员必看CSS命名规范.md\"},{\"text\":\"探索Vue高阶组件\",\"link\":\"/blog/JavaScript/探索Vue高阶组件.md\"}]}],\"/blog/Linux/\":[{\"text\":\"Linux\",\"collapsible\":true,\"items\":[{\"text\":\"Centos-7-下安装LNMP官方最新版（yum安装nginx和mysql，php7源码安装）\",\"link\":\"/blog/Linux/Centos-7-下安装LNMP官方最新版（yum安装nginx和mysql，php7源码安装）.md\"},{\"text\":\"Centos-7下Nagios的安装及配置（完整版）\",\"link\":\"/blog/Linux/Centos-7下Nagios的安装及配置（完整版）.md\"},{\"text\":\"Centos-7下saltstack安装配置详解\",\"link\":\"/blog/Linux/Centos-7下saltstack安装配置详解.md\"},{\"text\":\"Centos-7安装zabbix\",\"link\":\"/blog/Linux/Centos-7安装zabbix.md\"},{\"text\":\"Centos-7系统优化脚本\",\"link\":\"/blog/Linux/Centos-7系统优化脚本.md\"},{\"text\":\"Centos7下编译安装Nginx、Mysql、PHP（文章底部包含一键安装脚本）\",\"link\":\"/blog/Linux/Centos7下编译安装Nginx、Mysql、PHP（文章底部包含一键安装脚本）.md\"},{\"text\":\"Centos下安装Ansible\",\"link\":\"/blog/Linux/Centos下安装Ansible.md\"},{\"text\":\"curl使用文档\",\"link\":\"/blog/Linux/curl使用文档.md\"},{\"text\":\"php添加扩展库\",\"link\":\"/blog/Linux/php添加扩展库.md\"},{\"text\":\"saltstack-api使用详解\",\"link\":\"/blog/Linux/saltstack-api使用详解.md\"},{\"text\":\"supervisor用法\",\"link\":\"/blog/Linux/supervisor用法.md\"}]}],\"/blog/MySQL/\":[{\"text\":\"MySQL\",\"collapsible\":true,\"items\":[{\"text\":\"MySQL中常用SQL语句的编写\",\"link\":\"/blog/MySQL/MySQL中常用SQL语句的编写.md\"},{\"text\":\"MySQL多表联合查询语句的编写及效率分析、优化\",\"link\":\"/blog/MySQL/MySQL多表联合查询语句的编写及效率分析、优化.md\"}]}],\"/blog/Node.js/\":[{\"text\":\"Node.js\",\"collapsible\":true,\"items\":[{\"text\":\"Node.js - 使用pm2部署项目\",\"link\":\"/blog/Node.js/Node.js - 使用pm2部署项目.md\"}]}],\"/blog/Python/\":[{\"text\":\"Python\",\"collapsible\":true,\"items\":[{\"text\":\"Django-2-0-发布，都有哪些新特性要注意？\",\"link\":\"/blog/Python/Django-2-0-发布，都有哪些新特性要注意？.md\"},{\"text\":\"Django-Nginx-uwsgi\",\"link\":\"/blog/Python/Django-Nginx-uwsgi.md\"},{\"text\":\"Django增加QQ第三方登录\",\"link\":\"/blog/Python/Django增加QQ第三方登录.md\"},{\"text\":\"Linux下安装python-2.7\",\"link\":\"/blog/Python/Linux下安装python-2.7.md\"},{\"text\":\"Linux安装python-3-5-2\",\"link\":\"/blog/Python/Linux安装python-3-5-2.md\"},{\"text\":\"Python-解析配置模块之ConfigParser详解\",\"link\":\"/blog/Python/Python-解析配置模块之ConfigParser详解.md\"},{\"text\":\"Python中的单例模式\",\"link\":\"/blog/Python/Python中的单例模式.md\"},{\"text\":\"QQBot：基于SmartQQ协议的QQ机器人的简单使用\",\"link\":\"/blog/Python/QQBot：基于SmartQQ协议的QQ机器人的简单使用.md\"},{\"text\":\"SQLAlchemy的简单使用\",\"link\":\"/blog/Python/SQLAlchemy的简单使用.md\"},{\"text\":\"Virtualenv加Django加UWSGI加Nginx多站点部署\",\"link\":\"/blog/Python/Virtualenv加Django加UWSGI加Nginx多站点部署.md\"},{\"text\":\"WebAPI的设计规范\",\"link\":\"/blog/Python/WebAPI的设计规范.md\"},{\"text\":\"peewee-orm用法\",\"link\":\"/blog/Python/peewee-orm用法.md\"},{\"text\":\"python-tab补全模块\",\"link\":\"/blog/Python/python-tab补全模块.md\"},{\"text\":\"python-八大算法\",\"link\":\"/blog/Python/python-八大算法.md\"},{\"text\":\"python中hashlib加密模块的使用\",\"link\":\"/blog/Python/python中hashlib加密模块的使用.md\"},{\"text\":\"python中logging生成日志模块的使用\",\"link\":\"/blog/Python/python中logging生成日志模块的使用.md\"},{\"text\":\"python中paramiko模块的使用\",\"link\":\"/blog/Python/python中paramiko模块的使用.md\"},{\"text\":\"python中shutil文件操作模块的使用\",\"link\":\"/blog/Python/python中shutil文件操作模块的使用.md\"},{\"text\":\"python中sys，os，time模块的使用（包括时间格式的各种转换）\",\"link\":\"/blog/Python/python中sys，os，time模块的使用（包括时间格式的各种转换）.md\"},{\"text\":\"python中yaml配置文件模块的使用\",\"link\":\"/blog/Python/python中yaml配置文件模块的使用.md\"},{\"text\":\"python中zipfile、tarfile压缩文件模块的使用\",\"link\":\"/blog/Python/python中zipfile、tarfile压缩文件模块的使用.md\"},{\"text\":\"python中使用subprocess批量执行linux下命令\",\"link\":\"/blog/Python/python中使用subprocess批量执行linux下命令.md\"},{\"text\":\"python中利用random模块生成随机验证码\",\"link\":\"/blog/Python/python中利用random模块生成随机验证码.md\"},{\"text\":\"python中操作mysql的pymysql模块详解\",\"link\":\"/blog/Python/python中操作mysql的pymysql模块详解.md\"},{\"text\":\"python使用pickle和json模拟一个购物车\",\"link\":\"/blog/Python/python使用pickle和json模拟一个购物车.md\"},{\"text\":\"python使用requests模块模拟登录知乎\",\"link\":\"/blog/Python/python使用requests模块模拟登录知乎.md\"},{\"text\":\"python写一个简单的图形化记事本\",\"link\":\"/blog/Python/python写一个简单的图形化记事本.md\"},{\"text\":\"python多线程、锁、event事件机制的简单使用\",\"link\":\"/blog/Python/python多线程、锁、event事件机制的简单使用.md\"},{\"text\":\"python更换pip和easy_install源\",\"link\":\"/blog/Python/python更换pip和easy_install源.md\"},{\"text\":\"python终端输出带颜色\",\"link\":\"/blog/Python/python终端输出带颜色.md\"},{\"text\":\"python面试题\",\"link\":\"/blog/Python/python面试题.md\"},{\"text\":\"sanic-jinja2模版用法\",\"link\":\"/blog/Python/sanic-jinja2模版用法.md\"},{\"text\":\"sanic异步框架之中文文档\",\"link\":\"/blog/Python/sanic异步框架之中文文档.md\"},{\"text\":\"xlcmdb\",\"link\":\"/blog/Python/xlcmdb.md\"},{\"text\":\"不可不知的python模块--collections\",\"link\":\"/blog/Python/不可不知的python模块--collections.md\"},{\"text\":\"使用python--发送邮件\",\"link\":\"/blog/Python/使用python--发送邮件.md\"},{\"text\":\"使用sanic-openapi来构建API\",\"link\":\"/blog/Python/使用sanic-openapi来构建API.md\"},{\"text\":\"初识aiohttp之服务端用法\",\"link\":\"/blog/Python/初识aiohttp之服务端用法.md\"},{\"text\":\"更好的编写Python代码的方式\",\"link\":\"/blog/Python/更好的编写Python代码的方式.md\"},{\"text\":\"用pyinotify监控Linux文件系统\",\"link\":\"/blog/Python/用pyinotify监控Linux文件系统.md\"}]}],\"/blog/Redis/\":[{\"text\":\"Redis\",\"collapsible\":true,\"items\":[{\"text\":\"使用python来操作redis用法详解\",\"link\":\"/blog/Redis/使用python来操作redis用法详解.md\"}]}],\"/blog/并发测试/\":[{\"text\":\"并发测试\",\"collapsible\":true,\"items\":[{\"text\":\"ab安装及使用\",\"link\":\"/blog/并发测试/ab安装及使用.md\"},{\"text\":\"webbrech安装及使用\",\"link\":\"/blog/并发测试/webbrech安装及使用.md\"},{\"text\":\"wrk安装及使用\",\"link\":\"/blog/并发测试/wrk安装及使用.md\"}]}],\"/blog/随笔/\":[{\"text\":\"随笔\",\"collapsible\":true,\"items\":[{\"text\":\"代码编写前需要准备的事情\",\"link\":\"/blog/随笔/代码编写前需要准备的事情.md\"},{\"text\":\"优秀程序员的10个习惯\",\"link\":\"/blog/随笔/优秀程序员的10个习惯.md\"}]}]},\"socialLinks\":[{\"icon\":\"github\",\"link\":\"https://github.com/xinlei3166/xinlei3166.github.io\"}],\"footer\":{\"copyright\":\"<a class=\\\"href\\\" href=\\\"https://creativecommons.org/licenses/by-nc-sa/4.0/\\\">CC BY-NC-SA 4.0</a><span style=\\\"margin-left: 8px\\\">Copyright © 2021-present 君惜</span>\"}},\"locales\":{},\"scrollOffset\":134,\"cleanUrls\":true}");</script>
+    
+  </body>
+</html>

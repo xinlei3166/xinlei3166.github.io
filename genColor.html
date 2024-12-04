@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Generate color values by name</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {},
+        },
+      },
+    }
+  </script>
+  <style>
+    #app {
+      margin: 48px auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .names {
+      margin-top: 32px;
+    }
+
+    .name {
+      margin-bottom: 8px;
+      list-style: none;
+      font-size: 16px
+    }
+
+    .name-text {
+      display: inline-block;
+      width: 200px;
+      word-break: break-word;
+      margin-right: 8px;
+    }
+  </style>
+</head>
+<body>
+<div id="app" v-cloak>
+  <div class="inline-flex flex-col">
+    <div class="mb-8 text-gray-500">Generate color values by name - 根据名字生成颜色值</div>
+    <div>
+      <input type="text" placeholder="请输入你的名字" v-model="name"
+             class="w-64 text-sm focus:outline-none placeholder:text-gray-400 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-inset-1 focus:ring-2 focus:ring-red-500 px-2 py-1.5 rounded-md border-0 mr-2">
+        <button class="text-red-500 text-sm px-2.5 py-1 rounded-sm border border-red-500" @click="genColor">生成</button>
+    </div>
+    <ul class="names ml-1">
+      <li v-for="item in names" class="name" :style="{color: '#' + item.color}"><span class="name-text">{{item.name}}</span><span class="inline-block">#{{item.color}}</span></li>
+    </ul>
+  </div>
+</div>
+<script type="module">
+  import { createApp } from 'https://unpkg.com/petite-vue?module'
+
+  function hashCode (str) { // java String#hashCode
+    var hash = 0
+    for (var i = 0; i < str.length; i++) {
+      hash = str.charCodeAt(i) + ((hash << 5) - hash)
+    }
+    return hash
+  }
+
+  function intToRGB (i) {
+    var c = (i & 0x00FFFFFF).toString(16).toUpperCase()
+    return '00000'.substring(0, 6 - c.length) + c
+  }
+
+  createApp({
+    name,
+    names: [],
+
+    genColor () {
+      if (!this.name) return
+      const item = { name: this.name, color: intToRGB(hashCode(this.name)) }
+      this.names.push(item)
+      this.name = ''
+    },
+  }).mount('#app')
+</script>
+</body>
+</html>
